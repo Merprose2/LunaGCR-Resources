@@ -339,14 +339,14 @@ function LF_Notify_Platform_Sink(context, index)
 			end
 			p = math.random(1,#p_arr)
 			ScriptLib.SetGroupVariableValue(context, "platform4", p_arr[p])
-			ScriptLib.SetGroupTempValue(context, "monster_wave", 5, {})
+			LF_Calculate_Monster(context, 5)
 		else
 			pid = ScriptLib.GetGroupVariableValue(context, "platform1")
 			pid = LF_Get_Array_Pos(p_arr, pid)
 			table.remove(p_arr, pid)
 			p = math.random(1,#p_arr)
 			ScriptLib.SetGroupVariableValue(context, "platform2", p_arr[p])
-			ScriptLib.SetGroupTempValue(context, "monster_wave", 3, {})
+			LF_Calculate_Monster(context, 3)
 		end
 	end
 	--平台标记为201状态等待怪物通知下沉
@@ -356,23 +356,32 @@ function LF_Notify_Platform_Sink(context, index)
 end
 
 function LF_Create_Boss(context, index)
-	--LF_Log(context, "## LF_Create_Boss | index = "..index)
-	ScriptLib.ForceRefreshAuthorityByConfigId(context, 769005, context.uid)
-	ScriptLib.SetGroupVariableValue(context, "auth_uid_p1", math.floor(context.uid/10000))
-	ScriptLib.SetGroupVariableValue(context, "auth_uid_p2", context.uid%10000)
-	--初始化平台位置信息
+	local uid = LF_Get_Oceanid_Uid(context)
+	LF_Log(context, "## ocean_id: LF_Create_Boss fallback uid="..uid.." index="..index)
+	ScriptLib.ForceRefreshAuthorityByConfigId(context, 769005, uid)
+	ScriptLib.SetGroupVariableValue(context, "auth_uid_p1", math.floor(uid / 10000))
+	ScriptLib.SetGroupVariableValue(context, "auth_uid_p2", uid % 10000)
+
+	-- Initialize platform arrival temp values.
 	for i,v in ipairs(defs.gadget_platform_list) do
 		ScriptLib.SetGroupTempValue(context, "arrive_"..v, 0, {})
 	end
-	local pos = gadgets[4+index].pos
-	local rot = gadgets[4+index].rot
-	--pos.y = pos.y
+	local gadget_index = 4 + index
+	local starter = gadgets[gadget_index]
+
+	if starter == nil then
+		LF_Log(context, "## ocean_id: LF_Create_Boss invalid starter index="..index.." gadget_index="..gadget_index)
+		starter = gadgets[11]
+	end
+
+	local pos = starter.pos
+	local rot = starter.rot
 	LF_Reset_Platform_State(context)
 	ScriptLib.CreateMonsterByConfigIdByPos(context, defs.monster_boss, pos, rot)
 	ScriptLib.CreateGadget(context, { config_id = defs.gadget_hp_checker })
 	ScriptLib.SetGroupVariableValue(context, "stage", 1)
 	LF_Calculate_Monster(context, 1)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, index)
+	ScriptLib.RemoveExtraGroupSuite(context, defs.group_id, index)
 	return 0
 end
 
@@ -405,10 +414,10 @@ function LF_Recover_Platform(context)
 end
 
 function LF_Reset_Platform(context)
-	--LF_Log(context, "## LF_Reload_Platform")
 	for i,v in ipairs(defs.gadget_platform_list) do
 		ScriptLib.RemoveEntityByConfigId(context, defs.group_id, EntityType.GADGET, v)
-		ScriptLib.CreateGadget(context, {config_id = v })
+		ScriptLib.CreateGadget(context, { config_id = v })
+		ScriptLib.SetGroupGadgetStateByConfigId(context, defs.group_id, v, 0)
 	end
 	LF_Manage_OceanId_Replacement(context, 0)
 	return 0
@@ -436,26 +445,69 @@ function LF_Initialize_Variable(context)
 end
 
 function LF_Remove_Extra_Suite(context)
-	--LF_Log(context, "## LF_Remove_Extra_Suite")
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 2)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 3)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 4)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 5)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 6)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 7)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 8)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 9)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 10)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 11)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 12)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 13)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 14)
-	ScriptLib.RemoveExtraGroupSuite(context, 0, 15)
+	for i = 2, 15 do
+		ScriptLib.RemoveExtraGroupSuite(context, defs.group_id, i)
+	end
+	return 0
+end
+
+function LF_Remove_Oceanid_Runtime_Suites(context)
+	-- Remove wave suites, starter suites, boss suite, and alternate wave suites.
+	-- Keep suite 6 active because suite 6 owns the Oceanid controller triggers/regions.
+	for i = 2, 5 do
+		ScriptLib.RemoveExtraGroupSuite(context, defs.group_id, i)
+	end
+
+	for i = 7, 15 do
+		ScriptLib.RemoveExtraGroupSuite(context, defs.group_id, i)
+	end
+
+	return 0
+end
+
+function LF_Start_Oceanid_Direct(context)
+	if 1 ~= ScriptLib.GetGroupVariableValue(context, "boss_exist") then
+		return 0
+	end
+	if 0 ~= ScriptLib.GetGroupVariableValue(context, "stage") then
+		return 0
+	end
+	local uid = LF_Get_Oceanid_Uid(context)
+	LF_Log(context, "## ocean_id: direct fallback start uid="..uid)
+	ScriptLib.EndTimeAxis(context, "summon")
+	ScriptLib.EndTimeAxis(context, "sink")
+	LF_Remove_Oceanid_Runtime_Suites(context)
+	ScriptLib.RemoveEntityByConfigId(context, defs.group_id, EntityType.MONSTER, defs.monster_boss)
+	ScriptLib.RemoveEntityByConfigId(context, defs.group_id, EntityType.GADGET, defs.gadget_hp_checker)
+	LF_Initialize_Variable(context)
+	LF_Reset_Platform_State(context)
+	math.randomseed(ScriptLib.GetServerTime(context) + uid)
+	local starter_suite = math.random(7, 10)
+	LF_Create_Boss(context, starter_suite)
+	LF_Manage_OceanId_Replacement(context, 1)
 	return 0
 end
 
 function LF_Log(context, text)
 	ScriptLib.PrintContextLog(context, text)
+	return 0
+end
+
+function LF_Get_Oceanid_Uid(context)
+	local uid_list = ScriptLib.GetSceneUidList(context)
+
+	if uid_list ~= nil then
+		if uid_list[1] ~= nil then
+			return uid_list[1]
+		end
+
+		if uid_list["1"] ~= nil then
+			return uid_list["1"]
+		end
+	end
+
+	-- Some LunaGC trigger contexts do not expose context.uid.
+	-- Returning 0 is safer than crashing the whole boss script.
 	return 0
 end
 
@@ -470,31 +522,34 @@ end
 
 --管理纯水处boss的竞争机制
 function LF_Manage_OceanId_Replacement(context, manage_type)
-	if manage_type == 1 then
-		for i,v in ipairs(relevant_group) do
-			if i == 1 then
-				local act_time = ScriptLib.GetActivityOpenAndCloseTimeByScheduleId(context, 5020001)
-				local cur_time = ScriptLib.GetServerTime(context)
-				ScriptLib.PrintContextLog(context, "## cur_time="..cur_time)
-				ScriptLib.PrintContextLog(context, "## act_time=["..act_time[1]..","..act_time[2].."]")
-				if cur_time >= act_time[1] and cur_time < act_time[2] then
-					ScriptLib.SetGroupVariableValueByGroup(context, "is_in_replacement", 1, v)
-				end 
-			end
-		end
-	elseif manage_type == 0 then
-		for i,v in ipairs(relevant_group) do
-			if i == 1 then
-				local act_time = ScriptLib.GetActivityOpenAndCloseTimeByScheduleId(context, 5020001)
-				local cur_time = ScriptLib.GetServerTime(context)
-				ScriptLib.PrintContextLog(context, "## cur_time="..cur_time)
-				ScriptLib.PrintContextLog(context, "## act_time=["..act_time[1]..","..act_time[2].."]")
-				if cur_time >= act_time[1] and cur_time < act_time[2] then
-					ScriptLib.SetGroupVariableValueByGroup(context, "is_in_replacement", 0, v)
-				end 
+	local act_time = ScriptLib.GetActivityOpenAndCloseTimeByScheduleId(context, 5020001)
+	local cur_time = ScriptLib.GetServerTime(context)
+
+	if act_time == nil or act_time[1] == nil or act_time[2] == nil then
+		LF_Log(context, "## ocean_id: replacement activity schedule missing; using normal Oceanid state")
+		return 0
+	end
+
+	LF_Log(context, "## cur_time="..cur_time)
+	LF_Log(context, "## act_time=["..act_time[1]..","..act_time[2].."]")
+
+	-- If the old Rhodeia's Rage / replacement activity is not open,
+	-- do not touch replacement state. Normal Oceanid should remain active.
+	if cur_time < act_time[1] or cur_time >= act_time[2] then
+		return 0
+	end
+
+	for i,v in ipairs(relevant_group) do
+		if i == 1 then
+			if manage_type == 1 then
+				ScriptLib.SetGroupVariableValueByGroup(context, "is_in_replacement", 1, v)
+			elseif manage_type == 0 then
+				ScriptLib.SetGroupVariableValueByGroup(context, "is_in_replacement", 0, v)
 			end
 		end
 	end
+	
+	return 0
 end
 
 function SLC_OCEANID_ESCAPE(context)
@@ -555,15 +610,15 @@ npcs = {
 
 -- 装置
 gadgets = {
-	{ config_id = 769001, gadget_id = 70380018, pos = { x = 1809.075, y = 195.500, z = 271.463 }, rot = { x = 0.000, y = 240.000, z = 0.000 }, level = 18, route_id = 310200248, mark_flag = 1, area_id = 5 },
-	{ config_id = 769002, gadget_id = 70380017, pos = { x = 1796.084, y = 195.500, z = 264.013 }, rot = { x = 0.000, y = 330.000, z = 0.000 }, level = 18, route_id = 310200249, mark_flag = 2, area_id = 5 },
-	{ config_id = 769003, gadget_id = 70380018, pos = { x = 1783.094, y = 195.500, z = 256.463 }, rot = { x = 0.000, y = 330.000, z = 0.000 }, level = 18, route_id = 310200250, mark_flag = 3, area_id = 5 },
-	{ config_id = 769004, gadget_id = 70380017, pos = { x = 1801.575, y = 195.500, z = 284.453 }, rot = { x = 0.000, y = 240.000, z = 0.000 }, level = 18, route_id = 310200251, mark_flag = 4, area_id = 5 },
-	{ config_id = 769005, gadget_id = 70380016, pos = { x = 1788.556, y = 195.500, z = 277.001 }, rot = { x = 0.000, y = 150.000, z = 0.000 }, level = 18, route_id = 310200252, mark_flag = 5, area_id = 5 },
-	{ config_id = 769006, gadget_id = 70380017, pos = { x = 1775.594, y = 195.500, z = 269.453 }, rot = { x = 0.000, y = 60.000, z = 0.000 }, level = 18, route_id = 310200253, mark_flag = 6, area_id = 5 },
-	{ config_id = 769007, gadget_id = 70380018, pos = { x = 1794.075, y = 195.500, z = 297.444 }, rot = { x = 0.000, y = 150.000, z = 0.000 }, level = 18, route_id = 310200254, mark_flag = 7, area_id = 5 },
-	{ config_id = 769008, gadget_id = 70380017, pos = { x = 1781.034, y = 195.500, z = 290.044 }, rot = { x = 0.000, y = 150.000, z = 0.000 }, level = 18, route_id = 310200255, mark_flag = 8, area_id = 5 },
-	{ config_id = 769009, gadget_id = 70380018, pos = { x = 1768.094, y = 195.500, z = 282.444 }, rot = { x = 0.000, y = 60.000, z = 0.000 }, level = 18, route_id = 310200256, mark_flag = 9, area_id = 5 },
+	{ config_id = 769001, gadget_id = 70380018, pos = { x = 1809.075, y = 195.500, z = 271.463 }, rot = { x = 0.000, y = 240.000, z = 0.000 }, level = 18, route_id = 310200248, start_route = false, mark_flag = 1, area_id = 5 },
+	{ config_id = 769002, gadget_id = 70380017, pos = { x = 1796.084, y = 195.500, z = 264.013 }, rot = { x = 0.000, y = 330.000, z = 0.000 }, level = 18, route_id = 310200249, start_route = false, mark_flag = 2, area_id = 5 },
+	{ config_id = 769003, gadget_id = 70380018, pos = { x = 1783.094, y = 195.500, z = 256.463 }, rot = { x = 0.000, y = 330.000, z = 0.000 }, level = 18, route_id = 310200250, start_route = false, mark_flag = 3, area_id = 5 },
+	{ config_id = 769004, gadget_id = 70380017, pos = { x = 1801.575, y = 195.500, z = 284.453 }, rot = { x = 0.000, y = 240.000, z = 0.000 }, level = 18, route_id = 310200251, start_route = false, mark_flag = 4, area_id = 5 },
+	{ config_id = 769005, gadget_id = 70380016, pos = { x = 1788.556, y = 195.500, z = 277.001 }, rot = { x = 0.000, y = 150.000, z = 0.000 }, level = 18, route_id = 310200252, start_route = false, mark_flag = 5, area_id = 5 },
+	{ config_id = 769006, gadget_id = 70380017, pos = { x = 1775.594, y = 195.500, z = 269.453 }, rot = { x = 0.000, y = 60.000, z = 0.000 }, level = 18, route_id = 310200253, start_route = false, mark_flag = 6, area_id = 5 },
+	{ config_id = 769007, gadget_id = 70380018, pos = { x = 1794.075, y = 195.500, z = 297.444 }, rot = { x = 0.000, y = 150.000, z = 0.000 }, level = 18, route_id = 310200254, start_route = false, mark_flag = 7, area_id = 5 },
+	{ config_id = 769008, gadget_id = 70380017, pos = { x = 1781.034, y = 195.500, z = 290.044 }, rot = { x = 0.000, y = 150.000, z = 0.000 }, level = 18, route_id = 310200255, start_route = false, mark_flag = 8, area_id = 5 },
+	{ config_id = 769009, gadget_id = 70380018, pos = { x = 1768.094, y = 195.500, z = 282.444 }, rot = { x = 0.000, y = 60.000, z = 0.000 }, level = 18, route_id = 310200256, start_route = false, mark_flag = 9, area_id = 5 },
 	{ config_id = 769010, gadget_id = 42005009, pos = { x = 1788.556, y = 200.550, z = 277.001 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 18, mark_flag = 10, area_id = 5 },
 	{ config_id = 769011, gadget_id = 42005010, pos = { x = 1809.075, y = 200.500, z = 271.463 }, rot = { x = 0.000, y = 285.000, z = 0.000 }, level = 18, mark_flag = 127, area_id = 5 },
 	{ config_id = 769045, gadget_id = 42005010, pos = { x = 1783.094, y = 200.500, z = 256.463 }, rot = { x = 0.000, y = 15.000, z = 0.000 }, level = 18, mark_flag = 127, area_id = 5 },
@@ -912,7 +967,10 @@ end
 
 -- 触发操作
 function action_EVENT_VARIABLE_CHANGE_769029(context, evt)
-	if evt.param1 == evt.param2 then return -1 end
+	
+	if evt.param1 == evt.param2 then
+		return -1
+	end
 	
 	if evt.param1 == 0 then
 		return 0
@@ -920,7 +978,10 @@ function action_EVENT_VARIABLE_CHANGE_769029(context, evt)
 	if evt.param1 == 3 or evt.param1 == 5 then
 		LF_Notify_Platform_Sink(context, 1)
 		LF_Set_Secure_Timer(context, "sink")
-	else ScriptLib.SetGroupTempValue(context, "monster_wave", evt.param1, {})
+	else
+		if evt.param1 > 1 and evt.param1 <= #stage_monster then
+			LF_Calculate_Monster(context, evt.param1)
+		end
 	end
 	LF_Set_Secure_Timer(context, "summon")
 	return 0
@@ -941,9 +1002,11 @@ end
 function action_EVENT_GADGET_CREATE_769030(context, evt)
 	math.randomseed(ScriptLib.GetServerTime(context))
 	ScriptLib.SetGroupVariableValue(context, "stage", 0)
-	ScriptLib.AddExtraGroupSuite(context, 0, math.random(1,4) + 6)
 	ScriptLib.SetGroupVariableValue(context, "auth_uid_p1", 0)
 	ScriptLib.SetGroupVariableValue(context, "auth_uid_p2", 0)
+	-- REL6.6 fallback:
+	-- Do not spawn the old invisible starter worktop suite here.
+	-- The 6.6 client/server combo is not reliably showing/using the worktop option, so Oceanid is started directly from ENTER_REGION_769057 instead.
 	return 0
 end
 
@@ -1061,7 +1124,10 @@ end
 -- 触发操作
 function action_EVENT_LEAVE_REGION_769060(context, evt)
 	ScriptLib.ClearPlayerEyePoint(context, 769059)
-	ScriptLib.SetPlayerGroupVisionType(context, {context.uid}, {1})
+	local uid = LF_Get_Oceanid_Uid(context)
+
+	-- Do not call SetPlayerGroupVisionType here.
+	-- LunaGC 6.6 does not reliably expose this ScriptLib method, and it is only a camera/vision cleanup path. Letting it crash breaks Oceanid's boss state.
 	if 0 == ScriptLib.GetRegionEntityCount(context, { region_eid = evt.source_eid, entity_type = EntityType.AVATAR }) then
 		LF_Remove_Extra_Suite(context)
 		if 1 == ScriptLib.GetGroupVariableValue(context, "boss_exist") then
@@ -1076,7 +1142,9 @@ function action_EVENT_LEAVE_REGION_769060(context, evt)
 	if 0 == ScriptLib.GetGroupVariableValue(context, "boss_exist") then
 		return 0
 	end
-	ScriptLib.TryReallocateEntityAuthority(context, context.uid, 769026, 769060)
+	if uid ~= 0 then
+		ScriptLib.TryReallocateEntityAuthority(context, uid, defs.monster_boss, evt.param1)
+	end
 	return 0
 end
 
