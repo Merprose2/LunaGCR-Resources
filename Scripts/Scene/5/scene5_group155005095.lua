@@ -97,7 +97,10 @@ sight_groups = {
 
 -- 初始化时创建
 init_config = {
-	suite = 1,
+	-- LunaGC fallback:
+	-- The retail script keeps the boss locked behind quest 7217749.
+	-- Questing is normally disabled here, so load the combat suite directly.
+	suite = 2,
 	end_suite = 2,
 	rand_suite = false
 }
