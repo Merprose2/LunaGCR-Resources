@@ -25,17 +25,37 @@ gadgets = {
 
 -- 区域
 regions = {
+    {
+        config_id = 375010,
+        shape = RegionShape.SPHERE,
+        radius = 6,
+        pos = {
+            x = 1038.608,
+            y = 449.829,
+            z = -824.259
+        },
+        area_id = 10
+    }
 }
 
 -- 触发器
 triggers = {
-	{ config_id = 1375002, name = "QUEST_START_375002", event = EventType.EVENT_QUEST_START, source = "7014122", condition = "", action = "action_EVENT_QUEST_START_375002", trigger_count = 0 },
-	{ config_id = 1375003, name = "ANY_GADGET_DIE_375003", event = EventType.EVENT_ANY_GADGET_DIE, source = "", condition = "condition_EVENT_ANY_GADGET_DIE_375003", action = "action_EVENT_ANY_GADGET_DIE_375003", trigger_count = 0 },
-	{ config_id = 1375005, name = "TIMER_EVENT_375005", event = EventType.EVENT_TIMER_EVENT, source = "delay_2", condition = "", action = "action_EVENT_TIMER_EVENT_375005", trigger_count = 0 },
-	{ config_id = 1375006, name = "TIMER_EVENT_375006", event = EventType.EVENT_TIMER_EVENT, source = "delay_1", condition = "", action = "action_EVENT_TIMER_EVENT_375006", trigger_count = 0 },
-	{ config_id = 1375007, name = "GROUP_LOAD_375007", event = EventType.EVENT_GROUP_LOAD, source = "", condition = "", action = "action_EVENT_GROUP_LOAD_375007", trigger_count = 0 },
-	{ config_id = 1375008, name = "GROUP_LOAD_375008", event = EventType.EVENT_GROUP_LOAD, source = "", condition = "condition_EVENT_GROUP_LOAD_375008", action = "action_EVENT_GROUP_LOAD_375008", trigger_count = 0 },
-	{ config_id = 1375009, name = "GROUP_LOAD_375009", event = EventType.EVENT_GROUP_LOAD, source = "", condition = "condition_EVENT_GROUP_LOAD_375009", action = "action_EVENT_GROUP_LOAD_375009", trigger_count = 0 }
+    { config_id = 1375002, name = "QUEST_START_375002", event = EventType.EVENT_QUEST_START, source = "7014122", condition = "", action = "action_EVENT_QUEST_START_375002", trigger_count = 0 },
+    { config_id = 1375003, name = "ANY_GADGET_DIE_375003", event = EventType.EVENT_ANY_GADGET_DIE, source = "", condition = "condition_EVENT_ANY_GADGET_DIE_375003", action = "action_EVENT_ANY_GADGET_DIE_375003", trigger_count = 0 },
+    { config_id = 1375005, name = "TIMER_EVENT_375005", event = EventType.EVENT_TIMER_EVENT, source = "delay_2", condition = "", action = "action_EVENT_TIMER_EVENT_375005", trigger_count = 0 },
+    { config_id = 1375006, name = "TIMER_EVENT_375006", event = EventType.EVENT_TIMER_EVENT, source = "delay_1", condition = "", action = "action_EVENT_TIMER_EVENT_375006", trigger_count = 0 },
+    { config_id = 1375007, name = "GROUP_LOAD_375007", event = EventType.EVENT_GROUP_LOAD, source = "", condition = "", action = "action_EVENT_GROUP_LOAD_375007", trigger_count = 0 },
+    { config_id = 1375008, name = "GROUP_LOAD_375008", event = EventType.EVENT_GROUP_LOAD, source = "", condition = "condition_EVENT_GROUP_LOAD_375008", action = "action_EVENT_GROUP_LOAD_375008", trigger_count = 0 },
+    { config_id = 1375009, name = "GROUP_LOAD_375009", event = EventType.EVENT_GROUP_LOAD, source = "", condition = "condition_EVENT_GROUP_LOAD_375009", action = "action_EVENT_GROUP_LOAD_375009", trigger_count = 0 },
+    {
+        config_id = 1375010,
+        name = "ENTER_REGION_375010",
+        event = EventType.EVENT_ENTER_REGION,
+        source = "",
+        condition = "condition_EVENT_ENTER_REGION_375010",
+        action = "action_EVENT_ENTER_REGION_375010",
+        trigger_count = 0
+    }
 }
 
 -- 变量
@@ -51,9 +71,11 @@ variables = {
 
 -- 初始化时创建
 init_config = {
-	suite = 1,
-	end_suite = 0,
-	rand_suite = false
+    -- LunaGC fallback:
+    -- Load the completed In the Mountains state immediately.
+    suite = 2,
+    end_suite = 0,
+    rand_suite = false
 }
 
 --================================================================
@@ -74,11 +96,14 @@ suites = {
 	},
 	{
 		-- suite_id = 2,
-		-- description = ,
+		-- description = completed In the Mountains state
 		monsters = { },
 		gadgets = { },
-		regions = { },
-		triggers = { "GROUP_LOAD_375007" },
+		regions = { 375010 },
+		triggers = {
+			"GROUP_LOAD_375007",
+			"ENTER_REGION_375010"
+		},
 		rand_weight = 100
 	}
 }
@@ -190,6 +215,35 @@ function condition_EVENT_GROUP_LOAD_375009(context, evt)
 	end
 	
 	return true
+end
+
+function condition_EVENT_ENTER_REGION_375010(context, evt)
+    if evt.param1 ~= 375010 then
+        return false
+    end
+
+    -- Ignore monsters, gadgets, and other entities crossing the region.
+    if ScriptLib.GetRegionEntityCount(
+            context,
+            {
+                region_eid = evt.source_eid,
+                entity_type = EntityType.AVATAR
+            }) < 1 then
+        return false
+    end
+
+    return true
+end
+
+function action_EVENT_ENTER_REGION_375010(context, evt)
+    ScriptLib.PrintContextLog(
+        context,
+        "PeakOfVindagnyrFallback: player approached entrance; resending point 221 unfreeze"
+    )
+
+    ScriptLib.UnfreezeGroupLimit(context, 221)
+
+    return 0
 end
 
 -- 触发操作
