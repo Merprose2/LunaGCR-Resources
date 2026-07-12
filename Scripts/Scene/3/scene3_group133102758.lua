@@ -42,16 +42,36 @@ gadgets = {
 
 -- 区域
 regions = {
+    {
+        config_id = 758015,
+        shape = RegionShape.SPHERE,
+        radius = 8,
+        pos = {
+            x = 1689.249,
+            y = 284.450,
+            z = 386.144
+        },
+        area_id = 5
+    }
 }
 
 -- 触发器
 triggers = {
-	{ config_id = 1758007, name = "GADGET_STATE_CHANGE_758007", event = EventType.EVENT_GADGET_STATE_CHANGE, source = "", condition = "condition_EVENT_GADGET_STATE_CHANGE_758007", action = "action_EVENT_GADGET_STATE_CHANGE_758007", trigger_count = 0 },
-	{ config_id = 1758008, name = "VARIABLE_CHANGE_758008", event = EventType.EVENT_VARIABLE_CHANGE, source = "State_Flag", condition = "condition_EVENT_VARIABLE_CHANGE_758008", action = "action_EVENT_VARIABLE_CHANGE_758008", trigger_count = 0 },
-	{ config_id = 1758009, name = "GROUP_LOAD_758009", event = EventType.EVENT_GROUP_LOAD, source = "", condition = "", action = "action_EVENT_GROUP_LOAD_758009", trigger_count = 0 },
-	{ config_id = 1758010, name = "GADGET_STATE_CHANGE_758010", event = EventType.EVENT_GADGET_STATE_CHANGE, source = "", condition = "condition_EVENT_GADGET_STATE_CHANGE_758010", action = "action_EVENT_GADGET_STATE_CHANGE_758010" },
-	{ config_id = 1758011, name = "GADGET_STATE_CHANGE_758011", event = EventType.EVENT_GADGET_STATE_CHANGE, source = "", condition = "condition_EVENT_GADGET_STATE_CHANGE_758011", action = "action_EVENT_GADGET_STATE_CHANGE_758011" },
-	{ config_id = 1758013, name = "GADGET_STATE_CHANGE_758013", event = EventType.EVENT_GADGET_STATE_CHANGE, source = "", condition = "condition_EVENT_GADGET_STATE_CHANGE_758013", action = "action_EVENT_GADGET_STATE_CHANGE_758013" }
+    { config_id = 1758007, name = "GADGET_STATE_CHANGE_758007", event = EventType.EVENT_GADGET_STATE_CHANGE, source = "", condition = "condition_EVENT_GADGET_STATE_CHANGE_758007", action = "action_EVENT_GADGET_STATE_CHANGE_758007", trigger_count = 0 },
+    { config_id = 1758008, name = "VARIABLE_CHANGE_758008", event = EventType.EVENT_VARIABLE_CHANGE, source = "State_Flag", condition = "condition_EVENT_VARIABLE_CHANGE_758008", action = "action_EVENT_VARIABLE_CHANGE_758008", trigger_count = 0 },
+    { config_id = 1758009, name = "GROUP_LOAD_758009", event = EventType.EVENT_GROUP_LOAD, source = "", condition = "", action = "action_EVENT_GROUP_LOAD_758009", trigger_count = 0 },
+    { config_id = 1758010, name = "GADGET_STATE_CHANGE_758010", event = EventType.EVENT_GADGET_STATE_CHANGE, source = "", condition = "condition_EVENT_GADGET_STATE_CHANGE_758010", action = "action_EVENT_GADGET_STATE_CHANGE_758010" },
+    { config_id = 1758011, name = "GADGET_STATE_CHANGE_758011", event = EventType.EVENT_GADGET_STATE_CHANGE, source = "", condition = "condition_EVENT_GADGET_STATE_CHANGE_758011", action = "action_EVENT_GADGET_STATE_CHANGE_758011" },
+    { config_id = 1758013, name = "GADGET_STATE_CHANGE_758013", event = EventType.EVENT_GADGET_STATE_CHANGE, source = "", condition = "condition_EVENT_GADGET_STATE_CHANGE_758013", action = "action_EVENT_GADGET_STATE_CHANGE_758013" },
+    {
+        config_id = 1758015,
+        name = "ENTER_REGION_758015",
+        event = EventType.EVENT_ENTER_REGION,
+        source = "",
+        condition = "condition_EVENT_ENTER_REGION_758015",
+        action = "action_EVENT_ENTER_REGION_758015",
+        trigger_count = 0
+    }
 }
 
 -- 变量
@@ -84,8 +104,16 @@ suites = {
 		-- description = suite_1,
 		monsters = { },
 		gadgets = { 758001, 758002, 758003, 758004, 758005, 758006, 758012 },
-		regions = { },
-		triggers = { "GADGET_STATE_CHANGE_758007", "VARIABLE_CHANGE_758008", "GROUP_LOAD_758009", "GADGET_STATE_CHANGE_758010", "GADGET_STATE_CHANGE_758011", "GADGET_STATE_CHANGE_758013" },
+		regions = { 758015 },
+		triggers = {
+			"GADGET_STATE_CHANGE_758007",
+			"VARIABLE_CHANGE_758008",
+			"GROUP_LOAD_758009",
+			"GADGET_STATE_CHANGE_758010",
+			"GADGET_STATE_CHANGE_758011",
+			"GADGET_STATE_CHANGE_758013",
+			"ENTER_REGION_758015"
+		},
 		rand_weight = 100
 	}
 }
@@ -164,7 +192,10 @@ function action_EVENT_GROUP_LOAD_758009(context, evt)
 	sum = sum + 1
 	end
 	ScriptLib.SetGroupVariableValue(context, "State_Flag", sum)
-	return 0
+	-- LunaGC fallback:
+    -- Keep Hidden Palace of Zhou Formula available without depending on the original puzzle completion state.
+    ScriptLib.UnfreezeGroupLimit(context, 107)
+    return 0
 end
 
 -- 触发条件
@@ -218,6 +249,34 @@ function condition_EVENT_GADGET_STATE_CHANGE_758013(context, evt)
 	end
 	
 	return true
+end
+
+function condition_EVENT_ENTER_REGION_758015(context, evt)
+    if evt.param1 ~= 758015 then
+        return false
+    end
+
+    if ScriptLib.GetRegionEntityCount(
+            context,
+            {
+                region_eid = evt.source_eid,
+                entity_type = EntityType.AVATAR
+            }) < 1 then
+        return false
+    end
+
+    return true
+end
+
+function action_EVENT_ENTER_REGION_758015(context, evt)
+    ScriptLib.PrintContextLog(
+        context,
+        "HiddenPalaceZhouFallback: player approached entrance; resending point 107 unfreeze"
+    )
+
+    ScriptLib.UnfreezeGroupLimit(context, 107)
+
+    return 0
 end
 
 -- 触发操作
