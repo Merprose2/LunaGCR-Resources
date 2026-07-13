@@ -31,13 +31,65 @@ gadgets = {
 
 -- 区域
 regions = {
+    {
+        config_id = 88005,
+        shape = RegionShape.CYLINDER,
+        radius = 5,
+        height = 10,
+        pos = {
+            x = 2257.1309,
+            y = 272.0,
+            z = -240.35878
+        },
+        area_id = 3
+    }
 }
 
 -- 触发器
 triggers = {
-	{ config_id = 1000118, name = "GADGET_STATE_CHANGE_118", event = EventType.EVENT_GADGET_STATE_CHANGE, source = "", condition = "condition_EVENT_GADGET_STATE_CHANGE_118", action = "action_EVENT_GADGET_STATE_CHANGE_118", tlog_tag = "奔狼岭_88_谜题破解_结算" },
-	{ config_id = 1088001, name = "GROUP_REFRESH_88001", event = EventType.EVENT_GROUP_REFRESH, source = "", condition = "", action = "action_EVENT_GROUP_REFRESH_88001" },
-	{ config_id = 1088002, name = "VARIABLE_CHANGE_88002", event = EventType.EVENT_VARIABLE_CHANGE, source = "unlock_1", condition = "condition_EVENT_VARIABLE_CHANGE_88002", action = "action_EVENT_VARIABLE_CHANGE_88002" }
+    {
+        config_id = 1000118,
+        name = "GADGET_STATE_CHANGE_118",
+        event = EventType.EVENT_GADGET_STATE_CHANGE,
+        source = "",
+        condition = "condition_EVENT_GADGET_STATE_CHANGE_118",
+        action = "action_EVENT_GADGET_STATE_CHANGE_118",
+        tlog_tag = "奔狼岭_88_谜题破解_结算"
+    },
+    {
+        config_id = 1088001,
+        name = "GROUP_REFRESH_88001",
+        event = EventType.EVENT_GROUP_REFRESH,
+        source = "",
+        condition = "",
+        action = "action_EVENT_GROUP_REFRESH_88001"
+    },
+    {
+        config_id = 1088002,
+        name = "VARIABLE_CHANGE_88002",
+        event = EventType.EVENT_VARIABLE_CHANGE,
+        source = "unlock_1",
+        condition = "condition_EVENT_VARIABLE_CHANGE_88002",
+        action = "action_EVENT_VARIABLE_CHANGE_88002"
+    },
+    {
+		config_id = 1088006,
+		name = "ENTER_REGION_88005",
+		event = EventType.EVENT_ENTER_REGION,
+		source = "",
+		condition = "",
+		action = "action_EVENT_ENTER_REGION_88005",
+		trigger_count = 0
+	},
+	{
+		config_id = 1088007,
+		name = "LEAVE_REGION_88005",
+		event = EventType.EVENT_LEAVE_REGION,
+		source = "",
+		condition = "",
+		action = "action_EVENT_LEAVE_REGION_88005",
+		trigger_count = 0
+	}
 }
 
 -- 变量
@@ -70,8 +122,14 @@ suites = {
 		-- description = ,
 		monsters = { },
 		gadgets = { 342 },
-		regions = { },
-		triggers = { "GADGET_STATE_CHANGE_118", "GROUP_REFRESH_88001", "VARIABLE_CHANGE_88002" },
+		regions = { 88005 },
+		triggers = {
+			"GADGET_STATE_CHANGE_118",
+			"GROUP_REFRESH_88001",
+			"VARIABLE_CHANGE_88002",
+			"ENTER_REGION_88005",
+			"LEAVE_REGION_88005"
+		},
 		rand_weight = 100
 	}
 }
@@ -107,10 +165,20 @@ end
 
 -- 触发操作
 function action_EVENT_GROUP_REFRESH_88001(context, evt)
-	-- 变量"unlock_1"赋值为0
-	ScriptLib.SetGroupVariableValue(context, "unlock_1", 0)
-	
-	return 0
+    -- Preserve the original puzzle variable reset.
+    ScriptLib.SetGroupVariableValue(context, "unlock_1", 0)
+
+    -- LunaGC fallback:
+    -- Keep Cecilia Garden available without requiring the
+    -- original Seelie puzzle completion.
+    ScriptLib.UnfreezeGroupLimit(context, 50)
+
+    ScriptLib.PrintContextLog(
+        context,
+        "CeciliaGardenFallback: group refreshed; point 50 unfrozen"
+    )
+
+    return 0
 end
 
 -- 触发条件
@@ -123,6 +191,34 @@ function condition_EVENT_VARIABLE_CHANGE_88002(context, evt)
 	end
 	
 	return true
+end
+
+function action_EVENT_ENTER_REGION_88005(context, evt)
+    if evt.param1 ~= 88005 then
+        return 0
+    end
+
+    ScriptLib.PrintContextLog(
+        context,
+        "CeciliaGardenFallback: ENTER region 88005; unfreezing point 50"
+    )
+
+    ScriptLib.UnfreezeGroupLimit(context, 50)
+
+    return 0
+end
+
+function action_EVENT_LEAVE_REGION_88005(context, evt)
+    if evt.param1 ~= 88005 then
+        return 0
+    end
+
+    ScriptLib.PrintContextLog(
+        context,
+        "CeciliaGardenFallback: LEAVE region 88005"
+    )
+
+    return 0
 end
 
 -- 触发操作
