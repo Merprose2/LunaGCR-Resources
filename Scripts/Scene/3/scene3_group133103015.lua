@@ -30,9 +30,11 @@ npcs = {
 
 -- 装置
 gadgets = {
-	{ config_id = 105, gadget_id = 70380007, pos = { x = 650.692, y = 162.000, z = 1188.288 }, rot = { x = 0.000, y = 42.000, z = 0.000 }, level = 24, route_id = 310300016, start_route = false, persistent = true, area_id = 6 },
+	-- Retail moving-water definition retained for reference only.
+	-- The completed fallback suites intentionally do not spawn config 105.
+	{ config_id = 105, gadget_id = 70380007, pos = { x = 650.692, y = 153.000, z = 1188.288 }, rot = { x = 0.000, y = 42.000, z = 0.000 }, level = 24, route_id = 310300182, route_start_index = 1, route_locked = true, start_route = false, area_id = 6 },
 	{ config_id = 15003, gadget_id = 70360046, pos = { x = 680.853, y = 161.624, z = 1155.849 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 24, area_id = 6 },
-	{ config_id = 15004, gadget_id = 70800001, pos = { x = 742.630, y = 174.026, z = 1134.430 }, rot = { x = 0.000, y = 140.399, z = 0.000 }, level = 24, state = GadgetState.GearStop, persistent = true, area_id = 6 },
+	{ config_id = 15004, gadget_id = 70800001, pos = { x = 742.630, y = 174.026, z = 1134.430 }, rot = { x = 0.000, y = 140.399, z = 0.000 }, level = 24, state = GadgetState.GearAction1, persistent = true, area_id = 6 },
 	{ config_id = 15005, gadget_id = 70360046, pos = { x = 685.695, y = 161.620, z = 1170.001 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 24, area_id = 6 },
 	{ config_id = 15008, gadget_id = 70211121, pos = { x = 663.413, y = 154.062, z = 1167.832 }, rot = { x = 0.000, y = 97.111, z = 0.000 }, level = 21, chest_drop_id = 2000600, drop_count = 1, isOneoff = true, persistent = true, explore = { name = "chest", exp = 1 }, area_id = 6 },
 	{ config_id = 15009, gadget_id = 70211021, pos = { x = 746.159, y = 169.562, z = 1130.346 }, rot = { x = 0.000, y = 144.702, z = 0.000 }, level = 21, drop_tag = "战斗高级璃月", showcutscene = true, isOneoff = true, persistent = true, explore = { name = "chest", exp = 1 }, area_id = 6 },
@@ -48,10 +50,10 @@ gadgets = {
 	{ config_id = 15033, gadget_id = 70220035, pos = { x = 744.577, y = 169.562, z = 1132.197 }, rot = { x = 0.000, y = 160.069, z = 0.000 }, level = 24, area_id = 6 },
 	{ config_id = 15034, gadget_id = 70220035, pos = { x = 755.280, y = 169.779, z = 1130.585 }, rot = { x = 0.000, y = 237.521, z = 0.000 }, level = 24, area_id = 6 },
 	{ config_id = 15035, gadget_id = 70220035, pos = { x = 743.359, y = 169.545, z = 1121.329 }, rot = { x = 0.000, y = 63.603, z = 0.000 }, level = 24, area_id = 6 },
-	{ config_id = 15036, gadget_id = 70800001, pos = { x = 699.349, y = 156.600, z = 1160.628 }, rot = { x = 0.000, y = 327.007, z = 0.000 }, level = 24, state = GadgetState.GearStop, persistent = true, area_id = 6 },
-	{ config_id = 15037, gadget_id = 70330019, pos = { x = 701.875, y = 156.522, z = 1176.908 }, rot = { x = 0.000, y = 185.306, z = 0.000 }, level = 24, isOneoff = true, persistent = true, area_id = 6 },
-	{ config_id = 15038, gadget_id = 70330019, pos = { x = 715.474, y = 156.485, z = 1157.583 }, rot = { x = 0.000, y = 276.997, z = 0.000 }, level = 24, isOneoff = true, persistent = true, area_id = 6 },
-	{ config_id = 15039, gadget_id = 70330019, pos = { x = 696.775, y = 156.597, z = 1144.232 }, rot = { x = 0.000, y = 9.014, z = 0.000 }, level = 24, isOneoff = true, persistent = true, area_id = 6 },
+	{ config_id = 15036, gadget_id = 70800001, pos = { x = 699.349, y = 156.600, z = 1160.628 }, rot = { x = 0.000, y = 327.007, z = 0.000 }, level = 24, state = GadgetState.GearAction1, persistent = true, area_id = 6 },
+	{ config_id = 15037, gadget_id = 70330019, pos = { x = 701.875, y = 156.522, z = 1176.908 }, rot = { x = 0.000, y = 185.306, z = 0.000 }, level = 24, state = GadgetState.GearStart, isOneoff = true, persistent = true, area_id = 6 },
+	{ config_id = 15038, gadget_id = 70330019, pos = { x = 715.474, y = 156.485, z = 1157.583 }, rot = { x = 0.000, y = 276.997, z = 0.000 }, level = 24, state = GadgetState.GearStart, isOneoff = true, persistent = true, area_id = 6 },
+	{ config_id = 15039, gadget_id = 70330019, pos = { x = 696.775, y = 156.597, z = 1144.232 }, rot = { x = 0.000, y = 9.014, z = 0.000 }, level = 24, state = GadgetState.GearStart, isOneoff = true, persistent = true, area_id = 6 },
 	{ config_id = 15044, gadget_id = 70330021, pos = { x = 750.090, y = 162.088, z = 1158.062 }, rot = { x = 0.000, y = 293.402, z = 0.000 }, level = 24, area_id = 6 },
 	{ config_id = 15046, gadget_id = 70330021, pos = { x = 732.088, y = 156.816, z = 1145.663 }, rot = { x = 0.000, y = 274.455, z = 0.000 }, level = 24, area_id = 6 },
 	{ config_id = 15047, gadget_id = 70330021, pos = { x = 659.846, y = 158.666, z = 1150.459 }, rot = { x = 0.000, y = 63.975, z = 0.000 }, level = 24, area_id = 6 },
@@ -63,7 +65,13 @@ gadgets = {
 
 -- 区域
 regions = {
-	{ config_id = 15054, shape = RegionShape.SPHERE, radius = 18, pos = { x = 750.772, y = 175.429, z = 1122.627 }, area_id = 6 }
+	{ config_id = 15054, shape = RegionShape.SPHERE, radius = 18, pos = { x = 750.772, y = 175.429, z = 1122.627 }, area_id = 6 },
+	-- Fallback safety region around Taishan Mansion's DungeonEntry point (scene 3, point 131).
+	-- Outer approach refresh.
+	{ config_id = 15065, shape = RegionShape.SPHERE, radius = 12, pos = { x = 659.074, y = 153.303, z = 1168.460 }, area_id = 6 },
+	-- Inner doorway refresh. Its smaller radius guarantees another ENTER_REGION event
+	-- after the player walks far enough away to lose the interaction prompt.
+	{ config_id = 15068, shape = RegionShape.SPHERE, radius = 5, pos = { x = 659.074, y = 153.303, z = 1168.460 }, area_id = 6 }
 }
 
 -- 触发器
@@ -92,7 +100,12 @@ triggers = {
 	{ config_id = 1015061, name = "GADGET_CREATE_15061", event = EventType.EVENT_GADGET_CREATE, source = "", condition = "condition_EVENT_GADGET_CREATE_15061", action = "action_EVENT_GADGET_CREATE_15061", trigger_count = 0 },
 	{ config_id = 1015062, name = "GROUP_LOAD_15062", event = EventType.EVENT_GROUP_LOAD, source = "", condition = "condition_EVENT_GROUP_LOAD_15062", action = "action_EVENT_GROUP_LOAD_15062", trigger_count = 0 },
 	{ config_id = 1015063, name = "GROUP_LOAD_15063", event = EventType.EVENT_GROUP_LOAD, source = "", condition = "condition_EVENT_GROUP_LOAD_15063", action = "action_EVENT_GROUP_LOAD_15063", trigger_count = 0 },
-	{ config_id = 1015064, name = "GROUP_LOAD_15064", event = EventType.EVENT_GROUP_LOAD, source = "", condition = "condition_EVENT_GROUP_LOAD_15064", action = "action_EVENT_GROUP_LOAD_15064", trigger_count = 0 }
+	{ config_id = 1015064, name = "GROUP_LOAD_15064", event = EventType.EVENT_GROUP_LOAD, source = "", condition = "condition_EVENT_GROUP_LOAD_15064", action = "action_EVENT_GROUP_LOAD_15064", trigger_count = 0 },
+	-- Completed-state fallback: unfreeze once on group load and again whenever a player approaches.
+	{ config_id = 1015065, name = "GROUP_LOAD_15065", event = EventType.EVENT_GROUP_LOAD, source = "", condition = "", action = "action_EVENT_GROUP_LOAD_15065", trigger_count = 0 },
+	{ config_id = 1015066, name = "ENTER_REGION_15066", event = EventType.EVENT_ENTER_REGION, source = "", condition = "condition_EVENT_ENTER_REGION_15066", action = "action_EVENT_ENTER_REGION_15066", trigger_count = 0 },
+	{ config_id = 1015067, name = "TIMER_EVENT_15067", event = EventType.EVENT_TIMER_EVENT, source = "taishan_entry_retry", condition = "", action = "action_EVENT_TIMER_EVENT_15067", trigger_count = 0 },
+	{ config_id = 1015068, name = "ENTER_REGION_15068", event = EventType.EVENT_ENTER_REGION, source = "", condition = "condition_EVENT_ENTER_REGION_15068", action = "action_EVENT_ENTER_REGION_15068", trigger_count = 0 }
 }
 
 -- 变量
@@ -116,7 +129,7 @@ variables = {
 
 -- 初始化时创建
 init_config = {
-	suite = 1,
+	suite = 6,
 	end_suite = 0,
 	rand_suite = false
 }
@@ -132,7 +145,7 @@ suites = {
 		-- suite_id = 1,
 		-- description = ,
 		monsters = { 15006, 15007, 15015, 15016 },
-		gadgets = { 105, 15003, 15004, 15005, 15008, 15012, 15014, 15017, 15018, 15019, 15020, 15029, 15030, 15036, 15037, 15038, 15039, 15044, 15046, 15047, 15048, 15050, 15055 },
+		gadgets = { 15003, 15004, 15005, 15008, 15012, 15014, 15017, 15018, 15019, 15020, 15029, 15030, 15036, 15037, 15038, 15039, 15044, 15046, 15047, 15048, 15050, 15055 },
 		regions = { 15054 },
 		triggers = { "GADGET_CREATE_15001", "SELECT_OPTION_15002", "TIMER_EVENT_15010", "GADGET_CREATE_15011", "ANY_MONSTER_DIE_15021", "ANY_MONSTER_DIE_15027", "ANY_MONSTER_DIE_15028", "QUEST_FINISH_15031", "VARIABLE_CHANGE_15040", "GADGET_STATE_CHANGE_15041", "GADGET_STATE_CHANGE_15042", "GADGET_STATE_CHANGE_15043", "SELECT_OPTION_15045", "TIMER_EVENT_15051", "GADGET_CREATE_15052", "GADGET_CREATE_15053", "ENTER_REGION_15054", "GROUP_LOAD_15056", "GROUP_LOAD_15057", "GROUP_LOAD_15059", "GROUP_LOAD_15060", "GADGET_CREATE_15061", "GROUP_LOAD_15062", "GROUP_LOAD_15063", "GROUP_LOAD_15064" },
 		npcs = { 15013 },
@@ -174,6 +187,17 @@ suites = {
 		regions = { },
 		triggers = { },
 		rand_weight = 100
+	},
+	{
+		-- suite_id = 6,
+		-- description = completed Taishan Mansion puzzle fallback
+		monsters = { },
+		gadgets = { 15004, 15012, 15036, 15037, 15038, 15039, 15048 },
+		regions = { 15065, 15068 },
+		triggers = { "GROUP_LOAD_15065", "ENTER_REGION_15066", "TIMER_EVENT_15067", "ENTER_REGION_15068" },
+		npcs = { 15013 },
+		rand_weight = 100,
+		ban_refresh = true
 	}
 }
 
@@ -995,5 +1019,73 @@ function action_EVENT_GROUP_LOAD_15064(context, evt)
 			return -1
 		end 
 	
+	return 0
+end
+
+-- Unfreeze the DungeonEntry immediately when this completed suite loads.
+function action_EVENT_GROUP_LOAD_15065(context, evt)
+	-- Keep the resource-only water fallback isolated from the entrance state.
+	ScriptLib.KillEntityByConfigId(context, { config_id = 105 })
+	ScriptLib.KillEntityByConfigId(context, { config_id = 15049 })
+
+	-- Send the complete point snapshot, incremental unlock, and group-limit removal.
+	ScriptLib.ForceUnlockDungeonEntry(context, 131)
+
+	-- Group-load actions can run before the client's scene-point state is fully initialized.
+	-- Retry once after three seconds.
+	ScriptLib.CreateGroupTimerEvent(context, 133103015, "taishan_entry_retry", 3)
+
+	ScriptLib.PrintContextLog(context, "TaishanMansionFallback: point 131 force-unlocked; delayed retry scheduled")
+	return 0
+end
+
+function condition_EVENT_ENTER_REGION_15066(context, evt)
+	if evt.param1 ~= 15065 then
+		return false
+	end
+
+	-- Ignore gadgets, monsters, and other non-avatar entities entering the region.
+	if ScriptLib.GetRegionEntityCount(
+			context,
+			{ region_eid = evt.source_eid, entity_type = EntityType.AVATAR }) < 1 then
+		return false
+	end
+
+	return true
+end
+
+-- Re-send the unfreeze near the entrance as a compatibility layer for 6.6 clients.
+function action_EVENT_ENTER_REGION_15066(context, evt)
+	ScriptLib.KillEntityByConfigId(context, { config_id = 105 })
+	ScriptLib.KillEntityByConfigId(context, { config_id = 15049 })
+
+	ScriptLib.RefreshDungeonEntryPrompt(context, 131)
+	ScriptLib.PrintContextLog(context, "TaishanMansionFallback: outer entrance region refreshed point 131")
+	return 0
+end
+
+function action_EVENT_TIMER_EVENT_15067(context, evt)
+	ScriptLib.RefreshDungeonEntryPrompt(context, 131)
+	ScriptLib.PrintContextLog(context, "TaishanMansionFallback: delayed point-131 prompt refresh sent")
+	return 0
+end
+
+function condition_EVENT_ENTER_REGION_15068(context, evt)
+	if evt.param1 ~= 15068 then
+		return false
+	end
+
+	if ScriptLib.GetRegionEntityCount(
+			context,
+			{ region_eid = evt.source_eid, entity_type = EntityType.AVATAR }) < 1 then
+		return false
+	end
+
+	return true
+end
+
+function action_EVENT_ENTER_REGION_15068(context, evt)
+	ScriptLib.RefreshDungeonEntryPrompt(context, 131)
+	ScriptLib.PrintContextLog(context, "TaishanMansionFallback: inner doorway region refreshed point 131")
 	return 0
 end
