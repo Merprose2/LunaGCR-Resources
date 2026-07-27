@@ -43,7 +43,7 @@ regions = {
 
 -- 触发器
 triggers = {
-	{ config_id = 1157005, name = "GADGET_CREATE_157005", event = EventType.EVENT_GADGET_CREATE, source = "", condition = "condition_EVENT_GADGET_CREATE_157005", action = "action_EVENT_GADGET_CREATE_157005", trigger_count = 0 },
+--	{ config_id = 1157005, name = "GADGET_CREATE_157005", event = EventType.EVENT_GADGET_CREATE, source = "", condition = "condition_EVENT_GADGET_CREATE_157005", action = "action_EVENT_GADGET_CREATE_157005", trigger_count = 0 },
 	{ config_id = 1157006, name = "GADGET_STATE_CHANGE_157006", event = EventType.EVENT_GADGET_STATE_CHANGE, source = "", condition = "condition_EVENT_GADGET_STATE_CHANGE_157006", action = "action_EVENT_GADGET_STATE_CHANGE_157006", trigger_count = 0 },
 	{ config_id = 1157007, name = "TIMER_EVENT_157007", event = EventType.EVENT_TIMER_EVENT, source = "", condition = "condition_EVENT_TIMER_EVENT_157007", action = "action_EVENT_TIMER_EVENT_157007", trigger_count = 0 },
 	{ config_id = 1157008, name = "VARIABLE_CHANGE_157008", event = EventType.EVENT_VARIABLE_CHANGE, source = "", condition = "condition_EVENT_VARIABLE_CHANGE_157008", action = "action_EVENT_VARIABLE_CHANGE_157008", trigger_count = 0 },
@@ -81,7 +81,8 @@ suites = {
 		monsters = { },
 		gadgets = { 157001, 157002, 157003 },
 		regions = { },
-		triggers = { "GADGET_CREATE_157005", "GADGET_STATE_CHANGE_157006", "TIMER_EVENT_157007", "VARIABLE_CHANGE_157008", "GROUP_REFRESH_157009" },
+	--	triggers = { "GADGET_CREATE_157005", "GADGET_STATE_CHANGE_157006", "TIMER_EVENT_157007", "VARIABLE_CHANGE_157008", "GROUP_REFRESH_157009" },
+		triggers = { "GADGET_STATE_CHANGE_157006", "TIMER_EVENT_157007", "VARIABLE_CHANGE_157008", "GROUP_REFRESH_157009" },
 		rand_weight = 100
 	}
 }
