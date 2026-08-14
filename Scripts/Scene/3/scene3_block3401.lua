@@ -41,5 +41,6 @@ groups = {
 	{ id = 133401044, refresh_id = 1, pos = { x = 3593.899, y = 16.966, z = 4586.883 }, is_replaceable = { value = false, version = 0, new_bin_only = true } },
 	{ id = 133401045, pos = { x = 3548.112, y = 5.785, z = 4596.490 }, is_replaceable = { value = false, version = 0, new_bin_only = true } },
 	{ id = 133401046, refresh_id = 1, pos = { x = 3543.127, y = -37.983, z = 4652.568 }, is_replaceable = { value = false, version = 0, new_bin_only = true } },
-	{ id = 133401047, refresh_id = 1000, pos = { x = 3781.457, y = 123.754, z = 4867.922 }, is_replaceable = { value = false, version = 0, new_bin_only = true } }
+	{ id = 133401047, refresh_id = 1000, pos = { x = 3781.457, y = 123.754, z = 4867.922 }, is_replaceable = { value = false, version = 0, new_bin_only = true } },
+	{ id = 133401530, pos = { x = 3972.362, y = 440.212, z = 4544.206 }, dynamic_load = true, is_replaceable = { value = true, version = 0, new_bin_only = true }, business = { type = 2 } }
 }
