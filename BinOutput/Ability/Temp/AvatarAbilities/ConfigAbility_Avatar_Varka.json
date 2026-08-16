@@ -1,0 +1,5736 @@
+[
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityMixins": [
+        {
+          "$type": "SetAvatarSkillTypeMixin",
+          "skillType": "Skill",
+          "NFLEEKOKDFE": 11284,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetAvatarSkillTypeMixin",
+          "skillType": "Skill",
+          "NFLEEKOKDFE": 11287,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetAvatarSkillTypeMixin",
+          "NFLEEKOKDFE": 11288,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SyncGVToAudioMixin",
+          "rtpcKey": {
+            "text": "Parameter_Varka_ElementalArt_GV"
+          },
+          "globalValueKey": "_ABILITY_Avatar_Varka_Attack_Mode",
+          "LHDLHBAGLCB": true,
+          "NLBFMNPEANA": "__DefaultSync__",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "ButtonHoldChargeMixin",
+          "OnBeginCharged": [
+            {
+              "$type": "SetAnimatorBool",
+              "canBeHandledOnRecover": true,
+              "boolID": "IsCharging",
+              "doOffStage": false,
+              "value": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "chargeTime": 0.10000000149011612,
+          "OnReleaseUncharged": [
+            {
+              "$type": "SetAnimatorInt",
+              "canBeHandledOnRecover": true,
+              "intID": "SkillID",
+              "doOffStage": false,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "skillID": 11281,
+          "OnReleaseCharged": [
+            {
+              "$type": "SetAnimatorBool",
+              "canBeHandledOnRecover": true,
+              "boolID": "IsCharging",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "canBeHandledOnRecover": true,
+              "intID": "SkillID",
+              "doOffStage": false,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "chargeStateIDs": [
+            "Attack01",
+            "Attack02",
+            "Attack03",
+            "Attack04",
+            "Attack05",
+            "Run",
+            "ElementalArt",
+            "ElementalArt_AS",
+            "Special_ElementalArt",
+            "Special_ElementalArt_AS",
+            "ElementalBurst_AS",
+            "ExtraAttack",
+            "ExtraAttack_AS"
+          ],
+          "secondChargeTime": 0.11999999731779099,
+          "OnBeginUncharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "canBeHandledOnRecover": true,
+              "triggerID": "DoSkill",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "logic": "Equal",
+                      "target": "Target",
+                      "parameter": "ComboCount"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "logic": "Equal",
+                      "target": "Target",
+                      "parameter": "ComboCount",
+                      "value": 5
+                    }
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "intID": "SkillID",
+              "doOffStage": false,
+              "value": 99,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "canBeHandledOnRecover": true,
+              "boolID": "IsCharging",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "OnBeginSecondCharged": [
+            {
+              "$type": "Predicated",
+              "failActions": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "predicates": [
+                    {
+                      "$type": "ByLocalAvatarStamina",
+                      "stamina": [
+                        "ExtraAttack_Varka_Stamina_Cost",
+                        "Flexible_Stamina",
+                        "ADD"
+                      ],
+                      "logic": "GreaterOrEqual",
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true,
+                  "triggerID": "DoSkill",
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "SetAnimatorInt",
+                  "predicates": [
+                    {
+                      "$type": "ByLocalAvatarStamina",
+                      "stamina": [
+                        "ExtraAttack_Varka_Stamina_Cost",
+                        "Flexible_Stamina",
+                        "ADD"
+                      ],
+                      "logic": "GreaterOrEqual",
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true,
+                  "intID": "SkillID",
+                  "doOffStage": false,
+                  "value": 6,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByHasModifier",
+                  "target": "Target",
+                  "modifierName": "Varka_DoubleBlade_Enable"
+                },
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_Avatar_Varka_Talent6_ExCount",
+                      "target": "Target",
+                      "value": 1
+                    },
+                    {
+                      "$type": "BGNFLOABOND",
+                      "skillID": 11284,
+                      "compareType": "MoreThan",
+                      "target": "Target"
+                    }
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "canBeHandledOnRecover": true,
+                  "triggerID": "DoSkill",
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "SetAnimatorInt",
+                  "canBeHandledOnRecover": true,
+                  "intID": "SkillID",
+                  "doOffStage": false,
+                  "value": 4,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "canBeHandledOnRecover": true,
+              "boolID": "IsCharging",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ExtraAttack"
+          ],
+          "value": -1,
+          "modifierName": "ExtraAttack_StaminaCost",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "modifiers": {
+        "ExtraAttack_StaminaCost": {
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10004,
+              "costStaminaRatio": "ExtraAttack_Varka_Stamina_Cost",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "cdRatio": 1,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "NormalAttack_SprintCancle_SaveCombo": {
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorInt",
+              "canBeHandledOnRecover": true,
+              "intID": "ComboCount",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Varka_NormalAttack_Combo",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "thinkInterval": 0.10000000149011612,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Varka_NormalAttack_Combo",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorInt",
+                  "logic": "Equal",
+                  "target": "Target",
+                  "parameter": "ComboCount",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Varka_NormalAttack_Combo",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorInt",
+                  "logic": "Equal",
+                  "target": "Target",
+                  "parameter": "ComboCount",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "value": 2,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Varka_NormalAttack_Combo",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorInt",
+                  "logic": "Equal",
+                  "target": "Target",
+                  "parameter": "ComboCount",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "value": 3,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Varka_NormalAttack_Combo",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorInt",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "parameter": "ComboCount",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "canBeHandledOnRecover": true,
+              "overrideMapKey": "Combo_Count",
+              "globalValueKey": "_ABILITY_Varka_NormalAttack_Combo",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "onThinkInterval": [
+            {
+              "$type": "SetAnimatorInt",
+              "canBeHandledOnRecover": true,
+              "intID": "ComboCount",
+              "doOffStage": false,
+              "value": "Combo_Count",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "abilitySpecials": {
+        "Combo_Count": 0,
+        "ExtraAttack_Varka_Stamina_Cost": 0,
+        "Flexible_Stamina": -2,
+        "Max_Dura": 0
+      },
+      "abilityName": "Avatar_Varka_ExtraAttack"
+    }
+  },
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityMixins": [
+        {
+          "$type": "SkillButtonHoldChargeMixin",
+          "chargeLoopStateIDs": [
+            "Varka_ElementalArt_Charge"
+          ],
+          "skillID": 11282,
+          "beforeHoldDuration": -1,
+          "chargeLoopDurations": [
+            0.30000001192092896
+          ],
+          "endHoldTrigger": "EndHoldTrigger",
+          "nextLoopTriggerID": "NextLoopTrigger",
+          "beforeStateIDs": [
+            "Varka_ElementalArt_BS"
+          ],
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "value": -1,
+          "normalizedStateIDList": [
+            {
+              "stateID": "Varka_ElementalArt_Hold",
+              "normalizeEnd": 1,
+              "normalizeStart": 0.02500000037252903
+            }
+          ],
+          "modifierName": "Varka_ElementalArt_Hold_Start",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "value": -1,
+          "normalizedStateIDList": [
+            {
+              "stateID": "Varka_ElementalArt_BS",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "Varka_ElementalArt_Charge",
+              "normalizeEnd": 1
+            }
+          ],
+          "modifierName": "BS_Charge",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "value": -1,
+          "normalizedStateIDList": [
+            {
+              "stateID": "Varka_ElementalArt_Charge",
+              "normalizeEnd": 1
+            }
+          ],
+          "modifierName": "Charge",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "value": -1,
+          "normalizedStateIDList": [
+            {
+              "stateID": "Varka_ElementalArt_Hold",
+              "normalizeEnd": 1
+            }
+          ],
+          "modifierName": "Varka_ElementalArt_Hold_Start_0",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Varka_ElementalArt_Hold",
+            "Varka_ElementalArt_Loop",
+            "Varka_ElementalArt_Hold_AS"
+          ],
+          "value": -1,
+          "modifierName": "Varka_ElementalArt_Hold_DropDamage",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "modifiers": {
+        "BS_Charge": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_Hold",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Charge": {
+          "thinkInterval": 0.05000000074505806,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_DUMMY_THROW_RANGE",
+              "canBeHandledOnRecover": true,
+              "useLimitRange": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_DUMMY_THROW_RANGE",
+              "canBeHandledOnRecover": true,
+              "minValue": 1,
+              "useLimitRange": true,
+              "maxValue": 5,
+              "doOffStage": false,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "canBeHandledOnRecover": true,
+              "overrideMapKey": "DummyThrowSpeedUp",
+              "globalValueKey": "_DUMMY_THROW_RANGE",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "DummyRange",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "value": "DummyThrowSpeedUp",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_Air_LoseWeight": {
+          "onRemoved": [
+            {
+              "$type": "SetVelocityIgnoreAirGY",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveVelocityForce",
+              "canBeHandledOnRecover": true,
+              "forces": [
+                "RushMoveType",
+                "InertiaType"
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "properties": {
+            "Actor_AddGravityScale": -2
+          },
+          "onAdded": [
+            {
+              "$type": "SetVelocityIgnoreAirGY",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "MOFDGEACLFP": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_Choose_Gravity_High": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "AttachToMultiNormalizedTimeMixin",
+              "value": -1,
+              "normalizedStateIDList": [
+                {
+                  "stateID": "Varka_ElementalArt_Hold",
+                  "normalizeEnd": 0.6000000238418579
+                }
+              ],
+              "modifierName": "Varka_Air_LoseWeight",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_Choose_Gravity_Low": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "AttachToMultiNormalizedTimeMixin",
+              "value": -1,
+              "normalizedStateIDList": [
+                {
+                  "stateID": "Varka_ElementalArt_Hold",
+                  "normalizeEnd": 0.30000001192092896
+                }
+              ],
+              "modifierName": "Varka_Air_LoseWeight",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_ElementalArt_Hold_DropDamage": {
+          "properties": {
+            "Actor_FallingDamageRatio": -1
+          },
+          "reApplyModifierOnStateChange": true,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_ElementalArt_Hold_Start": {
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 11282,
+              "costStaminaRatio": 1,
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "cdRatio": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FixedAvatarRushMove",
+              "isInAir": true,
+              "timeRange": 0.20000000298023224,
+              "canBeHandledOnRecover": true,
+              "maxRange": 20,
+              "HIAAGAFFGEN": -1,
+              "toPos": {
+                "$type": "ConfigBornBySelf",
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "offset": {
+                  "z": [
+                    10,
+                    "_DUMMY_THROW_RANGE",
+                    "ADD"
+                  ],
+                  "x": [
+                    5,
+                    "_DUMMY_THROW_RANGE",
+                    2,
+                    "DIV",
+                    "ADD"
+                  ]
+                },
+                "useRotation": true,
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "animatorStateIDs": [
+                "Varka_ElementalArt_Hold"
+              ],
+              "doOffStage": false,
+              "NAOGKIPEAAJ": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_ElementalArt_Hold_Start_0": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "failActions": [
+                {
+                  "$type": "AttachModifier",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "modifierName": "Varka_Choose_Gravity_Low",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_DUMMY_THROW_RANGE",
+                  "compareType": "MoreThanAndEqual",
+                  "target": "Target",
+                  "value": 3
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "modifierName": "Varka_Choose_Gravity_High",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_HoldStart",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_HoldAir",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "abilitySpecials": {
+        "DummyThrowSpeedUp": 0,
+        "SkillCD": 0
+      },
+      "__unk_Q2982101340": [
+        "_DUMMY_THROW_RANGE",
+        "_ABILITY_Varka_PermanentSkill_3_Count"
+      ],
+      "abilityName": "Avatar_Varka_ElementalArt_Hold"
+    }
+  },
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "modifiers": {
+        "Avatar_Varka_DropBall": {
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "target": "Target",
+                  "attackTags": [
+                    "Elemental_Art"
+                  ]
+                },
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByAttackTags",
+                      "target": "Target",
+                      "attackTags": [
+                        "Varka_Special"
+                      ]
+                    }
+                  ],
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "value": -1,
+                  "target": "Target",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "compareType": "NoneOrEqual",
+                  "target": "Target"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "modifierName": "Ball",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Ball": {
+          "duration": 0.30000001192092896,
+          "onAdded": [
+            {
+              "$type": "Randomed",
+              "chance": 1,
+              "canBeHandledOnRecover": true,
+              "successActions": [
+                {
+                  "$type": "GenerateElemBall",
+                  "configID": 2021,
+                  "canBeHandledOnRecover": true,
+                  "ratio": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "z": 1
+                    },
+                    "useRotation": true,
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "baseEnergy": 18,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1,
+          "stacking": "Unique"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "modifierName": "Avatar_Varka_DropBall",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "abilityName": "Avatar_Varka_DropBall"
+    }
+  },
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "value": -1,
+          "normalizedStateIDList": [
+            {
+              "stateID": "ElementalArt",
+              "normalizeEnd": 0.800000011920929
+            }
+          ],
+          "modifierName": "Varka_ElementalArt_Start",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "value": -1,
+          "stateID": "ElementalArt",
+          "modifierName": "Varka_ElementalArt_Eff",
+          "normalizeEnd": 1,
+          "actorIceSubHurtDelta": -1,
+          "normalizeStart": 0.7850000262260437
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "value": -1,
+          "stateID": "ElementalArt",
+          "modifierName": "Varka_ElementalArt_Attack",
+          "normalizeEnd": 1,
+          "actorIceSubHurtDelta": -1,
+          "normalizeStart": 0.8199999928474426
+        }
+      ],
+      "modifiers": {
+        "UNIQUE_Varka_DoubleBlade_Handler": {
+          "isUnique": true,
+          "onRemoved": [
+            {
+              "$type": "ResetAnimatorTrigger",
+              "canBeHandledOnRecover": true,
+              "triggerID": "DoSkill",
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_Attack_Mode",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_SpecMode",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "canBeHandledOnRecover": true,
+              "intID": "Varka_InArt",
+              "useCurve": true,
+              "doOffStage": true,
+              "value": true,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "ApplyModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Varka_DoubleBlade_End",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "properties": {
+            "Actor_EndureDelta": 0.5
+          },
+          "duration": "Dura",
+          "onAvatarOut": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Avatar_Varka_Talent6_SwitchElementalArt",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Avatar_Varka_Talent6_SwitchExtraAttack",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Varka_DoubleBlade_Handler",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "ClearEndura",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "NAKNAAJHNOE": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_State",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_StateRshoulder",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_SpecMode",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "canBeHandledOnRecover": true,
+              "intID": "Varka_InArt",
+              "useCurve": true,
+              "doOffStage": false,
+              "value": true,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "Varka_DoubleBlade_Enable",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "Predicated",
+              "failActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_Attack_Mode",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "value": 6,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "compareType": "MoreThanAndEqual",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "modifierName": "Varka_DoubleBlade_Enable",
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "CopyGlobalValue",
+                  "canBeHandledOnRecover": true,
+                  "srcTarget": "Caster",
+                  "dstTarget": "Target",
+                  "srcKey": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "dstKey": "_ABILITY_Avatar_Varka_Attack_Mode",
+                  "doOffStage": true,
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_Attack_Mode",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": true,
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": [
+            "Dura",
+            10,
+            "MUL"
+          ],
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "OverrideCombatLockMixin",
+              "skillID": 11281,
+              "shapeName": "CircleLockEnemyR8H6HC",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "UNIQUE_Varka_SkillReady_Eff": {
+          "isUnique": true,
+          "onAdded": [
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill_ElementalArt_Varka_Fire",
+              "useCurve": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill_ElementalArt_Varka_Water",
+              "useCurve": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill_ElementalArt_Varka_Electric",
+              "useCurve": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill_ElementalArt_Varka_Ice",
+              "useCurve": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill1_ElementalArt_Varka_Fire",
+              "useCurve": true,
+              "doOffStage": false,
+              "effectSlot": "NormalAttack",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill1_ElementalArt_Varka_Water",
+              "useCurve": true,
+              "doOffStage": false,
+              "effectSlot": "NormalAttack",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill1_ElementalArt_Varka_Electric",
+              "useCurve": true,
+              "doOffStage": false,
+              "effectSlot": "NormalAttack",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill1_ElementalArt_Varka_Ice",
+              "useCurve": true,
+              "doOffStage": false,
+              "effectSlot": "NormalAttack",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_SkillReady",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "UNIQUE_Varka_Weapon_Elec": {
+          "isUnique": true,
+          "overrideWeaponElement": true,
+          "duration": 1.5,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_WeaponEffect_Elec",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "UNIQUE_Varka_Weapon_Fire": {
+          "isUnique": true,
+          "overrideWeaponElement": true,
+          "duration": 1.5,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_WeaponEffect_Fire",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "UNIQUE_Varka_Weapon_Ice": {
+          "isUnique": true,
+          "overrideWeaponElement": true,
+          "duration": 1.5,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_WeaponEffect_Ice",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "UNIQUE_Varka_Weapon_Water": {
+          "isUnique": true,
+          "overrideWeaponElement": true,
+          "duration": 1.5,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_WeaponEffect_Water",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_DoubleBlade_Enable": {
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_Attack_Mode",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onHittingOther": [
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "value": -1,
+                  "target": "Target",
+                  "entityTypes": [
+                    "Monster",
+                    "Gadget"
+                  ]
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "target": "Target",
+                  "attackTags": [
+                    "NormalAttack_01",
+                    "NormalAttack_02",
+                    "NormalAttack_03",
+                    "NormalAttack_04",
+                    "NormalAttack_05"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "compareType": "NoneOrEqual",
+                  "target": "Target"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "modifierName": "Varka_ModifySkillCD",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "thinkInterval": 1,
+          "onAdded": [
+            {
+              "$type": "PCNGHGGBLKJ",
+              "skillID": 11284,
+              "canBeHandledOnRecover": true,
+              "KHBEEIPJJPP": 2,
+              "doOffStage": false,
+              "cdRatio": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAbility",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Talent1",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "target": "Other",
+              "doOffStage": false,
+              "abilityName": "Avatar_Varka_Talent_1",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerThinkInterval",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_Hexenzirkel_Count",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "equip02",
+                  "sheathPoint"
+                ]
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "value": 1
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Varka_Weapon_Fire",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "equip02",
+                  "sheathPoint"
+                ]
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "value": 2
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Varka_Weapon_Water",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "equip02",
+                  "sheathPoint"
+                ]
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "value": 3
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Varka_Weapon_Elec",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "equip02",
+                  "sheathPoint"
+                ]
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "value": 4
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Varka_Weapon_Ice",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "skillID": 11284,
+              "priority": "AvatarSpecial",
+              "skillIndex": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AvatarSkillReadyMixin",
+              "skillID": 11284,
+              "FJDHFPOEADF": true,
+              "GAMFACGGELE": true,
+              "KAOFELNMJOO": 1,
+              "modifierName": "UNIQUE_Varka_SkillReady_Eff",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_DoubleBlade_End": {
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Avatar_Varka_Talent6_SwitchElementalArt",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Avatar_Varka_Talent6_SwitchExtraAttack",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "duration": 1,
+          "onAvatarOut": [
+            {
+              "$type": "RemoveModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Varka_DoubleBlade_End",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1,
+          "onAvatarIn": [
+            {
+              "$type": "RemoveModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Varka_DoubleBlade_End",
+              "actorIceSubHurtDelta": -1
+            }
+          ]
+        },
+        "Varka_ElementalArt_Attack": {
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 11282,
+              "costStaminaRatio": 1,
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "cdRatio": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Varka_DoubleBlade_Handler",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Varka_DoubleBlade_End",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Avatar_Varka_Talent6_SwitchExtraAttack",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Avatar_Varka_Talent6_SwitchElementalArt",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifierToAbility",
+              "ECDHKBDCCPP": true,
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Varka_DoubleBlade_Handler",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "canBeDefenceHalt": true,
+                    "hitImpulseType": "LV5",
+                    "retreatType": "ByAttackerForward",
+                    "hitHaltTime": 0.09000000357627869,
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "attackTag": "Elemental_Art",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeTime": 0.36000001430511475,
+                    "shakeRange": 0.44999998807907104,
+                    "shakeDistance": 20,
+                    "shakeDir": {
+                      "y": 1
+                    },
+                    "shakeType": "CustomVector"
+                  },
+                  "forceCameraShake": true,
+                  "attackProperty": {
+                    "elementType": "Wind",
+                    "damagePercentage": "ElementalArt_Damage",
+                    "enBreak": 100,
+                    "strikeType": "Blunt",
+                    "elementDurability": 25,
+                    "attackType": "Melee",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 5,
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 0.5,
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "x": -1
+                    },
+                    "useRotation": true,
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2
+                  }
+                }
+              },
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_ElementalArt_Eff": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_Strike",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "ResetAnimatorTrigger",
+              "canBeHandledOnRecover": true,
+              "triggerID": "DoSkill",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_ElementalArt_Start": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAbility",
+              "canBeHandledOnRecover": true,
+              "GCDCEKMLNFF": true,
+              "target": "Other",
+              "doOffStage": false,
+              "abilityName": "Avatar_Varka_DoubleBlade",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "muteRemoteAction": true,
+              "pattern": "v6_4_Varka_ElementalArt_Fire_VO",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "muteRemoteAction": true,
+              "pattern": "v6_4_Varka_ElementalArt_Water_VO",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "muteRemoteAction": true,
+              "pattern": "v6_4_Varka_ElementalArt_Electric_VO",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "muteRemoteAction": true,
+              "pattern": "v6_4_Varka_ElementalArt_Ice_VO",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "muteRemoteAction": true,
+              "pattern": "v6_4_Varka_ElementalArt_Wind_VO",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "OBNGAAMOHJH",
+              "attachPoint": "MoveHead",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_ModifySkillCD": {
+          "duration": 0.009999999776482582,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_Hexenzirkel_Count",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "Predicated",
+              "failActions": [
+                {
+                  "$type": "ModifyAvatarSkillCD",
+                  "skillID": 11284,
+                  "canBeHandledOnRecover": true,
+                  "cdMin": -0.5,
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_Hexenzirkel_Count",
+                  "compareType": "LessAndEqual",
+                  "target": "Target",
+                  "value": "MaxTimes"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_HexenzirkelLevel",
+                  "compareType": "MoreThan",
+                  "target": "Team",
+                  "value": 1
+                },
+                {
+                  "$type": "ALDEFIGMDOG",
+                  "target": "Target"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ModifyAvatarSkillCD",
+                  "skillID": 11284,
+                  "canBeHandledOnRecover": true,
+                  "cdMin": "cdDelta",
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "Predicated",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_Hexenzirkel_Count",
+                  "compareType": "LessAndEqual",
+                  "target": "Target",
+                  "value": "MaxTimes"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_HexenzirkelLevel",
+                  "compareType": "NoneOrEqual",
+                  "target": "Team",
+                  "value": -1
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ModifyAvatarSkillCD",
+                  "skillID": 11284,
+                  "canBeHandledOnRecover": true,
+                  "cdMin": -0.5,
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1,
+          "stacking": "Unique"
+        }
+      },
+      "abilitySpecials": {
+        "Dura": 0,
+        "ElementalArt_Damage": 0,
+        "MaxTimes": 15,
+        "SkillCD": 0,
+        "cdDelta": 0
+      },
+      "__unk_Q2982101340": [
+        "_ABILITY_Varka_PermanentSkill_3_Count"
+      ],
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_SpecMode",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_Attack_Mode",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "value": 1,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_Hexenzirkel_Count",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "abilityName": "Avatar_Varka_ElementalArt"
+    }
+  },
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "value": -1,
+          "normalizedStateIDList": [
+            {
+              "stateID": "Special_ElementalArt",
+              "normalizeEnd": 0.4699999988079071
+            }
+          ],
+          "modifierName": "Varka_Special_ElementalArt_Start",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "value": -1,
+          "stateID": "Special_ElementalArt",
+          "modifierName": "Varka_Special_ElementalArt_Eff",
+          "normalizeEnd": 1,
+          "actorIceSubHurtDelta": -1,
+          "normalizeStart": 0.4000000059604645
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "value": -1,
+          "stateID": "Special_ElementalArt",
+          "modifierName": "Varka_Special_ElementalArt_Attack_Time",
+          "normalizeEnd": 1,
+          "actorIceSubHurtDelta": -1,
+          "normalizeStart": 0.49000000953674316
+        }
+      ],
+      "modifiers": {
+        "UNIQUE_Avatar_Varka_Talent6_SwitchExtraAttack": {
+          "isUnique": true,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_Talent6_ExCount",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "duration": "Talent6_Dura",
+          "onAdded": [
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill1_ElementalArt_Varka_Fire",
+              "useCurve": true,
+              "doOffStage": false,
+              "effectSlot": "NormalAttack",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill1_ElementalArt_Varka_Water",
+              "useCurve": true,
+              "doOffStage": false,
+              "effectSlot": "NormalAttack",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill1_ElementalArt_Varka_Electric",
+              "useCurve": true,
+              "doOffStage": false,
+              "effectSlot": "NormalAttack",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill1_ElementalArt_Varka_Ice",
+              "useCurve": true,
+              "doOffStage": false,
+              "effectSlot": "NormalAttack",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill_ElementalArt_Varka_Fire",
+              "useCurve": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill_ElementalArt_Varka_Water",
+              "useCurve": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill_ElementalArt_Varka_Electric",
+              "useCurve": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachUIEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_UI_ActionBtn_Skill_ElementalArt_Varka_Ice",
+              "useCurve": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_Talent6_ExCount",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "skillID": 11288,
+              "priority": "AvatarSpecial",
+              "skillIndex": 1,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_Special_ElementalArt_Attack": {
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Varka_Special_ElementalArt_Attack_Delay",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "timeScale": "Level",
+          "onThinkIntervalIsFixedUpdate": true,
+          "duration": 0.3499999940395355,
+          "thinkInterval": 0.30000001192092896,
+          "onAdded": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "canBeDefenceHalt": true,
+                    "hitImpulseType": "LV4",
+                    "hitHaltTime": 0.09000000357627869,
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitImpulseY": 600,
+                      "hitLevel": "Air"
+                    },
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "DFPCIFFIKJP": [
+                    "Varka_Special"
+                  ],
+                  "attackTag": "Elemental_Art",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeTime": 0.30000001192092896,
+                    "shakeRange": 0.44999998807907104,
+                    "shakeDistance": 20,
+                    "shakeDir": {
+                      "y": 1
+                    },
+                    "shakeType": "CustomVector"
+                  },
+                  "forceCameraShake": true,
+                  "attackProperty": {
+                    "elementType": "Fire",
+                    "damagePercentage": [
+                      "Special_ElementalArt_01",
+                      "_ABILITY_Avatar_Varka_ArtDamageUp_GV",
+                      "MUL",
+                      "Talent1_Rate",
+                      "MUL"
+                    ],
+                    "enBreak": 65,
+                    "strikeType": "Blunt",
+                    "elementDurability": 25,
+                    "attackType": "Melee",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "AGOJJJAOCMA": true,
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 6.5,
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 0.5,
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornByGlobalValue",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "x": -1
+                    },
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2,
+                    "directionKey": "_ABILITY_Avatar_Varka_SpecialArt_Dir",
+                    "positionKey": "_ABILITY_Avatar_Varka_SpecialArt_Pos"
+                  }
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "canBeDefenceHalt": true,
+                    "hitImpulseType": "LV4",
+                    "hitHaltTime": 0.09000000357627869,
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitImpulseY": 600,
+                      "hitLevel": "Air"
+                    },
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "DFPCIFFIKJP": [
+                    "Varka_Special"
+                  ],
+                  "attackTag": "Elemental_Art",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeTime": 0.30000001192092896,
+                    "shakeRange": 0.44999998807907104,
+                    "shakeDistance": 20,
+                    "shakeDir": {
+                      "y": 1
+                    },
+                    "shakeType": "CustomVector"
+                  },
+                  "forceCameraShake": true,
+                  "attackProperty": {
+                    "elementType": "Water",
+                    "damagePercentage": [
+                      "Special_ElementalArt_01",
+                      "_ABILITY_Avatar_Varka_ArtDamageUp_GV",
+                      "MUL",
+                      "Talent1_Rate",
+                      "MUL"
+                    ],
+                    "enBreak": 65,
+                    "strikeType": "Blunt",
+                    "elementDurability": 25,
+                    "attackType": "Melee",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 6.5,
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 0.5,
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornByGlobalValue",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "x": -1
+                    },
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2,
+                    "directionKey": "_ABILITY_Avatar_Varka_SpecialArt_Dir",
+                    "positionKey": "_ABILITY_Avatar_Varka_SpecialArt_Pos"
+                  }
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "canBeDefenceHalt": true,
+                    "hitImpulseType": "LV4",
+                    "hitHaltTime": 0.09000000357627869,
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitImpulseY": 600,
+                      "hitLevel": "Air"
+                    },
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "DFPCIFFIKJP": [
+                    "Varka_Special"
+                  ],
+                  "attackTag": "Elemental_Art",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeTime": 0.30000001192092896,
+                    "shakeRange": 0.44999998807907104,
+                    "shakeDistance": 20,
+                    "shakeDir": {
+                      "y": 1
+                    },
+                    "shakeType": "CustomVector"
+                  },
+                  "forceCameraShake": true,
+                  "attackProperty": {
+                    "elementType": "Electric",
+                    "damagePercentage": [
+                      "Special_ElementalArt_01",
+                      "_ABILITY_Avatar_Varka_ArtDamageUp_GV",
+                      "MUL",
+                      "Talent1_Rate",
+                      "MUL"
+                    ],
+                    "enBreak": 65,
+                    "strikeType": "Blunt",
+                    "elementDurability": 25,
+                    "attackType": "Melee",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 6.5,
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 0.5,
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornByGlobalValue",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "x": -1
+                    },
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2,
+                    "directionKey": "_ABILITY_Avatar_Varka_SpecialArt_Dir",
+                    "positionKey": "_ABILITY_Avatar_Varka_SpecialArt_Pos"
+                  }
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "canBeDefenceHalt": true,
+                    "hitImpulseType": "LV4",
+                    "hitHaltTime": 0.09000000357627869,
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitImpulseY": 600,
+                      "hitLevel": "Air"
+                    },
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "DFPCIFFIKJP": [
+                    "Varka_Special"
+                  ],
+                  "attackTag": "Elemental_Art",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeTime": 0.30000001192092896,
+                    "shakeRange": 0.44999998807907104,
+                    "shakeDistance": 20,
+                    "shakeDir": {
+                      "y": 1
+                    },
+                    "shakeType": "CustomVector"
+                  },
+                  "forceCameraShake": true,
+                  "attackProperty": {
+                    "elementType": "Ice",
+                    "damagePercentage": [
+                      "Special_ElementalArt_01",
+                      "_ABILITY_Avatar_Varka_ArtDamageUp_GV",
+                      "MUL",
+                      "Talent1_Rate",
+                      "MUL"
+                    ],
+                    "enBreak": 65,
+                    "strikeType": "Blunt",
+                    "elementDurability": 25,
+                    "attackType": "Melee",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 6.5,
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 0.5,
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornByGlobalValue",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "x": -1
+                    },
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2,
+                    "directionKey": "_ABILITY_Avatar_Varka_SpecialArt_Dir",
+                    "positionKey": "_ABILITY_Avatar_Varka_SpecialArt_Pos"
+                  }
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "onThinkInterval": [
+            {
+              "$type": "RemoveModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Varka_Special_ElementalArt_Attack",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_Special_ElementalArt_Attack_Delay": {
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Avatar_Varka_Talent_1",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "duration": 0.20000000298023224,
+          "onAdded": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "hitImpulseType": "LV4",
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitImpulseY": 600,
+                      "hitLevel": "Air"
+                    },
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "DFPCIFFIKJP": [
+                    "Varka_Special"
+                  ],
+                  "attackTag": "Elemental_Art",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeDistance": 20
+                  },
+                  "attackProperty": {
+                    "elementType": "Wind",
+                    "damagePercentage": [
+                      "Special_ElementalArt_02",
+                      "_ABILITY_Avatar_Varka_ArtDamageUp_GV",
+                      "MUL",
+                      "Talent1_Rate",
+                      "MUL"
+                    ],
+                    "enBreak": 35,
+                    "strikeType": "Blunt",
+                    "elementDurability": 25,
+                    "attackType": "Melee",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "AGOJJJAOCMA": true,
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 2.5,
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 0.5,
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornByGlobalValue",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "x": -1
+                    },
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2,
+                    "directionKey": "_ABILITY_Avatar_Varka_SpecialArt_Dir",
+                    "positionKey": "_ABILITY_Avatar_Varka_SpecialArt_Pos"
+                  }
+                }
+              },
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "retreatType": "ByAttackerInverse",
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitImpulseY": 600,
+                      "hitLevel": "Air",
+                      "hitImpulseX": 400
+                    },
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "DFPCIFFIKJP": [
+                    "Varka_Special"
+                  ],
+                  "attackTag": "Elemental_Art",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeTime": 0.3199999928474426,
+                    "shakeRange": 0.4000000059604645,
+                    "shakeDistance": 20,
+                    "shakeDir": {
+                      "y": -1
+                    },
+                    "shakeType": "CustomVector"
+                  },
+                  "forceCameraShake": true,
+                  "attackProperty": {
+                    "elementType": "Wind",
+                    "damagePercentage": [
+                      "Special_ElementalArt_02",
+                      "_ABILITY_Avatar_Varka_ArtDamageUp_GV",
+                      "MUL",
+                      "Talent1_Rate",
+                      "MUL"
+                    ],
+                    "enBreak": 35,
+                    "strikeType": "Blunt",
+                    "elementDurability": 25,
+                    "attackType": "Melee",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "AGOJJJAOCMA": true,
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 6.5,
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 0.5,
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornByGlobalValue",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "x": -1
+                    },
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2,
+                    "directionKey": "_ABILITY_Avatar_Varka_SpecialArt_Dir",
+                    "positionKey": "_ABILITY_Avatar_Varka_SpecialArt_Pos"
+                  }
+                }
+              },
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAbility",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Talent2",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "target": "Other",
+              "doOffStage": false,
+              "abilityName": "Avatar_Varka_Talent_2",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_Special_ElementalArt_Attack_Time": {
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 11284,
+              "costStaminaRatio": 1,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_Talent6_Save",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "cdRatio": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_Varka_Talent_1",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Talent1",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Talent6",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_Talent6_Save",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_SpecMode",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Avatar_Varka_Talent6_SwitchExtraAttack",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Avatar_Varka_Talent6_SwitchElementalArt",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "ApplyModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "Varka_Special_ElementalArt_Attack",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_Special_ElementalArt_Eff": {
+          "onAdded": [
+            {
+              "$type": "ResetAnimatorTrigger",
+              "canBeHandledOnRecover": true,
+              "triggerID": "DoSkill",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalPos",
+              "setTarget": true,
+              "key": "_ABILITY_Avatar_Varka_SpecialArt_Pos",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalDir",
+              "setTarget": true,
+              "key": "_ABILITY_Avatar_Varka_SpecialArt_Dir",
+              "target": "Target",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Talent1",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Varka_Talent_1",
+                  "compareType": "MoreThan",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Avatar_Varka_Talent_1",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_Strike_SpecialFire",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "useRotation": true,
+                "value": 10,
+                "onGroundRaycastUpDist": 2,
+                "directionKey": "_ABILITY_Avatar_Varka_SpecialArt_Dir",
+                "positionKey": "_ABILITY_Avatar_Varka_SpecialArt_Pos"
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_Strike_SpecialWater",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "useRotation": true,
+                "value": 10,
+                "onGroundRaycastUpDist": 2,
+                "directionKey": "_ABILITY_Avatar_Varka_SpecialArt_Dir",
+                "positionKey": "_ABILITY_Avatar_Varka_SpecialArt_Pos"
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_Strike_SpecialElectric",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "useRotation": true,
+                "value": 10,
+                "onGroundRaycastUpDist": 2,
+                "directionKey": "_ABILITY_Avatar_Varka_SpecialArt_Dir",
+                "positionKey": "_ABILITY_Avatar_Varka_SpecialArt_Pos"
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_Strike_SpecialIce",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "useRotation": true,
+                "value": 10,
+                "onGroundRaycastUpDist": 2,
+                "directionKey": "_ABILITY_Avatar_Varka_SpecialArt_Dir",
+                "positionKey": "_ABILITY_Avatar_Varka_SpecialArt_Pos"
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_Special_ElementalArt_Start": {
+          "onAdded": [
+            {
+              "$type": "CopyGlobalValue",
+              "canBeHandledOnRecover": true,
+              "srcTarget": "Caster",
+              "dstTarget": "Target",
+              "srcKey": "_ABILITY_Avatar_Varka_Talent6_Count",
+              "dstKey": "_ABILITY_Avatar_Varka_Talent6_Save",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_Fire",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_Water",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_Electric",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalArt_Ice",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "pattern": "v6_4_Varka_Special_ElementalArt_Fire",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_SpecMode",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "pattern": "v6_4_Varka_Special_ElementalArt_Water",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_SpecMode",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "pattern": "v6_4_Varka_Special_ElementalArt_Electric",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_SpecMode",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "pattern": "v6_4_Varka_Special_ElementalArt_Ice",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_SpecMode",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+                  "target": "Target",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "OBNGAAMOHJH",
+              "attachPoint": "MoveHead",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "abilitySpecials": {
+        "Special_ElementalArt_01": 0,
+        "Special_ElementalArt_02": 0,
+        "Talent1_Rate": 1,
+        "Talent6_Dura": 0
+      },
+      "__unk_Q2982101340": [
+        "_ABILITY_Avatar_Varka_ArtDamageUp_GV"
+      ],
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_Talent6_Count",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_Talent6_ExCount",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_Talent6_Save",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "abilityName": "Avatar_Varka_Special_ElementalArt"
+    }
+  },
+  {
+    "Default": {
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+          "predicates": [
+            {
+              "$type": "ByBigTeamHasElementType",
+              "elementType": "Ice",
+              "logic": "GreaterOrEqual",
+              "target": "Target",
+              "number": 1
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "value": 4,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+          "predicates": [
+            {
+              "$type": "ByBigTeamHasElementType",
+              "elementType": "Electric",
+              "logic": "GreaterOrEqual",
+              "target": "Target",
+              "number": 1
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "value": 3,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+          "predicates": [
+            {
+              "$type": "ByBigTeamHasElementType",
+              "elementType": "Water",
+              "logic": "GreaterOrEqual",
+              "target": "Target",
+              "number": 1
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "value": 2,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+          "predicates": [
+            {
+              "$type": "ByBigTeamHasElementType",
+              "elementType": "Fire",
+              "logic": "GreaterOrEqual",
+              "target": "Target",
+              "number": 1
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "value": 1,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Dungeon_Varka_DoubleBlade",
+              "compareType": "MoreThanAndEqual",
+              "target": "Target",
+              "value": 1
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "value": "_ABILITY_Dungeon_Varka_DoubleBlade",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_ArtDamageUp_GV",
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "value": 1,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_ArtDamageUp_GV",
+          "predicates": [
+            {
+              "$type": "ByBigTeamHasElementType",
+              "elementType": "Wind",
+              "logic": "GreaterOrEqual",
+              "target": "Target",
+              "number": 2
+            },
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "PermanentSkill",
+              "target": "Target"
+            },
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByBigTeamHasElementType",
+                      "elementType": "Fire",
+                      "logic": "GreaterOrEqual",
+                      "target": "Target",
+                      "number": 2
+                    },
+                    {
+                      "$type": "ByBigTeamHasElementType",
+                      "elementType": "Water",
+                      "logic": "GreaterOrEqual",
+                      "target": "Target",
+                      "number": 2
+                    },
+                    {
+                      "$type": "ByBigTeamHasElementType",
+                      "elementType": "Electric",
+                      "logic": "GreaterOrEqual",
+                      "target": "Target",
+                      "number": 2
+                    },
+                    {
+                      "$type": "ByBigTeamHasElementType",
+                      "elementType": "Ice",
+                      "logic": "GreaterOrEqual",
+                      "target": "Target",
+                      "number": 2
+                    }
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "target": "Target"
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "value": "DamageRatio1",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_ArtDamageUp_GV",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByBigTeamHasElementType",
+                  "elementType": "Wind",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "number": 2
+                }
+              ],
+              "target": "Target"
+            },
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "PermanentSkill",
+              "target": "Target"
+            },
+            {
+              "$type": "ByAny",
+              "predicates": [
+                {
+                  "$type": "ByBigTeamHasElementType",
+                  "elementType": "Fire",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "number": 2
+                },
+                {
+                  "$type": "ByBigTeamHasElementType",
+                  "elementType": "Water",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "number": 2
+                },
+                {
+                  "$type": "ByBigTeamHasElementType",
+                  "elementType": "Electric",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "number": 2
+                },
+                {
+                  "$type": "ByBigTeamHasElementType",
+                  "elementType": "Ice",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "number": 2
+                }
+              ],
+              "target": "Target"
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "value": "DamageRatio1",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_ArtDamageUp_GV",
+          "predicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "PermanentSkill",
+              "target": "Target"
+            },
+            {
+              "$type": "ByAny",
+              "predicates": [
+                {
+                  "$type": "ByBigTeamHasElementType",
+                  "elementType": "Fire",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "number": 2
+                },
+                {
+                  "$type": "ByBigTeamHasElementType",
+                  "elementType": "Water",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "number": 2
+                },
+                {
+                  "$type": "ByBigTeamHasElementType",
+                  "elementType": "Electric",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "number": 2
+                },
+                {
+                  "$type": "ByBigTeamHasElementType",
+                  "elementType": "Ice",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "number": 2
+                }
+              ],
+              "target": "Target"
+            },
+            {
+              "$type": "ByBigTeamHasElementType",
+              "elementType": "Wind",
+              "logic": "GreaterOrEqual",
+              "target": "Target",
+              "number": 2
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "value": "DamageRatio2",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilitySpecials": {
+        "DamageRatio1": 0,
+        "DamageRatio2": 0
+      },
+      "__unk_Q2982101340": [
+        "_ABILITY_Avatar_Varka_ArtDamageUp_GV",
+        "_ABILITY_Dungeon_Varka_DoubleBlade"
+      ],
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_TeamElem_Mode",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_ArtDamageUp_GV",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "value": 1,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Dungeon_Varka_DoubleBlade",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "abilityName": "Avatar_Varka_DoubleBlade"
+    }
+  },
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "value": -1,
+          "stateID": "ElementalBurst",
+          "modifierName": "ElementalBurst_Start_Handler",
+          "normalizeEnd": 1,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "value": -1,
+          "normalizedStateIDList": [
+            {
+              "stateID": "ElementalBurst",
+              "normalizeEnd": 1,
+              "normalizeStart": 0.004999999888241291
+            },
+            {
+              "stateID": "ElementalBurst_AS",
+              "normalizeEnd": 1
+            }
+          ],
+          "modifierName": "ElementalBurst_Camera_Control",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "value": -1,
+          "normalizedStateIDList": [
+            {
+              "stateID": "ElementalBurst",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "ElementalBurst_AS",
+              "normalizeEnd": 0.05000000074505806
+            }
+          ],
+          "modifierName": "ElementalBurst_Protection_Invincible",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "value": -1,
+          "stateID": "ElementalBurst",
+          "modifierName": "Varka_ElementalBurst_Attack1",
+          "normalizeEnd": 1,
+          "actorIceSubHurtDelta": -1,
+          "normalizeStart": 0.8100000023841858
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "value": -1,
+          "stateID": "ElementalBurst",
+          "modifierName": "Varka_ElementalBurst_Attack2",
+          "normalizeEnd": 0.9549999833106995,
+          "actorIceSubHurtDelta": -1,
+          "normalizeStart": 0.8999999761581421
+        }
+      ],
+      "modifiers": {
+        "ElementalBurst_Camera_Control": {
+          "onRemoved": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "EnableHeadControl",
+              "enable": true,
+              "canBeHandledOnRecover": true,
+              "HAEDOGGNEHD": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "EnableHeadControl",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_Sword",
+              "doOffStage": false,
+              "parameter": "Burst",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_SwordSkin",
+              "doOffStage": false,
+              "parameter": "Burst",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "ElementalBurst_InCamera_Handler": {
+          "onRemoved": [
+            {
+              "$type": "DungeonFogEffects",
+              "muteRemoteAction": true,
+              "canBeHandledOnRecover": true,
+              "enable": true,
+              "cameraFogEffectName": "Eff_Avatar_Male_Claymore_Varka_ElementalBurst_Cast_Camera",
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AvatarEnterCameraShot",
+              "canBeHandledOnRecover": true,
+              "LOCOMCAKLGH": true,
+              "doOffStage": false,
+              "cameraMoveCfgPath": "Camera_Varka_ElementalBurst",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachEffect",
+              "muteRemoteAction": true,
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalBurst_InCamera",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "DoActionsLocal",
+              "shapeList": [
+                {
+                  "$type": "FireEffect",
+                  "predicates": [
+                    {
+                      "$type": "ByNot",
+                      "predicates": [
+                        {
+                          "$type": "ByIsLocalAvatar"
+                        }
+                      ],
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true,
+                  "effectTempleteID": -1,
+                  "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalBurst_NoCamera",
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "DungeonFogEffects",
+              "muteRemoteAction": true,
+              "enable": true,
+              "canBeHandledOnRecover": true,
+              "cameraFogEffectName": "Eff_Avatar_Male_Claymore_Varka_ElementalBurst_Cast_Camera",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "AttachToNormalizedTimeMixin",
+              "value": -1,
+              "stateID": "ElementalBurst",
+              "modifierName": "Varka_ElementalBurst_AvatarHide",
+              "normalizeEnd": 0.3409999907016754,
+              "actorIceSubHurtDelta": -1,
+              "normalizeStart": 0.2150000035762787
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "ElementalBurst_NoCamera_Handler": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalBurst_NoCamera",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "AttachToNormalizedTimeMixin",
+              "value": -1,
+              "stateID": "ElementalBurst",
+              "modifierName": "Varka_ElementalBurst_AvatarHide",
+              "normalizeEnd": 0.7599999904632568,
+              "actorIceSubHurtDelta": -1,
+              "normalizeStart": 0.2150000035762787
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "ElementalBurst_Protection_Invincible": {
+          "onAdded": [
+            {
+              "$type": "AttachAbilityStateResistance",
+              "durationRatio": 1,
+              "canBeHandledOnRecover": true,
+              "resistanceListID": 11002,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "ElementalBurst_Weather",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "ElementalBurst_ScreenAfterEffect",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "state": "Invincible",
+          "modifierMixins": [
+            {
+              "$type": "GV_EffectChangeAlphaMixin_Team",
+              "startDuration": 0.20000000298023224,
+              "endDuration": 0.30000001192092896,
+              "HAHOACGFOMN": true,
+              "target": "Team",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "ElementalBurst_ScreenAfterEffect": {
+          "duration": 3,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "TriggerPostProcessEffectMixin",
+              "postEffectAssetName": "PostEffect_Avatar_Varka_ElementalBurst_ScreenEffect",
+              "duHPRation": 2.5,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "ElementalBurst_Start_Handler": {
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 11285,
+              "costStaminaRatio": 1,
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "cdRatio": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+              "predicates": [
+                {
+                  "$type": "ByBigTeamHasElementType",
+                  "elementType": "Ice",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "number": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "value": 4,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+              "predicates": [
+                {
+                  "$type": "ByBigTeamHasElementType",
+                  "elementType": "Electric",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "number": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "value": 3,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+              "predicates": [
+                {
+                  "$type": "ByBigTeamHasElementType",
+                  "elementType": "Water",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "number": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "value": 2,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+              "predicates": [
+                {
+                  "$type": "ByBigTeamHasElementType",
+                  "elementType": "Fire",
+                  "logic": "GreaterOrEqual",
+                  "target": "Target",
+                  "number": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Dungeon_Varka_DoubleBlade",
+                  "compareType": "MoreThanAndEqual",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "value": "_ABILITY_Dungeon_Varka_DoubleBlade",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHasModifier",
+                  "target": "Target",
+                  "modifierName": "UNIQUE_Varka_DoubleBlade_Handler"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "useLimitRange": true,
+              "maxValue": 200,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Varka_DoubleBlade_Handler",
+              "value": 23,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "equip02",
+                  "sheathPoint"
+                ]
+              },
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Varka_Weapon_Fire",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "equip02",
+                  "sheathPoint"
+                ]
+              },
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Varka_Weapon_Water",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "equip02",
+                  "sheathPoint"
+                ]
+              },
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Varka_Weapon_Elec",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "equip02",
+                  "sheathPoint"
+                ]
+              },
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Varka_Weapon_Ice",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "equip02",
+                  "sheathPoint"
+                ]
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Varka_Weapon_Fire",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "equip02",
+                  "sheathPoint"
+                ]
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Varka_Weapon_Water",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "equip02",
+                  "sheathPoint"
+                ]
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Varka_Weapon_Elec",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "equip02",
+                  "sheathPoint"
+                ]
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Varka_Weapon_Ice",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "Predicated",
+              "failActions": [
+                {
+                  "$type": "AttachModifier",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "modifierName": "ElementalBurst_NoCamera_Handler",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackNotHitScene",
+                  "target": "Target",
+                  "checkWaterLayer": true,
+                  "attackPattern": {
+                    "$type": "ConfigAttackCircle",
+                    "BCIDGAKNEBH": {
+                      "BPIDFNFCNHP": {
+                        "value": 1,
+                        "NJICIOFCOPD": true
+                      }
+                    },
+                    "radius": 1,
+                    "triggerType": "TriggerNoRepeat",
+                    "massiveAttackRatio": 1,
+                    "fanAngle": 360,
+                    "height": 1.2000000476837158,
+                    "born": {
+                      "$type": "ConfigBornBySelf",
+                      "direction": {
+                        "maxAngle": 180
+                      },
+                      "EALBHHJEFGH": {
+                        "BKAPGJCLCIO": 180
+                      },
+                      "offset": {
+                        "x": 0.5
+                      },
+                      "useRotation": true,
+                      "value": 10,
+                      "onGroundRaycastUpDist": 2
+                    }
+                  }
+                },
+                {
+                  "$type": "ByAvatarInWaterDepth",
+                  "compareType": "LessAndEqual",
+                  "target": "Target",
+                  "depth": 0.5
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "modifierName": "ElementalBurst_InCamera_Handler",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "RigidBodyFreezeMixin",
+              "value": true,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "WindZoneMixin",
+              "value": 0.10000000149011612,
+              "attenuation": 2,
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "value": -1,
+                  "target": "Target",
+                  "entityTypes": [
+                    "Monster",
+                    "Grass"
+                  ]
+                },
+                {
+                  "$type": "ByTargetWeight",
+                  "weight": 250,
+                  "logic": "LesserOrEqual",
+                  "target": "Target"
+                }
+              ],
+              "EMMNOPNLHOC": 100,
+              "maxNum": 12,
+              "forceType": "WindZoneType",
+              "strength": -3,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "useRotation": true,
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "shapeName": "CircleR2",
+              "PHBBIPIAELD": 10,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "ElementalBurst_Weather": {
+          "duration": 3.5,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWeatherMixin",
+              "transDuration": 0.30000001192092896,
+              "type": "Skill",
+              "weatherPattern": "Weather_Varka_ElementalBurst",
+              "duHPRation": 3.200000047683716,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_ElementalBurst_Attack1": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerAudioV2",
+                  "pattern": "v6_4_Varka_ElementalBurst_VFX_Wind",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "TriggerAudioV2",
+                  "muteRemoteAction": true,
+                  "pattern": "v6_4_motion_Varka_ElementalBurst_Wind",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerAudioV2",
+                  "pattern": "v6_4_Varka_ElementalBurst_VFX_Fire",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "TriggerAudioV2",
+                  "muteRemoteAction": true,
+                  "pattern": "v6_4_motion_Varka_ElementalBurst_Fire",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target",
+                  "value": 2
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerAudioV2",
+                  "pattern": "v6_4_Varka_ElementalBurst_VFX_Water",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "TriggerAudioV2",
+                  "muteRemoteAction": true,
+                  "pattern": "v6_4_motion_Varka_ElementalBurst_Water",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target",
+                  "value": 3
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerAudioV2",
+                  "pattern": "v6_4_Varka_ElementalBurst_VFX_Electric",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "TriggerAudioV2",
+                  "muteRemoteAction": true,
+                  "pattern": "v6_4_motion_Varka_ElementalBurst_Electric",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target",
+                  "value": 4
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerAudioV2",
+                  "pattern": "v6_4_Varka_ElementalBurst_VFX_Ice",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "TriggerAudioV2",
+                  "muteRemoteAction": true,
+                  "pattern": "v6_4_motion_Varka_ElementalBurst_Ice",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalBurst_Wind",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalBurst_Fire",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalBurst_Water",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalBurst_Electric",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalBurst_Ice",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "CAPPPKDNOND": {
+                      "eventName": {
+                        "text": "Play_Sfx_char_Varka_Claymore_Normal_Hit_Heavy"
+                      }
+                    },
+                    "hitImpulseType": "LV7",
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitImpulseY": 600,
+                      "hitLevel": "Air"
+                    },
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "attackTag": "Elemental_Burst",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeTime": 0.20000000298023224,
+                    "shakeRange": 0.30000001192092896,
+                    "shakeDistance": 20,
+                    "shakeDir": {
+                      "x": -0.800000011920929,
+                      "y": -0.4000000059604645
+                    },
+                    "shakeType": "CustomVector"
+                  },
+                  "forceCameraShake": true,
+                  "attackProperty": {
+                    "elementType": "Wind",
+                    "damagePercentage": "ElementalBurst_Attack1",
+                    "enBreak": 130,
+                    "strikeType": "Blunt",
+                    "elementDurability": 25,
+                    "attackType": "Melee",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 7,
+                  "detectDirection": "Clockwise",
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1,
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "z": 2,
+                      "x": -1
+                    },
+                    "useRotation": true,
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2
+                  }
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "CAPPPKDNOND": {
+                      "eventName": {
+                        "text": "Play_Sfx_char_Varka_Claymore_Fire_Hit_Heavy"
+                      }
+                    },
+                    "hitImpulseType": "LV7",
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitImpulseY": 600,
+                      "hitLevel": "Air"
+                    },
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "attackTag": "Elemental_Burst",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeTime": 0.20000000298023224,
+                    "shakeRange": 0.30000001192092896,
+                    "shakeDistance": 20,
+                    "shakeDir": {
+                      "x": -0.800000011920929,
+                      "y": -0.4000000059604645
+                    },
+                    "shakeType": "CustomVector"
+                  },
+                  "forceCameraShake": true,
+                  "attackProperty": {
+                    "elementType": "Fire",
+                    "damagePercentage": "ElementalBurst_Attack1",
+                    "enBreak": 130,
+                    "strikeType": "Blunt",
+                    "elementDurability": 25,
+                    "attackType": "Melee",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 7,
+                  "detectDirection": "Clockwise",
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1,
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "z": 2,
+                      "x": -1
+                    },
+                    "useRotation": true,
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2
+                  }
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "CAPPPKDNOND": {
+                      "eventName": {
+                        "text": "Play_Sfx_char_Varka_Claymore_Water_Hit_Heavy"
+                      }
+                    },
+                    "hitImpulseType": "LV7",
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitImpulseY": 600,
+                      "hitLevel": "Air"
+                    },
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "attackTag": "Elemental_Burst",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeTime": 0.20000000298023224,
+                    "shakeRange": 0.30000001192092896,
+                    "shakeDistance": 20,
+                    "shakeDir": {
+                      "x": -0.800000011920929,
+                      "y": -0.4000000059604645
+                    },
+                    "shakeType": "CustomVector"
+                  },
+                  "forceCameraShake": true,
+                  "attackProperty": {
+                    "elementType": "Water",
+                    "damagePercentage": "ElementalBurst_Attack1",
+                    "enBreak": 130,
+                    "strikeType": "Blunt",
+                    "elementDurability": 25,
+                    "attackType": "Melee",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 7,
+                  "detectDirection": "Clockwise",
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1,
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "z": 2,
+                      "x": -1
+                    },
+                    "useRotation": true,
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2
+                  }
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "CAPPPKDNOND": {
+                      "eventName": {
+                        "text": "Play_Sfx_char_Varka_Claymore_Electric_Hit_Heavy"
+                      }
+                    },
+                    "hitImpulseType": "LV7",
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitImpulseY": 600,
+                      "hitLevel": "Air"
+                    },
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "attackTag": "Elemental_Burst",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeTime": 0.20000000298023224,
+                    "shakeRange": 0.30000001192092896,
+                    "shakeDistance": 20,
+                    "shakeDir": {
+                      "x": -0.800000011920929,
+                      "y": -0.4000000059604645
+                    },
+                    "shakeType": "CustomVector"
+                  },
+                  "forceCameraShake": true,
+                  "attackProperty": {
+                    "elementType": "Electric",
+                    "damagePercentage": "ElementalBurst_Attack1",
+                    "enBreak": 130,
+                    "strikeType": "Blunt",
+                    "elementDurability": 25,
+                    "attackType": "Melee",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 7,
+                  "detectDirection": "Clockwise",
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1,
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "z": 2,
+                      "x": -1
+                    },
+                    "useRotation": true,
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2
+                  }
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "CAPPPKDNOND": {
+                      "eventName": {
+                        "text": "Play_Sfx_char_Varka_Claymore_Ice_Hit_Heavy"
+                      }
+                    },
+                    "hitImpulseType": "LV7",
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitImpulseY": 600,
+                      "hitLevel": "Air"
+                    },
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "attackTag": "Elemental_Burst",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeTime": 0.20000000298023224,
+                    "shakeRange": 0.30000001192092896,
+                    "shakeDistance": 20,
+                    "shakeDir": {
+                      "x": -0.800000011920929,
+                      "y": -0.4000000059604645
+                    },
+                    "shakeType": "CustomVector"
+                  },
+                  "forceCameraShake": true,
+                  "attackProperty": {
+                    "elementType": "Ice",
+                    "damagePercentage": "ElementalBurst_Attack1",
+                    "enBreak": 130,
+                    "strikeType": "Blunt",
+                    "elementDurability": 25,
+                    "attackType": "Melee",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 7,
+                  "detectDirection": "Clockwise",
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1,
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "z": 2,
+                      "x": -1
+                    },
+                    "useRotation": true,
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2
+                  }
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+                  "target": "Target",
+                  "value": 4
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_ElementalBurst_Attack2": {
+          "onRemoved": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "CAPPPKDNOND": {
+                      "eventName": {
+                        "text": "Play_Sfx_char_Varka_Claymore_Normal_Hit_Heavy"
+                      }
+                    },
+                    "hitImpulseType": "LV4",
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "attackTag": "Elemental_Burst",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeTime": 0.20000000298023224,
+                    "shakeRange": 0.6000000238418579,
+                    "shakeDistance": 20,
+                    "shakeDir": {
+                      "x": -0.800000011920929,
+                      "y": -0.4000000059604645
+                    },
+                    "shakeType": "CustomVector"
+                  },
+                  "forceCameraShake": true,
+                  "attackProperty": {
+                    "elementType": "Wind",
+                    "damagePercentage": "ElementalBurst_Attack2",
+                    "enBreak": 70,
+                    "strikeType": "Blunt",
+                    "elementDurability": 25,
+                    "attackType": "Melee",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 7,
+                  "detectDirection": "Clockwise",
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1,
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "z": 2,
+                      "x": -1
+                    },
+                    "useRotation": true,
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2
+                  }
+                }
+              },
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "TriggerAudioV2",
+              "pattern": "v6_4_Varka_ElementalBurst_VFX_Wind",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "muteRemoteAction": true,
+              "pattern": "v6_4_motion_Varka_ElementalBurst_Wind2",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_ElementalBurst_Wind2",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_ElementalBurst_AvatarHide": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "EntityInVisibleMixin",
+              "BDGEFIBINGG": {
+                "PFGNFCCBKOC": true
+              },
+              "reason": "SelfAbility",
+              "disableAudio": true,
+              "FOJOAIMCOFG": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_Weapon_Elec": {
+          "duration": 2,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_WeaponEffect_Elec",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_Weapon_Fire": {
+          "duration": 2,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_WeaponEffect_Fire",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_Weapon_Ice": {
+          "duration": 2,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_WeaponEffect_Ice",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Varka_Weapon_Water": {
+          "duration": 2,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Male_Claymore_Varka_WeaponEffect_Water",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "abilitySpecials": {
+        "ElementalBurst_Attack1": 0,
+        "ElementalBurst_Attack2": 0
+      },
+      "__unk_Q2982101340": [
+        "_ABILITY_Dungeon_Varka_DoubleBlade"
+      ],
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Varka_TeamElem_ModeBurst",
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "abilityName": "Avatar_Varka_ElementalBurst"
+    }
+  }
+]

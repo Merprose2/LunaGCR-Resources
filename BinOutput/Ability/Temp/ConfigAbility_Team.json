@@ -1,0 +1,138 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Team_TeamChargeMark",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_Ability_TeamChargeMark",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [19.5, 20.5],
+          "modifierNameSteps": ["Blank"],
+          "actionQueues": [
+            [
+              {
+                "$type": "AddGlobalValue",
+                "ratio": 1.0,
+                "key": "_Ability_TeamFullChargeMark",
+                "useLimitRange": true,
+                "maxValue": 1.0,
+                "minValue": 0.0
+              },
+              {
+                "$type": "AddGlobalValue",
+                "ratio": -20.0,
+                "key": "_Ability_TeamChargeMark",
+                "useLimitRange": true,
+                "maxValue": 20.0,
+                "minValue": 0.0
+              }
+            ]
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_Ability_TeamFullChargeMark",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["Blank", "Blank"],
+          "actionQueues": [
+            [
+              {
+                "$type": "RemoveModifier",
+                "target": "CurTeamAvatars",
+                "cdDelta": true,
+                "modifierName": "TeamFullChargeEffect"
+              }
+            ],
+            [
+              {
+                "$type": "ApplyModifier",
+                "target": "CurLocalAvatar",
+                "modifierName": "TeamFullChargeEffect"
+              }
+            ]
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_Ability_AvatarFullChargeMark",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["Blank", "Blank"],
+          "actionQueues": [
+            [
+              {
+                "$type": "RemoveModifier",
+                "target": "CurTeamAvatars",
+                "cdDelta": true,
+                "modifierName": "AvatarFullChargeEffect"
+              }
+            ],
+            [
+              {
+                "$type": "ApplyModifier",
+                "target": "CurTeamAvatars",
+                "cdDelta": true,
+                "modifierName": "AvatarFullChargeEffect"
+              }
+            ]
+          ]
+        }
+      ],
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0
+        },
+        "TeamChargeMark_Decay": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 5.0,
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValue",
+              "ratio": -1.0,
+              "key": "_Ability_TeamChargeMark",
+              "useLimitRange": true,
+              "maxValue": 20.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "TeamFullChargeEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "cdDelta": true,
+              "healLimitedByCasterMaxHPRatio": "Eff_Avatar_WhiteBox_TeamChargeMark",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "AvatarFullChargeEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "cdDelta": true,
+              "healLimitedByCasterMaxHPRatio": "",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "TeamChargeMark_Decay"
+        }
+      ]
+    }
+  }
+]

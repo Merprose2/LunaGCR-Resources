@@ -1,0 +1,1689 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Ability_Avatar_Dive_JellyfishBomb",
+      "modifiers": {
+        "Avatar_Dive_JellyfishBomb_AddSkillInfo": {
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "onAdded": [
+            {
+              "$type": "JFDLPENKFGC",
+              "shieldHP": true,
+              "skillID": 20060
+            },
+            {
+              "$type": "JFDLPENKFGC",
+              "shieldHP": true,
+              "skillID": 20061
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "IIJGFFJMJHA",
+              "shieldHP": true,
+              "skillID": 20060,
+              "refreshAfterRemove": true
+            },
+            {
+              "$type": "IIJGFFJMJHA",
+              "shieldHP": true,
+              "skillID": 20061,
+              "refreshAfterRemove": true
+            }
+          ]
+        },
+        "Avatar_Dive_JellyfishBomb_Hold_Handler": {
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "JIDELJNLJJM",
+              "skillID": 20060,
+              "MKHBIHNOMMK": 0.25,
+              "onReleaseCharged": [
+                {
+                  "$type": "CEJLLLGLEIE",
+                  "shieldHP": true,
+                  "modifierName": "UNIQUE_Dive_JellyfishBomb_SwitchToTrigger"
+                },
+                {
+                  "$type": "PAEEFDCCFEK",
+                  "shieldHP": true,
+                  "modifierName": "JellyFish_Short"
+                },
+                {
+                  "$type": "JNLHJCBOFJB",
+                  "shieldHP": true,
+                  "modifierName": "UNIQUE_Dive_JellyfishBomb_SwitchToTrigger"
+                }
+              ],
+              "onBeginSecondCharged": [
+                {
+                  "$type": "KKDKALJICPJ",
+                  "shieldHP": true,
+                  "modifierName": "Focus_Father"
+                },
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "triggerID": "StartDiveCastTrigger"
+                },
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "triggerID": "StartDiveCastTrigger2"
+                },
+                {
+                  "$type": "PAEEFDCCFEK",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "_ABILITY_Diving_Skill_In_Focus_Skill_Mark",
+                      "ratio": 0.0,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "modifierName": "Focus_Father"
+                }
+              ],
+              "onReleaseSecondCharged": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "triggerID": "EndDiveCastTrigger"
+                }
+              ],
+              "onCancelCharged": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "triggerID": "EndDiveCastTrigger"
+                },
+                {
+                  "$type": "PAEEFDCCFEK",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "_ABILITY_Diving_Skill_In_Focus_Skill_Mark",
+                      "ratio": 2.0
+                    }
+                  ],
+                  "modifierName": "Focus_Remove_Delay"
+                }
+              ],
+              "chargeStateIDs": [
+                "DiveCast_BS",
+                "DiveCast_Loop"
+              ]
+            },
+            {
+              "$type": "PODOKLJMFJL",
+              "globalValueTarget": "Team",
+              "globalValueKey": "_ABILITY_Dive_isInFondanieWater",
+              "valueSteps": [
+                -0.5,
+                0.5
+              ],
+              "modifierNameSteps": [
+                "Clear_Focus_Father"
+              ]
+            }
+          ]
+        },
+        "Clear_Focus_Father": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "elementDurability": 100.0,
+          "onAdded": [
+            {
+              "$type": "KKDKALJICPJ",
+              "shieldHP": true,
+              "modifierName": "Focus_Father"
+            }
+          ]
+        },
+        "Focus_Father": {
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "KCEIHEHGBBE",
+              "normalizedStateIDList": [
+                {
+                  "stateID": "DiveCast_BS"
+                },
+                {
+                  "stateID": "DiveCast_Loop"
+                },
+                {
+                  "stateID": "DiveCast_AS",
+                  "normalizeEnd": 0.14499999582767487
+                }
+              ],
+              "modifierName": "Focus",
+              "OBBDEBIEHMK": ""
+            },
+            {
+              "$type": "JHIFMEALEIA",
+              "stateIDs": [
+                "DiveCast_BS",
+                "DiveCast_Loop"
+              ],
+              "modifierName": "Focus_Remove_Delay_Trigger",
+              "isCheckOnAttach": true,
+              "OBBDEBIEHMK": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "HCBCBBHLDKG",
+              "shieldHP": true,
+              "ratio": 2.0,
+              "key": "_ABILITY_Diving_Skill_In_Focus_Skill_Mark",
+              "param2": 0.0,
+              "param3": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "HCBCBBHLDKG",
+              "shieldHP": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Diving_Skill_In_Focus_Skill_Mark",
+              "param2": 0.0,
+              "param3": 0.0
+            }
+          ]
+        },
+        "Focus_Remove_Delay_Trigger": {
+          "modifierName": "",
+          "duration": 10.0,
+          "elementDurability": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "EndDiveCastTrigger"
+            },
+            {
+              "$type": "PAEEFDCCFEK",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_ABILITY_Diving_Skill_In_Focus_Skill_Mark",
+                  "ratio": 2.0
+                }
+              ],
+              "modifierName": "Focus_Remove_Delay"
+            }
+          ]
+        },
+        "Focus_Remove_Delay": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "duration": 0.5,
+          "elementDurability": 100.0,
+          "thinkInterval": 0.12999999523162842,
+          "onAdded": [
+            {
+              "$type": "HDKCLGEDJDH",
+              "muteRemoteAction": true,
+              "parameter": "Aim_Close",
+              "cameraFogEffectName": "Eff_SkillObj_Absorb_Avatar_Aim"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KKDKALJICPJ",
+              "shieldHP": true,
+              "modifierName": "Focus"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "PAEEFDCCFEK",
+              "shieldHP": true,
+              "modifierName": "JellyFish_Long"
+            }
+          ],
+          "onThinkIntervalIsFixedUpdate": true,
+          "onAvatarOut": [
+            {
+              "$type": "KKDKALJICPJ",
+              "shieldHP": true,
+              "modifierName": "Focus"
+            }
+          ]
+        },
+        "Focus": {
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "NDDAMIHJJLG",
+              "shootingConfig": {
+                "normalShoot": {
+                  "bulletBornAttachPoint": "FocusAnchor",
+                  "detectRangeFromViewport": 100.0,
+                  "autoFocusMinRange": 2.0,
+                  "autoFocusMaxRange": 7.0
+                },
+                "aimingShoot": {
+                  "bulletBornAttachPoint": "FocusAnchor",
+                  "detectRangeFromViewport": 100.0,
+                  "detectRadiusFromViewport": 0.15000000596046448,
+                  "autoFocusMinRange": 2.0,
+                  "autoFocusMaxRange": 25.0
+                }
+              }
+            },
+            {
+              "$type": "JMDJFNFBLIG"
+            },
+            {
+              "$type": "GMNLJEFPMEC",
+              "target": "Team",
+              "startDuration": 0.20000000298023224,
+              "endDuration": 0.30000001192092896,
+              "FBMOIEBDMGH": true
+            },
+            {
+              "$type": "GMNLJEFPMEC",
+              "startDuration": 0.20000000298023224,
+              "endDuration": 0.30000001192092896,
+              "FBMOIEBDMGH": true
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "JNLHJCBOFJB",
+              "target": "Team",
+              "modifierName": "Aim_Camera_Eff"
+            },
+            {
+              "$type": "JNLHJCBOFJB",
+              "modifierName": "Gadget_Loop"
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "PDDIIKBOMEK",
+                  "featureTagIDs": [
+                    1044
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "JJMNPNAOBJD",
+                  "cameraFollowLower": {
+                    "x": 1.0,
+                    "y": -0.05000000074505806,
+                    "z": -1.5
+                  },
+                  "cameraFollowUpper": {
+                    "x": 1.0,
+                    "y": -0.05000000074505806,
+                    "z": -1.2000000476837158
+                  },
+                  "cameraFastFocusMode": true,
+                  "dragButtonName": "Skill2",
+                  "assistance": {
+                    "OCDFOBGFCLP": {},
+                    "NBMIIIKHLEG": {},
+                    "ps5": {},
+                    "other": {
+                      "useGyro": true
+                    }
+                  },
+                  "canMove": false,
+                  "showCrosshair": false,
+                  "DBGKDLCKNFJ": "",
+                  "PGNBPEBANJN": ""
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "PDDIIKBOMEK",
+                  "featureTagIDs": [
+                    1043
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "JJMNPNAOBJD",
+                  "cameraFollowLower": {
+                    "x": 0.800000011920929,
+                    "y": 0.10000000149011612,
+                    "z": -1.600000023841858
+                  },
+                  "cameraFollowUpper": {
+                    "x": 0.800000011920929,
+                    "y": 0.10000000149011612,
+                    "z": -1.2000000476837158
+                  },
+                  "cameraFastFocusMode": true,
+                  "dragButtonName": "Skill2",
+                  "assistance": {
+                    "OCDFOBGFCLP": {},
+                    "NBMIIIKHLEG": {},
+                    "other": {
+                      "useGyro": true
+                    }
+                  },
+                  "canMove": false,
+                  "showCrosshair": false,
+                  "DBGKDLCKNFJ": "",
+                  "PGNBPEBANJN": ""
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "PDDIIKBOMEK",
+                  "featureTagIDs": [
+                    1042
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "JJMNPNAOBJD",
+                  "cameraFollowLower": {
+                    "x": 1.100000023841858,
+                    "y": 0.15000000596046448,
+                    "z": -1.5
+                  },
+                  "cameraFollowUpper": {
+                    "x": 1.100000023841858,
+                    "y": 0.15000000596046448,
+                    "z": -1.100000023841858
+                  },
+                  "cameraFastFocusMode": true,
+                  "dragButtonName": "Skill2",
+                  "assistance": {
+                    "OCDFOBGFCLP": {},
+                    "NBMIIIKHLEG": {},
+                    "other": {
+                      "useGyro": true
+                    }
+                  },
+                  "canMove": false,
+                  "showCrosshair": false,
+                  "DBGKDLCKNFJ": "",
+                  "PGNBPEBANJN": ""
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "PDDIIKBOMEK",
+                  "featureTagIDs": [
+                    1041
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "JJMNPNAOBJD",
+                  "cameraFollowLower": {
+                    "x": 0.8999999761581421,
+                    "y": 0.30000001192092896,
+                    "z": -1.600000023841858
+                  },
+                  "cameraFollowUpper": {
+                    "x": 0.8999999761581421,
+                    "y": 0.30000001192092896,
+                    "z": -1.2000000476837158
+                  },
+                  "cameraFastFocusMode": true,
+                  "dragButtonName": "Skill2",
+                  "assistance": {
+                    "OCDFOBGFCLP": {},
+                    "NBMIIIKHLEG": {},
+                    "other": {
+                      "useGyro": true
+                    }
+                  },
+                  "canMove": false,
+                  "showCrosshair": false,
+                  "DBGKDLCKNFJ": "",
+                  "PGNBPEBANJN": ""
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "PDDIIKBOMEK",
+                  "featureTagIDs": [
+                    1045
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "JJMNPNAOBJD",
+                  "cameraFollowLower": {
+                    "x": 1.100000023841858,
+                    "y": -0.30000001192092896,
+                    "z": -1.600000023841858
+                  },
+                  "cameraFollowUpper": {
+                    "x": 1.100000023841858,
+                    "y": -0.30000001192092896,
+                    "z": -1.2000000476837158
+                  },
+                  "cameraFastFocusMode": true,
+                  "dragButtonName": "Skill2",
+                  "assistance": {
+                    "OCDFOBGFCLP": {},
+                    "NBMIIIKHLEG": {},
+                    "other": {
+                      "useGyro": true
+                    }
+                  },
+                  "canMove": false,
+                  "showCrosshair": false,
+                  "DBGKDLCKNFJ": "",
+                  "PGNBPEBANJN": ""
+                }
+              ]
+            },
+            {
+              "$type": "JNLHJCBOFJB",
+              "modifierName": "VFX"
+            },
+            {
+              "$type": "JBPFICPFOAN",
+              "boolID": "LockMotionFlagExitChannel",
+              "ratio": true
+            },
+            {
+              "$type": "HCBCBBHLDKG",
+              "ratio": 1.0,
+              "key": "_ABILITY_Common_IsChannelState",
+              "param2": 0.0,
+              "param3": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "EEKFHAGNAMM",
+              "shieldHP": true
+            },
+            {
+              "$type": "JBPFICPFOAN",
+              "shieldHP": true,
+              "boolID": "LockMotionFlagExitChannel"
+            },
+            {
+              "$type": "HCBCBBHLDKG",
+              "shieldHP": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Common_IsChannelState",
+              "param2": 0.0,
+              "param3": 0.0
+            },
+            {
+              "$type": "KKDKALJICPJ",
+              "shieldHP": true,
+              "modifierName": "Focus_Father"
+            }
+          ]
+        },
+        "Gadget_Loop": {
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "onAdded": [
+            {
+              "$type": "HCBCBBHLDKG",
+              "target": "Team",
+              "ratio": 2.0,
+              "key": "_ABILITY_WhiteBox_Dive_Team_Trigger",
+              "param2": 0.0,
+              "param3": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "HCBCBBHLDKG",
+              "target": "Team",
+              "ratio": 3.0,
+              "key": "_ABILITY_WhiteBox_Dive_Team_Trigger",
+              "param2": 0.0,
+              "param3": 0.0
+            }
+          ]
+        },
+        "Aim_Camera_Eff": {
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "JEPPPIENMGK",
+              "onAdded": [
+                {
+                  "$type": "ENFIMOAPMBI",
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "enable": true,
+                  "cameraFogEffectName": "Eff_SkillObj_Absorb_Avatar_Aim",
+                  "playerFogEffectName": ""
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "ENFIMOAPMBI",
+                  "shieldHP": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "cameraFogEffectName": "Eff_SkillObj_Absorb_Avatar_Aim",
+                  "playerFogEffectName": ""
+                }
+              ]
+            }
+          ]
+        },
+        "VFX_Trigger": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.5,
+          "elementDurability": 100.0,
+          "onAdded": [
+            {
+              "$type": "COMJPHINKMB",
+              "predicates": [
+                {
+                  "$type": "GKFEMMBFJNK",
+                  "predicates": [
+                    {
+                      "$type": "PDDIIKBOMEK",
+                      "featureTagIDs": [
+                        1044
+                      ]
+                    },
+                    {
+                      "$type": "PDDIIKBOMEK",
+                      "featureTagIDs": [
+                        1042
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "rotationDampTime": "Eff_Avatar_Diving_Gadget_Loop_Attack",
+              "GNJCLBNGGBN": 1.0,
+              "DAFPKJDDJHF": -1.0
+            },
+            {
+              "$type": "COMJPHINKMB",
+              "predicates": [
+                {
+                  "$type": "GKFEMMBFJNK",
+                  "predicates": [
+                    {
+                      "$type": "PDDIIKBOMEK",
+                      "featureTagIDs": [
+                        1043
+                      ]
+                    },
+                    {
+                      "$type": "PDDIIKBOMEK",
+                      "featureTagIDs": [
+                        1041
+                      ]
+                    },
+                    {
+                      "$type": "PDDIIKBOMEK",
+                      "featureTagIDs": [
+                        1045
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "rotationDampTime": "Eff_Avatar_Diving_Gadget_Loop_2_Attack",
+              "GNJCLBNGGBN": 1.0,
+              "DAFPKJDDJHF": -1.0
+            }
+          ]
+        },
+        "VFX": {
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "PDDIIKBOMEK",
+                  "featureTagIDs": [
+                    1044
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "JNLHJCBOFJB",
+                  "modifierName": "VFX_L"
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "PDDIIKBOMEK",
+                  "featureTagIDs": [
+                    1042
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "JNLHJCBOFJB",
+                  "modifierName": "VFX_L"
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "PDDIIKBOMEK",
+                  "featureTagIDs": [
+                    1043
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "JNLHJCBOFJB",
+                  "modifierName": "VFX_R"
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "PDDIIKBOMEK",
+                  "featureTagIDs": [
+                    1041
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "JNLHJCBOFJB",
+                  "modifierName": "VFX_R"
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "PDDIIKBOMEK",
+                  "featureTagIDs": [
+                    1045
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "JNLHJCBOFJB",
+                  "modifierName": "VFX_R"
+                }
+              ]
+            }
+          ]
+        },
+        "VFX_L": {
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_Avatar_Diving_Gadget_Loop",
+              "GNJCLBNGGBN": 1.0,
+              "DAFPKJDDJHF": -1.0
+            }
+          ]
+        },
+        "VFX_R": {
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_Avatar_Diving_Gadget_Loop_2",
+              "GNJCLBNGGBN": 1.0,
+              "DAFPKJDDJHF": -1.0
+            }
+          ]
+        },
+        "JellyFish_Short": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.5,
+          "elementDurability": 100.0,
+          "onAdded": [
+            {
+              "$type": "HCBCBBHLDKG",
+              "target": "Team",
+              "ratio": 1.0,
+              "key": "_ABILITY_WhiteBox_Dive_Team_Trigger",
+              "param2": 0.0,
+              "param3": 0.0
+            },
+            {
+              "$type": "HCBCBBHLDKG",
+              "otherTargets": {
+                "$type": "EHIGEEKOKAM",
+                "configID": 40034107
+              },
+              "shieldHP": true,
+              "ratio": 1.0,
+              "key": "_ABILITY_Jellyfish_Bomb_Kill_Mark",
+              "param2": 0.0,
+              "param3": 0.0
+            },
+            {
+              "$type": "HCBCBBHLDKG",
+              "otherTargets": {
+                "$type": "EHIGEEKOKAM",
+                "configID": 40034108
+              },
+              "shieldHP": true,
+              "ratio": 1.0,
+              "key": "_ABILITY_Jellyfish_Bomb_Kill_Mark",
+              "param2": 0.0,
+              "param3": 0.0
+            },
+            {
+              "$type": "COAIAFHKEJN",
+              "shieldHP": true,
+              "born": {
+                "$type": "FNFCGCHBDDI",
+                "offset": {
+                  "EJJHJBGPAKH": 0.0,
+                  "AODIKJMCHNK": 0.75,
+                  "FOCCKFNJAAC": 1.100000023841858
+                },
+                "useRotation": true
+              },
+              "gadgetID": 40034107
+            }
+          ]
+        },
+        "JellyFish_Long": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "duration": 0.5,
+          "elementDurability": 100.0,
+          "onAdded": [
+            {
+              "$type": "CEJLLLGLEIE",
+              "shieldHP": true,
+              "modifierName": "UNIQUE_Dive_JellyfishBomb_SwitchToTrigger"
+            },
+            {
+              "$type": "PAEEFDCCFEK",
+              "shieldHP": true,
+              "modifierName": "UNIQUE_Dive_JellyfishBomb_SwitchToTrigger"
+            },
+            {
+              "$type": "PAEEFDCCFEK",
+              "modifierName": "VFX_Trigger"
+            },
+            {
+              "$type": "HCBCBBHLDKG",
+              "otherTargets": {
+                "$type": "EHIGEEKOKAM",
+                "configID": 40034107
+              },
+              "shieldHP": true,
+              "ratio": 1.0,
+              "key": "_ABILITY_Jellyfish_Bomb_Kill_Mark",
+              "param2": 0.0,
+              "param3": 0.0
+            },
+            {
+              "$type": "HCBCBBHLDKG",
+              "otherTargets": {
+                "$type": "EHIGEEKOKAM",
+                "configID": 40034108
+              },
+              "shieldHP": true,
+              "ratio": 1.0,
+              "key": "_ABILITY_Jellyfish_Bomb_Kill_Mark",
+              "param2": 0.0,
+              "param3": 0.0
+            },
+            {
+              "$type": "FMDOIHFLFOP",
+              "bulletID": 40034108,
+              "born": {
+                "$type": "JJNBIFKAFHI",
+                "offset": {
+                  "EJJHJBGPAKH": 0.0,
+                  "AODIKJMCHNK": -0.30000001192092896,
+                  "FOCCKFNJAAC": 0.800000011920929
+                },
+                "direction": {
+                  "$type": "AGGJPGKLPCC",
+                  "angleOffset": {
+                    "EJJHJBGPAKH": 0.0,
+                    "AODIKJMCHNK": 0.0,
+                    "FOCCKFNJAAC": 0.0
+                  },
+                  "attachPointName": "FocusAnchor",
+                  "attachPointTargetType": "Self"
+                },
+                "useRotation": true,
+                "attachPointName": "FocusAnchor",
+                "attachPointTargetType": "Self"
+              }
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "shieldHP": true,
+              "triggerID": "EndDiveCastTrigger"
+            }
+          ]
+        },
+        "UNIQUE_Dive_JellyfishBomb_SwitchToTrigger": {
+          "modifierName": "",
+          "reApplyModifierOnStateChange": true,
+          "duration": 60.0,
+          "elementDurability": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ONAMGCLCIEL",
+              "priority": "PlaymodeExtra1",
+              "skillIndex": 1,
+              "skillID": 20061,
+              "KCFHHBIIFFF": true
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "OKOHIAFCCBO",
+              "skillID": 20061,
+              "costStaminaRatio": 0.029999999329447746,
+              "HBAGFJIOCBI": 1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "target": "CurLocalAvatar",
+              "shieldHP": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Diving_SkillCDReduction",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AGDKLKDFAAD",
+                  "shieldHP": true,
+                  "skillID": 20060,
+                  "shareCDType": 1
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "AGDKLKDFAAD",
+                  "shieldHP": true,
+                  "skillID": 20060
+                }
+              ]
+            },
+            {
+              "$type": "HCBCBBHLDKG",
+              "target": "Team",
+              "shieldHP": true,
+              "ratio": 1.0,
+              "key": "_ABILITY_WhiteBox_Dive_Team_Trigger",
+              "param2": 0.0,
+              "param3": 0.0
+            },
+            {
+              "$type": "HCBCBBHLDKG",
+              "otherTargets": {
+                "$type": "EHIGEEKOKAM",
+                "configID": 40034107
+              },
+              "shieldHP": true,
+              "ratio": 1.0,
+              "key": "_ABILITY_Jellyfish_Bomb_Kill_Mark",
+              "param2": 0.0,
+              "param3": 0.0
+            },
+            {
+              "$type": "HCBCBBHLDKG",
+              "otherTargets": {
+                "$type": "EHIGEEKOKAM",
+                "configID": 40034108
+              },
+              "shieldHP": true,
+              "ratio": 1.0,
+              "key": "_ABILITY_Jellyfish_Bomb_Kill_Mark",
+              "param2": 0.0,
+              "param3": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "JNLHJCBOFJB",
+          "modifierName": "Avatar_Dive_JellyfishBomb_AddSkillInfo"
+        },
+        {
+          "$type": "JNLHJCBOFJB",
+          "modifierName": "Avatar_Dive_JellyfishBomb_Hold_Handler"
+        }
+      ],
+      "onRemoved": [
+        {
+          "$type": "CEJLLLGLEIE",
+          "modifierName": "UNIQUE_Dive_JellyfishBomb_SwitchToTrigger"
+        }
+      ],
+      "isDynamicAbility": true,
+      "BECPCDBAAKA": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Ability_Avatar_Dive_JellyfishBomb_Trigger",
+      "onAbilityStart": [
+        {
+          "$type": "DBNBPONOOJO",
+          "skillID": 20061,
+          "damageRatio": "Skill"
+        },
+        {
+          "$type": "CEJLLLGLEIE",
+          "shieldHP": true,
+          "modifierName": "UNIQUE_Dive_JellyfishBomb_SwitchToTrigger"
+        }
+      ],
+      "isDynamicAbility": true,
+      "BECPCDBAAKA": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Ability_Absorb_JellyfishBomb_Short",
+      "abilitySpecials": {
+        "DamageSystemValue": 0.0,
+        "DamageRatio": 0.0
+      },
+      "modifiers": {
+        "JellyfishBomb": {
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "thinkInterval": 0.5,
+          "modifierMixins": [
+            {
+              "$type": "PODOKLJMFJL",
+              "globalValueKey": "_ABILITY_Jellyfish_Bomb_Kill_Mark",
+              "valueSteps": [
+                0.5,
+                1.5
+              ],
+              "modifierNameSteps": [
+                "ExplodeDelay"
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_Avatar_Diving_Jellyfish_Boom_Short",
+              "GNJCLBNGGBN": 1.0,
+              "DAFPKJDDJHF": -1.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "_ABILITY_JellyFishBomb_Owner_Pos",
+              "born": {
+                "$type": "OIFDCKPOJNK",
+                "useRotation": true
+              }
+            },
+            {
+              "$type": "CEJLLLGLEIE",
+              "target": "OriginOwner",
+              "predicates": [
+                {
+                  "$type": "MGHLCMDNAFD",
+                  "target": "Self",
+                  "compareType": "XYZ",
+                  "ratio": 65.0,
+                  "positionKey": "_ABILITY_JellyFishBomb_Owner_Pos"
+                }
+              ],
+              "modifierName": "UNIQUE_Dive_JellyfishBomb_SwitchToTrigger"
+            },
+            {
+              "$type": "HCBCBBHLDKG",
+              "predicates": [
+                {
+                  "$type": "MGHLCMDNAFD",
+                  "target": "Self",
+                  "compareType": "XYZ",
+                  "ratio": 65.0,
+                  "positionKey": "_ABILITY_JellyFishBomb_Owner_Pos"
+                }
+              ],
+              "ratio": 1.0,
+              "key": "_ABILITY_Jellyfish_Bomb_Kill_Mark",
+              "param2": 0.0,
+              "param3": 0.0
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "COMJPHINKMB",
+              "rotationDampTime": "Eff_Avatar_Diving_Jellyfish_Boom_Short_Explode",
+              "GNJCLBNGGBN": 1.0,
+              "DAFPKJDDJHF": -1.0
+            },
+            {
+              "$type": "LIGPIPAOFHM",
+              "shieldHP": true,
+              "key": "DamageSystemValue",
+              "damageRatio": "ElementLevelCo"
+            },
+            {
+              "$type": "BALDOCOLPLH",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "PFFGEMJJFKP",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "FNFCGCHBDDI",
+                    "useRotation": true
+                  },
+                  "useCustomShape": true,
+                  "OIOIGLEBOIA": 3.0,
+                  "PBECHCEMCOF": 4.0
+                },
+                "attackInfo": {
+                  "attackTag": "JellyFish_Bomb",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "actorGrassSubHurtDelta": 0.0,
+                    "actorIceSubHurtDelta": 0.0,
+                    "elementDurability": 0.0,
+                    "ignoreAttackerProperty": true,
+                    "strikeType": "Blunt",
+                    "enBreak": 90.0,
+                    "BKBMPEMFOIH": [
+                      "DamageRatio",
+                      "DamageSystemValue",
+                      "MUL"
+                    ],
+                    "trueDamage": true,
+                    "AIJOFHHIJLL": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "",
+                    "hitImpulseY": "",
+                    "hitImpulseType": "LV5",
+                    "hitHaltTimeScale": 0.05000000074505806
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "KKDKALJICPJ",
+              "modifierName": "JellyfishBomb"
+            }
+          ]
+        },
+        "JellyfishBomb_Gadget_Checker": {
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "onHittingOther": [
+            {
+              "$type": "Predicated",
+              "target": "Other",
+              "predicates": [
+                {
+                  "$type": "HBCOIHCEICM",
+                  "entityTypes": [
+                    "Gadget"
+                  ]
+                }
+              ],
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IS_InUnderseaBacDoor",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "GGAPKMDFJHM",
+                  "logic": "LesserOrEqual",
+                  "ratio": 90.0
+                },
+                {
+                  "$type": "BICJAJCODFH",
+                  "attackTags": [
+                    "JellyFish_Bomb"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "PAEEFDCCFEK",
+                  "target": "Other",
+                  "modifierName": "JellyFish_Bomb_Special_Tag_On_Gadget"
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "target": "Other",
+              "predicates": [
+                {
+                  "$type": "HBCOIHCEICM",
+                  "entityTypes": [
+                    "Platform"
+                  ]
+                }
+              ],
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IS_InUnderseaBacRes",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "GGAPKMDFJHM",
+                  "logic": "LesserOrEqual",
+                  "ratio": 75.0
+                },
+                {
+                  "$type": "BICJAJCODFH",
+                  "attackTags": [
+                    "JellyFish_Bomb"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "PAEEFDCCFEK",
+                  "target": "Other",
+                  "modifierName": "JellyFish_Bomb_Special_Tag_On_Gadget"
+                }
+              ]
+            }
+          ]
+        },
+        "ExplodeDelay": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "elementDurability": 100.0,
+          "onAdded": [
+            {
+              "$type": "GJBCDJCPDKC",
+              "parameter": "Trigger",
+              "attachPoint": "",
+              "damageRatio": "Int",
+              "value": 2,
+              "rotationDampTime": "Eff_Avatar_Diving_Jellyfish_Boom_Short"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "JellyFish_Bomb_Special_Tag_On_Gadget": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 1.0,
+          "elementDurability": 100.0,
+          "onAdded": [
+            {
+              "$type": "MKPGIOJJGDE",
+              "attackInfo": {
+                "attackTag": "JellyFish_Bomb_Special",
+                "attenuationTag": "",
+                "attenuationGroup": "default",
+                "attackProperty": {
+                  "actorGrassSubHurtDelta": 0.0,
+                  "actorIceSubHurtDelta": 0.0,
+                  "elementType": "Water",
+                  "elementDurability": 25.0,
+                  "strikeType": "Slash",
+                  "enBreak": 150.0,
+                  "attackType": "Melee",
+                  "BKBMPEMFOIH": 0.0,
+                  "AIJOFHHIJLL": 0.0
+                },
+                "hitPattern": {
+                  "onHitEffectName": "none",
+                  "hitImpulseY": "",
+                  "hitImpulseType": "LV0",
+                  "hitHaltTimeScale": 0.009999999776482582,
+                  "muteHitText": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "HCBCBBHLDKG",
+          "ratio": 0.0,
+          "key": "_ABILITY_Jellyfish_Bomb_Kill_Mark",
+          "param2": 0.0,
+          "param3": 0.0
+        },
+        {
+          "$type": "JNLHJCBOFJB",
+          "modifierName": "JellyfishBomb"
+        },
+        {
+          "$type": "JNLHJCBOFJB",
+          "modifierName": "JellyfishBomb_Gadget_Checker"
+        },
+        {
+          "$type": "LIGPIPAOFHM",
+          "shieldHP": true,
+          "key": "DamageSystemValue",
+          "damageRatio": "ElementLevelCo"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Ability_Absorb_JellyfishBomb_Hold",
+      "abilitySpecials": {
+        "DamageSystemValue": 0.0,
+        "DamageRatio": 0.0
+      },
+      "modifiers": {
+        "JellyfishBomb": {
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "thinkInterval": 0.5,
+          "modifierMixins": [
+            {
+              "$type": "PODOKLJMFJL",
+              "globalValueKey": "_ABILITY_Jellyfish_Bomb_Kill_Mark",
+              "valueSteps": [
+                0.5,
+                1.5
+              ],
+              "modifierNameSteps": [
+                "ExplodeDelay"
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_Avatar_Diving_Jellyfish_Boom_Hold",
+              "born": {
+                "$type": "JJNBIFKAFHI",
+                "direction": {
+                  "$type": "IPJINJGHHEB",
+                  "directionKey": "_ABILITY_JellyfishBomb_Hold_Initial_Dir"
+                },
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "GNJCLBNGGBN": 1.0,
+              "DAFPKJDDJHF": -1.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "_ABILITY_JellyFishBomb_Owner_Pos",
+              "born": {
+                "$type": "OIFDCKPOJNK",
+                "useRotation": true
+              }
+            },
+            {
+              "$type": "CEJLLLGLEIE",
+              "target": "OriginOwner",
+              "predicates": [
+                {
+                  "$type": "MGHLCMDNAFD",
+                  "target": "Self",
+                  "compareType": "XYZ",
+                  "ratio": 65.0,
+                  "positionKey": "_ABILITY_JellyFishBomb_Owner_Pos"
+                }
+              ],
+              "modifierName": "UNIQUE_Dive_JellyfishBomb_SwitchToTrigger"
+            },
+            {
+              "$type": "HCBCBBHLDKG",
+              "predicates": [
+                {
+                  "$type": "MGHLCMDNAFD",
+                  "target": "Self",
+                  "compareType": "XYZ",
+                  "ratio": 65.0,
+                  "positionKey": "_ABILITY_JellyFishBomb_Owner_Pos"
+                }
+              ],
+              "ratio": 1.0,
+              "key": "_ABILITY_Jellyfish_Bomb_Kill_Mark",
+              "param2": 0.0,
+              "param3": 0.0
+            },
+            {
+              "$type": "PAEEFDCCFEK",
+              "predicates": [
+                {
+                  "$type": "MGHLCMDNAFD",
+                  "target": "Self",
+                  "compareType": "XYZ",
+                  "ratio": 40.0,
+                  "positionKey": "_ABILITY_JellyFishBomb_Owner_Pos"
+                }
+              ],
+              "modifierName": "Hit_Scene_Stop"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "COMJPHINKMB",
+              "rotationDampTime": "Eff_Avatar_Diving_Jellyfish_Boom_Hold_Explode",
+              "GNJCLBNGGBN": 1.0,
+              "DAFPKJDDJHF": -1.0
+            },
+            {
+              "$type": "LIGPIPAOFHM",
+              "shieldHP": true,
+              "key": "DamageSystemValue",
+              "damageRatio": "ElementLevelCo"
+            },
+            {
+              "$type": "BALDOCOLPLH",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "PFFGEMJJFKP",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "FNFCGCHBDDI",
+                    "useRotation": true
+                  },
+                  "useCustomShape": true,
+                  "OIOIGLEBOIA": 8.0,
+                  "PBECHCEMCOF": 10.0
+                },
+                "attackInfo": {
+                  "attackTag": "JellyFish_Bomb",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "actorGrassSubHurtDelta": 0.0,
+                    "actorIceSubHurtDelta": 0.0,
+                    "elementDurability": 0.0,
+                    "ignoreAttackerProperty": true,
+                    "strikeType": "Blunt",
+                    "enBreak": 90.0,
+                    "BKBMPEMFOIH": [
+                      "DamageRatio",
+                      "DamageSystemValue",
+                      "MUL"
+                    ],
+                    "trueDamage": true,
+                    "AIJOFHHIJLL": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "None",
+                    "hitImpulseY": "",
+                    "hitImpulseType": "LV5",
+                    "hitHaltTimeScale": 0.05000000074505806
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "KKDKALJICPJ",
+              "modifierName": "JellyfishBomb"
+            }
+          ]
+        },
+        "ExplodeDelay": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "elementDurability": 100.0,
+          "onAdded": [
+            {
+              "$type": "GJBCDJCPDKC",
+              "parameter": "Trigger",
+              "attachPoint": "",
+              "damageRatio": "Int",
+              "value": 2,
+              "rotationDampTime": "Eff_Avatar_Diving_Jellyfish_Boom_Hold"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "JellyfishBomb_Entity_Checker": {
+          "modifierName": "",
+          "elementDurability": 100.0
+        },
+        "JellyfishBomb_Gadget_Checker": {
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "onHittingOther": [
+            {
+              "$type": "Predicated",
+              "target": "Other",
+              "predicates": [
+                {
+                  "$type": "HBCOIHCEICM",
+                  "entityTypes": [
+                    "Gadget"
+                  ]
+                }
+              ],
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IS_InUnderseaBacDoor",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "GGAPKMDFJHM",
+                  "logic": "LesserOrEqual",
+                  "ratio": 90.0
+                },
+                {
+                  "$type": "BICJAJCODFH",
+                  "attackTags": [
+                    "JellyFish_Bomb"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "PAEEFDCCFEK",
+                  "target": "Other",
+                  "modifierName": "JellyFish_Bomb_Special_Tag_On_Gadget"
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "target": "Other",
+              "predicates": [
+                {
+                  "$type": "HBCOIHCEICM",
+                  "entityTypes": [
+                    "Platform"
+                  ]
+                }
+              ],
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IS_InUnderseaBacRes",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "GGAPKMDFJHM",
+                  "logic": "LesserOrEqual",
+                  "ratio": 75.0
+                },
+                {
+                  "$type": "BICJAJCODFH",
+                  "attackTags": [
+                    "JellyFish_Bomb"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "PAEEFDCCFEK",
+                  "target": "Other",
+                  "modifierName": "JellyFish_Bomb_Special_Tag_On_Gadget"
+                }
+              ]
+            }
+          ]
+        },
+        "JellyFish_Bomb_Special_Tag_On_Gadget": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 1.0,
+          "elementDurability": 100.0,
+          "onAdded": [
+            {
+              "$type": "MKPGIOJJGDE",
+              "attackInfo": {
+                "attackTag": "JellyFish_Bomb_Special",
+                "attenuationTag": "",
+                "attenuationGroup": "default",
+                "attackProperty": {
+                  "actorGrassSubHurtDelta": 0.0,
+                  "actorIceSubHurtDelta": 0.0,
+                  "elementType": "Water",
+                  "elementDurability": 25.0,
+                  "strikeType": "Slash",
+                  "enBreak": 150.0,
+                  "attackType": "Melee",
+                  "BKBMPEMFOIH": 0.0,
+                  "AIJOFHHIJLL": 0.0
+                },
+                "hitPattern": {
+                  "onHitEffectName": "none",
+                  "hitImpulseY": "",
+                  "hitImpulseType": "LV0",
+                  "hitHaltTimeScale": 0.009999999776482582,
+                  "muteHitText": true
+                }
+              }
+            }
+          ]
+        },
+        "Hit_Scene_Stop": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "elementDurability": 100.0,
+          "properties": {
+            "Actor_BulletMoveSpeedRatio": -1.0
+          },
+          "onAdded": [
+            {
+              "$type": "GJBCDJCPDKC",
+              "parameter": "Trigger",
+              "attachPoint": "",
+              "damageRatio": "Int",
+              "value": 1,
+              "rotationDampTime": "Eff_Avatar_Diving_Jellyfish_Boom_Hold"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "HCBCBBHLDKG",
+          "ratio": 0.0,
+          "key": "_ABILITY_Jellyfish_Bomb_Kill_Mark",
+          "param2": 0.0,
+          "param3": 0.0
+        },
+        {
+          "$type": "CDIMDCJAIDN",
+          "key": "_ABILITY_JellyfishBomb_Hold_Initial_Dir",
+          "born": {
+            "$type": "OIFDCKPOJNK",
+            "useRotation": true
+          }
+        },
+        {
+          "$type": "JNLHJCBOFJB",
+          "modifierName": "JellyfishBomb"
+        },
+        {
+          "$type": "JNLHJCBOFJB",
+          "modifierName": "JellyfishBomb_Gadget_Checker"
+        },
+        {
+          "$type": "LIGPIPAOFHM",
+          "shieldHP": true,
+          "key": "DamageSystemValue",
+          "damageRatio": "ElementLevelCo"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "PAEEFDCCFEK",
+          "modifierName": "Hit_Scene_Stop"
+        },
+        {
+          "$type": "CPCLDAKLMIO"
+        }
+      ]
+    }
+  }
+]

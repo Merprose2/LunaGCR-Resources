@@ -1,0 +1,4989 @@
+[
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityMixins": [
+        {
+          "$type": "ButtonHoldChargeMixin",
+          "OnBeginCharged": [
+            {
+              "$type": "SetAnimatorBool",
+              "canBeHandledOnRecover": true,
+              "boolID": "IsCharging",
+              "doOffStage": false,
+              "value": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "chargeTime": 0.11999999731779099,
+          "OnReleaseUncharged": [
+            {
+              "$type": "SetAnimatorInt",
+              "canBeHandledOnRecover": true,
+              "intID": "SkillID",
+              "doOffStage": false,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "skillID": 11151,
+          "OnReleaseCharged": [
+            {
+              "$type": "SetAnimatorBool",
+              "canBeHandledOnRecover": true,
+              "boolID": "IsCharging",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "canBeHandledOnRecover": true,
+              "intID": "SkillID",
+              "doOffStage": false,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "chargeStateIDs": [
+            "Attack01",
+            "Attack02",
+            "Attack03",
+            "Run"
+          ],
+          "secondChargeTime": 0.20000000298023224,
+          "OnBeginUncharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "canBeHandledOnRecover": true,
+              "triggerID": "DoSkill",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "canBeHandledOnRecover": true,
+              "intID": "SkillID",
+              "doOffStage": false,
+              "value": 99,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "canBeHandledOnRecover": true,
+              "boolID": "IsCharging",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "OnBeginSecondCharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "predicates": [
+                {
+                  "$type": "ByLocalAvatarStamina",
+                  "stamina": [
+                    "ExtraAttack_Sword_Stamina_Cost",
+                    "Flexible_Stamina",
+                    "ADD"
+                  ],
+                  "logic": "GreaterOrEqual",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "triggerID": "DoSkill",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "predicates": [
+                {
+                  "$type": "ByLocalAvatarStamina",
+                  "stamina": [
+                    "ExtraAttack_Sword_Stamina_Cost",
+                    "Flexible_Stamina",
+                    "ADD"
+                  ],
+                  "logic": "GreaterOrEqual",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "intID": "SkillID",
+              "doOffStage": false,
+              "value": 6,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "canBeHandledOnRecover": true,
+              "boolID": "IsCharging",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ExtraAttack"
+          ],
+          "value": -1,
+          "modifierName": "ExtraAttack_StaminaCost",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "damagePercentage": "Attack_01",
+          "animEventNames": [
+            "ATK01"
+          ],
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "damagePercentage": "Attack_02",
+          "animEventNames": [
+            "ATK02"
+          ],
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "damagePercentage": "Attack_03_01",
+          "animEventNames": [
+            "ATK03_01"
+          ],
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "damagePercentage": "Attack_03_02",
+          "animEventNames": [
+            "ATK03_02"
+          ],
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "damagePercentage": "Attack_04",
+          "animEventNames": [
+            "ATK04"
+          ],
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "damagePercentage": "ExtraAttack_01",
+          "animEventNames": [
+            "ExtraAttack_1"
+          ],
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "damagePercentage": "ExtraAttack_02",
+          "animEventNames": [
+            "ExtraAttack_2"
+          ],
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "modifiers": {
+        "ExtraAttack_StaminaCost": {
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10001,
+              "costStaminaRatio": "ExtraAttack_Sword_Stamina_Cost",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "cdRatio": 1,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "abilitySpecials": {
+        "Attack_01": 0,
+        "Attack_02": 0,
+        "Attack_03_01": 0,
+        "Attack_03_02": 0,
+        "Attack_04": 0,
+        "ExtraAttack_01": 0,
+        "ExtraAttack_02": 0,
+        "ExtraAttack_Sword_Stamina_Cost": 0,
+        "Flexible_Stamina": -2
+      },
+      "abilityName": "Avatar_Dahlia_ExtraAttack"
+    }
+  },
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Dahlia_ElementalBurst",
+            "Dahlia_ElementalBurst_AS"
+          ],
+          "value": -1,
+          "modifierName": "Dahlia_HideWeapon",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "modifiers": {
+        "Dahlia_HideWeapon": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onRemoved": [
+                {
+                  "$type": "TriggerHideWeapon",
+                  "canBeHandledOnRecover": true,
+                  "useCurve": true,
+                  "visible": true,
+                  "doOffStage": true,
+                  "OAPFIKFJECF": [
+                    "equip01",
+                    "equip02",
+                    "sheathPoint"
+                  ],
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "onAdded": [
+                {
+                  "$type": "TriggerHideWeapon",
+                  "canBeHandledOnRecover": true,
+                  "useCurve": true,
+                  "doOffStage": true,
+                  "OAPFIKFJECF": [
+                    "equip01",
+                    "equip02",
+                    "sheathPoint"
+                  ],
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "abilityName": "Avatar_Dahlia_Weapon_Handler"
+    }
+  },
+  {
+    "Default": {
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackInfo": {
+              "hitPattern": {
+                "hitImpulseType": "LV4",
+                "onHitEffectName": "none",
+                "NPLKKCCDEDJ": {
+                  "value": 1,
+                  "NJICIOFCOPD": true
+                },
+                "hitHaltTimeScale": 0.10000000149011612
+              },
+              "attackTag": "FallingAttack",
+              "cameraShake": {
+                "extension": {
+                  "baseOnCamera": true,
+                  "rangeAttenuation": 0.30000001192092896,
+                  "baseCycle": 0.23999999463558197
+                },
+                "shakeTime": 0.11999999731779099,
+                "shakeRange": 0.23999999463558197,
+                "shakeDistance": 30,
+                "shakeDir": {
+                  "y": 1
+                },
+                "shakeType": "CustomVector"
+              },
+              "forceCameraShake": true,
+              "attackProperty": {
+                "damagePercentage": "FallingAnthem_Normal_Rank_1_Damage",
+                "enBreak": 100,
+                "strikeType": "Blunt",
+                "elementDurability": 25,
+                "attackType": "Melee",
+                "elementRank": 1,
+                "overrideByWeapon": true
+              },
+              "KMBBLIMOMBH": {
+                "LMEIODIINNM": "Shake"
+              },
+              "attenuationGroup": "default",
+              "OLHIHLILEKH": {
+                "onHitEffectName": "default",
+                "NPLKKCCDEDJ": {
+                  "value": 1,
+                  "NJICIOFCOPD": true
+                }
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "BCIDGAKNEBH": {
+                "BPIDFNFCNHP": {
+                  "value": 1,
+                  "NJICIOFCOPD": true
+                }
+              },
+              "radius": 3,
+              "triggerType": "TriggerNoRepeat",
+              "massiveAttackRatio": 1,
+              "fanAngle": 360,
+              "height": 2,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "offset": {
+                  "z": 1,
+                  "x": -0.5
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              }
+            }
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "compareType": "NoneOrEqual",
+              "target": "Target",
+              "forceByCaster": true
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1,
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackInfo": {
+              "hitPattern": {
+                "hitImpulseType": "LV7",
+                "onHitEffectName": "none",
+                "NPLKKCCDEDJ": {
+                  "value": 1,
+                  "NJICIOFCOPD": true
+                },
+                "hitHaltTimeScale": 0.10000000149011612
+              },
+              "attackTag": "FallingAttack",
+              "cameraShake": {
+                "extension": {
+                  "baseOnCamera": true,
+                  "rangeAttenuation": 0.30000001192092896,
+                  "baseCycle": 0.4000000059604645
+                },
+                "shakeTime": 0.20000000298023224,
+                "shakeRange": 0.5,
+                "shakeDistance": 30,
+                "shakeDir": {
+                  "y": 1,
+                  "z": 1
+                },
+                "shakeType": "CustomVector"
+              },
+              "forceCameraShake": true,
+              "attackProperty": {
+                "damagePercentage": "FallingAnthem_Normal_Rank_2_Damage",
+                "enBreak": 150,
+                "strikeType": "Blunt",
+                "elementDurability": 25,
+                "attackType": "Melee",
+                "elementRank": 1,
+                "overrideByWeapon": true
+              },
+              "KMBBLIMOMBH": {
+                "LMEIODIINNM": "Shake"
+              },
+              "attenuationGroup": "default",
+              "OLHIHLILEKH": {
+                "onHitEffectName": "default",
+                "NPLKKCCDEDJ": {
+                  "value": 1,
+                  "NJICIOFCOPD": true
+                }
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "BCIDGAKNEBH": {
+                "BPIDFNFCNHP": {
+                  "value": 1,
+                  "NJICIOFCOPD": true
+                }
+              },
+              "radius": 5,
+              "triggerType": "TriggerNoRepeat",
+              "massiveAttackRatio": 1,
+              "fanAngle": 360,
+              "height": 2,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "offset": {
+                  "z": 1,
+                  "x": -0.5
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              }
+            }
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "target": "Target",
+              "forceByCaster": true,
+              "value": 1
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1,
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "compareType": "NoneOrEqual",
+              "target": "Target",
+              "forceByCaster": true
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "effectTempleteID": -1,
+          "effectPattern": "Eff_Avatar_Sword_FallAnthem_Strike_01",
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "direction": {
+              "maxAngle": 180
+            },
+            "EALBHHJEFGH": {
+              "BKAPGJCLCIO": 180
+            },
+            "value": 10,
+            "onGroundRaycastUpDist": 2
+          },
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "target": "Target",
+              "forceByCaster": true,
+              "value": 1
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "effectTempleteID": -1,
+          "effectPattern": "Eff_Avatar_Sword_FallAnthem_Strike_02",
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "direction": {
+              "maxAngle": 180
+            },
+            "EALBHHJEFGH": {
+              "BKAPGJCLCIO": 180
+            },
+            "value": 10,
+            "onGroundRaycastUpDist": 2
+          },
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityMixins": [
+        {
+          "$type": "AvatarChangeSkillMixin",
+          "flySkillID": 5115010,
+          "priority": "AvatarCommon",
+          "jumpSkillID": 5115010,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS"
+          ],
+          "value": -1,
+          "modifierName": "FallingAnthem_BS_Material",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS"
+          ],
+          "value": -1,
+          "modifierName": "FallingAnthem_Loop_Normal",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS_2",
+            "FallingAnthem_Loop",
+            "FallingAnthem_Loop_Low"
+          ],
+          "value": -1,
+          "modifierName": "FallingAnthem_LoopDamage",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS"
+          ],
+          "value": -1,
+          "modifierName": "FallingAnthem_BS_VelocityForce_Initialize",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS",
+            "FallingAnthem_Loop",
+            "FallingAnthem_AS_1",
+            "FallingAnthem_AS_2"
+          ],
+          "value": -1,
+          "modifierName": "FallingAnthem_Height_Detect",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS",
+            "FallingAnthem_Loop",
+            "FallingAnthem_AS_1",
+            "FallingAnthem_AS_2"
+          ],
+          "value": -1,
+          "modifierName": "FallingAnthem_FallingDamageImmune_01",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS",
+            "FallingAnthem_Loop"
+          ],
+          "value": -1,
+          "modifierName": "Inertia",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS",
+            "FallingAnthem_Loop",
+            "FallingAnthem_AS_1",
+            "FallingAnthem_AS_2"
+          ],
+          "value": -1,
+          "modifierName": "FallingAnthem_OverHead_Camera",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS"
+          ],
+          "value": -1,
+          "modifierName": "FallingAnthem_ClearVelocityForce",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_AS_1",
+            "FallingAnthem_AS_2"
+          ],
+          "value": -1,
+          "modifierName": "FallingAnthem_ClearVelocityForce_AS",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS",
+            "FallingAnthem_Loop"
+          ],
+          "value": -1,
+          "modifierName": "FallingAnthem_AttachWeaponEffect",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS_2"
+          ],
+          "value": -1,
+          "modifierName": "FallingAnthem_CameraRadialBlur",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "modifiers": {
+        "FallingAnthem_AttachWeaponEffect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Sword_FallAnthem_Self_01",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_BS_Material": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Sword_FallAnthem_BS",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_BS_VelocityForce_Initialize": {
+          "properties": {
+            "Actor_AddGravityScale": -2
+          },
+          "onAdded": [
+            {
+              "$type": "RemoveVelocityForce",
+              "canBeHandledOnRecover": true,
+              "forces": [
+                "RushMoveType"
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_CameraRadialBlur": {
+          "duration": 0.23000000417232513,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "CameraBlurMixin",
+              "cameraRadialBlur": {
+                "power": 0.30000001192092896,
+                "fadeTime": 0.15000000596046448
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_ClearVelocityForce": {
+          "onAdded": [
+            {
+              "$type": "RemoveVelocityForce",
+              "canBeHandledOnRecover": true,
+              "forces": [
+                "RushMoveType",
+                "InertiaType"
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_ClearVelocityForce_AS": {
+          "onAdded": [
+            {
+              "$type": "RemoveVelocityForce",
+              "canBeHandledOnRecover": true,
+              "forces": [
+                "RushMoveType",
+                "InertiaType"
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_FallingDamageImmune_01": {
+          "onAdded": [
+            {
+              "$type": "ClearGlobalValue",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "logic": "LesserOrEqual",
+                  "target": "Target",
+                  "TargetAltitudeType": "Both",
+                  "value": "FallingAnthem_Altitude_Lv0"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "minValue": "FallingAnthem_FallingDamageRatio_Lv0",
+              "useLimitRange": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv0",
+              "doOffStage": false,
+              "value": "FallingAnthem_FallingDamageRatio_Lv0",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "logic": "LesserOrEqual",
+                  "target": "Target",
+                  "TargetAltitudeType": "Both",
+                  "value": "FallingAnthem_Altitude_Lv1"
+                },
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "TargetAltitudeType": "Both",
+                  "value": "FallingAnthem_Altitude_Lv0"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "minValue": "FallingAnthem_FallingDamageRatio_Lv1",
+              "useLimitRange": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv1",
+              "doOffStage": false,
+              "value": "FallingAnthem_FallingDamageRatio_Lv1",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "logic": "LesserOrEqual",
+                  "target": "Target",
+                  "TargetAltitudeType": "Both",
+                  "value": "FallingAnthem_Altitude_Lv2"
+                },
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "TargetAltitudeType": "Both",
+                  "value": "FallingAnthem_Altitude_Lv1"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "minValue": "FallingAnthem_FallingDamageRatio_Lv2",
+              "useLimitRange": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv2",
+              "doOffStage": false,
+              "value": "FallingAnthem_FallingDamageRatio_Lv2",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "logic": "LesserOrEqual",
+                  "target": "Target",
+                  "TargetAltitudeType": "Both",
+                  "value": "FallingAnthem_Altitude_Lv3"
+                },
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "TargetAltitudeType": "Both",
+                  "value": "FallingAnthem_Altitude_Lv2"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "minValue": "FallingAnthem_FallingDamageRatio_Lv3",
+              "useLimitRange": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv3",
+              "doOffStage": false,
+              "value": "FallingAnthem_FallingDamageRatio_Lv3",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "TargetAltitudeType": "Both",
+                  "value": "FallingAnthem_Altitude_Lv3"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "minValue": "FallingAnthem_FallingDamageRatio_Lv4",
+              "useLimitRange": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv4",
+              "doOffStage": false,
+              "value": "FallingAnthem_FallingDamageRatio_Lv4",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "FallingAnthem_FallingDamageImmune_02",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_FallingDamageImmune_02": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "canBeHandledOnRecover": true,
+              "overrideMapKey": "FallingAnthem_FallingDamageRatio",
+              "globalValueKey": "_ABILITY_FallingAttack_Altitude",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "FallingAnthem_FallingDamageImmune_03",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_FallingDamageImmune_03": {
+          "properties": {
+            "Actor_FallingDamageRatio": "FallingAnthem_FallingDamageRatio"
+          },
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_Height_Detect": {
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "FallingAnthem_UseCamera",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "canBeHandledOnRecover": true,
+              "useLimitRange": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "logic": "LesserOrEqual",
+                  "target": "Target",
+                  "TargetAltitudeType": "Both",
+                  "value": 2.4000000953674316
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "useLimitRange": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "TargetAltitudeType": "Both",
+                  "value": 2.4000000953674316
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "useLimitRange": true,
+              "maxValue": 1,
+              "doOffStage": false,
+              "value": 5,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "FallingAnthem_UseCamera",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "logic": "LesserOrEqual",
+                  "target": "Target",
+                  "TargetAltitudeType": "Both",
+                  "value": 2.4000000953674316
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "FallingAnthem_UseCamera",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "TargetAltitudeType": "Both",
+                  "value": 2.4000000953674316
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_Landed_Camera": {
+          "onAdded": [
+            {
+              "$type": "AvatarCameraParam",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "logic": "Equal",
+                  "target": "Target",
+                  "parameter": "FallingAnthem_UseCamera",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "cameraParam": {
+                "shouldKeepForceRadius": true,
+                "forceRadiusDuration": 0.10000000149011612,
+                "forceRadius": 6,
+                "FONEFMOIILN": 1,
+                "PFPNEPGCJJC": 1
+              },
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_LoopDamage": {
+          "thinkInterval": 0.30000001192092896,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "hitImpulseType": "LV2",
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    },
+                    "hitHaltTimeScale": 0.019999999552965164
+                  },
+                  "attackTag": "FallingAttack",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeDistance": 20
+                  },
+                  "attackProperty": {
+                    "damagePercentage": "FallingAnthem_Normal_Loop_Damage",
+                    "enBreak": 25,
+                    "strikeType": "Slash",
+                    "attackType": "Melee",
+                    "elementRank": 1,
+                    "overrideByWeapon": true
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 1,
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "z": 1
+                    },
+                    "useRotation": true,
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2
+                  }
+                }
+              },
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_Loop_Normal": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "modifierNameSteps": [
+                "FallingAnthem_Loop_Normal_Rank_1",
+                "FallingAnthem_Loop_Normal_Rank_2"
+              ],
+              "valueSteps": [
+                -1,
+                0.5,
+                1.5
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_ABILITY_FallingAnthem_UseCamera",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_Loop_Normal_Rank_1": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Sword_FallAnthem_Loop_01",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_Loop_Normal_Rank_2": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Sword_FallAnthem_Loop_02",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_OverHead_Camera": {
+          "onAdded": [
+            {
+              "$type": "AvatarCameraParam",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "logic": "Equal",
+                  "target": "Target",
+                  "parameter": "FallingAnthem_UseCamera",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "cameraParam": {
+                "shouldKeepForceRadius": true,
+                "forceRadiusDuration": 0.20000000298023224,
+                "forceRadius": 4.5,
+                "FONEFMOIILN": 1,
+                "PFPNEPGCJJC": 1
+              },
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "FallingAnthem_OverHead_Camera_Remover": {
+          "onAdded": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Inertia": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "ApplyInertiaVelocityMixin",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "abilitySpecials": {
+        "FallingAnthem_Altitude_Lv0": 20,
+        "FallingAnthem_Altitude_Lv1": 40,
+        "FallingAnthem_Altitude_Lv2": 60,
+        "FallingAnthem_Altitude_Lv3": 100,
+        "FallingAnthem_Altitude_Lv4": 200,
+        "FallingAnthem_FallingDamageRatio": 0,
+        "FallingAnthem_FallingDamageRatio_Lv0": -1,
+        "FallingAnthem_FallingDamageRatio_Lv1": -1,
+        "FallingAnthem_FallingDamageRatio_Lv2": -0.8999999761581421,
+        "FallingAnthem_FallingDamageRatio_Lv3": -0.800000011920929,
+        "FallingAnthem_FallingDamageRatio_Lv4": -0.6000000238418579,
+        "FallingAnthem_Normal_Loop_Damage": 0,
+        "FallingAnthem_Normal_Rank_1_Damage": 0,
+        "FallingAnthem_Normal_Rank_2_Damage": 0
+      },
+      "abilityName": "Avatar_Dahlia_FallingAnthem"
+    }
+  },
+  {
+    "Default": {
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 11152,
+          "costStaminaRatio": 1,
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "cdRatio": 1,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "TriggerBullet",
+          "canBeHandledOnRecover": true,
+          "bulletID": 42115002,
+          "onGround": true,
+          "doOffStage": false,
+          "trackTarget": "SelfAttackTarget",
+          "NDHLNDAAFKI": true,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "maxAngle": 180
+            },
+            "EALBHHJEFGH": {
+              "BKAPGJCLCIO": 180
+            },
+            "attachPointName": "FocusAnchor",
+            "useRotation": true,
+            "value": 10,
+            "onGroundRaycastUpDist": 2
+          },
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityMixins": [
+        {
+          "$type": "SkillButtonHoldChargeMixin",
+          "chargeLoopStateIDs": [
+            "Dahlia_ElementalArt_Charge"
+          ],
+          "skillID": 11152,
+          "beforeHoldDuration": -1,
+          "chargeLoopDurations": [
+            10
+          ],
+          "endHoldTrigger": "EndHoldTrigger",
+          "nextLoopTriggerID": "NextLoopTrigger",
+          "beforeStateIDs": [
+            "Dahlia_ElementalArt_BS"
+          ],
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Dahlia_ElementalArt_Charge",
+            "Dahlia_ElementalArt_Custom"
+          ],
+          "value": -1,
+          "modifierName": "Focus",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "value": -1,
+          "normalizedStateIDList": [
+            {
+              "stateID": "Dahlia_ElementalArt_BS",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "Dahlia_ElementalArt_Charge",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "Dahlia_ElementalArt",
+              "normalizeEnd": 0.8500000238418579
+            },
+            {
+              "stateID": "Dahlia_ElementalArt_Custom",
+              "normalizeEnd": 0.8500000238418579
+            }
+          ],
+          "modifierName": "AimingAlertFX",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Dahlia_ElementalArt_Charge"
+          ],
+          "value": -1,
+          "modifierName": "Charge_FX",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "modifiers": {
+        "AimingAlertFX": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalArt_OnAvatar",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Avatar_Dahlia_ElementalArt_DropBall": {
+          "duration": 0.5,
+          "onAdded": [
+            {
+              "$type": "GenerateElemBall",
+              "configID": 2018,
+              "canBeHandledOnRecover": true,
+              "ratio": 1,
+              "doOffStage": true,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "offset": {
+                  "z": 1,
+                  "x": 0.30000001192092896
+                },
+                "useRotation": true,
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "baseEnergy": 9,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1,
+          "stacking": "Unique"
+        },
+        "Avatar_Dahlia_ElementalArt_DropBall_Handler": {
+          "onHittingOther": [
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "target": "Target",
+                  "attackTags": [
+                    "Elemental_Art"
+                  ]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "value": -1,
+                  "target": "Target",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "compareType": "NoneOrEqual",
+                  "target": "Target"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": true,
+                  "modifierName": "Avatar_Dahlia_ElementalArt_DropBall",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Charge_FX": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_FURIOUSMONOLITH_THROW_RANGE",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "value": 10,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalArt_Aim_Line",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Focus": {
+          "onRemoved": [
+            {
+              "$type": "AvatarExitFocus",
+              "CEBHFOEODGL": -1,
+              "canBeHandledOnRecover": true,
+              "FPBBBNBNNHB": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AvatarEnterFocus",
+              "dragButtonName": "Skill2",
+              "DBCACFJHJPA": {
+                "CEBHFOEODGL": -1,
+                "canBeHandledOnRecover": true,
+                "doOffStage": false,
+                "actorIceSubHurtDelta": -1
+              },
+              "DKPKOFBFMON": -60,
+              "ECPEOPJCIAN": -1,
+              "cameraFastFocusMode": true,
+              "assistance": {
+                "other": {
+                  "useGyro": true
+                }
+              },
+              "FBGHIMCBAGM": {
+                "EJCNPOMGDPB": -1,
+                "GLALGOLOCCA": -1,
+                "NHHPDMFLHIG": -1
+              },
+              "canBeHandledOnRecover": true,
+              "GPNPKCIICEE": -1,
+              "HGFKKBFBDKA": true,
+              "vcamFov": 45,
+              "cameraFollowLower": {
+                "x": 0.800000011920929,
+                "y": 0.20000000298023224,
+                "z": -2.5
+              },
+              "cameraFollowMinDegree": -45,
+              "doOffStage": false,
+              "MEEPKNCPLJK": -1,
+              "cameraFollowMaxDegree": 20,
+              "PCDJFEICAFA": {
+                "CMOGFAPEJKP": 1,
+                "EFBEPILJBPB": 1,
+                "HIPOFDPDJPK": -1,
+                "KJDPPHKMJGA": -1
+              },
+              "actorIceSubHurtDelta": -1,
+              "cameraFollowUpper": {
+                "x": 0.5,
+                "y": -0.20000000298023224
+              }
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "GV_EffectChangeAlphaMixin_Team",
+              "startDuration": 0.20000000298023224,
+              "endDuration": 0.30000001192092896,
+              "HAHOACGFOMN": true,
+              "target": "Team",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "modifierName": "Avatar_Dahlia_ElementalArt_DropBall_Handler",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "abilityName": "Avatar_Dahlia_ElementalArt_SkillHoldCharge"
+    }
+  },
+  {
+    "Default": {
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 11152,
+          "costStaminaRatio": 1,
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "cdRatio": 1,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "Predicated",
+          "failActions": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "_ABILITY_Dahlia_Jackbox_Generate_Position",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "offset": {
+                  "z": 5
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 3,
+                "KFHHKFNAKFP": true
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "targetPredicates": [
+            {
+              "$type": "ByHasAttackTarget",
+              "target": "Target"
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "_ABILITY_Dahlia_Jackbox_Generate_Position",
+              "canBeHandledOnRecover": true,
+              "target": "SelfAttackTarget",
+              "doOffStage": true,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 3,
+                "KFHHKFNAKFP": true
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "KillGadget",
+          "gadgetInfo": {
+            "configID": 42115001
+          },
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "CreateGadget",
+          "canBeHandledOnRecover": true,
+          "KIFCNCEFANN": {
+            "enable": true,
+            "IDIMGDPHLCB": 0.5,
+            "JGGJGFDOKFJ": 0.5,
+            "OCJBGKNDDAK": true
+          },
+          "onGround": true,
+          "campID": 1001,
+          "doOffStage": false,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundIgnoreWater": true,
+            "EALBHHJEFGH": {
+              "BKAPGJCLCIO": 180
+            },
+            "useRotation": true,
+            "value": 30,
+            "onGroundRaycastUpDist": 3,
+            "KFHHKFNAKFP": true,
+            "positionKey": "_ABILITY_Dahlia_Jackbox_Generate_Position"
+          },
+          "gadgetID": 42115001,
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityName": "Avatar_Dahlia_ElementalArt"
+    }
+  },
+  {
+    "Default": {
+      "onAbilityStart": [
+        {
+          "$type": "KillGadget",
+          "gadgetInfo": {
+            "configID": 42115001
+          },
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "CreateGadget",
+          "canBeHandledOnRecover": true,
+          "KIFCNCEFANN": {
+            "enable": true,
+            "IDIMGDPHLCB": 0.5,
+            "JGGJGFDOKFJ": 0.5,
+            "OCJBGKNDDAK": true
+          },
+          "onGround": true,
+          "campID": 1001,
+          "doOffStage": false,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundIgnoreWater": true,
+            "EALBHHJEFGH": {
+              "BKAPGJCLCIO": 180
+            },
+            "value": 30,
+            "onGroundRaycastUpDist": 3,
+            "KFHHKFNAKFP": true,
+            "directionKey": "_ABILITY_Dahlia_Jackbox_CustomDir",
+            "positionKey": "_ABILITY_Dahlia_Jackbox_CustomPos"
+          },
+          "gadgetID": 42115001,
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityName": "Avatar_Dahlia_ElementalArt_Hold"
+    }
+  },
+  {
+    "Default": {
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalPos",
+          "setTarget": true,
+          "key": "_ABILITY_Dahlia_Jackbox_CustomPos",
+          "canBeHandledOnRecover": true,
+          "target": "OriginOwner",
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "direction": {
+              "maxAngle": 180
+            },
+            "EALBHHJEFGH": {
+              "BKAPGJCLCIO": 180
+            },
+            "value": 10,
+            "onGroundRaycastUpDist": 2
+          },
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalDir",
+          "setTarget": true,
+          "key": "_ABILITY_Dahlia_Jackbox_CustomDir",
+          "target": "OriginOwner",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelfOwner",
+            "direction": {
+              "maxAngle": 180
+            },
+            "EALBHHJEFGH": {
+              "BKAPGJCLCIO": 180
+            },
+            "useRotation": true,
+            "value": 10,
+            "onGroundRaycastUpDist": 2
+          },
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "TriggerAbility",
+          "canBeHandledOnRecover": true,
+          "target": "Other",
+          "doOffStage": false,
+          "abilityName": "Avatar_Dahlia_ElementalArt_Hold",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityName": "Bullet_Dahlia_ElementalArt_Hold_Bullet"
+    }
+  },
+  {
+    "Default": {
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalPos",
+          "setTarget": true,
+          "key": "_ABILITY_Dahlia_Jackbox_CustomPos",
+          "canBeHandledOnRecover": true,
+          "target": "OriginOwner",
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "direction": {
+              "maxAngle": 180
+            },
+            "EALBHHJEFGH": {
+              "BKAPGJCLCIO": 180
+            },
+            "useRotation": true,
+            "value": 10,
+            "onGroundRaycastUpDist": 2
+          },
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalDir",
+          "setTarget": true,
+          "key": "_ABILITY_Dahlia_Jackbox_CustomDir",
+          "target": "OriginOwner",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelfOwner",
+            "direction": {
+              "maxAngle": 180
+            },
+            "EALBHHJEFGH": {
+              "BKAPGJCLCIO": 180
+            },
+            "useRotation": true,
+            "value": 10,
+            "onGroundRaycastUpDist": 2
+          },
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "TriggerAbility",
+          "canBeHandledOnRecover": true,
+          "target": "Other",
+          "doOffStage": false,
+          "abilityName": "Avatar_Dahlia_ElementalArt_Hold",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityName": "Bullet_Dahlia_ElementalArt_Hold_Bullet_LifeOver"
+    }
+  },
+  {
+    "Default": {
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "canBeHandledOnRecover": true,
+          "effectTempleteID": -1,
+          "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalArt_WaterColumn",
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "direction": {
+              "maxAngle": 180
+            },
+            "EALBHHJEFGH": {
+              "BKAPGJCLCIO": 180
+            },
+            "useRotation": true,
+            "value": 10,
+            "onGroundRaycastUpDist": 2
+          },
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackInfo": {
+              "hitPattern": {
+                "hitImpulseType": "LV7",
+                "retreatType": "ByOriginOwner",
+                "onHitEffectName": "Eff_Avatar_Boy_Sword_Dahlia_ElementalArt_Hit",
+                "NPLKKCCDEDJ": {
+                  "value": 1,
+                  "NJICIOFCOPD": true
+                },
+                "hitHaltTimeScale": 0.05000000074505806
+              },
+              "attackTag": "Elemental_Art",
+              "cameraShake": {
+                "extension": {
+                  "cycleDamping": 0.11999999731779099,
+                  "baseOnCamera": true,
+                  "rangeAttenuation": 0.5,
+                  "baseCycle": 0.11999999731779099
+                },
+                "shakeDistance": 20
+              },
+              "attackProperty": {
+                "elementType": "Water",
+                "damagePercentage": "ElementalArt_Damage",
+                "enBreak": 80,
+                "elementDurability": 25,
+                "attackType": "Range",
+                "elementRank": 1
+              },
+              "KMBBLIMOMBH": {
+                "LMEIODIINNM": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "attenuationGroup": "default",
+              "OLHIHLILEKH": {
+                "onHitEffectName": "default",
+                "NPLKKCCDEDJ": {
+                  "value": 1,
+                  "NJICIOFCOPD": true
+                }
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "BCIDGAKNEBH": {
+                "BPIDFNFCNHP": {
+                  "value": 1,
+                  "NJICIOFCOPD": true
+                }
+              },
+              "radius": 3,
+              "triggerType": "TriggerNoRepeat",
+              "massiveAttackRatio": 1,
+              "fanAngle": 360,
+              "height": 3.5,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "offset": {
+                  "x": -0.5
+                },
+                "useRotation": true,
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              }
+            }
+          },
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1,
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "Predicated",
+          "canBeHandledOnRecover": true,
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Dahlia_Jackbox_TriggerTimer",
+              "value": 1
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByLCTriggerAll"
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "value": -1,
+                  "target": "Target",
+                  "entityTypes": [
+                    "Avatar"
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Jackbox_TriggerJump",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "CreateGadget",
+              "canBeHandledOnRecover": true,
+              "KIFCNCEFANN": {
+                "enable": true,
+                "IDIMGDPHLCB": 0.5,
+                "JGGJGFDOKFJ": 0.5,
+                "OCJBGKNDDAK": true
+              },
+              "onGround": true,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "gadgetID": 42115003,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "KillSelf",
+          "canBeHandledOnRecover": true,
+          "killSelfType": "Normal",
+          "configIdArray": [
+            42115001
+          ],
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "modifiers": {
+        "Blank": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Jackbox_AvatarTrigger_Timer": {
+          "thinkInterval": 0.20000000298023224,
+          "onAdded": [
+            {
+              "$type": "TriggerThinkInterval",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_Dahlia_Jackbox_TriggerTimer",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "value": 0.20000000298023224,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Dahlia_Jackbox_TriggerTimer",
+                  "target": "Target",
+                  "value": 1
+                },
+                {
+                  "$type": "AGFGCHOEAIJ",
+                  "target": "Team"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "doOffStage": false,
+              "modifierName": "Jackbox_TriggerAbility",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Jackbox_Generate_FX": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalArt_Jackbox",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "modifierNameSteps": [
+                "Blank",
+                "Blank"
+              ],
+              "actionQueues": [
+                [
+                  {
+                    "$type": "SendEffectTrigger",
+                    "type": "Bool",
+                    "canBeHandledOnRecover": true,
+                    "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalArt_Jackbox",
+                    "doOffStage": false,
+                    "parameter": "IsActive",
+                    "actorIceSubHurtDelta": -1
+                  }
+                ],
+                [
+                  {
+                    "$type": "SendEffectTrigger",
+                    "type": "Bool",
+                    "canBeHandledOnRecover": true,
+                    "value": 1,
+                    "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalArt_Jackbox",
+                    "doOffStage": false,
+                    "parameter": "IsActive",
+                    "actorIceSubHurtDelta": -1
+                  }
+                ]
+              ],
+              "valueSteps": [
+                -0.5,
+                0.10000000149011612,
+                1.5
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_ABILITY_Dahlia_Jackbox_TriggerTimer",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Jackbox_JumpBuff_Remover": {
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Jackbox_TriggerJump",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Jackbox_Rock_Jump_Camera": {
+          "duration": 0.5,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "CameraModifierMixin",
+              "BFDDKFJLGBN": [
+                "Normal"
+              ],
+              "CHIGAAIBHIP": {
+                "$type": "JNDIMCPKHID",
+                "BFHJKLIIFPD": 6,
+                "CEGKDKBIAAL": 7,
+                "priority": "SkillSpecial",
+                "IBFDECPPEMF": "EaseOutCubic",
+                "JAIPADLFKDP": true,
+                "LIONFILMMFL": "EaseOutCubic",
+                "MHMEECLLJFM": 0.5,
+                "NGKOHPDDKFA": 1,
+                "NJKHOIOFICK": 7
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "CameraModifierMixin",
+              "BFDDKFJLGBN": [
+                "Normal"
+              ],
+              "CHIGAAIBHIP": {
+                "$type": "BHEBIPCGHEC",
+                "priority": "SkillSpecial",
+                "IBFDECPPEMF": "EaseOutCubic",
+                "fov": 50,
+                "LIONFILMMFL": "EaseOutCubic",
+                "MHMEECLLJFM": 0.5,
+                "NGKOHPDDKFA": 1
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "CameraBlurMixin",
+              "cameraRadialBlur": {
+                "blurTime": 0.20000000298023224,
+                "power": 0.30000001192092896,
+                "fadeTime": 0.20000000298023224
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Jackbox_TalkInterrupt": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "TalkStartMixin",
+              "shapeList": [
+                {
+                  "$type": "RemoveModifier",
+                  "canBeHandledOnRecover": true,
+                  "target": "CurLocalAvatar",
+                  "doOffStage": false,
+                  "modifierName": "Jackbox_Rock_Jump_Camera",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Jackbox_TriggerAbility": {
+          "duration": 0.20000000298023224,
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "canBeHandledOnRecover": true,
+              "target": "Other",
+              "doOffStage": false,
+              "abilityName": "SkillObj_Dahlia_Jackbox",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "UNIQUE_Jackbox_TriggerJump": {
+          "isUnique": true,
+          "duration": 1.5,
+          "thinkInterval": 0.20000000298023224,
+          "onAdded": [
+            {
+              "$type": "ForceTriggerJump",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalArt_JumpTail",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "Jackbox_Rock_Jump_Camera",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "muteRemoteAction": true,
+              "pattern": "v5_7_Dahlia_JackBoxTrigger",
+              "canBeHandledOnRecover": true,
+              "target": "CasterOriginOwner",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "onThinkInterval": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "KBJIEFMEMIE",
+                      "FKALHKNGMLF": [
+                        "Jump",
+                        "JumpForRun",
+                        "JumpForWalk",
+                        "JumpForSprint"
+                      ],
+                      "target": "Target",
+                      "MOCOFLKNODH": true
+                    }
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Jackbox_TriggerJump",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "modifierMixins": [
+            {
+              "$type": "RocketJumpMixin",
+              "type": "IttoGangPlank",
+              "CCJAEFBOFDP": true,
+              "extention": {
+                "xzMultiplier": 2.299999952316284,
+                "yMultiplier": 4
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "Jump",
+                "FallingAnthem_AS_1"
+              ],
+              "value": -1,
+              "modifierName": "Jackbox_JumpBuff_Remover",
+              "isCheckOnAttach": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1,
+          "stacking": "Unique"
+        }
+      },
+      "abilitySpecials": {
+        "ElementalArt_Damage": 0
+      },
+      "onKill": [
+        {
+          "$type": "RemoveModifier",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "modifierName": "Jackbox_Generate_FX",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "RemoveModifier",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "modifierName": "Jackbox_AvatarTrigger_Timer",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "modifierName": "Jackbox_Generate_FX",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachModifier",
+          "canBeHandledOnRecover": true,
+          "target": "Team",
+          "doOffStage": false,
+          "modifierName": "Jackbox_TalkInterrupt",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "Predicated",
+          "canBeHandledOnRecover": true,
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "value": -1,
+              "target": "Target",
+              "entityTypes": [
+                "Avatar"
+              ]
+            },
+            {
+              "$type": "ByEntityIsAlive",
+              "target": "Caster"
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "RemoveModifier",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "doOffStage": false,
+              "modifierName": "Jackbox_AvatarTrigger_Timer",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Dahlia_Jackbox_TriggerTimer",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "abilityName": "SkillObj_Dahlia_Jackbox",
+      "onFieldEnter": [
+        {
+          "$type": "Predicated",
+          "canBeHandledOnRecover": true,
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "value": -1,
+              "target": "Target",
+              "entityTypes": [
+                "Monster"
+              ]
+            },
+            {
+              "$type": "ByEntityIsAlive",
+              "target": "Caster"
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "doOffStage": false,
+              "modifierName": "Jackbox_TriggerAbility",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "Predicated",
+          "canBeHandledOnRecover": true,
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "value": -1,
+              "target": "Target",
+              "entityTypes": [
+                "Avatar"
+              ]
+            },
+            {
+              "$type": "ByEntityIsAlive",
+              "target": "Caster"
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "doOffStage": false,
+              "modifierName": "Jackbox_AvatarTrigger_Timer",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "modifiers": {
+        "Jackbox_WindZone": {
+          "duration": 0.6000000238418579,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "value": 0.10000000149011612,
+              "attenuation": 2,
+              "CIDOMCAFFCC": true,
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "value": -1,
+                  "target": "Target",
+                  "reject": true,
+                  "entityTypes": [
+                    "Avatar",
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetWeight",
+                  "weight": 150,
+                  "logic": "LesserOrEqual",
+                  "target": "Target"
+                }
+              ],
+              "EMMNOPNLHOC": 100,
+              "maxNum": 12,
+              "forceType": "WindZoneType",
+              "strength": 8,
+              "innerRadius": 0.5,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "offset": {
+                  "x": 3
+                },
+                "useRotation": true,
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "shapeName": "CircleR3",
+              "PHBBIPIAELD": 10,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "All"
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "modifierName": "Jackbox_WindZone",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "abilityName": "SkillObj_Dahlia_Jackbox_WindZone"
+    }
+  },
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "value": -1,
+          "normalizedStateIDList": [
+            {
+              "stateID": "Dahlia_ElementalArt_BS",
+              "normalizeEnd": 1,
+              "normalizeStart": 0.10000000149011612
+            },
+            {
+              "stateID": "Dahlia_ElementalArt_Charge",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "Dahlia_ElementalArt",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "Dahlia_ElementalArt_Custom",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "Dahlia_ElementalArt_AS",
+              "normalizeEnd": 0.4000000059604645
+            },
+            {
+              "stateID": "Dahlia_ElementalArt_Custom_AS",
+              "normalizeEnd": 0.4000000059604645
+            }
+          ],
+          "modifierName": "UNIQUE_Dahlia_ElementalArt_Book",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "modifiers": {
+        "UNIQUE_Dahlia_ElementalArt_Book": {
+          "isUnique": true,
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_Book_Disappear",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_Book_ElementalArt",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "abilityName": "Avatar_Dahlia_ElementalArt_Book"
+    }
+  },
+  {
+    "Default": {
+      "onAbilityStart": [
+        {
+          "$type": "SendEffectTrigger",
+          "type": "Int",
+          "canBeHandledOnRecover": true,
+          "value": 1,
+          "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_Book_ElementalArt",
+          "doOffStage": true,
+          "parameter": "Level",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SendEffectTrigger",
+          "canBeHandledOnRecover": true,
+          "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_Book_ElementalArt",
+          "doOffStage": false,
+          "parameter": "Open",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityName": "Avatar_Dahlia_ElementalArt_Book_Open"
+    }
+  },
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Dahlia_ElementalBurst"
+          ],
+          "value": -1,
+          "modifierName": "Dahlia_ElementalBurst_Initialize",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "value": -1,
+          "stateID": "Dahlia_ElementalBurst",
+          "modifierName": "Dahlia_ElementalBurst_TriggerAttack",
+          "normalizeEnd": 1,
+          "actorIceSubHurtDelta": -1,
+          "normalizeStart": 0.5799999833106995
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Dahlia_ElementalBurst",
+            "Dahlia_ElementalBurst_AS"
+          ],
+          "value": -1,
+          "modifierName": "Dahlia_ElementalBurst_HeadControl",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Dahlia_ElementalBurst",
+            "Dahlia_ElementalBurst_AS"
+          ],
+          "value": -1,
+          "modifierName": "Dahlia_ElementalBurst_Invincible",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "value": -1,
+          "normalizedStateIDList": [
+            {
+              "stateID": "Dahlia_ElementalBurst",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "Dahlia_ElementalBurst_AS",
+              "normalizeEnd": 0.2160000056028366
+            }
+          ],
+          "modifierName": "Dahlia_ElementalBurst_Book",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "value": -1,
+          "stateID": "Dahlia_ElementalBurst",
+          "modifierName": "Dahlia_ElementalBurst_Weather",
+          "normalizeEnd": 0.5799999833106995,
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "modifiers": {
+        "Dahia_Buff_Freeze_CD": {
+          "duration": "FreezeAddBuff_Timer",
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1,
+          "stacking": "Unique"
+        },
+        "Dahlia_Buff_Detecter_Handler_OnDahlia": {
+          "thinkInterval": 2,
+          "onAdded": [
+            {
+              "$type": "TriggerThinkInterval",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "target": "CurTeamAvatars",
+              "doOffStage": true,
+              "modifierName": "Dahlia_Buff_Detecter_of_Freeze_And_NormalAttack",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "globalValueKey": "_ABILITY_Dahlia_Buff_Counter",
+              "actions": [
+                {
+                  "$type": "CopyGlobalValue",
+                  "canBeHandledOnRecover": true,
+                  "dstTarget": "Team",
+                  "srcKey": "_ABILITY_Dahlia_Buff_Counter",
+                  "dstKey": "_ABILITY_Dahlia_Buff_Counter",
+                  "doOffStage": true,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Dahlia_Buff_Detecter_of_Freeze_And_NormalAttack": {
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "target": "Other",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "value": -1,
+                  "target": "Target",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "compareType": "NoneOrEqual",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "target": "Target",
+                  "attackTags": [
+                    "NormalAttack_01",
+                    "NormalAttack_02",
+                    "NormalAttack_03",
+                    "NormalAttack_04",
+                    "NormalAttack_05",
+                    "NormalAttack_06"
+                  ]
+                },
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByHasModifier",
+                      "target": "Caster",
+                      "modifierName": "Dahlia_Buff_Detecter_of_NormalAttack_CD"
+                    }
+                  ],
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Dahlia_Buff_MaxAdded",
+                  "compareType": "LessAndEqual",
+                  "target": "Caster",
+                  "value": 3
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "canBeHandledOnRecover": true,
+                  "target": "Caster",
+                  "doOffStage": true,
+                  "modifierName": "Dahlia_Buff_Detecter_of_NormalAttack_CD",
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "key": "_ABILITY_Dahlia_NormalAttack_Count",
+                  "canBeHandledOnRecover": true,
+                  "target": "Caster",
+                  "doOffStage": true,
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "Predicated",
+                  "canBeHandledOnRecover": true,
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_Dahlia_NormalAttack_Count",
+                      "target": "Caster",
+                      "value": 4
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "AddGlobalValue",
+                      "key": "_ABILITY_Dahlia_Buff_Counter",
+                      "canBeHandledOnRecover": true,
+                      "target": "Caster",
+                      "useLimitRange": true,
+                      "maxValue": 4,
+                      "doOffStage": true,
+                      "value": 1,
+                      "actorIceSubHurtDelta": -1
+                    },
+                    {
+                      "$type": "AddGlobalValue",
+                      "key": "_ABILITY_Dahlia_Buff_MaxAdded",
+                      "canBeHandledOnRecover": true,
+                      "target": "Caster",
+                      "useLimitRange": true,
+                      "maxValue": 4,
+                      "doOffStage": true,
+                      "value": 1,
+                      "actorIceSubHurtDelta": -1
+                    },
+                    {
+                      "$type": "SetGlobalValue",
+                      "key": "_ABILITY_Dahlia_NormalAttack_Count",
+                      "canBeHandledOnRecover": true,
+                      "target": "Caster",
+                      "doOffStage": true,
+                      "actorIceSubHurtDelta": -1
+                    },
+                    {
+                      "$type": "TriggerAbility",
+                      "canBeHandledOnRecover": true,
+                      "target": "Other",
+                      "doOffStage": true,
+                      "abilityName": "Avatar_Dahlia_Constellation_1",
+                      "actorIceSubHurtDelta": -1
+                    }
+                  ],
+                  "doOffStage": true,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "duration": 3,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "entityTypes": [
+                "Monster"
+              ],
+              "actions": [
+                {
+                  "$type": "Predicated",
+                  "canBeHandledOnRecover": true,
+                  "targetPredicates": [
+                    {
+                      "$type": "ByUnlockTalentParam",
+                      "talentParam": "Dahlia_PermanentSkill_1",
+                      "target": "Caster"
+                    },
+                    {
+                      "$type": "ByNot",
+                      "predicates": [
+                        {
+                          "$type": "ByHasModifier",
+                          "target": "Caster",
+                          "modifierName": "Dahia_Buff_Freeze_CD"
+                        }
+                      ],
+                      "target": "Target"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_Dahlia_Buff_MaxAdded",
+                      "compareType": "LessAndEqual",
+                      "target": "Caster",
+                      "value": 3
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "Predicated",
+                      "failActions": [
+                        {
+                          "$type": "AddGlobalValue",
+                          "key": "_ABILITY_Dahlia_Buff_Counter",
+                          "canBeHandledOnRecover": true,
+                          "target": "Caster",
+                          "useLimitRange": true,
+                          "maxValue": 4,
+                          "doOffStage": true,
+                          "value": 1,
+                          "actorIceSubHurtDelta": -1
+                        },
+                        {
+                          "$type": "AddGlobalValue",
+                          "key": "_ABILITY_Dahlia_Buff_MaxAdded",
+                          "canBeHandledOnRecover": true,
+                          "target": "Caster",
+                          "useLimitRange": true,
+                          "maxValue": 4,
+                          "doOffStage": true,
+                          "value": 1,
+                          "actorIceSubHurtDelta": -1
+                        },
+                        {
+                          "$type": "TriggerAbility",
+                          "canBeHandledOnRecover": true,
+                          "target": "Other",
+                          "doOffStage": true,
+                          "abilityName": "Avatar_Dahlia_Constellation_1",
+                          "actorIceSubHurtDelta": -1
+                        }
+                      ],
+                      "canBeHandledOnRecover": true,
+                      "target": "Caster",
+                      "targetPredicates": [
+                        {
+                          "$type": "ByTargetGlobalValue",
+                          "key": "_ABILITY_Dahlia_Buff_MaxAdded",
+                          "compareType": "LessAndEqual",
+                          "target": "Caster",
+                          "value": 2
+                        }
+                      ],
+                      "successActions": [
+                        {
+                          "$type": "AddGlobalValue",
+                          "key": "_ABILITY_Dahlia_Buff_Counter",
+                          "canBeHandledOnRecover": true,
+                          "target": "Caster",
+                          "useLimitRange": true,
+                          "maxValue": 4,
+                          "doOffStage": true,
+                          "value": 2,
+                          "actorIceSubHurtDelta": -1
+                        },
+                        {
+                          "$type": "AddGlobalValue",
+                          "key": "_ABILITY_Dahlia_Buff_MaxAdded",
+                          "canBeHandledOnRecover": true,
+                          "target": "Caster",
+                          "useLimitRange": true,
+                          "maxValue": 4,
+                          "doOffStage": true,
+                          "value": 2,
+                          "actorIceSubHurtDelta": -1
+                        },
+                        {
+                          "$type": "TriggerAbility",
+                          "canBeHandledOnRecover": true,
+                          "target": "Other",
+                          "doOffStage": true,
+                          "abilityName": "Avatar_Dahlia_Constellation_1",
+                          "actorIceSubHurtDelta": -1
+                        },
+                        {
+                          "$type": "TriggerAbility",
+                          "canBeHandledOnRecover": true,
+                          "target": "Other",
+                          "doOffStage": true,
+                          "abilityName": "Avatar_Dahlia_Constellation_1",
+                          "actorIceSubHurtDelta": -1
+                        }
+                      ],
+                      "doOffStage": true,
+                      "actorIceSubHurtDelta": -1
+                    },
+                    {
+                      "$type": "ApplyModifier",
+                      "canBeHandledOnRecover": true,
+                      "target": "Caster",
+                      "doOffStage": true,
+                      "modifierName": "Dahia_Buff_Freeze_CD",
+                      "actorIceSubHurtDelta": -1
+                    }
+                  ],
+                  "doOffStage": true,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "range": 20,
+              "reactionTypes": [
+                "Freeze"
+              ],
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Dahlia_Buff_Detecter_of_NormalAttack_CD": {
+          "onThinkIntervalIsFixedUpdate": true,
+          "duration": 0.30000001192092896,
+          "thinkInterval": 0.05000000074505806,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "onThinkInterval": [
+            {
+              "$type": "RemoveModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Dahlia_Buff_Detecter_of_NormalAttack_CD",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1,
+          "stacking": "Unique"
+        },
+        "Dahlia_Buff_Fx": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "modifierNameSteps": [
+                "Dahlia_Buff_NoBurstState",
+                "Dahlia_Buff_InBurstState"
+              ],
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_ABILITY_Avatar_Dahlia_Has_Protection_State",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Dahlia_Buff_FxManager": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "modifierNameSteps": [
+                "Dahlia_Buff_Fx"
+              ],
+              "valueSteps": [
+                0.5,
+                100
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_ABILITY_Dahlia_Buff_Counter",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Dahlia_Buff_InBurstState": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "target": "Team",
+              "doOffStage": true,
+              "modifierName": "Dahlia_Buff_InBurstState_FxOnTeam",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Dahlia_Buff_InBurstState_FxOnTeam": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "LLPBMIDLAFP",
+              "HKEOGHMFPJA": true,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_Buff_OnTeam",
+              "LBNOAKFFDOB": 45,
+              "globalValueKey": "_ABILITY_Dahlia_Buff_Counter",
+              "sceneID": 1,
+              "OKMAMEKHNOE": 0.10000000149011612,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Dahlia_Buff_NoBurstState": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "LLPBMIDLAFP",
+              "HKEOGHMFPJA": true,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_Buff_OnDahlia",
+              "LBNOAKFFDOB": 45,
+              "globalValueKey": "_ABILITY_Dahlia_Buff_Counter",
+              "sceneID": 1,
+              "OKMAMEKHNOE": 0.10000000149011612,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Dahlia_ElementBurst_Protection_State": {
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Dahlia_Has_Protection_State",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Dahlia_Buff_Counter",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "canBeHandledOnRecover": true,
+              "target": "Team",
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Dahlia_ElementBurst_Shield_Team_A",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "canBeHandledOnRecover": true,
+              "target": "Team",
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Dahlia_ElementBurst_Shield_Team_B",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "duration": [
+            "ElementalBurst_BuffTime",
+            "_ABILITY_Dahlia_Constellation_4_ExtraBurstTimer",
+            "ADD"
+          ],
+          "thinkInterval": 0.10000000149011612,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "target": "Team",
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_State",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Dahlia_Has_Protection_State",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Dahlia_Buff_Counter",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Dahlia_Buff_MaxAdded",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Dahlia_NormalAttack_Count",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifierToAbility",
+              "canBeHandledOnRecover": true,
+              "target": "Team",
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Dahlia_ElementBurst_Shield_Team_A",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "Dahlia_Buff_Detecter_Handler_OnDahlia",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "Dahlia_Buff_FxManager",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Dahlia_ElementBurst_Shield_Broken_Check",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Dahlia_ElementBurst_Shield_Broken_Check": {
+          "duration": 0.10000000149011612,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Dahlia_Has_Protection_State",
+                  "target": "Target",
+                  "value": 1
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Dahlia_Has_Shield",
+                  "compareType": "NoneOrEqual",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Dahlia_Buff_Counter",
+                  "compareType": "MoreThanAndEqual",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "key": "_ABILITY_Dahlia_Buff_Counter",
+                  "canBeHandledOnRecover": true,
+                  "target": "Caster",
+                  "useLimitRange": true,
+                  "maxValue": 4,
+                  "doOffStage": true,
+                  "value": -1,
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "Predicated",
+                  "failActions": [
+                    {
+                      "$type": "AttachModifierToAbility",
+                      "predicates": [
+                        {
+                          "$type": "ByTargetGlobalValue",
+                          "key": "_ABILITY_Avatar_Dahlia_TeamType",
+                          "target": "Caster",
+                          "value": 1
+                        }
+                      ],
+                      "canBeHandledOnRecover": true,
+                      "target": "Team",
+                      "doOffStage": true,
+                      "modifierName": "UNIQUE_Dahlia_ElementBurst_Shield_Team_B",
+                      "actorIceSubHurtDelta": -1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true,
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_Avatar_Dahlia_TeamType",
+                      "target": "Caster",
+                      "value": 2
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "AttachModifierToAbility",
+                      "canBeHandledOnRecover": true,
+                      "target": "Team",
+                      "doOffStage": true,
+                      "modifierName": "UNIQUE_Dahlia_ElementBurst_Shield_Team_A",
+                      "actorIceSubHurtDelta": -1
+                    }
+                  ],
+                  "doOffStage": true,
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "TriggerAbility",
+                  "canBeHandledOnRecover": true,
+                  "target": "Other",
+                  "doOffStage": true,
+                  "abilityName": "Avatar_Dahlia_Constellation_2",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1,
+          "stacking": "Multiple"
+        },
+        "Dahlia_ElementalBurst_Book": {
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_Book_Disappear",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_Book",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Dahlia_ElementalBurst_HeadControl": {
+          "onRemoved": [
+            {
+              "$type": "EnableHeadControl",
+              "enable": true,
+              "canBeHandledOnRecover": true,
+              "HAEDOGGNEHD": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onAvatarOut": [
+            {
+              "$type": "EnableHeadControl",
+              "enable": true,
+              "canBeHandledOnRecover": true,
+              "HAEDOGGNEHD": true,
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "EnableHeadControl",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Dahlia_ElementalBurst_Initialize": {
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 11155,
+              "costStaminaRatio": 1,
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "cdRatio": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_GatherPower_01",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_GatherPower_02",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Dahlia_ElementalBurst_Invincible": {
+          "duration": 1.5,
+          "onAdded": [
+            {
+              "$type": "AttachAbilityStateResistance",
+              "durationRatio": 1,
+              "canBeHandledOnRecover": true,
+              "resistanceListID": 11002,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "state": "Invincible",
+          "NLBKJKDNFFP": -1
+        },
+        "Dahlia_ElementalBurst_TriggerAttack": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_Attack",
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "muteRemoteAction": true,
+              "pattern": "v5_7_Dahlia_ElementalBurst",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackInfo": {
+                  "hitPattern": {
+                    "hitImpulseType": "LV4",
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "attackTag": "Elemental_Burst",
+                  "cameraShake": {
+                    "extension": {
+                      "cycleDamping": 0.11999999731779099,
+                      "baseOnCamera": true,
+                      "rangeAttenuation": 0.5,
+                      "baseCycle": 0.11999999731779099
+                    },
+                    "shakeDistance": 20
+                  },
+                  "attackProperty": {
+                    "elementType": "Water",
+                    "damagePercentage": "ElementalBurst_Damage",
+                    "enBreak": 100,
+                    "elementDurability": 50,
+                    "attackType": "Range",
+                    "elementRank": 1
+                  },
+                  "KMBBLIMOMBH": {
+                    "LMEIODIINNM": "Shake"
+                  },
+                  "attenuationGroup": "default",
+                  "OLHIHLILEKH": {
+                    "onHitEffectName": "default",
+                    "NPLKKCCDEDJ": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "BCIDGAKNEBH": {
+                    "BPIDFNFCNHP": {
+                      "value": 1,
+                      "NJICIOFCOPD": true
+                    }
+                  },
+                  "radius": 5.5,
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1,
+                  "fanAngle": 360,
+                  "height": 3.5,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "offset": {
+                      "z": 0.800000011920929,
+                      "x": -1
+                    },
+                    "useRotation": true,
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2
+                  }
+                }
+              },
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1,
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "RemoveModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "Dahlia_ElementBurst_Protection_State",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "ApplyModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": false,
+              "modifierName": "Dahlia_ElementBurst_Protection_State",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Dahlia_ElementalBurst_Weather": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWeatherMixin",
+              "transDuration": 0.15000000596046448,
+              "type": "Skill",
+              "weatherPattern": "Weather_Dahlia_ElementalBurst",
+              "duHPRation": 0.75,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "CameraModifierMixin",
+              "BFDDKFJLGBN": [
+                "Normal",
+                "Locking"
+              ],
+              "CHIGAAIBHIP": {
+                "$type": "JNDIMCPKHID",
+                "BFHJKLIIFPD": 6,
+                "CEGKDKBIAAL": 3,
+                "priority": "SkillSpecial",
+                "IBFDECPPEMF": "EaseOutCubic",
+                "JAIPADLFKDP": true,
+                "LIONFILMMFL": "EaseOutCubic",
+                "MHMEECLLJFM": 0.5,
+                "NGKOHPDDKFA": 0.30000001192092896,
+                "NJKHOIOFICK": 3
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "CameraModifierMixin",
+              "BFDDKFJLGBN": [
+                "Normal",
+                "Locking"
+              ],
+              "CHIGAAIBHIP": {
+                "$type": "BHEBIPCGHEC",
+                "priority": "SkillSpecial",
+                "IBFDECPPEMF": "EaseOutCubic",
+                "fov": 65,
+                "LIONFILMMFL": "EaseOutCubic",
+                "MHMEECLLJFM": 0.5,
+                "NGKOHPDDKFA": 0.30000001192092896
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "CameraModifierMixin",
+              "BFDDKFJLGBN": [
+                "Normal",
+                "Locking"
+              ],
+              "CHIGAAIBHIP": {
+                "$type": "JPPFIINCHKO",
+                "priority": "SkillSpecial",
+                "GGEOHNJFFJC": 10,
+                "HPDFKPCHBEC": "EaseOutCubic",
+                "IFJEHNKFMII": "Absolute",
+                "JAIPADLFKDP": true,
+                "JNLDMAGHPGI": true,
+                "lerpDuration": 0.5
+              },
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "UNIQUE_Dahlia_ELementalBurst_Shield_Endure_OnAvatar": {
+          "isUnique": true,
+          "properties": {
+            "Actor_EndureDelta": 0
+          },
+          "reApplyModifierOnStateChange": true,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1,
+          "stacking": "Unique"
+        },
+        "UNIQUE_Dahlia_ELementalBurst_Shield_Endure_OnTeam": {
+          "isUnique": true,
+          "duration": 0.10000000149011612,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "UNIQUE_Dahlia_ELementalBurst_Shield_Endure_OnAvatar",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "UNIQUE_Dahlia_ElementBurst_Shield_Child_A": {
+          "isUnique": true,
+          "properties": {
+            "Actor_EndureDelta": 0
+          },
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "GlobalSubShieldMixin",
+              "LBFJBJLIOJM": true,
+              "mainShieldModifierName": "UNIQUE_Dahlia_ElementBurst_Shield_Team_A",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1,
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByHitDamage",
+                      "target": "Target"
+                    },
+                    {
+                      "$type": "ByHitEnBreak",
+                      "target": "Target"
+                    }
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "canBeHandledOnRecover": true,
+                  "target": "Team",
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Dahlia_ElementBurst_Shield_Hit_Handler",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ]
+        },
+        "UNIQUE_Dahlia_ElementBurst_Shield_Child_B": {
+          "isUnique": true,
+          "properties": {
+            "Actor_EndureDelta": 0
+          },
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "GlobalSubShieldMixin",
+              "LBFJBJLIOJM": true,
+              "mainShieldModifierName": "UNIQUE_Dahlia_ElementBurst_Shield_Team_B",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1,
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByHitDamage",
+                      "target": "Target"
+                    },
+                    {
+                      "$type": "ByHitEnBreak",
+                      "target": "Target"
+                    }
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "canBeHandledOnRecover": true,
+                  "target": "Team",
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Dahlia_ElementBurst_Shield_Hit_Handler",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ]
+        },
+        "UNIQUE_Dahlia_ElementBurst_Shield_Hit_Handler": {
+          "isUnique": true,
+          "duration": 0.5,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_Shield",
+              "doOffStage": false,
+              "parameter": "BeHit",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1,
+          "stacking": "Unique"
+        },
+        "UNIQUE_Dahlia_ElementBurst_Shield_Team_A": {
+          "isUnique": true,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Dahlia_Has_Shield",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_Shield_Broke",
+              "scale": 1,
+              "doOffStage": true,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "ApplyModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Dahlia_ElementBurst_Shield_Broken_Check",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Dahlia_Has_Shield",
+                  "compareType": "NoneOrEqual",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Dahlia_Buff_Counter",
+                  "compareType": "MoreThanAndEqual",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "canBeHandledOnRecover": true,
+                  "target": "Team",
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Dahlia_ELementalBurst_Shield_Endure_OnTeam",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Dahlia_Has_Shield",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "doOffStage": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Dahlia_TeamType",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "doOffStage": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "predicates": [
+                {
+                  "$type": "ByHasModifier",
+                  "target": "Caster",
+                  "modifierName": "Dahlia_ElementalBurst_TriggerAttack"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_Shield",
+              "doOffStage": false,
+              "parameter": "Born_Short",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "GlobalMainShieldMixin",
+              "showDamageText": "INFO_ELITE_DEFENCE",
+              "targetMuteHitEffect": true,
+              "EFCCOMMILBA": 360,
+              "childShieldModifierName": "UNIQUE_Dahlia_ElementBurst_Shield_Child_A",
+              "maxShieldByHPRatio": "Shield_MaxHpRatio",
+              "shieldHP": "Shield_HpValue",
+              "onShieldBroken": [
+                {
+                  "$type": "RemoveUniqueModifier",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Dahlia_ElementBurst_Shield_Team_A",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_Shield",
+              "shieldType": "Avatar_Water",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1,
+          "stacking": "Unique"
+        },
+        "UNIQUE_Dahlia_ElementBurst_Shield_Team_B": {
+          "isUnique": true,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Dahlia_Has_Shield",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "FireEffect",
+              "canBeHandledOnRecover": true,
+              "effectTempleteID": -1,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_Shield_Broke",
+              "scale": 1,
+              "doOffStage": true,
+              "born": {
+                "direction": {
+                  "maxAngle": 180
+                },
+                "EALBHHJEFGH": {
+                  "BKAPGJCLCIO": 180
+                },
+                "value": 10,
+                "onGroundRaycastUpDist": 2
+              },
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "ApplyModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Dahlia_ElementBurst_Shield_Broken_Check",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Avatar_Dahlia_Has_Shield",
+                  "compareType": "NoneOrEqual",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Dahlia_Buff_Counter",
+                  "compareType": "MoreThanAndEqual",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "canBeHandledOnRecover": true,
+                  "target": "Team",
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Dahlia_ELementalBurst_Shield_Endure_OnTeam",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Dahlia_Has_Shield",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "doOffStage": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Dahlia_TeamType",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "doOffStage": true,
+              "value": 2,
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "predicates": [
+                {
+                  "$type": "ByHasModifier",
+                  "target": "Caster",
+                  "modifierName": "Dahlia_ElementalBurst_TriggerAttack"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_Shield",
+              "doOffStage": false,
+              "parameter": "Born_Short",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "GlobalMainShieldMixin",
+              "showDamageText": "INFO_ELITE_DEFENCE",
+              "targetMuteHitEffect": true,
+              "EFCCOMMILBA": 360,
+              "childShieldModifierName": "UNIQUE_Dahlia_ElementBurst_Shield_Child_B",
+              "maxShieldByHPRatio": "Shield_MaxHpRatio",
+              "shieldHP": "Shield_HpValue",
+              "onShieldBroken": [
+                {
+                  "$type": "RemoveUniqueModifier",
+                  "canBeHandledOnRecover": true,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Dahlia_ElementBurst_Shield_Team_B",
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_Shield",
+              "shieldType": "Avatar_Water",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1,
+          "stacking": "Unique"
+        }
+      },
+      "abilitySpecials": {
+        "ElementalBurst_BuffTime": 0,
+        "ElementalBurst_Damage": 0,
+        "FreezeAddBuff_Timer": 0,
+        "Shield_HpValue": 0,
+        "Shield_MaxHpRatio": 0
+      },
+      "__unk_Q2982101340": [
+        "_ABILITY_Dahlia_Constellation_4_ExtraBurstTimer"
+      ],
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Dahlia_Has_Protection_State",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Avatar_Dahlia_Has_Shield",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "abilityName": "Avatar_Dahlia_ElementalBurst"
+    }
+  },
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "modifierNameSteps": [
+            "Avatar_Dahlia_PermanentSkill_2_Handler_OnDahlia"
+          ],
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_ABILITY_Avatar_Dahlia_Has_Protection_State",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "modifiers": {
+        "Avatar_Dahlia_PermanentSkill_2_Buff": {
+          "properties": {
+            "Animator_AttackSpeedRatio": "_ABILITY_Dahlia_AttackSpeedBuff"
+          },
+          "reApplyModifierOnStateChange": true,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Avatar_Dahlia_PermanentSkill_2_Handler_OnDahlia": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "target": "Team",
+              "doOffStage": true,
+              "modifierName": "Avatar_Dahlia_PermanentSkill_2_Handler_OnTeam",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Avatar_Dahlia_PermanentSkill_2_Handler_OnTeam": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "Avatar_Dahlia_PermanentSkill_2_OnCurAvatar",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Avatar_Dahlia_PermanentSkill_2_OnCurAvatar": {
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Dahlia_AttackSpeedBuff",
+              "canBeHandledOnRecover": true,
+              "target": "CurLocalAvatar",
+              "useLimitRange": true,
+              "maxValue": "MaxAttackSpeed",
+              "doOffStage": true,
+              "value": [
+                "FIGHT_PROP_MAX_HP",
+                "HpToSpeed_Ratio",
+                "MUL"
+              ],
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Avatar_Dahlia_PermanentSkill_2_Buff",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Dahlia_AttackSpeedBuff",
+              "canBeHandledOnRecover": true,
+              "target": "CurLocalAvatar",
+              "useLimitRange": true,
+              "maxValue": "MaxAttackSpeed",
+              "doOffStage": true,
+              "value": [
+                "FIGHT_PROP_MAX_HP",
+                "HpToSpeed_Ratio",
+                "MUL"
+              ],
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "RemoveModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Avatar_Dahlia_PermanentSkill_2_Buff",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "Avatar_Dahlia_PermanentSkill_2_Buff",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "abilitySpecials": {
+        "HpToSpeed_Ratio": 0,
+        "MaxAttackSpeed": 0
+      },
+      "__unk_Q2982101340": [
+        "_ABILITY_Dahlia_AttackSpeedBuff"
+      ],
+      "abilityName": "Avatar_Dahlia_PermanentSkill_2"
+    }
+  },
+  {
+    "Default": {
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "modifierName": "Avatar_Dahlia_Constellation_1_ReviveEnergy",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "modifiers": {
+        "Avatar_Dahlia_Constellation_1_ReviveEnergy": {
+          "duration": 0.5,
+          "onAdded": [
+            {
+              "$type": "ReviveElemEnergy",
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "value": "EnergyValue",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1,
+          "stacking": "Multiple"
+        }
+      },
+      "abilitySpecials": {
+        "EnergyValue": 0
+      },
+      "abilityName": "Avatar_Dahlia_Constellation_1"
+    }
+  },
+  {
+    "Default": {
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "modifierName": "Avatar_Dahlia_Constellation_2_Handler",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "modifiers": {
+        "Avatar_Dahlia_Constellation_2_Handler": {
+          "duration": "Buff_Timer",
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "modifierNameSteps": [
+                "Avatar_Dahlia_Constellation_2_ShieldUp_OnDahlia"
+              ],
+              "valueSteps": [
+                0.5,
+                1.5
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_ABILITY_Avatar_Dahlia_Has_Shield",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Avatar_Dahlia_Constellation_2_ShieldUp_OnAvatar": {
+          "properties": {
+            "Actor_ShieldCostMinusRatio": "ShieldMinusRatio"
+          },
+          "reApplyModifierOnStateChange": true,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Avatar_Dahlia_Constellation_2_ShieldUp_OnDahlia": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "target": "Team",
+              "doOffStage": true,
+              "modifierName": "Avatar_Dahlia_Constellation_2_ShieldUp_OnTeam",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Avatar_Dahlia_Constellation_2_ShieldUp_OnTeam": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "Avatar_Dahlia_Constellation_2_ShieldUp_OnAvatar",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "abilitySpecials": {
+        "Buff_Timer": 0,
+        "ShieldMinusRatio": 0
+      },
+      "abilityName": "Avatar_Dahlia_Constellation_2"
+    }
+  },
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilitySpecials": {
+        "Extra_BurstTimer": 0
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Dahlia_Constellation_4_ExtraBurstTimer",
+          "canBeHandledOnRecover": true,
+          "doOffStage": false,
+          "value": "Extra_BurstTimer",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "abilityName": "Avatar_Dahlia_Constellation_4"
+    }
+  },
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "modifierNameSteps": [
+            "Avatar_Dahlia_Constellation_6_Handler"
+          ],
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_ABILITY_Avatar_Dahlia_Has_Protection_State",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "modifiers": {
+        "Avatar_Dahlia_Constellation_6_Handler": {
+          "onKill": [
+            {
+              "$type": "Predicated",
+              "canBeHandledOnRecover": true,
+              "target": "Caster",
+              "targetPredicates": [
+                {
+                  "$type": "BySkillReady",
+                  "skillID": 11156,
+                  "target": "Caster"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "DebugLog",
+                  "canBeHandledOnRecover": true,
+                  "content": "复活",
+                  "doOffStage": false,
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "ReviveAvatar",
+                  "canBeHandledOnRecover": true,
+                  "target": "CurLocalAvatar",
+                  "value": 1,
+                  "doOffStage": true,
+                  "amountByTargetMaxHPRatio": 1,
+                  "actorIceSubHurtDelta": -1
+                },
+                {
+                  "$type": "AvatarSkillStart",
+                  "skillID": 11156,
+                  "costStaminaRatio": 1,
+                  "canBeHandledOnRecover": true,
+                  "GCIJLOADFLI": true,
+                  "target": "Caster",
+                  "doOffStage": true,
+                  "cdRatio": 1,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "doOffStage": false,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "target": "Team",
+              "doOffStage": false,
+              "modifierName": "Avatar_Dahlia_Constellation_6_OnTeam",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "DoReviveMixin",
+              "AHAKLHAGDIL": true,
+              "type": "OffStage",
+              "HODFDCBJJFG": true,
+              "IHEIAOHOBGO": [
+                {
+                  "$type": "FireEffect",
+                  "canBeHandledOnRecover": true,
+                  "effectTempleteID": -1,
+                  "target": "CurLocalAvatar",
+                  "effectPattern": "Eff_Avatar_Boy_Sword_Dahlia_ElementalBurst_Revive",
+                  "scale": 1,
+                  "doOffStage": true,
+                  "born": {
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "EALBHHJEFGH": {
+                      "BKAPGJCLCIO": 180
+                    },
+                    "value": 10,
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "LOGMAFOLNDI": [
+                {
+                  "$type": "Predicated",
+                  "canBeHandledOnRecover": true,
+                  "target": "Caster",
+                  "targetPredicates": [
+                    {
+                      "$type": "BySkillReady",
+                      "skillID": 11156,
+                      "target": "Caster"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "DebugLog",
+                      "canBeHandledOnRecover": true,
+                      "content": "复活",
+                      "doOffStage": true,
+                      "actorIceSubHurtDelta": -1
+                    },
+                    {
+                      "$type": "ReviveAvatar",
+                      "canBeHandledOnRecover": true,
+                      "target": "CurLocalAvatar",
+                      "value": 1,
+                      "doOffStage": true,
+                      "amountByTargetMaxHPRatio": 1,
+                      "actorIceSubHurtDelta": -1
+                    },
+                    {
+                      "$type": "AvatarSkillStart",
+                      "skillID": 11156,
+                      "costStaminaRatio": 1,
+                      "canBeHandledOnRecover": true,
+                      "target": "Caster",
+                      "doOffStage": true,
+                      "cdRatio": 1,
+                      "actorIceSubHurtDelta": -1
+                    }
+                  ],
+                  "doOffStage": true,
+                  "actorIceSubHurtDelta": -1
+                }
+              ],
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "Avatar_Dahlia_Constellation_6_OnAvatar_AtkSpeedUp": {
+          "properties": {
+            "Animator_AttackSpeedRatio": "Extra_AtkSpeedRatio"
+          },
+          "reApplyModifierOnStateChange": true,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        },
+        "Avatar_Dahlia_Constellation_6_OnTeam": {
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "Avatar_Dahlia_Constellation_6_OnAvatar_AtkSpeedUp",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "abilitySpecials": {
+        "Extra_AtkSpeedRatio": 0
+      },
+      "abilityName": "Avatar_Dahlia_Constellation_6"
+    }
+  },
+  {
+    "Default": {
+      "CAKPDBGADEA": {
+        "minus_one": -1,
+        "elementDurability": 100,
+        "isLimitedProperties": true,
+        "NLBKJKDNFFP": -1
+      },
+      "modifiers": {
+        "Avatar_Dahlia_Talent_RunningInTheSun_Handler": {
+          "thinkInterval": 5,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "canBeHandledOnRecover": true,
+              "target": "CurTeamAvatars",
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Avatar_Dahlia_Talent_RunningInTheSun_Mixin",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "UNIQUE_Avatar_Dahlia_Talent_RunningInTheSun_Mixin": {
+          "isUnique": true,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "modifierMixins": [
+            {
+              "$type": "AttachToDayNightMixin",
+              "IENGEHOJCIL": true,
+              "modifierName": "UNIQUE_Avatar_Dahlia_Talent_RunningInTheSun_Predicate",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "UNIQUE_Avatar_Dahlia_Talent_RunningInTheSun_Predicate": {
+          "isUnique": true,
+          "thinkInterval": 5,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "ByCurrentSceneTypes",
+                  "target": "Target",
+                  "SceneTypes": [
+                    "SCENE_WORLD",
+                    "SCENE_ROOM"
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Avatar_Dehya_Talent_RunningInTheSun",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "ByCurrentSceneTypes",
+                  "target": "Target",
+                  "SceneTypes": [
+                    "SCENE_WORLD",
+                    "SCENE_ROOM"
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Avatar_Dehya_Talent_RunningInTheSun",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "NLBKJKDNFFP": -1
+        },
+        "UNIQUE_Avatar_Dehya_Talent_RunningInTheSun": {
+          "isUnique": true,
+          "properties": {
+            "Animator_MoveSpeedRatio": 0.10000000149011612
+          },
+          "reApplyModifierOnStateChange": true,
+          "minus_one": -1,
+          "elementDurability": 100,
+          "isLimitedProperties": true,
+          "NLBKJKDNFFP": -1
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "canBeHandledOnRecover": true,
+          "target": "CurTeamAvatars",
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Avatar_Dahlia_Talent_RunningInTheSun_Mixin",
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachModifier",
+          "canBeHandledOnRecover": true,
+          "doOffStage": true,
+          "modifierName": "Avatar_Dahlia_Talent_RunningInTheSun_Handler",
+          "actorIceSubHurtDelta": -1
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Avatar_Dahlia_PermanentSkill_3"
+    }
+  }
+]
