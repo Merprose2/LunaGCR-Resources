@@ -36,8 +36,8 @@ jobs:
     - name: Check out LunaGC server repository
       uses: actions/checkout@v4
       with:
-        repository: Rafs-kk/LunaGC-6.6
-        ref: 6.6.0
+        repository: Merprose2/LunaGCR-Resources
+        ref: 7.0.0
         path: server
         fetch-depth: 1
 
@@ -99,7 +99,7 @@ jobs:
         if-no-files-found: error
         retention-days: 30
 
-    - name: Publish rolling 7.0 resource-cache release
+    - name: Publish 7.0 resource-cache release
       if: github.event_name == 'push' && github.ref == 'refs/heads/7.0'
       env:
         GH_TOKEN: ${{ github.token }}
@@ -110,14 +110,16 @@ jobs:
         SERVER_COMMIT="${{ steps.commits.outputs.server_commit }}"
         CACHE_SHA256="$(sha256sum LunaGC-7.0-resources.cache | cut -d ' ' -f 1)"
 
-        gh release delete latest-cache \
-          --cleanup-tag \
-          --yes || true
+        if gh release view release >/dev/null 2>&1; then
+          gh release delete release \
+            --cleanup-tag \
+            --yes
+        fi
 
-        gh release create latest-cache \
+        gh release create release \
           LunaGC-7.0-resources.cache \
           --target "${GITHUB_SHA}" \
-          --title "Latest LunaGC 7.0 Resource Cache" \
+          --title "LunaGC 7.0 Resource Cache" \
           --notes "Automatically generated complete LunaGC 7.0 resource cache.
 
         Resources repository: Merprose2/LunaGCR-Resources
@@ -129,5 +131,4 @@ jobs:
         Server compiler commit: ${SERVER_COMMIT}
 
         SHA-256: ${CACHE_SHA256}" \
-          --prerelease \
-          --latest=false
+          --latest
