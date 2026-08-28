@@ -28,6 +28,7 @@ npcs = {
 
 -- 装置
 gadgets = {
+	{ config_id = 16002, gadget_id = 70210106, pos = { x = -1019.423, y = -47.425, z = 4569.429 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 36, drop_tag = "沙虫", showcutscene = true, persistent = true, boss_chest = { monster_config_id = 16001, resin = 40, life_time = 600, take_num = 100 }, area_id = 32 }
 }
 
 -- 区域
@@ -37,7 +38,7 @@ regions = {
 
 -- 触发器
 triggers = {
-	{ config_id = 1016004, name = "ANY_MONSTER_DIE_16004", event = EventType.EVENT_ANY_MONSTER_DIE, source = "", condition = "condition_EVENT_ANY_MONSTER_DIE_16004", action = "" }
+	{ config_id = 1016004, name = "ANY_MONSTER_DIE_16004", event = EventType.EVENT_ANY_MONSTER_DIE, source = "", condition = "condition_EVENT_ANY_MONSTER_DIE_16004", action = "action_EVENT_ANY_MONSTER_DIE_16004" }
 }
 
 -- 变量
@@ -89,6 +90,17 @@ function condition_EVENT_ANY_MONSTER_DIE_16004(context, evt)
 	end
 	
 	return true
+end
+
+-- 触发操作
+function action_EVENT_ANY_MONSTER_DIE_16004(context, evt)
+	-- 创建boss奖励花
+	if 0 ~= ScriptLib.CreateGadget(context, { config_id = 16002 }) then
+		ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : create Setekh Wenut boss chest failed")
+		return -1
+	end
+	
+	return 0
 end
 
 require "V2_0/SetPerformanceOptimizationWithRegion_V2.0"
