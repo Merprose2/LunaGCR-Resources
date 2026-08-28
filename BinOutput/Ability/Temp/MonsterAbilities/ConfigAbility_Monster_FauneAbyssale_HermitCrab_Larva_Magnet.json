@@ -1,0 +1,2065 @@
+[
+  {
+    "Default": {
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_InShell_Start",
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "value": true,
+          "boolID": "InShell",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_InShell_End",
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "InShell",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_ReinitInShellToNormalCD",
+      "onAbilityStart": [
+        {
+          "$type": "ReTriggerAISkillInitialCD",
+          "skillIDs": [
+            13011,
+            13012
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_NK_SingleMag_Pole_1",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_NK_SingleMag_FieldType_1",
+          "value": 2,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_NK_SingleMag_ScaleLength_1",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_N_Initialize",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_NK_SingleMag_Pole_1",
+          "value": 2,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_NK_SingleMag_FieldType_1",
+          "value": 2,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_NK_SingleMag_ScaleLength_1",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_S_Initialize",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "__unk_Q2982101340": [
+        "GV_HermitCrab_Larva_Magnet_BeHitCounter"
+      ],
+      "abilitySpecials": {
+        "SelfPoleType": 0
+      },
+      "onKill": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_HermitCrab_Larva_Magnet_MagnetState",
+          "value": -1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_StateManager",
+      "modifiers": {
+        "BeHitHandler": {
+          "duration": 5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CatchedMixMagnetEffect": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_NK_SingleMag_Pole_1",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "AttachEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_NK_SingleMag_Pole_1",
+                      "target": "Target",
+                      "value": 2
+                    }
+                  ],
+                  "effectPattern": "Eff_Monster_FauneAbyssale_HermitCrab_Lava_Magnet_SinglePoleAbsorbed_S",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "effectPattern": "Eff_Monster_FauneAbyssale_HermitCrab_Lava_Magnet_SinglePoleAbsorbed_N",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Challenge_MagnetTempClose": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_HermitCrab_Larva_Magnet_MagnetState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 3,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_HermitCrab_Larva_Magnet_MagnetState",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "DigInState": {
+          "onAdded": [
+            {
+              "$type": "HideUIBillBoard",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "hide": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_FauneAbyssale_HermitCrab_Lava_Magnet_DigIn_Loop",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "HideUIBillBoard",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "DisableRollingAttack": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "RejectAttackMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "type": "RejectAll",
+              "attackTags": [
+                "HermitCrab_Magnet_RollingAttack"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "HermitCrab_Magnet_DiffPoleAction": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToAnimatorStateIDMixin",
+              "stateIDs": [
+                "Hit_H",
+                "Hit_Rolling_Loop",
+                "Hit_Rolling_Loop02",
+                "Hit_Rolling_AS"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "DisableRollingAttack",
+              "value": -1
+            },
+            {
+              "$type": "RejectAttackMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "type": "RejectAll",
+              "attackTags": [
+                "HermitCrab_Magnet_RollingAttack"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "MagnetState_-1": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "MagnetState"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "MagnetState_0": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "MagnetState"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CKGHCAKGBBO",
+              "AJIBNBCNFOM": "Eff_SceneObj_Stages_MagForce_Sign_S100X100_01",
+              "BDONFADLJJO": "SGV_NK_SingleMag_OccupyAuth_",
+              "id": 1,
+              "DBFIONIAIEH": "MagnetTrigger_0",
+              "DEBGMKCNKEP": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "GV_HermitCrab_Larva_Magnet_MagnetState",
+                  "value": -1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "FCPBCLKMNGH": "MagnetNode_1",
+              "GAPDDIDKCKO": "GV_NK_SingleMag_ScaleLength_1",
+              "GKIOOGPABKE": "GV_NK_SingleMag_Pole_1",
+              "ILPLJFAPBDJ": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "GV_HermitCrab_Larva_Magnet_CatchedMixMagnet",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "fieldType": "GV_NK_SingleMag_FieldType_1",
+              "KOOFKIPGMPM": 1,
+              "KPBPPPJMKNE": "NodKrai_MainTag",
+              "LMNMHLHOJDK": "ThrowSinglePole",
+              "NAFKJNHOPAN": "SGV_NK_SingleMag_OccupyMagnetID_",
+              "strength": 25,
+              "NDKOJADFCJC": "GV_NK_SingleMagnet_AngleTolerance",
+              "ODIBLMEGDCA": "SGV_NK_SingleMag_OccupyTarget_",
+              "PEBEENLLNKA": "GV_NK_SingleMag_AttractType"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "GV_HermitCrab_Larva_Magnet_CatchedMixMagnet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "MagnetState_1": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "MagnetState"
+            }
+          ],
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "target": "Target",
+                  "attackTags": [
+                    "Hermit_Larva_MonoMagnetHit_SamePole",
+                    "Hermit_Larva_MonoMagnetHit_DiffPole"
+                  ]
+                }
+              ],
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_HermitCrab_Larva_Magnet_ChallengeTag",
+                  "value": 1
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Challenge_MagnetTempClose",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CKGHCAKGBBO",
+              "AJIBNBCNFOM": "Eff_SceneObj_Stages_MagForce_Thin_DynamicBorn_01",
+              "BDONFADLJJO": "SGV_NK_SingleMag_OccupyAuth_",
+              "id": 1,
+              "DBFIONIAIEH": "MagnetTrigger_1",
+              "DEBGMKCNKEP": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "GV_HermitCrab_Larva_Magnet_CatchedMixMagnet",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "FCPBCLKMNGH": "MagnetNode_1",
+              "GAPDDIDKCKO": "GV_NK_SingleMag_ScaleLength_1",
+              "GKIOOGPABKE": "GV_NK_SingleMag_Pole_1",
+              "ILPLJFAPBDJ": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "GV_HermitCrab_Larva_Magnet_CatchedMixMagnet",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "fieldType": "GV_NK_SingleMag_FieldType_1",
+              "KOOFKIPGMPM": 1,
+              "KPBPPPJMKNE": "NodKrai_MainTag",
+              "LMNMHLHOJDK": "ThrowSinglePole",
+              "NAFKJNHOPAN": "SGV_NK_SingleMag_OccupyMagnetID_",
+              "strength": 25,
+              "NDKOJADFCJC": "GV_NK_SingleMagnet_AngleTolerance",
+              "ODIBLMEGDCA": "SGV_NK_SingleMag_OccupyTarget_",
+              "PEBEENLLNKA": "GV_NK_SingleMag_AttractType",
+              "PJIGBDMIKOD": [
+                {
+                  "$type": "SetTargetToTargetKey",
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "targetKey": "_tempTarget",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_NK_SingleMag_Pole_1",
+                      "target": "Target",
+                      "value": 1,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "failActions": [
+                    {
+                      "$type": "FireEffect",
+                      "actorIceSubHurtDelta": -1,
+                      "scale": 1,
+                      "doOffStage": false,
+                      "born": {
+                        "APKLAIJMEIL": {
+                          "HHNLJKNBKPP": 180
+                        },
+                        "value": 10,
+                        "direction": {
+                          "maxAngle": 180
+                        },
+                        "onGroundRaycastUpDist": 2
+                      },
+                      "effectPattern": "Eff_Monster_Common_Kuuvahki_BeHit_Blue",
+                      "effectTempleteID": -1,
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "FireEffect",
+                      "actorIceSubHurtDelta": -1,
+                      "scale": 1,
+                      "doOffStage": false,
+                      "born": {
+                        "APKLAIJMEIL": {
+                          "HHNLJKNBKPP": 180
+                        },
+                        "value": 10,
+                        "direction": {
+                          "maxAngle": 180
+                        },
+                        "onGroundRaycastUpDist": 2
+                      },
+                      "effectPattern": "Eff_Monster_Common_Kuuvahki_BeHit_Red",
+                      "effectTempleteID": -1,
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        4065
+                      ],
+                      "target": "Target"
+                    }
+                  ],
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "otherTargets": {
+                    "$type": "GENFIIMMOOJ",
+                    "targetKey": "_tempTarget"
+                  },
+                  "successActions": [
+                    {
+                      "$type": "SetGlobalValueToOverrideMap",
+                      "overrideMapKey": "SelfPoleType",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "globalValueKey": "GV_NK_SingleMag_Pole_1",
+                      "canBeHandledOnRecover": true
+                    },
+                    {
+                      "$type": "Predicated",
+                      "targetPredicates": [
+                        {
+                          "$type": "ByTargetGlobalValue",
+                          "key": "GV_NK_SingleMag_Pole_1",
+                          "target": "Target",
+                          "value": "SelfPoleType"
+                        }
+                      ],
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "otherTargets": {
+                        "$type": "GENFIIMMOOJ",
+                        "targetKey": "_tempTarget"
+                      },
+                      "failActions": [
+                        {
+                          "$type": "DamageByAttackValue",
+                          "target": "Target",
+                          "actorIceSubHurtDelta": -1,
+                          "doOffStage": false,
+                          "attackInfo": {
+                            "attackTag": "Hermit_Larva_MonoMagnetHit_DiffPole",
+                            "HBOOKFMCODC": {
+                              "BPIJOAMNKIH": {
+                                "GGOHGMFHHEC": true,
+                                "value": 1
+                              },
+                              "onHitEffectName": "default"
+                            },
+                            "hitPattern": {
+                              "hitImpulseType": "LV3",
+                              "BPIJOAMNKIH": {
+                                "GGOHGMFHHEC": true,
+                                "value": 1
+                              },
+                              "onHitEffectName": "default",
+                              "overrideHitImpulse": {
+                                "hitImpulseX": 150,
+                                "hitLevel": "Heavy",
+                                "hitImpulseY": 100
+                              },
+                              "muteHitText": true,
+                              "retreatType": "ByAttackerInverse"
+                            },
+                            "INKGMIHAPMA": {
+                              "NDIBGPPKGJP": "Shake"
+                            },
+                            "cameraShake": {
+                              "shakeDistance": 20,
+                              "extension": {
+                                "rangeAttenuation": 0.5,
+                                "baseOnCamera": true,
+                                "baseCycle": 0.11999999731779099,
+                                "cycleDamping": 0.11999999731779099
+                              }
+                            },
+                            "attenuationGroup": "default",
+                            "attackProperty": {
+                              "elementDurability": 100,
+                              "enBreak": 200,
+                              "elementRank": 1,
+                              "attackType": "Melee",
+                              "strikeType": "Blunt"
+                            }
+                          },
+                          "born": {
+                            "APKLAIJMEIL": {
+                              "HHNLJKNBKPP": 180
+                            },
+                            "value": 10,
+                            "direction": {
+                              "maxAngle": 180
+                            },
+                            "onGroundRaycastUpDist": 2
+                          },
+                          "canBeHandledOnRecover": true
+                        },
+                        {
+                          "$type": "ApplyModifier",
+                          "actorIceSubHurtDelta": -1,
+                          "doOffStage": false,
+                          "modifierName": "HermitCrab_Magnet_DiffPoleAction",
+                          "canBeHandledOnRecover": true
+                        }
+                      ],
+                      "successActions": [
+                        {
+                          "$type": "DamageByAttackValue",
+                          "target": "Target",
+                          "actorIceSubHurtDelta": -1,
+                          "doOffStage": false,
+                          "attackInfo": {
+                            "attackTag": "Hermit_Larva_MonoMagnetHit_SamePole",
+                            "HBOOKFMCODC": {
+                              "BPIJOAMNKIH": {
+                                "GGOHGMFHHEC": true,
+                                "value": 1
+                              },
+                              "onHitEffectName": "default"
+                            },
+                            "hitPattern": {
+                              "hitImpulseType": "LV4",
+                              "BPIJOAMNKIH": {
+                                "GGOHGMFHHEC": true,
+                                "value": 1
+                              },
+                              "onHitEffectName": "default",
+                              "muteHitText": true
+                            },
+                            "INKGMIHAPMA": {
+                              "NDIBGPPKGJP": "Shake"
+                            },
+                            "cameraShake": {
+                              "shakeDistance": 20,
+                              "extension": {
+                                "rangeAttenuation": 0.5,
+                                "baseOnCamera": true,
+                                "baseCycle": 0.11999999731779099,
+                                "cycleDamping": 0.11999999731779099
+                              }
+                            },
+                            "attenuationGroup": "default",
+                            "attackProperty": {
+                              "elementDurability": 100,
+                              "enBreak": 200,
+                              "elementRank": 1,
+                              "attackType": "Melee",
+                              "strikeType": "Blunt"
+                            }
+                          },
+                          "born": {
+                            "APKLAIJMEIL": {
+                              "HHNLJKNBKPP": 180
+                            },
+                            "value": 10,
+                            "direction": {
+                              "maxAngle": 180
+                            },
+                            "onGroundRaycastUpDist": 2
+                          },
+                          "canBeHandledOnRecover": true
+                        }
+                      ],
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "triggerID": "ShakeTrigger",
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "GV_HermitCrab_Larva_Magnet_CatchedMixMagnet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "MagnetState_2": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "MagnetState"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CKGHCAKGBBO",
+              "AJIBNBCNFOM": "Eff_SceneObj_Stages_MagForce_Thick_DynamicBorn_01",
+              "BDONFADLJJO": "SGV_NK_SingleMag_OccupyAuth_",
+              "id": 1,
+              "DBFIONIAIEH": "MagnetTrigger_1",
+              "actorIceSubHurtDelta": -1,
+              "FCPBCLKMNGH": "MagnetNode_1",
+              "GAPDDIDKCKO": "GV_NK_SingleMag_ScaleLength_1",
+              "GKIOOGPABKE": "GV_NK_SingleMag_Pole_1",
+              "fieldType": "GV_NK_SingleMag_FieldType_1",
+              "KOOFKIPGMPM": 1,
+              "KPBPPPJMKNE": "NodKrai_MainTag",
+              "LMNMHLHOJDK": "ThrowSinglePole",
+              "NAFKJNHOPAN": "SGV_NK_SingleMag_OccupyMagnetID_",
+              "strength": 25,
+              "NDKOJADFCJC": "GV_NK_SingleMagnet_AngleTolerance",
+              "ODIBLMEGDCA": "SGV_NK_SingleMag_OccupyTarget_",
+              "PEBEENLLNKA": "GV_NK_SingleMag_AttractType"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ResetMagnetState": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_HermitCrab_Larva_Magnet_MagnetState",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_HermitCrab_Larva_Magnet_ChallengeTag",
+                  "target": "Target",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RollingAttack": {
+          "onAdded": [
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "bulletID": 42615040,
+              "value": true,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "KillGadgetV2",
+              "gadgetInfo": {
+                "configID": 42615040
+              },
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RollingSpeedRateHandler": {
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+              "value": 4,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+                  "target": "Target",
+                  "value": 4,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "BeHitCounter"
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "value": [
+                0.5,
+                0.5,
+                "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+                "MUL",
+                "ADD"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "RollingSpeedRate",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "value": 0.6000000238418579,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "RollingSpeedRate",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onBeingHit": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+                  "target": "Target",
+                  "value": 2,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "BeHitCounter"
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "value": [
+                0.30000001192092896,
+                0.699999988079071,
+                "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+                "MUL",
+                "ADD"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "RollingSpeedRate",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "value": 0.6000000238418579,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "RollingSpeedRate",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Challenge_MagnetTempClose",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Hit_L",
+            "Hit_H",
+            "Hit_Rolling_Loop",
+            "Hit_Rolling_Loop02",
+            "Hit_Rolling_Loop_Water",
+            "Hit_Rolling_Loop_Water02",
+            "Hit_Rolling_AS",
+            "Hit_Rolling_AS_Water"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "RollingSpeedRateHandler",
+          "value": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Hit_L",
+            "Hit_H",
+            "Hit_Rolling_Loop",
+            "Hit_Rolling_Loop02",
+            "Hit_Rolling_Loop_Water",
+            "Hit_Rolling_Loop_Water02",
+            "Hit_Rolling_AS",
+            "Hit_Rolling_AS_Water"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "RollingAttack",
+          "value": -1
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -1.5,
+            -0.5,
+            0.5,
+            1.5,
+            2.5
+          ],
+          "defaultGlobalValueOnCreate": -1,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "MagnetState_-1",
+            "MagnetState_0",
+            "MagnetState_1",
+            "MagnetState_2"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "GV_HermitCrab_Larva_Magnet_MagnetState"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "CatchedMixMagnetEffect"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "GV_HermitCrab_Larva_Magnet_CatchedMixMagnet"
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Die",
+            "Hit_L",
+            "Hit_H",
+            "Hit_Rolling_Loop02",
+            "Hit_Rolling_Loop",
+            "Hit_Rolling_AS",
+            "Struggle",
+            "HitThrow",
+            "HitThrowToGround",
+            "Hit_Throw_From_Struggle"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "ResetMagnetState",
+          "value": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "DigIn_Loop"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "DigInState",
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "GV_HermitCrab_Larva_Magnet_CatchedMixMagnet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_ResetMagnetState",
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_HermitCrab_Larva_Magnet_MagnetState",
+          "value": -1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "GV_HermitCrab_Larva_Magnet_CatchedMixMagnet",
+              "target": "Target"
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "GV_HermitCrab_Larva_Magnet_ChallengeTag",
+              "target": "Target",
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_SetMagnetState_-1",
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_HermitCrab_Larva_Magnet_MagnetState",
+          "value": -1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "GV_HermitCrab_Larva_Magnet_ChallengeTag",
+              "target": "Target",
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_SetMagnetState_0",
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_HermitCrab_Larva_Magnet_MagnetState",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_SetMagnetState_1",
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_HermitCrab_Larva_Magnet_MagnetState",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_SetMagnetState_2",
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_HermitCrab_Larva_Magnet_MagnetState",
+          "value": 2,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_HermitCrab_Larva_Magnet_ChallengeTag",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_HermitCrab_Larva_Magnet_MagnetState",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_MagnetStateAffix",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_ConsumeFeed",
+      "modifiers": {
+        "Consumed_ToKill": {
+          "onAdded": [
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "configIdArray": [
+                73045145
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "DBPHPMIHBCO",
+            "sortType": "Nearest",
+            "topLimit": 1,
+            "tag": "CrabFeed"
+          },
+          "modifierName": "Consumed_ToKill",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetNeuronMute",
+          "DFNFOFLHGGO": "SURROUND",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetNeuronEnable",
+          "enable": true,
+          "DFNFOFLHGGO": "SURROUND",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_SetCollectNeuron",
+      "onAbilityStart": [
+        {
+          "$type": "SetNeuronMute",
+          "enable": true,
+          "DFNFOFLHGGO": "SURROUND",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetNeuronEnable",
+          "DFNFOFLHGGO": "SURROUND",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetNeuronMute",
+          "DFNFOFLHGGO": "HUNGRY",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetNeuronEnable",
+          "enable": true,
+          "DFNFOFLHGGO": "HUNGRY",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_FauneAbyssale_HermitCrab_Larva_Magnet_SetConsumeNeuron",
+      "onAbilityStart": [
+        {
+          "$type": "SetNeuronMute",
+          "DFNFOFLHGGO": "HUNGRY",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetNeuronEnable",
+          "enable": true,
+          "DFNFOFLHGGO": "HUNGRY",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "HermitCrab_Magnet_RollingAttack_Attack",
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetType",
+              "targetType": "Owner",
+              "target": "Target"
+            },
+            {
+              "$type": "ByNot",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "ByIsTargetCamp",
+                  "campBaseOn": "Owner",
+                  "target": "Target",
+                  "campTargetType": "Enemy"
+                }
+              ]
+            },
+            {
+              "$type": "ByNot",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "ByHasModifier",
+                  "target": "Owner",
+                  "modifierName": "Hermit_Larva_MonoMagnetHit_DiffPole"
+                }
+              ]
+            }
+          ],
+          "target": "Target",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "successActions": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackInfo": {
+                "attackTag": "HermitCrab_Magnet_RollingAttack",
+                "HBOOKFMCODC": {
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "onHitEffectName": "default"
+                },
+                "hitPattern": {
+                  "hitImpulseType": "LV3",
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "onHitEffectName": "default",
+                  "muteHitText": true
+                },
+                "INKGMIHAPMA": {
+                  "NDIBGPPKGJP": "Shake"
+                },
+                "cameraShake": {
+                  "shakeDistance": 20,
+                  "extension": {
+                    "rangeAttenuation": 0.5,
+                    "baseOnCamera": true,
+                    "baseCycle": 0.11999999731779099,
+                    "cycleDamping": 0.11999999731779099
+                  }
+                },
+                "attenuationGroup": "default",
+                "attackProperty": {
+                  "elementDurability": 100,
+                  "enBreak": 100,
+                  "elementRank": 1,
+                  "attackType": "Melee",
+                  "strikeType": "Blunt"
+                }
+              },
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    4065
+                  ],
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByHasModifier",
+                  "target": "Owner",
+                  "modifierName": "HermitCrab_Magnet_DiffPoleAction"
+                }
+              ],
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "target": "Owner",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "triggerID": "RollingStopTrigger",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "__unk_Q2982101340": [
+        "GV_HermitCrab_Larva_Magnet_BeHitCounter"
+      ],
+      "abilityName": "Monster_Homeworld_FauneAbyssale_HermitCrab_Larva_Magnet_StateManager",
+      "modifiers": {
+        "BeHitHandler": {
+          "duration": 5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "DigInState": {
+          "onAdded": [
+            {
+              "$type": "HideUIBillBoard",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "hide": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_FauneAbyssale_HermitCrab_Lava_Magnet_DigIn_Loop",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "HideUIBillBoard",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RollingAttack": {
+          "onAdded": [
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "bulletID": 42615041,
+              "value": true,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "KillGadgetV2",
+              "gadgetInfo": {
+                "configID": 42615041
+              },
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RollingSpeedRateHandler": {
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+              "value": 4,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+                  "target": "Target",
+                  "value": 4,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "BeHitCounter"
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "value": [
+                0.5,
+                0.5,
+                "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+                "MUL",
+                "ADD"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "RollingSpeedRate",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "value": 0.6000000238418579,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "RollingSpeedRate",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onBeingHit": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+                  "target": "Target",
+                  "value": 2,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "BeHitCounter"
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "value": [
+                0.30000001192092896,
+                0.699999988079071,
+                "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+                "MUL",
+                "ADD"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "RollingSpeedRate",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "value": 0.6000000238418579,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "RollingSpeedRate",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "GV_HermitCrab_Larva_Magnet_BeHitCounter",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Hit_L",
+            "Hit_H",
+            "Hit_Rolling_Loop",
+            "Hit_Rolling_Loop02",
+            "Hit_Rolling_Loop_Water",
+            "Hit_Rolling_Loop_Water02",
+            "Hit_Rolling_AS",
+            "Hit_Rolling_AS_Water"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "RollingSpeedRateHandler",
+          "value": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Hit_L",
+            "Hit_H",
+            "Hit_Rolling_Loop",
+            "Hit_Rolling_Loop02",
+            "Hit_Rolling_Loop_Water",
+            "Hit_Rolling_Loop_Water02",
+            "Hit_Rolling_AS",
+            "Hit_Rolling_AS_Water"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "RollingAttack",
+          "value": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "DigIn_Loop"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "DigInState",
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "HermitCrab_Magnet_Homeworld_HitManager",
+      "modifiers": {
+        "HermitCrab_Magnet_Homeworld_HitCount": {
+          "onAdded": [
+            {
+              "$type": "AddGlobalValueV2",
+              "key": "GV_HermitCrab_Magnet_HitCount",
+              "target": "MPLevel",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 15
+            }
+          ],
+          "stacking": "Multiple",
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValueV2",
+              "key": "GV_HermitCrab_Magnet_HitCount",
+              "target": "MPLevel",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "target": "MPLevel",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "HermitCrab_Magnet_Homeworld_HitCount",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "HermitCrab_Magnet_RollingAttack_Homeworld_Attack",
+      "modifiers": {
+        "HermitCrab_Magnet_RollingHit": {
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "HermitCrab_Magnet_Homeworld_HitManager",
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.20000000298023224,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByAny",
+              "target": "MPLevel",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_HermitCrab_Magnet_HitCount",
+                  "target": "MPLevel",
+                  "value": 15,
+                  "compareType": "LessAndEqual"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_HermitCrab_Magnet_HitCount",
+                  "target": "MPLevel",
+                  "compareType": "NoneOrEqual"
+                }
+              ]
+            }
+          ],
+          "target": "Target",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "successActions": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetType",
+                  "targetType": "Owner",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByNot",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByIsTargetCamp",
+                      "campBaseOn": "Owner",
+                      "target": "Target",
+                      "campTargetType": "Enemy"
+                    }
+                  ]
+                }
+              ],
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "DamageByAttackValue",
+                  "target": "Target",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "attackInfo": {
+                    "HBOOKFMCODC": {
+                      "BPIJOAMNKIH": {
+                        "GGOHGMFHHEC": true,
+                        "value": 1
+                      },
+                      "onHitEffectName": "default"
+                    },
+                    "hitPattern": {
+                      "hitImpulseType": "LV3",
+                      "BPIJOAMNKIH": {
+                        "GGOHGMFHHEC": true,
+                        "value": 1
+                      },
+                      "onHitEffectName": "default",
+                      "muteHitText": true
+                    },
+                    "INKGMIHAPMA": {
+                      "NDIBGPPKGJP": "Shake"
+                    },
+                    "cameraShake": {
+                      "shakeDistance": 20,
+                      "extension": {
+                        "rangeAttenuation": 0.5,
+                        "baseOnCamera": true,
+                        "baseCycle": 0.11999999731779099,
+                        "cycleDamping": 0.11999999731779099
+                      }
+                    },
+                    "attenuationGroup": "default",
+                    "attackProperty": {
+                      "elementDurability": 100,
+                      "enBreak": 100,
+                      "elementRank": 1,
+                      "attackType": "Melee",
+                      "strikeType": "Blunt"
+                    }
+                  },
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        4065
+                      ],
+                      "target": "Target"
+                    },
+                    {
+                      "$type": "ByHasModifier",
+                      "target": "Owner",
+                      "modifierName": "HermitCrab_Magnet_DiffPoleAction"
+                    }
+                  ],
+                  "target": "Target",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "successActions": [
+                    {
+                      "$type": "SetAnimatorTrigger",
+                      "target": "Owner",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "triggerID": "RollingStopTrigger",
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Owner",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "HermitCrab_Magnet_RollingHit",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  }
+]

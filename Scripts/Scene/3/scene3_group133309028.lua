@@ -133,8 +133,8 @@ function action_EVENT_VARIABLE_CHANGE_28006(context, evt)
 	  return -1
 	end
 	
-	local pos = {x=-2218.437, y=58.01351, z=5568.536}
-	local pos_follow = {x=-2181.912, y=59.40779, z=5568.536}
+	local pos = {x=-2218.437, y=58.014, z=5568.536}
+	local pos_follow = {x=-2181.912, y = 59.408, z=5568.536}
 	ScriptLib.BeginCameraSceneLook(context, { 
 	look_pos = pos, is_allow_input = false, duration = 5, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	is_set_follow_pos = true,is_abs_follow_pos = true,

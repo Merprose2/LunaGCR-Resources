@@ -20,7 +20,7 @@ end_suite = 4,
 parkour_regions = {260008,260078},
 --教学区region的configID
 guide_regionID = 260005,
-look_pos = {x=-1493.794, y=212.2333, z=2272.594},
+look_pos = {x=-1493.794, y=212.233, z=2272.594},
 duration = 2,
 }
 

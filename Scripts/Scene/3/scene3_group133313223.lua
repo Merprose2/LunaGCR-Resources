@@ -9,30 +9,36 @@ local fans =
 {
     223001
 }
---沙堆
+
+--沙堆
 local sandpiles =
 {
     223002,
     223005
 }
---百叶窗
+
+--百叶窗
 local shutters =
 {
 
 }
---百叶窗开关
+
+
+--百叶窗开关
 local shutter_switches =
 {
 
 }
 
---移动点阵
+
+--移动点阵
 local FanToPointArray =
 {
     [fans[1]] = 331300006
 }
 
---风扇与沙堆映射
+
+--风扇与沙堆映射
 local FanToSandpile =
 {
     [sandpiles[1]] = {fan = fans[1], dir_state = 202, pos = 1},
@@ -40,7 +46,9 @@ local FanToSandpile =
 
 }
 
---百叶窗与开关映射
+
+
+--百叶窗与开关映射
 local SwitchToShutter =
 {
 

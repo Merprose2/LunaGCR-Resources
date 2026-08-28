@@ -22,11 +22,16 @@ local defs = {
 
 -- DEFS_MISCS
 local CameraLookSetting = {
-    blend_type = 1,  --镜头的移动路径，球面0，直线1
-    blend_duration = 1, --镜头的移动时间
-    is_force_walk = false, --强制玩家行走
-    is_allow_input = false, --允许输入
-    delay = 0, --触发延迟
+    blend_type = 1,
+  --镜头的移动路径，球面0，直线1
+    blend_duration = 1,
+ --镜头的移动时间
+    is_force_walk = false,
+ --强制玩家行走
+    is_allow_input = false,
+ --允许输入
+    delay = 0,
+ --触发延迟
 }
 
 --================================================================
@@ -170,8 +175,8 @@ function action_EVENT_GADGET_STATE_CHANGE_502007(context, evt)
 	ScriptLib.InitTimeAxis(context, "elevator", {1}, false)
 	
 	
-	-- 触发镜头注目，注目位置为坐标{x=-2992.898, y=182.0755, z=5436.101}，持续时间为3秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-2992.898, y=182.0755, z=5436.101}
+	-- 触发镜头注目，注目位置为坐标{x=-2992.898, y = 182.076, z=5436.101}，持续时间为3秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-2992.898, y=182.076, z=5436.101}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 3, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

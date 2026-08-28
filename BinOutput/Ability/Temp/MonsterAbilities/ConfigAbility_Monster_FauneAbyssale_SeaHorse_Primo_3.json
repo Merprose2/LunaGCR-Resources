@@ -1,0 +1,1809 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_IS_IN_ABYSS",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "FauneAbyssale_SeaHorse_Primo_InAbyss",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_IS_IN_ROLE_BATTLE",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "FauneAbyssale_SeaHorse_Primo_InRoleBattle",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_CORAL_GADGET_NOT_EXIST_",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachAbilityStateResistance",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "durationRatio": 1,
+          "resistanceBuffDebuffs": [
+            "ElementFreeze",
+            "Struggle",
+            "ElementPetrifaction"
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByAny",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IS_IN_ABYSS",
+                  "value": 1
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IS_IN_ROLE_BATTLE",
+                  "value": 1
+                }
+              ]
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "failActions": [
+            {
+              "$type": "SetOverrideMapValue",
+              "value": 30,
+              "overrideMapKey": "broken_state_duration",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "SetOverrideMapValue",
+              "value": 20,
+              "overrideMapKey": "broken_state_duration",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "broken_state_duration": 0
+      },
+      "abilityName": "FauneAbyssale_SeaHorse_Primo_StageManager",
+      "modifiers": {
+        "SeaDragon_Stage_Broken_3": {
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": 3,
+              "canBeHandledOnRecover": true,
+              "intID": "StateControl"
+            },
+            {
+              "$type": "SetLockingV3Config",
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "specialCameraName": "default",
+              "value": 1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_CORAL_GADGET_NOT_EXIST_",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_CORAL_GADGET_NOT_EXIST_",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": "broken_state_duration",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_SEA_DRAGON_STAGE_",
+              "value": 4,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "SeaDragon_Stage_PearlShield_1": {
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": 1,
+              "canBeHandledOnRecover": true,
+              "intID": "StateControl"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_CORAL_GADGET_NOT_EXIST_",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_CORAL_GADGET_NOT_EXIST_",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SeaDragon_Stage_TryAnnihilation_2": {
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": 2,
+              "canBeHandledOnRecover": true,
+              "intID": "StateControl"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_CORAL_GADGET_NOT_EXIST_",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_CORAL_GADGET_NOT_EXIST_",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SeaDragon_Stage_TryRecover_4": {
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": 4,
+              "canBeHandledOnRecover": true,
+              "intID": "StateControl"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_SHIELD_RECOVERED_",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_SEA_DRAGON_STAGE_",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ServerMonsterLog",
+          "paramList": [
+            0,
+            0,
+            2
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            1.5,
+            2.5,
+            3.5,
+            4.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "modifierNameSteps": [
+            "SeaDragon_Stage_PearlShield_1",
+            "SeaDragon_Stage_TryAnnihilation_2",
+            "SeaDragon_Stage_Broken_3",
+            "SeaDragon_Stage_TryRecover_4"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_SEA_DRAGON_STAGE_",
+          "PNELLOCFHCP": true
+        },
+        {
+          "$type": "DoActionByPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            901
+          ],
+          "enterActions": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_SEA_DRAGON_STAGE_",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_CORAL_GADGET_NOT_EXIST_",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_SHIELD_RECOVERED_",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_DISABLE_ANNIHILATION_",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "AlertConfirm",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "ACHIEVEMENT_82185_MARK",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "ACHIEVEMENT_82186_MARK",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "ReturnToBorn",
+              "mpTriggerOnRemote": true,
+              "canBeHandledOnRecover": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "FauneAbyssale_SeaHorse_Primo_Alert",
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_SEA_DRAGON_STAGE_",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetPoseBool",
+          "value": true,
+          "boolID": "AlertConfirm",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "FauneAbyssale_SeaHorse_Primo_CameraManager",
+      "onAbilityStart": [
+        {
+          "$type": "SetLockingV3Config",
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "specialCameraName": "default",
+          "value": 1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "DoActionByStateIDMixin",
+          "stateIDs": [
+            "Standby",
+            "LeapingStab_AS"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "SetLockingV3Config",
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "specialCameraName": "default",
+              "value": 1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        },
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "Annihilation_BS",
+            "Annihilation_Jump",
+            "Annihilation_FarJump",
+            "Annihilation_JumpEnd",
+            "Annihilation_Cast",
+            "Annihilation_Loop"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "SetLockingV3Config",
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "specialCameraName": "AnnihilationView",
+              "value": 1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        },
+        {
+          "$type": "DoActionByStateIDMixin",
+          "stateIDs": [
+            "LeapingStab_03"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "SetLockingV3Config",
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "specialCameraName": "LeapingStabView",
+              "value": 1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        },
+        {
+          "$type": "DoActionByStateIDMixin",
+          "stateIDs": [
+            "ShieldRecover"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "SetLockingV3Config",
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "specialCameraName": "ShieldRecoverView",
+              "value": 1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "EnablePushColliderName",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "pushColliderNames": [
+            "FlyPushCollider"
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "FauneAbyssale_SeaHorse_Primo_PushCollider_Enable",
+      "onAbilityStart": [
+        {
+          "$type": "EnablePushColliderName",
+          "setEnable": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "pushColliderNames": [
+            "BasicPushCollider"
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "Standby",
+            "Annihilation_BS",
+            "LeapingStab_AS",
+            "Stun_AS"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "EnablePushColliderName",
+              "setEnable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "pushColliderNames": [
+                "BasicPushCollider"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "FauneAbyssale_SeaHorse_Primo_PushCollider_Disable",
+      "onAbilityStart": [
+        {
+          "$type": "EnablePushColliderName",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "pushColliderNames": [
+            "BasicPushCollider"
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "Annihilation_Jump",
+            "Annihilation_FarJump",
+            "Annihilation_Loop",
+            "Annihilation_AS1",
+            "LeapingStab_01"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "EnablePushColliderName",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "pushColliderNames": [
+                "BasicPushCollider"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "FauneAbyssale_SeaHorse_Primo_BasicHitBox_Enable",
+      "onAbilityStart": [
+        {
+          "$type": "EnableHitBoxByName",
+          "setEnable": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "hitBoxNames": [
+            "BasicHitBox"
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "TailWhipTrans",
+            "TailWhip02",
+            "LeapingStab_AS",
+            "FishBarrage",
+            "ShieldRecover"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "EnableHitBoxByName",
+              "setEnable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "hitBoxNames": [
+                "BasicHitBox"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "FauneAbyssale_SeaHorse_Primo_BasicHitBox_Disable",
+      "onAbilityStart": [
+        {
+          "$type": "EnableHitBoxByName",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "hitBoxNames": [
+            "BasicHitBox"
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "Standby",
+            "StunHigh",
+            "StunLow",
+            "StunGround",
+            "Stun_AS"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "EnableHitBoxByName",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "hitBoxNames": [
+                "BasicHitBox"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "FauneAbyssale_SeaHorse_Primo_FreePoseFishVFX",
+      "modifiers": {
+        "Fish_Surround_VFX": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_FauneAbyssale_SeaHorse_Primo_FreePose_Decoration",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Fish_VFX": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_FauneAbyssale_SeaHorse_Primo_Personality",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Personality01",
+            "Alert"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Fish_VFX",
+          "value": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Personality01"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Fish_Surround_VFX",
+          "value": -1
+        },
+        {
+          "$type": "DoActionByStateIDMixin",
+          "stateIDs": [
+            "Alert"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Alert",
+              "effectPattern": "Eff_Monster_FauneAbyssale_SeaHorse_Primo_Personality",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        },
+        {
+          "$type": "DoActionByStateIDMixin",
+          "stateIDs": [
+            "Die"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_SEA_DRAGON_STAGE_",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_SEA_DRAGON_STAGE_",
+                  "value": 0.5,
+                  "compareType": "Between",
+                  "maxValue": 2.5
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalPos",
+          "key": "_CENTER_POS",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true
+          },
+          "setTarget": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "ACHIEVEMENT_82186_MARK",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "FauneAbyssale_SeaHorse_Primo_FlyPoseManager",
+      "modifiers": {
+        "Achievement_82186_Monitor": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "ACHIEVEMENT_82186_MARK",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "ACHIEVEMENT_82186_MARK",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Annihilation_Change_Weather": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWeatherMixin",
+              "actorIceSubHurtDelta": -1,
+              "transDuration": 0.5,
+              "type": "Skill",
+              "weatherPattern": "Weather_Monster_SeaHorse_Primo_Annihilation"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Annihilation_Change_Weather_Handler": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "AllTeams",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Annihilation_Change_Weather",
+              "predicates": [
+                {
+                  "$type": "ByIsCombat",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Elbow_VFX": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_FauneAbyssale_SeaHorse_Primo_LeapingStab_BS",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "ElbowR",
+              "doOffStage": false,
+              "effectPattern": "Eff_Monster_FauneAbyssale_SeaHorse_Primo_LeapingStab_BS",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_FauneAbyssale_SeaHorse_Primo_LeapingStab_BS",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Trail_VFX": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_FauneAbyssale_SeaHorse_Primo_Common_Trail",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FixedMonsterRushMove",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "toPos": {
+            "$type": "ConfigBornByGlobalValue",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "positionKey": "_STAB_POS"
+          },
+          "GKOFKDIFIMA": -1,
+          "GNIMCKHIIHL": true,
+          "animatorStateIDs": [
+            "LeapingStab_03",
+            "LeapingStab_03_TheAbyss",
+            "LeapingStab_03_C31",
+            "LeapingStab_03_C32",
+            "LeapingStab_03_C33",
+            "LeapingStab_03_C36",
+            "LeapingStab_03_TheAbyss_C31",
+            "LeapingStab_03_TheAbyss_C32",
+            "LeapingStab_03_TheAbyss_C33",
+            "LeapingStab_03_TheAbyss_C36"
+          ],
+          "maxRange": -1,
+          "PGLJIHAEIAD": -1,
+          "canBeHandledOnRecover": true,
+          "timeRange": 0.36000001430511475
+        },
+        {
+          "$type": "ReTriggerAISkillInitialCD",
+          "skillIDs": [
+            701,
+            702
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackTraceToPosMixin",
+          "actorIceSubHurtDelta": -1,
+          "EJNPCEBIFCJ": "_CENTER_POS",
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 250,
+          "steerStateIDs": [
+            "Annihilation_BS"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.4000000059604645
+        },
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "Annihilation_Jump"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "TurnDirectionToPos",
+              "maxAngle": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "toPos": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_CENTER_POS"
+              },
+              "GLPJJCIDOFA": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FixedMonsterRushMove",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "toPos": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_CENTER_POS"
+              },
+              "GKOFKDIFIMA": -1,
+              "animatorStateIDs": [
+                "Annihilation_Jump",
+                "Annihilation_JumpEnd"
+              ],
+              "maxRange": -1,
+              "PGLJIHAEIAD": -1,
+              "canBeHandledOnRecover": true,
+              "timeRange": 1.1200000047683716
+            }
+          ],
+          "value": -1
+        },
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "Annihilation_FarJump"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "TurnDirectionToPos",
+              "maxAngle": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "toPos": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_CENTER_POS"
+              },
+              "GLPJJCIDOFA": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FixedMonsterRushMove",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "toPos": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_CENTER_POS"
+              },
+              "GKOFKDIFIMA": -1,
+              "animatorStateIDs": [
+                "Annihilation_FarJump",
+                "Annihilation_JumpEnd"
+              ],
+              "maxRange": -1,
+              "PGLJIHAEIAD": -1,
+              "canBeHandledOnRecover": true,
+              "timeRange": 1.6200000047683716
+            }
+          ],
+          "value": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Annihilation_BS",
+            "Annihilation_Jump",
+            "Annihilation_JumpEnd",
+            "Annihilation_Cast",
+            "Annihilation_Loop"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Annihilation_Change_Weather_Handler",
+          "value": -1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 55,
+          "steerStateIDs": [
+            "Annihilation_AS"
+          ],
+          "startNormalizedTime": 0.4429999887943268,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.7099999785423279
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 160,
+          "steerStateIDs": [
+            "Alert"
+          ],
+          "startNormalizedTime": 0.37299999594688416,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.44999998807907104
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 60,
+          "steerStateIDs": [
+            "Alert"
+          ],
+          "startNormalizedTime": 0.44999998807907104,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.7099999785423279
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "TailWhip01"
+          ],
+          "startNormalizedTime": 0.05000000074505806,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.20000000298023224
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 360,
+          "steerStateIDs": [
+            "TailWhip01"
+          ],
+          "startNormalizedTime": 0.27000001072883606,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.8999999761581421
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "TailWhip01"
+          ],
+          "startNormalizedTime": 0.5199999809265137,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.6899999976158142
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 400,
+          "steerStateIDs": [
+            "TailWhipTrans"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "TailWhip02"
+          ],
+          "startNormalizedTime": 0.10000000149011612,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.18700000643730164
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 410,
+          "steerStateIDs": [
+            "TailWhip02"
+          ],
+          "startNormalizedTime": 0.23199999332427979,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.3100000023841858
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 60,
+          "steerStateIDs": [
+            "TailWhip02"
+          ],
+          "startNormalizedTime": 0.3499999940395355,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.5669999718666077
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 75,
+          "steerStateIDs": [
+            "FishBarrage"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.699999988079071
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "ElectronCharge_BS"
+          ],
+          "startNormalizedTime": 0.20999999344348907,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 60,
+          "steerStateIDs": [
+            "ElectronCharge"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.2800000011920929
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 36,
+          "steerStateIDs": [
+            "ElectronChargeWeak"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.30000001192092896
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 160,
+          "steerStateIDs": [
+            "LeapingStab_01"
+          ],
+          "startNormalizedTime": 0.5,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 75,
+          "steerStateIDs": [
+            "LeapingStab_01"
+          ],
+          "startNormalizedTime": 0.7900000214576721,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 75,
+          "steerStateIDs": [
+            "LeapingStab_02"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackTraceToPosMixin",
+          "actorIceSubHurtDelta": -1,
+          "EJNPCEBIFCJ": "_STAB_POS",
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 400,
+          "steerStateIDs": [
+            "LeapingStab_03"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.4000000059604645
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 250,
+          "steerStateIDs": [
+            "LeapingStab_AS"
+          ],
+          "startNormalizedTime": 0.3310000002384186,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.4000000059604645
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 40,
+          "steerStateIDs": [
+            "LeapingStab_AS"
+          ],
+          "startNormalizedTime": 0.4000000059604645,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 45,
+          "steerStateIDs": [
+            "ShieldRecover"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.6119999885559082
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 600,
+          "steerStateIDs": [
+            "ShieldRecover"
+          ],
+          "startNormalizedTime": 0.6119999885559082,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.6700000166893005
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 40,
+          "steerStateIDs": [
+            "ShieldRecover"
+          ],
+          "startNormalizedTime": 0.7860000133514404,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.9100000262260437
+        },
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "LeapingStab_03",
+            "LeapingStab_03_TheAbyss",
+            "LeapingStab_03_C31",
+            "LeapingStab_03_C32",
+            "LeapingStab_03_C33",
+            "LeapingStab_03_C36",
+            "LeapingStab_03_TheAbyss_C31",
+            "LeapingStab_03_TheAbyss_C32",
+            "LeapingStab_03_TheAbyss_C33",
+            "LeapingStab_03_TheAbyss_C36"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "_STAB_POS",
+              "target": "SelfAttackActiveTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByTargetLinearPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "BADHEOCLPAH": true,
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "FGENBFBPMPJ": 15,
+                "onGroundRaycastUpDist": 2,
+                "linearOffset": 0.5,
+                "OJCNJLECDHI": true
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_STAB_POS"
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "TheAbyss_Dendrite",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "effectPattern": "Eff_Monster_FauneAbyssale_SeaHorse_Primo_LeapingStab_WarningCircle",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_STAB_POS"
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "TheAbyss_Dendrite",
+                  "value": 1
+                }
+              ],
+              "effectPattern": "Eff_Monster_FauneAbyssale_SeaHorse_Primo_LeapingStab_WarningCircle_TheAbyss",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        },
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "LeapingStab_AS"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IS_IN_ABYSS",
+                  "value": 1
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_IS_IN_ROLE_BATTLE",
+                      "value": 1
+                    }
+                  ],
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "failActions": [
+                    {
+                      "$type": "CreateTile",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "EOJGOJPEJCM": "Monster_FauneAbyssale_Seahorse_Primo_Tile",
+                      "attackPattern": {
+                        "$type": "ConfigAttackSphere",
+                        "born": {
+                          "APKLAIJMEIL": {
+                            "HHNLJKNBKPP": 180
+                          },
+                          "value": 10,
+                          "direction": {
+                            "maxAngle": 180
+                          },
+                          "onGroundRaycastUpDist": 2
+                        },
+                        "MPNIJNGFBIH": {
+                          "INOCAOHPEBB": {
+                            "GGOHGMFHHEC": true,
+                            "value": 1
+                          }
+                        },
+                        "triggerType": "TriggerNoRepeat",
+                        "radius": 6.599999904632568,
+                        "massiveAttackRatio": 1
+                      },
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "CreateTile",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "EOJGOJPEJCM": "Monster_FauneAbyssale_Seahorse_Primo_Tile_RoleCombat",
+                      "attackPattern": {
+                        "$type": "ConfigAttackSphere",
+                        "born": {
+                          "APKLAIJMEIL": {
+                            "HHNLJKNBKPP": 180
+                          },
+                          "value": 10,
+                          "direction": {
+                            "maxAngle": 180
+                          },
+                          "onGroundRaycastUpDist": 2
+                        },
+                        "MPNIJNGFBIH": {
+                          "INOCAOHPEBB": {
+                            "GGOHGMFHHEC": true,
+                            "value": 1
+                          }
+                        },
+                        "triggerType": "TriggerNoRepeat",
+                        "radius": 6.599999904632568,
+                        "massiveAttackRatio": 1
+                      },
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "CreateTile",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "EOJGOJPEJCM": "Monster_FauneAbyssale_Seahorse_Primo_Tile_Dungeon",
+                  "attackPattern": {
+                    "$type": "ConfigAttackSphere",
+                    "born": {
+                      "APKLAIJMEIL": {
+                        "HHNLJKNBKPP": 180
+                      },
+                      "value": 10,
+                      "direction": {
+                        "maxAngle": 180
+                      },
+                      "onGroundRaycastUpDist": 2
+                    },
+                    "MPNIJNGFBIH": {
+                      "INOCAOHPEBB": {
+                        "GGOHGMFHHEC": true,
+                        "value": 1
+                      }
+                    },
+                    "triggerType": "TriggerNoRepeat",
+                    "radius": 6.599999904632568,
+                    "massiveAttackRatio": 1
+                  },
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "LeapingStab_02",
+            "LeapingStab_03",
+            "LeapingStab_02_TheAbyss",
+            "LeapingStab_03_TheAbyss",
+            "LeapingStab_02_C31",
+            "LeapingStab_02_C32",
+            "LeapingStab_02_C33",
+            "LeapingStab_02_C36",
+            "LeapingStab_02_TheAbyss_C31",
+            "LeapingStab_02_TheAbyss_C32",
+            "LeapingStab_02_TheAbyss_C33",
+            "LeapingStab_02_TheAbyss_C36",
+            "LeapingStab_03_C31",
+            "LeapingStab_03_C32",
+            "LeapingStab_03_C33",
+            "LeapingStab_03_C36",
+            "LeapingStab_03_TheAbyss_C31",
+            "LeapingStab_03_TheAbyss_C32",
+            "LeapingStab_03_TheAbyss_C33",
+            "LeapingStab_03_TheAbyss_C36",
+            "Annihilation_Jump",
+            "Annihilation_FarJump"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Trail_VFX",
+          "value": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "LeapingStab_03",
+            "LeapingStab_03_TheAbyss",
+            "LeapingStab_03_C31",
+            "LeapingStab_03_C32",
+            "LeapingStab_03_C33",
+            "LeapingStab_03_C36",
+            "LeapingStab_03_TheAbyss_C31",
+            "LeapingStab_03_TheAbyss_C32",
+            "LeapingStab_03_TheAbyss_C33",
+            "LeapingStab_03_TheAbyss_C36"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Elbow_VFX",
+          "value": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "ShieldRecover",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Achievement_82186_Monitor",
+          "normalizeEnd": 0.6110000014305115,
+          "value": -1
+        },
+        {
+          "$type": "ServerFinishWatcherMixin",
+          "actorIceSubHurtDelta": -1,
+          "watcherId": 82186,
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "ACHIEVEMENT_82186_MARK",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

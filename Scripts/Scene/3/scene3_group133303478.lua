@@ -175,8 +175,8 @@ function action_EVENT_GADGET_STATE_CHANGE_478013(context, evt)
 	-- 删除suite3的所有内容
 	    ScriptLib.RemoveExtraGroupSuite(context, 133303478, 3)
 	
-	-- 触发镜头注目，注目位置为坐标{x=-1107.813, y=173.0522, z=3699.369}，持续时间为3秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-1107.813, y=173.0522, z=3699.369}
+	-- 触发镜头注目，注目位置为坐标{x=-1107.813, y = 173.052, z=3699.369}，持续时间为3秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-1107.813, y=173.052, z=3699.369}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 3, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

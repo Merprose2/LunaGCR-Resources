@@ -1,0 +1,449 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ShowExtraAbility",
+          "target": "CurTeamAvatars",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "skillID": 20028,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "GV_Scene_ShadowPlay_Transfer",
+          "target": "Team",
+          "value": 100,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "TeamAbility_Scene_ShadowPlay_ButtonController",
+      "onRemoved": [
+        {
+          "$type": "ShowExtraAbility",
+          "target": "CurTeamAvatars",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "GV_Scene_ShadowPlay_Transfer",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_Is_In_Shadow",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "TeamAbility_Scene_ShadowPlay_Transfer",
+      "modifiers": {
+        "Is_In_Shadow_0": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Is_In_Shadow_1": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurLocalAvatar",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "_Is_In_Shadow_1_Avatar",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Is_In_Shadow_1_Avatar": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetExtraAbilityState",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "Predicated",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "DBPHPMIHBCO",
+            "entityTypePriority": [
+              "Gadget"
+            ],
+            "tag": "_ShadowPlay_Background"
+          },
+          "successActions": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Is_In_Shadow",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_Is_In_Shadow",
+                  "target": "Other",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_Is_In_Shadow",
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "_Is_In_Shadow_0",
+            "_Is_In_Shadow_1"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_Is_In_Shadow",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "SceneObj_Level_WhiteBox_ShadowPlay_Decal",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "tag": "_ShadowPlay_Background"
+        }
+      ],
+      "abilityName": "SceneObj_Level_WhiteBox_ShadowPlay_BackGround",
+      "modifiers": {
+        "Action_Trans": {
+          "onAdded": [
+            {
+              "$type": "DoBlinkByGlobalPos",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "EJFNJPFMGKM": true,
+              "positionKey": "_ShadowPlay_Trans_Pos",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "DebugLog",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "content": "onAbilityStart",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ChangeGadgetState",
+          "value": 201,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "predicates": [
+            {
+              "$type": "ByTargetGadgetState",
+              "target": "Target"
+            }
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ChangeGadgetState",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "predicates": [
+            {
+              "$type": "ByTargetGadgetState",
+              "target": "Target",
+              "gadgetState": 201
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "actorIceSubHurtDelta": -1,
+          "actions": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Is_In_Shadow",
+                  "target": "Target",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_Is_In_Shadow",
+                  "target": "Team",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetGlobalPos",
+                  "key": "_ShadowPlay_Trans_Pos",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true,
+                    "attachPointName": "Start_Point"
+                  },
+                  "setTarget": true,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "CopyGlobalValue",
+                  "dstTarget": "CurLocalAvatar",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "srcKey": "_ShadowPlay_Trans_Pos_0",
+                  "dstKey": "_ShadowPlay_Trans_Pos_0",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "CopyGlobalValue",
+                  "dstTarget": "CurLocalAvatar",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "srcKey": "_ShadowPlay_Trans_Pos_1",
+                  "dstKey": "_ShadowPlay_Trans_Pos_1",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "CopyGlobalValue",
+                  "dstTarget": "CurLocalAvatar",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "srcKey": "_ShadowPlay_Trans_Pos_2",
+                  "dstKey": "_ShadowPlay_Trans_Pos_2",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "CurLocalAvatar",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Action_Trans",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "EnableGadgetIntee",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_Is_In_Shadow",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetGlobalPos",
+                  "key": "_ShadowPlay_Trans_Pos",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true,
+                    "attachPointName": "Exit_Point"
+                  },
+                  "setTarget": true,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "CopyGlobalValue",
+                  "dstTarget": "CurLocalAvatar",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "srcKey": "_ShadowPlay_Trans_Pos_0",
+                  "dstKey": "_ShadowPlay_Trans_Pos_0",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "CopyGlobalValue",
+                  "dstTarget": "CurLocalAvatar",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "srcKey": "_ShadowPlay_Trans_Pos_1",
+                  "dstKey": "_ShadowPlay_Trans_Pos_1",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "CopyGlobalValue",
+                  "dstTarget": "CurLocalAvatar",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "srcKey": "_ShadowPlay_Trans_Pos_2",
+                  "dstKey": "_ShadowPlay_Trans_Pos_2",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "CurLocalAvatar",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Action_Trans",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "EnableGadgetIntee",
+                  "enable": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "globalValueKey": "_Is_In_Shadow"
+        },
+        {
+          "$type": "WidgetMpSupportMixin",
+          "succActions": [
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "SceneObj_Level_WhiteBox_ShadowPlay_BackGround",
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "actorIceSubHurtDelta": -1
+        }
+      ]
+    }
+  }
+]

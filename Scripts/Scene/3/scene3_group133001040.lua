@@ -749,7 +749,7 @@ end
 -- 触发操作
 function action_EVENT_PLATFORM_REACH_POINT_40024(context, evt)
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=1500.512,y=241.6388,z=-1389.868}
+	local pos = {x=1500.512,y=241.639,z=-1389.868}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 70501051, pos, 80) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1

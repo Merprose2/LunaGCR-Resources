@@ -17,7 +17,7 @@ local defs = {
 
 -- 怪物
 monsters = {
-	{ config_id = 181001, monster_id = 20070101, pos = { x = -4707.957, y = 479.992, z = -4259.036 }, rot = { x = 0.000, y = 336.573, z = 0.000 }, level = 36, drop_id = 1000100, special_name_id = 10071, climate_area_id = 10, area_id = 14 }
+	{ config_id = 181001, monster_id = 20070101, pos = { x = -4707.957, y = 479.992, z = -4259.036 }, rot = { x = 0.000, y = 336.573, z = 0.000 }, level = 36, drop_id = 1000100, special_name_id = 10071, climate_area_id = 10}
 }
 
 -- NPC

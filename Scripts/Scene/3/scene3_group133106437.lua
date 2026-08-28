@@ -219,8 +219,8 @@ function action_EVENT_ENTER_REGION_437018(context, evt)
 		return -1
 	end
 	
-	-- 触发镜头注目，注目位置为坐标{x=-883.9609, y=184.8571, z=1642.806}，持续时间为1秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-883.9609, y=184.8571, z=1642.806}
+	-- 触发镜头注目，注目位置为坐标{x = -883.961, y = 184.857, z=1642.806}，持续时间为1秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-883.961, y=184.857, z=1642.806}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 1, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -252,8 +252,8 @@ function action_EVENT_ENTER_REGION_437019(context, evt)
 		return -1
 	end
 	
-	-- 触发镜头注目，注目位置为坐标{x=-884.6059, y=182.7242, z=1656.779}，持续时间为1秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-884.6059, y=182.7242, z=1656.779}
+	-- 触发镜头注目，注目位置为坐标{x = -884.606, y = 182.724, z=1656.779}，持续时间为1秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-884.606, y=182.724, z=1656.779}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 1, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -285,8 +285,8 @@ function action_EVENT_ENTER_REGION_437020(context, evt)
 		return -1
 	end
 	
-	-- 触发镜头注目，注目位置为坐标{x=-878.9308, y=184.2747, z=1645.634}，持续时间为1秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-878.9308, y=184.2747, z=1645.634}
+	-- 触发镜头注目，注目位置为坐标{x = -878.931, y = 184.275, z=1645.634}，持续时间为1秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-878.931, y=184.275, z=1645.634}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 1, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -495,7 +495,7 @@ end
 function action_EVENT_SELECT_OPTION_437029(context, evt)
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=-889, y=188, z=1642}
+		local pos = {x=-889.000, y=188.000, z=1642.000}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "Audio_lua_quest_WQ_cengYanJuYuan_whistle", play_type= 1, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1
@@ -507,7 +507,7 @@ end
 -- 触发操作
 function action_EVENT_TIMER_EVENT_437030(context, evt)
 	-- 触发镜头注目，注目位置为坐标{x=-889, y=188, z=1641.7}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-889, y=188, z=1641.7}
+		local pos = {x=-889.000, y=188.000, z=1641.700}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

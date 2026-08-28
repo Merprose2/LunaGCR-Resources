@@ -103,14 +103,14 @@ end
 function action_EVENT_SPECIFIC_GADGET_HP_CHANGE_309(context, evt)
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=2226, y=205, z=-498}
+		local pos = {x=2226.000, y=205.000, z=-498.000}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "LevelHornSound001", play_type= 1, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1
 		end 
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=2226,y=205,z=-498}
+	local pos = {x=2226.000,y=205.000,z=-498.000}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 400004, pos, 50) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -150,14 +150,14 @@ end
 function action_EVENT_SPECIFIC_GADGET_HP_CHANGE_310(context, evt)
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=2208, y=211, z=-515}
+		local pos = {x=2208.000, y=211.000, z=-515.000}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "LevelHornSound001", play_type= 1, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1
 		end 
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=2208,y=211,z=-515}
+	local pos = {x=2208.000,y=211.000,z=-515.000}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 400004, pos, 50) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1

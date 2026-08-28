@@ -47,12 +47,14 @@ local special_interval =
 
 local worktops = 
 {
-     [1] = 28002
+
+     [1] = 28002
 }
 
 local connector_to_worktop = 
 {
-    [L_connectors[1]] = worktops[1]
+
+    [L_connectors[1]] = worktops[1]
 }
 
 --================================================================

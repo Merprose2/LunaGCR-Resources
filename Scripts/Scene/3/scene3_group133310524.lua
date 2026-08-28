@@ -266,8 +266,8 @@ function action_EVENT_SELECT_OPTION_524017(context, evt)
 			return -1
 		end 
 	
-	-- 触发镜头注目，注目位置为坐标{x=-3311.67, y=259.3187, z=4600.54}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-3311.67, y=259.3187, z=4600.54}
+	-- 触发镜头注目，注目位置为坐标{x=-3311.67, y = 259.319, z=4600.54}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-3311.670, y=259.319, z=4600.540}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

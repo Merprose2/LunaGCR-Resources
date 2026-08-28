@@ -51,7 +51,7 @@ variables = {
 
 -- 初始化时创建
 init_config = {
-	suite = 1,
+	suite = 2,
 	end_suite = 1,
 	rand_suite = false
 }

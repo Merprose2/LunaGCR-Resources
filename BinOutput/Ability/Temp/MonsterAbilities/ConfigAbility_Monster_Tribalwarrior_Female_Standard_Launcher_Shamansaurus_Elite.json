@@ -1,0 +1,1820 @@
+[
+  {
+    "Default": {
+      "abilityName": "Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Elite_FreePose",
+      "modifiers": {
+        "Flute_Model_Show": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Flute",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Meditation",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "MonsterDefendMixin",
+              "defendAngle": 360,
+              "stateIDs": [
+                "PreCombat"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "onDefendSucceded": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "triggerID": "BlockBlink",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetAnimatorInt",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true,
+                  "intID": "BlockBlinkType"
+                }
+              ],
+              "defendProbability": 1,
+              "defendTriggerID": "Block",
+              "canDefenceWhileEndureFull": true,
+              "MBCFKEMIHDL": true,
+              "value": -1,
+              "PEICCHEMFFH": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Entity_MassRatio": 10000
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "PlayFlute_Idle"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Flute_Model_Show",
+          "value": -1
+        },
+        {
+          "$type": "OverrideMassCapMixin",
+          "actorIceSubHurtDelta": -1,
+          "mass": 100000
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Property_Control",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "_BORN_POS",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true,
+            "onGround": true
+          },
+          "setTarget": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ULTIMATE_ALREADY_CAST",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_WATCHER_IN_ULTIMATE",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_WATCHER_NEVER_BE_HIT",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Elite_MainController",
+      "modifiers": {
+        "DelayLeaveCombat": {
+          "duration": 3.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectPattern": "Eff_Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Blink_BS",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ServerLuaTriggerEvent",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "FromGroup",
+              "sourceName": "ForceLeaveCombat",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "HP_Stage1": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "HP_Stage2": {
+          "onAdded": [
+            {
+              "$type": "SetAISkillCDAvailableNow",
+              "skillIDs": [
+                801
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ULTIMATE_ALREADY_CAST",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "InCombat": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "DelayLeaveCombat",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Property_Control": {
+          "onAdded": [
+            {
+              "$type": "AttachAbilityStateResistance",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "durationRatio": 0.8999999761581421,
+              "resistanceBuffDebuffs": [
+                "ElementFreeze"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElemMasteryDelta": 800,
+            "Actor_EndureDelta": 0.1875
+          }
+        },
+        "State_Enhanced": {
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "value": true,
+              "boolID": "Enhanced",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "Enhanced",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "State_NotEnhanced": {
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Enhanced",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Enhanced",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "State_Reset": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_SHAMANSAURUS_ENHANCED",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ULTIMATE_ALREADY_CAST",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_WATCHER_IN_ULTIMATE",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_WATCHER_NEVER_BE_HIT",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_BLOCK_COUNT",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "HitTag",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_SHAMANSAURUS_ENHANCED",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "DoActionByPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            1,
+            2,
+            3
+          ],
+          "enterActions": [
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": 1001,
+              "canBeHandledOnRecover": true,
+              "intID": "FreePoseMark"
+            }
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "State_NotEnhanced",
+            "State_Enhanced"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_SHAMANSAURUS_ENHANCED"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            1901
+          ],
+          "modifierName": "State_Reset"
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 1800,
+          "steerStateIDs": [
+            "Shamansaurus_TribalUlt_AfterBlink"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.15000000596046448
+        },
+        {
+          "$type": "AttachModifierToHPPercentMixin",
+          "valueSteps": [
+            0.699999988079071
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "HP_Stage1",
+            "HP_Stage2"
+          ]
+        },
+        {
+          "$type": "ServerFinishWatcherMixin",
+          "predicatesForeach": [
+            {
+              "$type": "KGOCIAFFDBJ",
+              "target": "Target",
+              "EOHPALAHLKC": 82258
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "watcherId": 82259,
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_WATCHER_IN_ULTIMATE",
+              "value": 1
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_WATCHER_NEVER_BE_HIT",
+              "value": 1
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_LocalLegendTag_",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "$type": "ServerFinishWatcherMixin",
+          "predicatesForeach": [
+            {
+              "$type": "KGOCIAFFDBJ",
+              "target": "Target",
+              "EOHPALAHLKC": 82257
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "watcherId": 82258,
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_WATCHER_IN_ULTIMATE",
+              "value": 1
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_LocalLegendTag_",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "$type": "ServerFinishWatcherMixin",
+          "actorIceSubHurtDelta": -1,
+          "watcherId": 82257,
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_LocalLegendTag_",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "$type": "AttachToAIAlertnessMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "InCombat",
+          "alertness": [
+            2,
+            3
+          ]
+        },
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "Shamansaurus_TribalUlt",
+            "Shamansaurus_TribalUlt_AfterBlink"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "SetPoseBool",
+              "value": true,
+              "boolID": "HitTag",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Elite_FloatingAttack_Fire",
+      "modifiers": {
+        "CreateBulletDelay": {
+          "onAdded": [
+            {
+              "$type": "TriggerThinkInterval",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 1.2000000476837158,
+          "duration": 4,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "CreateGadget",
+              "target": "SelfAttackActiveTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": true,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "onGround": true
+              },
+              "KLGHKKGGHEA": {
+                "CBLLACNAMON": true,
+                "DBOLJFPPFGI": 0.5,
+                "JOCOGLBCMEJ": 0.5,
+                "LKEBJHCDOHB": true
+              },
+              "gadgetID": 42551030,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "CreateBulletDelay",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Ring_VFX",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Elite_FloatingAttack_GadgetLogic",
+      "modifiers": {
+        "AttackStart": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_FloatingAttack_Attack",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.23000000417232513,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "hitImpulseType": "LV5",
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "canBeModifiedBy": "OriginOwner",
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "elementType": "Ice",
+                    "elementDurability": 25,
+                    "enBreak": 200,
+                    "elementRank": 1,
+                    "attackType": "Range",
+                    "damagePercentage": 1
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "fanAngle": 360,
+                  "height": 4,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": -1.5
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "radius": 5,
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Ring_VFX": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_FloatingAttack_Target_Fast",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "AttackStart",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Elite_RangedAttack_Fire",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "useCorrectDir": true,
+              "maxAngle": 180,
+              "randomAngleHor": 25,
+              "MMDMEINCOMO": 4,
+              "angleOffset": {
+                "y": -8
+              }
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true,
+            "attachPointName": "BulletSource"
+          },
+          "trackTarget": "SelfAttackTarget",
+          "bulletID": 42551031,
+          "value": true,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Elite_GuidanceShot_Controller",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 1800,
+          "steerStateIDs": [
+            "GuidanceShot_Continue"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "GuidanceShot_BS"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "GuidanceShotEnd",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        },
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "GuidanceShot_Continue"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectPattern": "Eff_Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Blink_BS_NoFollow",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TryFindBlinkPoint",
+              "target": "SelfAttackTarget",
+              "minRange": 10.5,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "GBINFPFKLHL": true,
+              "forwardAngle": 150,
+              "maxRange": 15.5,
+              "NJPPAIBEILP": 2.5,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DoBlink",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "GuidanceShotEnd",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Elite_MeleeBlink",
+      "modifiers": {
+        "FloatBlink_Logic": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "GhostState",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "InvincibleState",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectPattern": "Eff_Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Blink_BS",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "EntityInVisibleMixin",
+              "AAHPKGHIPPG": {
+                "EAEPMBENPPN": true
+              },
+              "actorIceSubHurtDelta": -1,
+              "disableAudio": true,
+              "reason": "SelfAbility",
+              "LMCPBHECDEI": true
+            },
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "EnableHitBoxByName",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "hitBoxNames": [
+                    "HitBox",
+                    "HeadBox"
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "pushColliderNames": [
+                    "PushCollider"
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "HideUIBillBoard",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "hide": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "onRemoved": [
+                {
+                  "$type": "EnableHitBoxByName",
+                  "setEnable": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "hitBoxNames": [
+                    "HitBox",
+                    "HeadBox"
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "setEnable": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "pushColliderNames": [
+                    "PushCollider"
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "HideUIBillBoard",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Blink_AS",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "DenyLockOn"
+        },
+        "GhostState": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "IsGhostToEnemy"
+        },
+        "InvincibleState": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "Invincible"
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FixedMonsterRushMove",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "toPos": {
+            "$type": "ConfigBornByGlobalValue",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "positionKey": "_JUMP_POS"
+          },
+          "GKOFKDIFIMA": -1,
+          "animatorStateIDs": [
+            "MeleeAttack02_Counter"
+          ],
+          "maxRange": 5,
+          "PGLJIHAEIAD": -1,
+          "canBeHandledOnRecover": true,
+          "timeRange": 0.6499999761581421
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "MeleeDisappear",
+            "Ultimate_Disappear",
+            "Block_Disappear",
+            "Alert_Disappear"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "FloatBlink_Logic",
+          "value": -1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 1800,
+          "steerStateIDs": [
+            "MeleeDisappear"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackTraceToPosMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EJNPCEBIFCJ": "_JUMP_POS",
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 250,
+          "steerStateIDs": [
+            "MeleeAttack02_Counter"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.20000000298023224
+        },
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "MeleeAttack01_Counter"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "_JUMP_POS",
+              "target": "SelfAttackActiveTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Randomed",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "chance": 0.5,
+              "failActions": [
+                {
+                  "$type": "TryFindBlinkPointByBorn",
+                  "hitSceneType": "BlinkHitSceneTestByThreeSegments",
+                  "DKKAFIDPHMD": true,
+                  "limitY": 2.5,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "y": 2.5
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "bornRandom": {
+                      "$type": "BornRandomFromCenter",
+                      "maxRandomRange": 1
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true
+                  },
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TryFindBlinkPointByBorn",
+                  "hitSceneType": "BlinkHitSceneTestByThreeSegments",
+                  "DKKAFIDPHMD": true,
+                  "limitY": 2.5,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "y": -2.5
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "bornRandom": {
+                      "$type": "BornRandomFromCenter",
+                      "maxRandomRange": 1
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true
+                  },
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DoBlink",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Elite_Bomb_Trigger",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true,
+            "attachPointName": "BombCreate"
+          },
+          "trackTarget": "SelfAttackTarget",
+          "bulletID": 42551032,
+          "value": true,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_BombCreate",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Elite_BombBullet",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV6",
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "elementType": "Fire",
+                "elementDurability": 25,
+                "enBreak": 200,
+                "elementRank": 1,
+                "attackType": "Range",
+                "strikeType": "Blunt",
+                "damagePercentage": 1
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 3.200000047683716,
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_BombExplode",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_BLOCK_COUNT",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_Tribalwarrior_Female_Standard_Launcher_Shamansaurus_Elite_BlockStone",
+      "modifiers": {
+        "BlockHandler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "MonsterDefendMixin",
+              "defendAngle": 360,
+              "stateIDs": [
+                "NormalMove",
+                "NormalIdle",
+                "Turn",
+                "Block"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "onDefendSucceded": [
+                {
+                  "$type": "FireEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 1,
+                      "z": 0.3499999940395355
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true
+                  },
+                  "effectPattern": "Eff_Monster_Darkwraith_Fat_Rock_Shield_BlockHit",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "Randomed",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "chance": 0.5,
+                  "failActions": [
+                    {
+                      "$type": "SetAnimatorInt",
+                      "value": 1,
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "canBeHandledOnRecover": true,
+                      "intID": "BlockLevel"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "SetAnimatorInt",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "canBeHandledOnRecover": true,
+                      "intID": "BlockLevel"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "key": "_BLOCK_COUNT",
+                  "useLimitRange": true,
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true,
+                  "maxValue": 4
+                },
+                {
+                  "$type": "Predicated",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_BLOCK_COUNT",
+                      "target": "Target",
+                      "value": 4
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "Randomed",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "chance": 0.5,
+                      "failActions": [
+                        {
+                          "$type": "SetGlobalValue",
+                          "key": "_BLOCK_COUNT",
+                          "actorIceSubHurtDelta": -1,
+                          "doOffStage": false,
+                          "canBeHandledOnRecover": true
+                        }
+                      ],
+                      "successActions": [
+                        {
+                          "$type": "SetGlobalValue",
+                          "key": "_BLOCK_COUNT",
+                          "value": 1,
+                          "actorIceSubHurtDelta": -1,
+                          "doOffStage": false,
+                          "canBeHandledOnRecover": true
+                        }
+                      ],
+                      "canBeHandledOnRecover": true
+                    },
+                    {
+                      "$type": "CreateGadget",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "value": true,
+                      "born": {
+                        "$type": "ConfigBornBySelf",
+                        "APKLAIJMEIL": {
+                          "HHNLJKNBKPP": 180
+                        },
+                        "value": 10,
+                        "direction": {
+                          "maxAngle": 180
+                        },
+                        "onGroundRaycastUpDist": 2,
+                        "useRotation": true,
+                        "onGround": true
+                      },
+                      "campID": 4004,
+                      "KLGHKKGGHEA": {
+                        "CBLLACNAMON": true,
+                        "DBOLJFPPFGI": 0.5,
+                        "JOCOGLBCMEJ": 0.5,
+                        "LKEBJHCDOHB": true
+                      },
+                      "gadgetID": 42551033,
+                      "canBeHandledOnRecover": true,
+                      "lifeByOwnerV2": true
+                    },
+                    {
+                      "$type": "SetAnimatorTrigger",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "triggerID": "BlockBlink",
+                      "canBeHandledOnRecover": true
+                    },
+                    {
+                      "$type": "Randomed",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "chance": 0.75,
+                      "failActions": [
+                        {
+                          "$type": "SetAnimatorInt",
+                          "actorIceSubHurtDelta": -1,
+                          "doOffStage": false,
+                          "canBeHandledOnRecover": true,
+                          "intID": "BlockBlinkType"
+                        }
+                      ],
+                      "successActions": [
+                        {
+                          "$type": "SetAnimatorInt",
+                          "value": 1,
+                          "actorIceSubHurtDelta": -1,
+                          "doOffStage": false,
+                          "canBeHandledOnRecover": true,
+                          "intID": "BlockBlinkType"
+                        }
+                      ],
+                      "canBeHandledOnRecover": true
+                    },
+                    {
+                      "$type": "ClearEndura",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "value": 1,
+                      "canBeHandledOnRecover": true
+                    },
+                    {
+                      "$type": "SetGlobalValue",
+                      "key": "_CAN_BLOCK",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "defendProbability": 1,
+              "defendTriggerID": "Block",
+              "canDefenceWhileEndureFull": true,
+              "MBCFKEMIHDL": true,
+              "value": -1,
+              "PEICCHEMFFH": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Block_Cooldown": {
+          "thinkInterval": 19,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_CAN_BLOCK",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "defaultGlobalValueOnCreate": 1,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Block_Cooldown",
+            "BlockHandler"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_CAN_BLOCK"
+        },
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "GuidanceShot_Counter",
+            "Bomb_Cast"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enterActions": [
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "GuidanceShotEnd",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "HPANBNKJCMI",
+                  "value": 22.5,
+                  "compareType": "XYZ",
+                  "positionKey": "_ULTIMATE_POS",
+                  "logic": "Lesser"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetGlobalPos",
+                  "key": "_BACK_BORN_POS",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "born": {
+                    "$type": "ConfigBornByGlobalValue",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "bornRandom": {
+                      "$type": "BornRandomFromCenter",
+                      "maxRandomRange": 7,
+                      "minRandomRange": 2
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "positionKey": "_ULTIMATE_POS"
+                  },
+                  "setTarget": true,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "DoBlinkByGlobalPos",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "EJFNJPFMGKM": true,
+                  "positionKey": "_BACK_BORN_POS",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TryFindBlinkPoint",
+                  "minRange": 5,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "GBINFPFKLHL": true,
+                  "forwardAngle": 180,
+                  "maxRange": 12.5,
+                  "NJPPAIBEILP": 2.5,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "DoBlink",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "value": -1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 3600,
+          "steerStateIDs": [
+            "GuidanceShot_Counter",
+            "Bomb_Cast"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 3600,
+          "steerStateIDs": [
+            "Bomb_Cast"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.20000000298023224
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 630,
+          "steerStateIDs": [
+            "Bomb_AS"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.25
+        }
+      ]
+    }
+  }
+]

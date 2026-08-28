@@ -13,11 +13,16 @@ local defs = {
 
 -- DEFS_MISCS
 local CameraLookSetting = {
-    blend_type = 1,  --镜头的移动路径，球面0，直线1
-    blend_duration = 2, --镜头的移动时间
-    is_force_walk = false, --强制玩家行走
-    is_allow_input = false, --允许输入
-    delay = 0, --触发延迟
+    blend_type = 1,
+  --镜头的移动路径，球面0，直线1
+    blend_duration = 2,
+ --镜头的移动时间
+    is_force_walk = false,
+ --强制玩家行走
+    is_allow_input = false,
+ --允许输入
+    delay = 0,
+ --触发延迟
 }
 
 --================================================================

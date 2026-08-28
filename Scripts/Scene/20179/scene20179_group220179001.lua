@@ -3,7 +3,7 @@ local base_info = {
 }
 
 monsters = {
-	{ config_id = 1028, monster_id = 29080103, pos = { x = 100, y = 10.271, z = 100 }, rot = { x = 0.000, y = 161.345, z = 0.000 }, level = 32, title_id = 171, special_name_id = 13, isElite = true }
+	{ config_id = 1028, monster_id = 29080103, pos = { x = 100, y = 10.271, z = 100 }, rot = { x = 0.000, y = 161.345, z = 0.000 }, level = 32, title_id = 171, special_name_id = 2017101, isElite = true }
 }
 
 npcs = {

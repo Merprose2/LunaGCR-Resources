@@ -771,5 +771,5 @@ groups = {
 	{ id = 133301772, area = 23, pos = { x = -844.386, y = 103.304, z = 3364.329 }, is_replaceable = { value = false, version = 0, new_bin_only = true }, vision_type = 0 },
 	{ id = 133301773, refresh_id = 999999, area = 23, pos = { x = -785.705, y = 192.610, z = 3145.129 }, is_replaceable = { value = false, version = 0, new_bin_only = true }, vision_type = 33010034 },
 	{ id = 133301774, refresh_id = 999999, area = 23, pos = { x = -898.271, y = 246.222, z = 3561.650 }, is_replaceable = { value = false, version = 0, new_bin_only = true }, vision_type = 33010019 },
-	{ id = 133301776, refresh_id = 999999, area = 23, pos = { x = -1062.456, y = 339.397, z = 3980.773 }, is_replaceable = { value = false, version = 0, new_bin_only = true } }
+	{ id = 133301776, refresh_id = 999999, area = 23, pos = { x = -1062.456, y = 339.397, z = 3980.773 }, is_replaceable = { value = false, version = 0, new_bin_only = true } },
 }

@@ -205,7 +205,7 @@ function action_EVENT_GADGET_STATE_CHANGE_433010(context, evt)
 	end
 	
 	-- 触发镜头注目，注目位置为坐标（-697.9495，100，1817.17），持续时间为3秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-697.9495, y=100, z=1817.17}
+		local pos = {x=-697.949, y=100.000, z=1817.170}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 3, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -216,7 +216,7 @@ function action_EVENT_GADGET_STATE_CHANGE_433010(context, evt)
 	
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=-698, y=100, z=1817}
+		local pos = {x=-698.000, y=100.000, z=1817.000}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "Audio_lua_quest_WQ_cengYanJuYuan_knock", play_type= 1, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1

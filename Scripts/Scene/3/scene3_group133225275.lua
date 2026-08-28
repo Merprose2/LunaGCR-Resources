@@ -6,7 +6,8 @@ local base_info = {
 -- DEFS_MISCS
 local defs = {
 
-	--开启怪物用的特效gadget--废弃
+	--开启怪物用的特效gadget
+--废弃
 	gadget_starter = 275001,
 
 	--开启怪物用的region--废弃

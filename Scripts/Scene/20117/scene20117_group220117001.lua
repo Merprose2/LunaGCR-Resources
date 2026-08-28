@@ -18,7 +18,7 @@ local defs = {
 
 -- 怪物
 monsters = {
-	[1002] = { config_id = 1002, monster_id = 29060102, pos = { x = 492.258, y = 100.542, z = 488.200 }, rot = { x = 0.000, y = 30.000, z = 0.000 }, level = 1, title_id = 152, special_name_id = 9 }
+	[1002] = { config_id = 1002, monster_id = 29060102, pos = { x = 492.258, y = 100.542, z = 488.200 }, rot = { x = 0.000, y = 30.000, z = 0.000 }, level = 1, title_id = 152, special_name_id = 2015201 }
 }
 
 -- NPC

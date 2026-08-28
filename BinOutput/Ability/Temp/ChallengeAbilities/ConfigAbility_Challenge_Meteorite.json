@@ -1,685 +1,1076 @@
 [
   {
     "Default": {
-      "$type": "ConfigAbility",
-      "abilityName": "SceneObj_Aster_AvatarExtraAbility",
-      "abilityMixins": [
+      "onAdded": [
         {
-          "$type": "AttachModifierToSelfGlobalValueMixin",
-          "globalValueKey": "AVATAR_ASTER_SCORE",
-          "defaultGlobalValueOnCreate": 0.0,
-          "valueSteps": [0.0, 99.5, 100.5],
-          "modifierNameSteps": ["Blank", "SetTaunt"]
+          "$type": "ApplyModifier",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_PlayerNotify",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "SetAbilityEnableF",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Init",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_EasyModeController",
+          "canBeHandledOnRecover": true
         }
       ],
       "abilitySpecials": {
-        "curteamscore": 0.0
+        "curteamscore": 0
       },
+      "abilityName": "SceneObj_Aster_AvatarExtraAbility",
       "modifiers": {
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ChannelBlock": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_MQ1002_XueyueBuff",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "CHANNEL_BLOCK",
+              "useLimitRange": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "minValue": 1,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            }
+          ],
+          "duration": 5.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "CHANNEL_BLOCK",
+              "useLimitRange": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_EndureDelta": 2
+          }
+        },
+        "DamageUp": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_MQ1002_XueyueBuff",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 5.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AddHurtDelta": 10
+          },
+          "buffID": 10001,
+          "state": "AttackUp"
+        },
+        "DebuffTimer": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_Aster_Debuff_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "CreateGadget",
+              "value": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "KLGHKKGGHEA": {
+                "CBLLACNAMON": true,
+                "DBOLJFPPFGI": 0.5,
+                "JOCOGLBCMEJ": 0.5,
+                "LKEBJHCDOHB": true
+              },
+              "gadgetID": 70900360,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "EasyMode_Avatar": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "Channel_Loop",
+                "Channel_AS",
+                "Channel_BS"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "HitControl",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "HitControl": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onBeingHit": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "AVATAR_ASTER_SCORE",
+              "useLimitRange": true,
+              "target": "Team",
+              "value": -20,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "CHANNEL_BLOCK",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "maxValue": 100
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
         "Init": {
-          "modifierName": "",
-          "duration": 0.5,
-          "bonusCritical": 100.0,
           "onAdded": [
             {
               "$type": "SetGlobalValue",
-              "target": "Team",
-              "ratio": 0.0,
               "key": "AVATAR_ASTER_SCORE",
-              "maxValue": 0.0,
-              "minValue": 0.0
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "LineEff_FindAster": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "Applier",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "attachPointTargetType": "Self",
+                "attachPointName": "EffPoint"
+              },
+              "effectPattern": "Eff_SceneObj_AsterLarge_Recevie",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "PlayerCharge": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_PlayerChargeMixin",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SetAbilityEnableF": {
+          "onAdded": [
+            {
+              "$type": "SetExtraAbilityEnable",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SetTaunt": {
+          "onAdded": [
+            {
+              "$type": "TriggerTaunt",
+              "tauntLevel": "Ability_TauntLevel_3",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR25",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "careValue": 50,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Team_ChannelBlock_Arua_Eff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_Aster_Buff_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Team_DamageUp_Arua_Eff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_Aster_Buff_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Team_ScoreMult_Arua_Eff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_Aster_Buff_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Team_UperScoreMult_Arua_Eff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_Aster_Buff_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_DebuffTimer_Team": {
+          "stacking": "Unique",
+          "duration": 5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OJGNPLHOGHL",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "DebuffTimer"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
         },
         "UNIQUE_EasyModeController": {
           "stacking": "Unique",
-          "modifierName": "",
-          "isUnique": true,
-          "bonusCritical": 100.0,
+          "elementDurability": 100,
+          "minus_one": -1,
           "modifierMixins": [
             {
-              "$type": "ApplyModifierWithSharedDurabilityMixin",
+              "$type": "OJGNPLHOGHL",
+              "actorIceSubHurtDelta": -1,
               "modifierName": "EasyMode_Avatar"
             },
             {
               "$type": "ServerUpdateGlobalValueMixin",
               "key": "AVATAR_ASTER_SCORE",
               "useLimitRange": true,
-              "maxValue": 100.0,
-              "minValue": 0.0
+              "actorIceSubHurtDelta": -1,
+              "maxValue": 100
             }
-          ]
-        },
-        "EasyMode_Avatar": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
-          "modifierMixins": [
-            {
-              "$type": "AttachToStateIDMixin",
-              "stateIDs": ["Channel_Loop", "Channel_AS", "Channel_BS"],
-              "modifierName": "HitControl"
-            }
-          ]
-        },
-        "HitControl": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
-          "onBeingHit": [
-            {
-              "$type": "AddGlobalValue",
-              "target": "Team",
-              "predicates": [
-                {
-                  "$type": "ByTargetGlobalValue",
-                  "target": "Self",
-                  "key": "CHANNEL_BLOCK",
-                  "ratio": 0.0,
-                  "compareType": "NoneOrEqual"
-                }
-              ],
-              "ratio": -20.0,
-              "key": "AVATAR_ASTER_SCORE",
-              "useLimitRange": true,
-              "maxValue": 100.0,
-              "minValue": 0.0
-            }
-          ]
-        },
-        "SetAbilityEnableF": {
-          "modifierName": "",
-          "duration": 0.5,
-          "bonusCritical": 100.0,
-          "onAdded": [
-            {
-              "$type": "SetExtraAbilityEnable"
-            }
-          ]
-        },
-        "UNIQUE_PlayerNotify": {
-          "stacking": "Unique",
-          "modifierName": "",
+          ],
+          "IAKPBCLBNKF": -1,
           "isUnique": true,
-          "bonusCritical": 100.0,
-          "modifierMixins": [
-            {
-              "$type": "PlayerUidNotifyMixin",
-              "opParam": "clear_energy",
-              "opType": 1,
-              "logic": "Equal",
-              "actions": [
-                {
-                  "$type": "AddGlobalValue",
-                  "target": "Team",
-                  "ratio": 0.0,
-                  "key": "AVATAR_ASTER_SCORE",
-                  "useLimitRange": true,
-                  "maxValue": 0.0,
-                  "minValue": 0.0
-                }
-              ]
-            },
-            {
-              "$type": "PlayerUidNotifyMixin",
-              "opParam": "random_buff_aster",
-              "opType": 1,
-              "logic": "Equal",
-              "actions": [
-                {
-                  "$type": "ApplyModifier",
-                  "target": "Team",
-                  "modifierName": "UNIQUE_Team_DamageUp_Arua"
-                }
-              ]
-            },
-            {
-              "$type": "PlayerUidNotifyMixin",
-              "opParam": "random_buff_aster",
-              "opType": 2,
-              "logic": "Equal",
-              "actions": [
-                {
-                  "$type": "ApplyModifier",
-                  "target": "Team",
-                  "modifierName": "UNIQUE_Team_ChannelBlock_Arua"
-                }
-              ]
-            },
-            {
-              "$type": "PlayerUidNotifyMixin",
-              "opParam": "random_buff_aster",
-              "opType": 3,
-              "logic": "Equal",
-              "actions": [
-                {
-                  "$type": "ApplyModifier",
-                  "target": "Team",
-                  "modifierName": "UNIQUE_Team_ScoreMult_Arua"
-                }
-              ]
-            },
-            {
-              "$type": "PlayerUidNotifyMixin",
-              "opParam": "random_buff_aster",
-              "opType": 4,
-              "logic": "Equal",
-              "actions": [
-                {
-                  "$type": "ApplyModifier",
-                  "target": "Team",
-                  "modifierName": "UNIQUE_DebuffTimer_Team"
-                }
-              ]
-            },
-            {
-              "$type": "PlayerUidNotifyMixin",
-              "opParam": "random_buff_aster",
-              "opType": 5,
-              "logic": "Equal",
-              "actions": [
-                {
-                  "$type": "ApplyModifier",
-                  "target": "Team",
-                  "modifierName": "UNIQUE_Team_UperScoreMult_Arua"
-                }
-              ]
-            }
-          ]
-        },
-        "UNIQUE_DebuffTimer_Team": {
-          "stacking": "Unique",
-          "modifierName": "",
-          "isUnique": true,
-          "duration": 5.0,
-          "bonusCritical": 100.0,
-          "modifierMixins": [
-            {
-              "$type": "ApplyModifierWithSharedDurabilityMixin",
-              "modifierName": "DebuffTimer"
-            }
-          ]
-        },
-        "DebuffTimer": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Aster_Debuff_01",
-              "effectTempleteID": -1.0
-            }
-          ],
-          "onRemoved": [
-            {
-              "$type": "CreateGadget",
-              "born": {
-                "$type": "ConfigBornBySelf"
-              },
-              "gadgetID": 70900360,
-              "byServer": true
-            }
-          ]
-        },
-        "UNIQUE_Team_DamageUp_Arua": {
-          "stacking": "Unique",
-          "modifierName": "",
-          "isUnique": true,
-          "duration": 30.0,
-          "bonusCritical": 100.0,
-          "thinkInterval": 5.0,
-          "modifierMixins": [
-            {
-              "$type": "ApplyModifierWithSharedDurabilityMixin",
-              "modifierName": "Team_DamageUp_Arua_Eff"
-            }
-          ],
-          "onThinkInterval": [
-            {
-              "$type": "ApplyModifier",
-              "otherTargets": {
-                "$type": "SelectTargetsByShape",
-                "shapeName": "CircleR5",
-                "centerBasedOn": "CurLocalAvatar",
-                "campTargetType": "All",
-                "BDDJBGEIGMJ": "CurLocalAvatar",
-                "OBHNBNDMPFN": 1.0
-              },
-              "predicates": [
-                {
-                  "$type": "ByEntityTypes",
-                  "entityTypes": ["Avatar"]
-                }
-              ],
-              "modifierName": "DamageUp"
-            }
-          ]
-        },
-        "Team_DamageUp_Arua_Eff": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Aster_Buff_01",
-              "effectTempleteID": -1.0
-            }
-          ]
-        },
-        "DamageUp": {
-          "modifierName": "",
-          "duration": 5.5,
-          "bonusCritical": 100.0,
-          "properties": {
-            "Actor_AddHurtDelta": 10.0
-          },
-          "state": "AttackUp",
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "healLimitedByCasterMaxHPRatio": "Eff_MQ1002_XueyueBuff",
-              "effectTempleteID": -1.0
-            }
-          ],
-          "isLimitedProperties": true,
-          "buffID": 10001
-        },
-        "UNIQUE_Team_ChannelBlock_Arua": {
-          "stacking": "Unique",
-          "modifierName": "",
-          "isUnique": true,
-          "duration": 30.0,
-          "bonusCritical": 100.0,
-          "thinkInterval": 5.0,
-          "modifierMixins": [
-            {
-              "$type": "ApplyModifierWithSharedDurabilityMixin",
-              "modifierName": "Team_ChannelBlock_Arua_Eff"
-            }
-          ],
-          "onThinkInterval": [
-            {
-              "$type": "ApplyModifier",
-              "otherTargets": {
-                "$type": "SelectTargetsByShape",
-                "shapeName": "CircleR5",
-                "centerBasedOn": "CurLocalAvatar",
-                "campTargetType": "All",
-                "BDDJBGEIGMJ": "CurLocalAvatar",
-                "OBHNBNDMPFN": 1.0
-              },
-              "predicates": [
-                {
-                  "$type": "ByEntityTypes",
-                  "entityTypes": ["Avatar"]
-                }
-              ],
-              "modifierName": "ChannelBlock"
-            }
-          ]
-        },
-        "ChannelBlock": {
-          "modifierName": "",
-          "duration": 5.5,
-          "bonusCritical": 100.0,
-          "properties": {
-            "Actor_EndureDelta": 2.0
-          },
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "healLimitedByCasterMaxHPRatio": "Eff_MQ1002_XueyueBuff",
-              "effectTempleteID": -1.0
-            },
-            {
-              "$type": "AddGlobalValue",
-              "ratio": 1.0,
-              "key": "CHANNEL_BLOCK",
-              "useLimitRange": true,
-              "maxValue": 1.0,
-              "minValue": 1.0
-            }
-          ],
-          "onRemoved": [
-            {
-              "$type": "AddGlobalValue",
-              "ratio": 0.0,
-              "key": "CHANNEL_BLOCK",
-              "useLimitRange": true,
-              "maxValue": 0.0,
-              "minValue": 0.0
-            }
-          ]
-        },
-        "Team_ChannelBlock_Arua_Eff": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Aster_Buff_01",
-              "effectTempleteID": -1.0
-            }
-          ]
-        },
-        "UNIQUE_Team_ScoreMult_Arua": {
-          "stacking": "Unique",
-          "modifierName": "",
-          "isUnique": true,
-          "duration": 30.0,
-          "bonusCritical": 100.0,
-          "modifierMixins": [
-            {
-              "$type": "ApplyModifierWithSharedDurabilityMixin",
-              "modifierName": "Team_ScoreMult_Arua_Eff"
-            }
-          ],
-          "onAdded": [
-            {
-              "$type": "SetGlobalValue",
-              "target": "Team",
-              "ratio": 1.0,
-              "key": "ASTER_PROGRESS_RATIO",
-              "maxValue": 0.0,
-              "minValue": 0.0
-            }
-          ],
-          "onRemoved": [
-            {
-              "$type": "SetGlobalValue",
-              "target": "Team",
-              "ratio": 0.0,
-              "key": "ASTER_PROGRESS_RATIO",
-              "maxValue": 0.0,
-              "minValue": 0.0
-            }
-          ]
-        },
-        "Team_ScoreMult_Arua_Eff": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Aster_Buff_01",
-              "effectTempleteID": -1.0
-            }
-          ]
-        },
-        "UNIQUE_Team_UperScoreMult_Arua": {
-          "stacking": "Unique",
-          "modifierName": "",
-          "isUnique": true,
-          "duration": 30.0,
-          "bonusCritical": 100.0,
-          "modifierMixins": [
-            {
-              "$type": "ApplyModifierWithSharedDurabilityMixin",
-              "modifierName": "Team_UperScoreMult_Arua_Eff"
-            }
-          ],
-          "onAdded": [
-            {
-              "$type": "SetGlobalValue",
-              "target": "Team",
-              "ratio": 1.0,
-              "key": "ASTER_ENERGY_RATIO",
-              "maxValue": 0.0,
-              "minValue": 0.0
-            }
-          ],
-          "onRemoved": [
-            {
-              "$type": "SetGlobalValue",
-              "target": "Team",
-              "ratio": 0.0,
-              "key": "ASTER_ENERGY_RATIO",
-              "maxValue": 0.0,
-              "minValue": 0.0
-            }
-          ]
-        },
-        "Team_UperScoreMult_Arua_Eff": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Aster_Buff_01",
-              "effectTempleteID": -1.0
-            }
-          ]
-        },
-        "Blank": {
-          "modifierName": "",
-          "bonusCritical": 100.0
-        },
-        "SetTaunt": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
-          "onAdded": [
-            {
-              "$type": "TriggerTaunt",
-              "otherTargets": {
-                "$type": "SelectTargetsByShape",
-                "shapeName": "CircleR25",
-                "campTargetType": "Enemy",
-                "OBHNBNDMPFN": 1.0
-              },
-              "predicates": [
-                {
-                  "$type": "ByEntityTypes",
-                  "entityTypes": ["Monster"]
-                }
-              ],
-              "careValue": 50.0
-            }
-          ]
+          "isLimitedProperties": true
         },
         "UNIQUE_PlayerChargeMixin": {
-          "stacking": "Unique",
-          "modifierName": "",
-          "isUnique": true,
-          "bonusCritical": 100.0,
-          "thinkInterval": 5.0,
-          "modifierMixins": [
-            {
-              "$type": "AttachToStateIDMixin",
-              "stateIDs": ["Channel_Loop", "Channel_AS", "Channel_BS"],
-              "modifierName": "PlayerCharge"
-            }
-          ],
           "onAdded": [
             {
               "$type": "SetAnimatorTrigger",
-              "triggerID": "StartChannelTrigger"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "StartChannelTrigger",
+              "canBeHandledOnRecover": true
             },
             {
-              "$type": "SetExtraAbilityState"
+              "$type": "SetExtraAbilityState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
               "otherTargets": {
                 "$type": "SelectTargetsByShape",
                 "shapeName": "CircleR50",
                 "campTargetType": "AllExceptSelf",
-                "OBHNBNDMPFN": 1.0
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
               },
+              "modifierName": "LineEff_FindAster",
               "predicates": [
                 {
                   "$type": "ByTargetGlobalValue",
                   "key": "IS_BIG_ASTER",
-                  "ratio": 1.0
+                  "target": "Target",
+                  "value": 1
                 }
               ],
-              "modifierName": "LineEff_FindAster"
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "AddGlobalValue",
-              "target": "CurLocalAvatar",
-              "ratio": 0.0,
               "key": "CHARGE_SUCCESS",
               "useLimitRange": true,
-              "maxValue": 0.0,
-              "minValue": 0.0
+              "target": "CurLocalAvatar",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
               "otherTargets": {
                 "$type": "SelectTargetsByShape",
                 "shapeName": "CircleR50",
                 "campTargetType": "AllExceptSelf",
-                "OBHNBNDMPFN": 1.0
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
               },
               "predicates": [
                 {
                   "$type": "ByTargetGlobalValue",
                   "key": "IS_BIG_ASTER",
-                  "ratio": 1.0
+                  "target": "Target",
+                  "value": 1
                 }
               ],
-              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AsterLarge_Active",
-              "effectTempleteID": -1.0
+              "effectPattern": "Eff_SceneObj_AsterLarge_Active",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "thinkInterval": 5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "Channel_Loop",
+                "Channel_AS",
+                "Channel_BS"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "PlayerCharge",
+              "value": -1
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "EndChannelTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "CHANNEL_BLOCK",
+                  "target": "Target",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "PlayerCharge",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "CHANNEL_BLOCK",
+                  "target": "Target",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
             }
           ],
           "onRemoved": [
             {
               "$type": "SetExtraAbilityState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
               "predicates": [
                 {
                   "$type": "ByTargetGlobalValue",
-                  "target": "CurLocalAvatar",
                   "key": "CHARGE_SUCCESS",
-                  "ratio": 0.0
+                  "target": "CurLocalAvatar"
                 }
               ],
+              "canBeHandledOnRecover": true,
               "state": "Interrupt"
             }
           ],
-          "onBeingHit": [
-            {
-              "$type": "SetAnimatorTrigger",
-              "predicates": [
-                {
-                  "$type": "ByTargetGlobalValue",
-                  "key": "CHANNEL_BLOCK",
-                  "ratio": 0.0,
-                  "compareType": "NoneOrEqual"
-                }
-              ],
-              "triggerID": "EndChannelTrigger"
-            },
-            {
-              "$type": "RemoveModifier",
-              "predicates": [
-                {
-                  "$type": "ByTargetGlobalValue",
-                  "key": "CHANNEL_BLOCK",
-                  "ratio": 0.0,
-                  "compareType": "NoneOrEqual"
-                }
-              ],
-              "modifierName": "PlayerCharge"
-            }
-          ],
+          "IAKPBCLBNKF": -1,
           "onThinkInterval": [
             {
               "$type": "AddGlobalValue",
-              "target": "CurLocalAvatar",
-              "ratio": 1.0,
               "key": "CHARGE_SUCCESS",
               "useLimitRange": true,
-              "maxValue": 1.0,
-              "minValue": 1.0
+              "target": "CurLocalAvatar",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "minValue": 1,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
             },
             {
               "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
               "otherTargets": {
                 "$type": "SelectTargetsByShape",
                 "shapeName": "CircleR50",
                 "campTargetType": "AllExceptSelf",
-                "OBHNBNDMPFN": 1.0
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
               },
               "predicates": [
                 {
                   "$type": "ByTargetGlobalValue",
                   "key": "IS_BIG_ASTER",
-                  "ratio": 1.0
+                  "target": "Target",
+                  "value": 1
                 }
               ],
-              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AsterLarge_RecevieFinish",
-              "effectTempleteID": -1.0
+              "effectPattern": "Eff_SceneObj_AsterLarge_RecevieFinish",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "ServerLuaCall",
               "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
               "luaCallType": "CurScenePlay",
               "funcName": "UpdateAsterProgress",
-              "FDPBPIHKEGH": 0.0,
-              "FJCBPCIDMGJ": 0.0,
-              "NDCPJDDPIMD": 0.0
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "SetAnimatorTrigger",
-              "triggerID": "EndChannelTrigger"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "EndChannelTrigger",
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "RemoveUniqueModifier",
-              "modifierName": "UNIQUE_PlayerChargeMixin"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_PlayerChargeMixin",
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "isUnique": true,
+          "isLimitedProperties": true
         },
-        "LineEff_FindAster": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
+        "UNIQUE_PlayerNotify": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CMKIBKMMJPC",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "key": "AVATAR_ASTER_SCORE",
+                  "useLimitRange": true,
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "opType": 1,
+              "logic": "Equal",
+              "opParam": "clear_energy"
+            },
+            {
+              "$type": "CMKIBKMMJPC",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Team_DamageUp_Arua",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "opType": 1,
+              "logic": "Equal",
+              "opParam": "random_buff_aster"
+            },
+            {
+              "$type": "CMKIBKMMJPC",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Team_ChannelBlock_Arua",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "opType": 2,
+              "logic": "Equal",
+              "opParam": "random_buff_aster"
+            },
+            {
+              "$type": "CMKIBKMMJPC",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Team_ScoreMult_Arua",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "opType": 3,
+              "logic": "Equal",
+              "opParam": "random_buff_aster"
+            },
+            {
+              "$type": "CMKIBKMMJPC",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_DebuffTimer_Team",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "opType": 4,
+              "logic": "Equal",
+              "opParam": "random_buff_aster"
+            },
+            {
+              "$type": "CMKIBKMMJPC",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Team_UperScoreMult_Arua",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "opType": 5,
+              "logic": "Equal",
+              "opParam": "random_buff_aster"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Team_ChannelBlock_Arua": {
+          "stacking": "Unique",
+          "thinkInterval": 5,
+          "duration": 30,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OJGNPLHOGHL",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Team_ChannelBlock_Arua_Eff"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "centerBasedOn": "CurLocalAvatar",
+                "shapeName": "CircleR5",
+                "campTargetType": "All",
+                "sizeRatio": 1,
+                "campBasedOn": "CurLocalAvatar",
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "modifierName": "ChannelBlock",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Avatar"
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Team_DamageUp_Arua": {
+          "stacking": "Unique",
+          "thinkInterval": 5,
+          "duration": 30,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OJGNPLHOGHL",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Team_DamageUp_Arua_Eff"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "centerBasedOn": "CurLocalAvatar",
+                "shapeName": "CircleR5",
+                "campTargetType": "All",
+                "sizeRatio": 1,
+                "campBasedOn": "CurLocalAvatar",
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "modifierName": "DamageUp",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Avatar"
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Team_ScoreMult_Arua": {
           "onAdded": [
             {
-              "$type": "AttachEffect",
-              "target": "Applier",
-              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AsterLarge_Recevie",
-              "born": {
-                "$type": "ConfigBornByAttachPoint",
-                "attachPointName": "EffPoint",
-                "BKOJLOPLKJE": "Self"
-              },
-              "effectTempleteID": -1.0
+              "$type": "SetGlobalValue",
+              "key": "ASTER_PROGRESS_RATIO",
+              "target": "Team",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
             }
-          ]
-        },
-        "PlayerCharge": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
+          ],
+          "stacking": "Unique",
+          "duration": 30,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OJGNPLHOGHL",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Team_ScoreMult_Arua_Eff"
+            }
+          ],
           "onRemoved": [
             {
-              "$type": "RemoveUniqueModifier",
-              "modifierName": "UNIQUE_PlayerChargeMixin"
+              "$type": "SetGlobalValue",
+              "key": "ASTER_PROGRESS_RATIO",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Team_UperScoreMult_Arua": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "ASTER_ENERGY_RATIO",
+              "target": "Team",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": 30,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OJGNPLHOGHL",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Team_UperScoreMult_Arua_Eff"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "ASTER_ENERGY_RATIO",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
         }
       },
-      "onAdded": [
-        {
-          "$type": "ApplyModifier",
-          "target": "Team",
-          "modifierName": "UNIQUE_PlayerNotify"
-        },
-        {
-          "$type": "ApplyModifier",
-          "modifierName": "SetAbilityEnableF"
-        },
-        {
-          "$type": "ApplyModifier",
-          "target": "Team",
-          "modifierName": "Init"
-        },
-        {
-          "$type": "ApplyModifier",
-          "target": "Team",
-          "modifierName": "UNIQUE_EasyModeController"
-        }
-      ],
       "onAbilityStart": [
         {
           "$type": "ApplyModifier",
-          "modifierName": "UNIQUE_PlayerChargeMixin"
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_PlayerChargeMixin",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            0,
+            99.5,
+            100.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Blank",
+            "SetTaunt"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "AVATAR_ASTER_SCORE"
         }
       ]
     }

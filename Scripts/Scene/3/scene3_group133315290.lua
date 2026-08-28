@@ -271,8 +271,8 @@ function action_EVENT_ANY_MONSTER_DIE_290033(context, evt)
 	-- 添加suite6的新内容
 	    ScriptLib.AddExtraGroupSuite(context, 133315290, 6)
 	
-	-- 触发镜头注目，注目位置为坐标{x=185.9818, y=398.8679, z=2185.062}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=185.9818, y=398.8679, z=2185.062}
+	-- 触发镜头注目，注目位置为坐标{x = 185.982, y = 398.868, z=2185.062}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=185.982, y=398.868, z=2185.062}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 1,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

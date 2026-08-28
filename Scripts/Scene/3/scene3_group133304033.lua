@@ -17,7 +17,8 @@ local defs = {
     },
 
     -- 指定初始激活的电池id，未指定则默认初始未激活
-    activeCells = {33004},
+    activeCells = {33004}
+,
 
     -- 指定探索机关，这些机关在任何时候都根据自身能量块做出反应，电池全亮不会改变它们的状态
     optionalMachines = {}

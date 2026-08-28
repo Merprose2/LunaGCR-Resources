@@ -102,7 +102,7 @@ function action_EVENT_ENTER_REGION_170001(context, evt)
 	end
 	
 	-- 触发镜头注目，注目位置为坐标（-3710，271.6，-3138.6），持续时间为3秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-3710, y=271.6, z=-3138.6}
+		local pos = {x=-3710.000, y=271.600, z=-3138.600}
 	  local pos_follow = {x=-1, y=1, z=-3}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 3, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = true, follow_pos = pos_follow, is_force_walk = true, is_change_play_mode = true,

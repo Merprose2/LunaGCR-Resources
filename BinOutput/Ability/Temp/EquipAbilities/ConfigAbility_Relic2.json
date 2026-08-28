@@ -1,0 +1,1907 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Relic_6.0_Carry_Handler",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "Dura": 0,
+        "Rate1": 0,
+        "Rate2": 0,
+        "Ratio": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "Relic_6.0_Carry",
+      "modifiers": {
+        "Relic_6.0_Carry_Buff1": {
+          "duration": "Dura",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_CriticalDelta": "Rate1"
+          },
+          "state": "AttackUp"
+        },
+        "Relic_6.0_Carry_Buff2": {
+          "duration": "Dura",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_CriticalDelta": "Rate2"
+          },
+          "state": "AttackUp"
+        },
+        "Relic_6.0_Carry_EachHandler": {
+          "duration": 10,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "TriggerAbility",
+                  "ADPHDOOEDEI": true,
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "abilityName": "Relic_6.0_Carry",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "MoonShock",
+                "MoonOvergrow",
+                "MoonCrystallizeWater"
+              ],
+              "NGEMAJNHAEJ": true,
+              "range": 20
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Relic_6.0_Carry_Handler": {
+          "onAdded": [
+            {
+              "$type": "TriggerThinkInterval",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "AllPlayerAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "Relic_6.0_Carry_EachHandler",
+              "predicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 40,
+                  "logic": "LesserOrEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Relic_6.0_Carry_CommonTeamBuff": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "Dura",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElemReactMoonCrystallizeWaterDelta": "Ratio",
+            "Actor_ElemReactMoonOvergrowDelta": "Ratio",
+            "Actor_ElemReactMoonShockDelta": "Ratio"
+          }
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "target": "AllPlayerAvatars",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Relic_6.0_Carry_CommonTeamBuff",
+          "predicates": [
+            {
+              "$type": "ByTargetPositionToSelfPosition",
+              "target": "Target",
+              "value": 40,
+              "logic": "LesserOrEqual"
+            }
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "Caster",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Relic_6.0_Carry_Buff1",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "SGV_MoonPhaseLevel",
+              "target": "Team",
+              "value": 1
+            }
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Relic_6.0_Carry_Buff2",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "SGV_MoonPhaseLevel",
+              "target": "Team",
+              "value": 1
+            }
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Relic_6.0_Carry_Buff2",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "SGV_MoonPhaseLevel",
+              "target": "Team",
+              "value": 2,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Relic_6.0_Carry_Buff1",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "SGV_MoonPhaseLevel",
+              "target": "Team",
+              "value": 2,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Relic_6.0_Support_Handler",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "Dura": 0,
+        "Rate1": 0,
+        "Rate2": 0,
+        "Ratio": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "Relic_6.0_Support",
+      "modifiers": {
+        "Relic_6.0_Support_Handler": {
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "target": "Target",
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Electric"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Fire"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Wind"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Water"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Ice"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Grass"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Rock"
+                    }
+                  ]
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "target": "AllPlayerAvatars",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Relic_6.0_Support_Buff1",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SGV_MoonPhaseLevel",
+                      "target": "Team",
+                      "value": 1
+                    },
+                    {
+                      "$type": "ByTargetPositionToSelfPosition",
+                      "target": "Target",
+                      "value": 40,
+                      "logic": "LesserOrEqual"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "RemoveModifier",
+                  "target": "AllPlayerAvatars",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Relic_6.0_Support_Buff2",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SGV_MoonPhaseLevel",
+                      "target": "Team",
+                      "value": 1
+                    },
+                    {
+                      "$type": "ByTargetPositionToSelfPosition",
+                      "target": "Target",
+                      "value": 40,
+                      "logic": "LesserOrEqual"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AttachModifier",
+                  "target": "AllPlayerAvatars",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Relic_6.0_Support_Buff2",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SGV_MoonPhaseLevel",
+                      "target": "Team",
+                      "value": 2,
+                      "compareType": "MoreThanAndEqual"
+                    },
+                    {
+                      "$type": "ByTargetPositionToSelfPosition",
+                      "target": "Target",
+                      "value": 40,
+                      "logic": "LesserOrEqual"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "RemoveModifier",
+                  "target": "AllPlayerAvatars",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Relic_6.0_Support_Buff1",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SGV_MoonPhaseLevel",
+                      "target": "Team",
+                      "value": 2,
+                      "compareType": "MoreThanAndEqual"
+                    },
+                    {
+                      "$type": "ByTargetPositionToSelfPosition",
+                      "target": "Target",
+                      "value": 40,
+                      "logic": "LesserOrEqual"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "TriggerAbility",
+                  "ADPHDOOEDEI": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "abilityName": "Relic_6.0_Support",
+                  "target": "Other",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Relic_6.0_Support_Buff1": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "Dura",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElemMasteryDelta": "Rate1"
+          },
+          "state": "AttackUp"
+        },
+        "UNIQUE_Relic_6.0_Support_Buff2": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "Dura",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElemMasteryDelta": "Rate2"
+          },
+          "state": "AttackUp"
+        },
+        "UNIQUE_Relic_6.0_Support_CommonTeamBuff": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "Dura",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElemReactMoonCrystallizeWaterDelta": "Ratio",
+            "Actor_ElemReactMoonOvergrowDelta": "Ratio",
+            "Actor_ElemReactMoonShockDelta": "Ratio"
+          }
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "target": "AllPlayerAvatars",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Relic_6.0_Support_CommonTeamBuff",
+          "predicates": [
+            {
+              "$type": "ByTargetPositionToSelfPosition",
+              "target": "Target",
+              "value": 40,
+              "logic": "LesserOrEqual"
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Relic_Columbia_Handler",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "__unk_Q2982101340": [
+        "SGV_MoonPhaseLevel"
+      ],
+      "abilitySpecials": {
+        "DamageRate1": 0,
+        "DamageRate2": 0,
+        "Time": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "Relic_6.3_Columbia",
+      "modifiers": {
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Relic_Columbia_Handler": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByIsLocalAvatar",
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "failActions": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Relic_Columbia_OffStage",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Relic_Columbia_OffStageMoon",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SGV_MoonPhaseLevel",
+                      "target": "Team",
+                      "value": 2,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "RemoveUniqueModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Relic_Columbia_OffStage",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByIsLocalAvatar",
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "failActions": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Relic_Columbia_OffStage",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Relic_Columbia_OffStageMoon",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SGV_MoonPhaseLevel",
+                      "target": "Team",
+                      "value": 2,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "RemoveUniqueModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Relic_Columbia_OffStage",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "RemoveUniqueModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Relic_Columbia_OffStageMoon",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Relic_Columbia_OffStage": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElemReactMoonCrystallizeWaterDelta": "DamageRate1",
+            "Actor_ElemReactMoonOvergrowDelta": "DamageRate1",
+            "Actor_ElemReactMoonShockDelta": "DamageRate1"
+          }
+        },
+        "UNIQUE_Relic_Columbia_OffStageMoon": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElemReactMoonCrystallizeWaterDelta": "DamageRate2",
+            "Actor_ElemReactMoonOvergrowDelta": "DamageRate2",
+            "Actor_ElemReactMoonShockDelta": "DamageRate2"
+          }
+        },
+        "UNIQUE_Relic_Columbia_OnStage": {
+          "thinkInterval": "Time",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Relic_Columbia_OffStage",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Relic_Columbia_OffStageMoon",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "onAvatarIn": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Relic_Columbia_OnStage",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            1.5,
+            2.5
+          ],
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "Blank",
+            "Blank"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_MoonPhaseLevel",
+          "actionQueues": [
+            [
+              {
+                "$type": "RemoveUniqueModifier",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": true,
+                "modifierName": "UNIQUE_Relic_Columbia_OffStageMoon",
+                "canBeHandledOnRecover": true
+              }
+            ],
+            [
+              {
+                "$type": "AttachModifier",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": true,
+                "modifierName": "UNIQUE_Relic_Columbia_OffStageMoon",
+                "predicates": [
+                  {
+                    "$type": "ByNot",
+                    "target": "Target",
+                    "predicates": [
+                      {
+                        "$type": "ByIsLocalAvatar",
+                        "target": "Target"
+                      }
+                    ]
+                  }
+                ],
+                "canBeHandledOnRecover": true
+              }
+            ]
+          ],
+          "PNELLOCFHCP": true
+        }
+      ],
+      "onAvatarOut": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Relic_Columbia_OnStage",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Relic_Columbia_OffStage",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Relic_Columbia_OffStageMoon",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "SGV_MoonPhaseLevel",
+              "target": "Team",
+              "value": 2,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Relic_MajoKai",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "Dura": 0,
+        "Rate1": 0,
+        "Rate2": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "Relic_6.3_MajoKai",
+      "modifiers": {
+        "Relic_MajoKaiBuff_TriggerCD": {
+          "onAdded": [
+            {
+              "$type": "AttachModifierToParent",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Relic_MajoKaiBuff1",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifierToParent",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Relic_MajoKaiBuff2",
+              "predicates": [
+                {
+                  "$type": "FCFFCIKEOKH",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Relic_MajoKai": {
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "target": "Target",
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "target": "Target",
+                  "attackTags": [
+                    "NormalAttack_01",
+                    "NormalAttack_02",
+                    "NormalAttack_03",
+                    "NormalAttack_04",
+                    "NormalAttack_05",
+                    "NormalAttack_06",
+                    "ExtraAttack",
+                    "Elemental_Art",
+                    "Elemental_Art_Hold",
+                    "Elemental_Art_Extra",
+                    "Elemental_Burst"
+                  ]
+                }
+              ],
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "Relic_MajoKaiBuff_TriggerCD",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Relic_MajoKaiBuff1": {
+          "duration": "Dura",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AttackRatio": "Rate1"
+          },
+          "state": "AttackUp"
+        },
+        "UNIQUE_Relic_MajoKaiBuff2": {
+          "duration": "Dura",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_CriticalDelta": "Rate2"
+          },
+          "state": "AttackUp"
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Relic_Nicole_Handler",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "AddHurtDelta": 0,
+        "Dura": 0,
+        "Hexenzirkel_Ratio": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "Relic_6.6_Nicole",
+      "modifiers": {
+        "Relic_Nicole_BuffHandler": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "AllPlayerAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Relic_Nicole_Buff_Fire",
+              "predicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 40,
+                  "logic": "LesserOrEqual"
+                },
+                {
+                  "$type": "ByAvatarElementType",
+                  "elementType": "Fire"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "AllPlayerAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Relic_Nicole_Buff_Electric",
+              "predicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 40,
+                  "logic": "LesserOrEqual"
+                },
+                {
+                  "$type": "ByAvatarElementType",
+                  "elementType": "Electric"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "AllPlayerAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Relic_Nicole_Buff_Water",
+              "predicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 40,
+                  "logic": "LesserOrEqual"
+                },
+                {
+                  "$type": "ByAvatarElementType",
+                  "elementType": "Water"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "AllPlayerAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Relic_Nicole_Buff_Ice",
+              "predicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 40,
+                  "logic": "LesserOrEqual"
+                },
+                {
+                  "$type": "ByAvatarElementType",
+                  "elementType": "Ice"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "AllPlayerAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Relic_Nicole_Buff_Wind",
+              "predicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 40,
+                  "logic": "LesserOrEqual"
+                },
+                {
+                  "$type": "ByAvatarElementType",
+                  "elementType": "Wind"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "AllPlayerAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Relic_Nicole_Buff_Rock",
+              "predicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 40,
+                  "logic": "LesserOrEqual"
+                },
+                {
+                  "$type": "ByAvatarElementType",
+                  "elementType": "Rock"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "AllPlayerAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Relic_Nicole_Buff_Grass",
+              "predicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 40,
+                  "logic": "LesserOrEqual"
+                },
+                {
+                  "$type": "ByAvatarElementType",
+                  "elementType": "Grass"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Multiple",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Relic_Nicole_Timer": {
+          "duration": "Dura",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "Relic_Nicole_BuffHandler",
+              "predicates": [
+                {
+                  "$type": "FCFFCIKEOKH",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Relic_Nicole_BuffHandler_Predicate": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "Relic_Nicole_BuffHandler",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Relic_Nicole_Buff_Electric": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "Dura",
+          "elementDurability": "Dura",
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                1.5,
+                6
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "UNIQUE_Relic_Nicole_Buff_Electric_Hexenzirkel"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_HexenzirkelLevel",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElecAddHurtDelta": "AddHurtDelta"
+          }
+        },
+        "UNIQUE_Relic_Nicole_Buff_Electric_Hexenzirkel": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElecAddHurtDelta": [
+              "Hexenzirkel_Ratio",
+              "AddHurtDelta",
+              "SUB"
+            ]
+          }
+        },
+        "UNIQUE_Relic_Nicole_Buff_Fire": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "Dura",
+          "elementDurability": "Dura",
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                1.5,
+                6
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "UNIQUE_Relic_Nicole_Buff_Fire_Hexenzirkel"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_HexenzirkelLevel",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_FireAddHurtDelta": "AddHurtDelta"
+          }
+        },
+        "UNIQUE_Relic_Nicole_Buff_Fire_Hexenzirkel": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_FireAddHurtDelta": [
+              "Hexenzirkel_Ratio",
+              "AddHurtDelta",
+              "SUB"
+            ]
+          }
+        },
+        "UNIQUE_Relic_Nicole_Buff_Grass": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "Dura",
+          "elementDurability": "Dura",
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                1.5,
+                6
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "UNIQUE_Relic_Nicole_Buff_Grass_Hexenzirkel"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_HexenzirkelLevel",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_GrassAddHurtDelta": "AddHurtDelta"
+          }
+        },
+        "UNIQUE_Relic_Nicole_Buff_Grass_Hexenzirkel": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_GrassAddHurtDelta": [
+              "Hexenzirkel_Ratio",
+              "AddHurtDelta",
+              "SUB"
+            ]
+          }
+        },
+        "UNIQUE_Relic_Nicole_Buff_Ice": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "Dura",
+          "elementDurability": "Dura",
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                1.5,
+                6
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "UNIQUE_Relic_Nicole_Buff_Ice_Hexenzirkel"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_HexenzirkelLevel",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_IceAddHurtDelta": "AddHurtDelta"
+          }
+        },
+        "UNIQUE_Relic_Nicole_Buff_Ice_Hexenzirkel": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_IceAddHurtDelta": [
+              "Hexenzirkel_Ratio",
+              "AddHurtDelta",
+              "SUB"
+            ]
+          }
+        },
+        "UNIQUE_Relic_Nicole_Buff_Rock": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "Dura",
+          "elementDurability": "Dura",
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                1.5,
+                6
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "UNIQUE_Relic_Nicole_Buff_Rock_Hexenzirkel"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_HexenzirkelLevel",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_RockAddHurtDelta": "AddHurtDelta"
+          }
+        },
+        "UNIQUE_Relic_Nicole_Buff_Rock_Hexenzirkel": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_RockAddHurtDelta": [
+              "Hexenzirkel_Ratio",
+              "AddHurtDelta",
+              "SUB"
+            ]
+          }
+        },
+        "UNIQUE_Relic_Nicole_Buff_Water": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "Dura",
+          "elementDurability": "Dura",
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                1.5,
+                6
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "UNIQUE_Relic_Nicole_Buff_Water_Hexenzirkel"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_HexenzirkelLevel",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_WaterAddHurtDelta": "AddHurtDelta"
+          }
+        },
+        "UNIQUE_Relic_Nicole_Buff_Water_Hexenzirkel": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_WaterAddHurtDelta": [
+              "Hexenzirkel_Ratio",
+              "AddHurtDelta",
+              "SUB"
+            ]
+          }
+        },
+        "UNIQUE_Relic_Nicole_Buff_Wind": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "Dura",
+          "elementDurability": "Dura",
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                1.5,
+                6
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "UNIQUE_Relic_Nicole_Buff_Wind_Hexenzirkel"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_HexenzirkelLevel",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_WindAddHurtDelta": "AddHurtDelta"
+          }
+        },
+        "UNIQUE_Relic_Nicole_Buff_Wind_Hexenzirkel": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_WindAddHurtDelta": [
+              "Hexenzirkel_Ratio",
+              "AddHurtDelta",
+              "SUB"
+            ]
+          }
+        },
+        "UNIQUE_Relic_Nicole_Handler": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OnAvatarUseSkillMixin",
+              "actorIceSubHurtDelta": -1,
+              "clearSkillIdDelay": 0.20000000298023224,
+              "onTriggerSkill": [
+                {
+                  "$type": "RemoveModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "Relic_Nicole_BuffHandler",
+                  "predicates": [
+                    {
+                      "$type": "FCFFCIKEOKH",
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "Relic_Nicole_BuffHandler",
+                  "predicates": [
+                    {
+                      "$type": "FCFFCIKEOKH",
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "RemoveUniqueModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Relic_Nicole_TeamHandler",
+                  "predicates": [
+                    {
+                      "$type": "FCFFCIKEOKH",
+                      "target": "Caster"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AttachModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Relic_Nicole_TeamHandler",
+                  "predicates": [
+                    {
+                      "$type": "FCFFCIKEOKH",
+                      "target": "Caster"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "Relic_Nicole_Timer",
+                  "predicates": [
+                    {
+                      "$type": "FCFFCIKEOKH",
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Relic_Nicole_TeamHandler": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "Dura",
+          "elementDurability": "Dura",
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                1.5,
+                6
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "UNIQUE_Relic_Nicole_TeamHandler_Hexenzirkel"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_HexenzirkelLevel",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Relic_Nicole_TeamHandler_Hexenzirkel": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "CEMHBBDAIOO": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Relic_Nicole_BuffHandler_Predicate"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Relic_Superconductor_Handler",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "AddHurtDelta": 0,
+        "Rate": 0,
+        "StarHurtDelta": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "Relic_6.6_Superconductor",
+      "modifiers": {
+        "UNIQUE_Relic_Superconductor_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "ignoreEventInfo": true,
+              "actorIceSubHurtDelta": -1,
+              "bonusCritical": "Rate",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHasAbilityState",
+                      "target": "Target",
+                      "abilityState": "Superconduct"
+                    },
+                    {
+                      "$type": "ByHasAbilityState",
+                      "target": "Target",
+                      "abilityState": "StarSuperconduct"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "$type": "MIFEHPNHLKJ",
+              "actorIceSubHurtDelta": -1,
+              "bonusCritical": "Rate",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHasAbilityState",
+                      "target": "Target",
+                      "abilityState": "Superconduct"
+                    },
+                    {
+                      "$type": "ByHasAbilityState",
+                      "target": "Target",
+                      "abilityState": "StarSuperconduct"
+                    }
+                  ]
+                }
+              ],
+              "attackTags": [
+                "MoonOvergrowDamage",
+                "MoonShockDamage",
+                "MoonCrystallizeWaterDamage",
+                "StarSuperconductorIceDamage",
+                "StarSuperconductorElectricDamage",
+                "StarSwirlIceDamage",
+                "StarSwirlWindDamage"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElemReactSConductDelta": "AddHurtDelta",
+            "Actor_ElemReactStarSConductElectricDelta": "StarHurtDelta",
+            "Actor_ElemReactStarSConductIceDelta": "StarHurtDelta"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Relic_7.0_StarWind_Handler",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "Dura": 0,
+        "Rate": 0,
+        "StarHurtDelta": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "Relic_7.0_StarWind",
+      "modifiers": {
+        "UNIQUE_Relic_7.0_StarWind_Buff": {
+          "duration": "Dura",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_CriticalDelta": "Rate",
+            "Actor_ElemReactStarSwirlIceDelta": "StarHurtDelta",
+            "Actor_ElemReactStarSwirlWindDelta": "StarHurtDelta"
+          }
+        },
+        "UNIQUE_Relic_7.0_StarWind_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Relic_7.0_StarWind_Buff",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "StarSwirlIce",
+                "StarSwirlWind"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "range": 20
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Relic_7.0_StarSupport_4_Handler",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "SelfATKRatio": 0,
+        "StarHurtDelta": 0,
+        "TeamBuffDura": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "Relic_7.0_StarSupport_4",
+      "modifiers": {
+        "Relic_7.0_StarSupport_4_Handler": {
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "target": "Target",
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "target": "Target",
+                  "attackTags": [
+                    "StarSuperconductorIceDamage",
+                    "StarSuperconductorElectricDamage",
+                    "StarSwirlIceDamage",
+                    "StarSwirlWindDamage"
+                  ]
+                }
+              ],
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "successActions": [
+                {
+                  "$type": "TriggerAbility",
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "abilityName": "Relic_7.0_StarSupport_4",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "TriggerAbility",
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "abilityName": "Relic_7.0_StarSupport_4",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "StarSuperconductor",
+                "StarSwirlIce",
+                "StarSwirlWind"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "range": 20
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Relic_7.0_StarSupport_4_SelfBuff": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "TeamBuffDura",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AttackRatio": "SelfATKRatio"
+          },
+          "state": "AttackUp"
+        },
+        "UNIQUE_Relic_7.0_StarSupport_4_TeamBuff": {
+          "stacking": "RefreshUniqueDurability",
+          "duration": "TeamBuffDura",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElemReactStarSConductElectricDelta": "StarHurtDelta",
+            "Actor_ElemReactStarSConductIceDelta": "StarHurtDelta",
+            "Actor_ElemReactStarSwirlIceDelta": "StarHurtDelta",
+            "Actor_ElemReactStarSwirlWindDelta": "StarHurtDelta"
+          },
+          "state": "AttackUp"
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "target": "Caster",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Relic_7.0_StarSupport_4_SelfBuff",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "AllPlayerAvatars",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Relic_7.0_StarSupport_4_TeamBuff",
+          "predicates": [
+            {
+              "$type": "ByTargetPositionToSelfPosition",
+              "target": "Target",
+              "value": 40,
+              "logic": "LesserOrEqual"
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  }
+]

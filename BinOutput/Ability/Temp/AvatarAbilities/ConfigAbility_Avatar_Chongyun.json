@@ -1,60 +1,159 @@
 [
   {
     "Default": {
-      "$type": "ConfigAbility",
+      "abilitySpecials": {
+        "ExtraAttack_Claymore_Stamina_Cost": 0,
+        "Max_Dura": 0
+      },
       "abilityName": "Avatar_Beidou_ExtraAttack_Chongyun",
+      "modifiers": {
+        "Camera": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "onAvatarOut": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ]
+        },
+        "Cost": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CostStaminaMixin",
+              "costStaminaDelta": "ExtraAttack_Claymore_Stamina_Cost",
+              "actorIceSubHurtDelta": -1,
+              "FOKFBIOAFDK": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "triggerID": "EndHoldTrigger",
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SetTrigger": {
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "EndHoldTrigger",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
       "abilityMixins": [
         {
           "$type": "ButtonHoldChargeMixin",
-          "skillID": 10401,
-          "chargeTime": 0.25,
-          "secondChargeTime": "Max_Dura",
-          "onBeginUncharged": [
+          "actorIceSubHurtDelta": -1,
+          "OnBeginUncharged": [
             {
               "$type": "SetAnimatorTrigger",
-              "triggerID": "DoSkill"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "DoSkill",
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "SetAnimatorInt",
-              "intID": "SkillID",
-              "value": 1.0
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "SkillID"
             },
             {
               "$type": "ResetAnimatorTrigger",
-              "triggerID": "EndHoldTrigger"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "EndHoldTrigger",
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "RemoveModifier",
-              "modifierName": "SetTrigger"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "SetTrigger",
+              "canBeHandledOnRecover": true
             }
           ],
-          "onBeginCharged": [
+          "OnBeginSecondCharged": [
             {
               "$type": "SetAnimatorTrigger",
-              "triggerID": "DoSkill"
-            },
-            {
-              "$type": "SetAnimatorInt",
-              "intID": "SkillID",
-              "value": 6.0
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "EndHoldTrigger",
+              "canBeHandledOnRecover": true
             }
           ],
-          "onReleaseCharged": [
+          "skillID": 10401,
+          "OnReleaseCharged": [
             {
               "$type": "SetAnimatorTrigger",
-              "triggerID": "EndHoldTrigger"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "EndHoldTrigger",
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "ApplyModifier",
-              "modifierName": "SetTrigger"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "SetTrigger",
+              "canBeHandledOnRecover": true
             }
           ],
-          "onBeginSecondCharged": [
+          "secondChargeTime": "Max_Dura",
+          "OnBeginCharged": [
             {
               "$type": "SetAnimatorTrigger",
-              "triggerID": "EndHoldTrigger"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "DoSkill",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": 6,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "SkillID"
             }
           ],
+          "chargeTime": 0.25,
           "chargeStateIDs": [
             "Attack01_BS",
             "Attack01",
@@ -71,9 +170,9 @@
           "stateIDs": [
             "ExtraAttack1"
           ],
-          "KAKPIEJMFHG": "",
-          "DFCHDKMHBDH": "",
-          "CEMPNHBMMFG": ""
+          "actorIceSubHurtDelta": -1,
+          "angularSpeed": 360,
+          "HKKBPPNNBMH": -1
         },
         {
           "$type": "AttachToStateIDMixin",
@@ -83,341 +182,633 @@
             "ExtraAttack2",
             "ExtraAttack3"
           ],
+          "actorIceSubHurtDelta": -1,
           "modifierName": "Camera",
-          "__unk_Q2081332355": ""
+          "value": -1
         },
         {
           "$type": "AttachToStateIDMixin",
           "stateIDs": [
             "ExtraAttack1"
           ],
+          "actorIceSubHurtDelta": -1,
           "modifierName": "Cost",
-          "__unk_Q2081332355": ""
-        }
-      ],
-      "abilitySpecials": {
-        "ExtraAttack_Claymore_Stamina_Cost": 0.0,
-        "Max_Dura": 0.0
-      },
-      "modifiers": {
-        "SetTrigger": {
-          "modifierName": "",
-          "duration": 1.0,
-          "elementDurability": 100.0,
-          "onRemoved": [
-            {
-              "$type": "SetAnimatorTrigger",
-              "triggerID": "EndHoldTrigger"
-            }
-          ]
-        },
-        "Camera": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onRemoved": [
-            {
-              "$type": "AvatarExitCameraShot",
-              "doOffStage": true
-            }
-          ],
-          "onAvatarOut": [
-            {
-              "$type": "AvatarExitCameraShot",
-              "doOffStage": true
-            }
-          ]
-        },
-        "Cost": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "modifierMixins": [
-            {
-              "$type": "CostStaminaMixin",
-              "costStaminaDelta": "ExtraAttack_Claymore_Stamina_Cost",
-              "onStaminaEmpty": [
-                {
-                  "$type": "SetAnimatorTrigger",
-                  "triggerID": "EndHoldTrigger"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "Default": {
-      "$type": "ConfigAbility",
-      "abilityName": "Avatar_Chongyun_ElementalArt_Initiate",
-      "modifiers": {
-        "Weapon_FX": {
-          "modifierName": "",
-          "duration": 0.5,
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalSkill_Weapon",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            }
-          ]
-        }
-      },
-      "onAbilityStart": [
-        {
-          "$type": "AttachModifier",
-          "otherTargets": {
-            "$type": "SelectTargetsByEquipParts",
-            "equipPartNames": [
-              "equip01",
-              "sheathPoint"
-            ]
-          },
-          "modifierName": "Weapon_FX"
+          "value": -1
         }
       ]
     }
   },
   {
     "Default": {
-      "$type": "ConfigAbility",
-      "abilityName": "Avatar_Chongyun_ElementalArt_Damage",
-      "abilitySpecials": {
-        "ElementalArt_Damage": 0.0
-      },
+      "abilityName": "Avatar_Chongyun_ElementalArt_Initiate",
       "modifiers": {
+        "Weapon_FX": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Chongyun_ElementalSkill_Weapon",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "partNames": [
+              "equip01",
+              "sheathPoint"
+            ]
+          },
+          "modifierName": "Weapon_FX",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "ElementalArt_Ball",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "ElementalArt_Damage": 0
+      },
+      "abilityName": "Avatar_Chongyun_ElementalArt_Damage",
+      "modifiers": {
+        "Ball_Base": {
+          "onAdded": [
+            {
+              "$type": "GenerateElemBall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "configID": 2022,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "z": 1
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "baseEnergy": 12,
+              "ratio": 1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": 0.20000000298023224,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
         "ElementalArt_Ball": {
-          "modifierName": "",
-          "elementDurability": 100.0,
           "onAttackLanded": [
             {
               "$type": "Predicated",
-              "target": "Target",
               "targetPredicates": [
                 {
                   "$type": "ByAttackTags",
+                  "target": "Target",
                   "attackTags": [
                     "Elemental_Art"
                   ]
                 },
                 {
                   "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
                   "entityTypes": [
                     "Monster"
                   ]
                 },
                 {
-                  "$type": "ByAttackType",
+                  "$type": "PPKMHGEGLHG",
+                  "target": "Target",
                   "attackType": "Melee"
                 },
                 {
                   "$type": "ByTargetGlobalValue",
                   "key": "_ANIMAL_ENTITY_TYPE",
-                  "value": 0.0,
+                  "target": "Target",
                   "compareType": "NoneOrEqual"
                 }
               ],
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
               "successActions": [
                 {
                   "$type": "ApplyModifier",
-                  "modifierName": "Ball_Base"
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Ball_Base",
+                  "canBeHandledOnRecover": true
                 }
-              ]
+              ],
+              "canBeHandledOnRecover": true
             }
-          ]
-        },
-        "Ball_Base": {
-          "stacking": "Unique",
-          "modifierName": "",
-          "duration": 0.20000000298023224,
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "GenerateElemBall",
-              "configID": 2022,
-              "born": {
-                "$type": "ConfigBornByTarget",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 1.0
-                }
-              },
-              "ratio": 1.0,
-              "baseEnergy": 12.0
-            }
-          ]
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         }
       },
-      "onAdded": [
-        {
-          "$type": "ApplyModifier",
-          "modifierName": "ElementalArt_Ball"
-        }
-      ],
       "onAbilityStart": [
         {
           "$type": "AvatarSkillStart",
+          "cdRatio": 1,
+          "costStaminaRatio": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "skillID": 10402,
           "predicates": [
             {
               "$type": "BySkillReady",
+              "target": "Target",
               "skillID": 10402
             }
           ],
-          "skillID": 10402,
-          "cdRatio": 1.0,
-          "costStaminaRatio": 1.0
+          "canBeHandledOnRecover": true
         },
         {
           "$type": "FireEffect",
-          "effectPattern": "Eff_Chongyun_ElementalSkill_Hit",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
           "born": {
             "$type": "ConfigBornBySelf",
             "offset": {
-              "x": 0.0,
-              "y": 0.0,
               "z": 2.5
-            }
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
           },
-          "scale": 1.0,
-          "effectTempleteID": -1.0
+          "effectPattern": "Eff_Chongyun_ElementalSkill_Hit",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
         },
         {
           "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
           "attackEvent": {
-            "attackPattern": {
-              "$type": "ConfigAttackSphere",
-              "triggerType": "TriggerNoRepeat",
-              "born": {
-                "$type": "ConfigBornBySelf",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 1.5
-                }
-              },
-              "radius": 2.5
-            },
             "attackInfo": {
               "attackTag": "Elemental_Art",
               "attenuationTag": "Elemental_Art",
-              "attenuationGroup": "default",
-              "attackProperty": {
-                "damagePercentage": "ElementalArt_Damage",
-                "damagePercentageRatio": 0.0,
-                "elementType": "Ice",
-                "elementRank": 1.5,
-                "elementDurability": 50.0,
-                "strikeType": "Blunt",
-                "enBreak": 150.0,
-                "attackType": "Melee",
-                "__exp_Arkhe": 0.0
+              "forceCameraShake": true,
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
               },
               "hitPattern": {
-                "onHitEffectName": "default",
-                "__unk_Q3893899620": "",
                 "hitImpulseType": "LV7",
+                "hitHaltTimeScale": 0.009999999776482582,
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default",
+                "hitHaltTime": 0.09000000357627869,
                 "overrideHitImpulse": {
                   "hitLevel": "Air",
-                  "hitImpulseX": 0.0,
-                  "hitImpulseY": 600.0
-                },
-                "hitHaltTime": 0.09000000357627869,
-                "hitHaltTimeScale": 0.009999999776482582
-              },
-              "forceCameraShake": true,
-              "cameraShake": {
-                "shakeType": "CustomVector",
-                "shakeRange": 0.47999998927116394,
-                "shakeTime": 0.11999999731779099,
-                "shakeDistance": 30.0,
-                "shakeDir": {
-                  "y": 1.0
+                  "hitImpulseY": 600
                 }
               },
-              "canBeModifiedBy": "OriginOwner"
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeType": "CustomVector",
+                "shakeDistance": 30,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                },
+                "shakeTime": 0.11999999731779099,
+                "shakeRange": 0.47999998927116394,
+                "shakeDir": {
+                  "y": 1
+                }
+              },
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "elementType": "Ice",
+                "elementDurability": 50,
+                "enBreak": 150,
+                "elementRank": 1.5,
+                "attackType": "Melee",
+                "strikeType": "Blunt",
+                "damagePercentage": "ElementalArt_Damage"
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": 1.5
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 2.5,
+              "massiveAttackRatio": 1
             }
           },
-          "targetType": "Enemy"
+          "canBeHandledOnRecover": true
         },
         {
           "$type": "KillGadget",
           "gadgetInfo": {
             "configID": 41034201
-          }
+          },
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
         },
         {
           "$type": "CreateGadget",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "campTargetType": "Enemy",
           "born": {
             "$type": "ConfigBornBySelf",
             "offset": {
-              "x": 0.0,
-              "y": 0.0,
               "z": 2.9000000953674316
             },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
             "onGround": true
           },
-          "gadgetID": 41034201,
           "campID": 1001,
-          "campTargetType": "Enemy"
+          "KLGHKKGGHEA": {
+            "CBLLACNAMON": true,
+            "DBOLJFPPFGI": 0.5,
+            "JOCOGLBCMEJ": 0.5,
+            "LKEBJHCDOHB": true
+          },
+          "gadgetID": 41034201,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
         }
-      ]
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
     }
   },
   {
     "Default": {
-      "$type": "ConfigAbility",
-      "abilityName": "Avatar_Chongyun_IceCrystal",
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_IceField_Handler",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Chongyun_ElementalSkill_IceCrystal",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Avatar_Chongyun_Talent_21",
+              "target": "Target"
+            }
+          ],
+          "target": "OriginOwner",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "successActions": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Chongyun_ElementalSkill_Area_Debuff",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
       "abilitySpecials": {
-        "EnchantDuration": 0.0,
-        "SkillCDMinusRatio": 0.0,
-        "OverallSpeedRatio": 0.0
+        "EnchantDuration": 0,
+        "OverallSpeedRatio": 0,
+        "SkillCDMinusRatio": 0
       },
+      "onKill": [
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Avatar_Chongyun_Talent_21",
+              "target": "Target"
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "successActions": [
+            {
+              "$type": "CreateGadget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "campID": 1001,
+              "KLGHKKGGHEA": {
+                "CBLLACNAMON": true,
+                "DBOLJFPPFGI": 0.5,
+                "JOCOGLBCMEJ": 0.5,
+                "LKEBJHCDOHB": true
+              },
+              "gadgetID": 41034011,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Avatar_Chongyun_IceCrystal",
       "modifiers": {
+        "IceField_Modifier": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "sheathPoint"
+                ]
+              },
+              "modifierName": "UNIQUE_Weapon_Claymore_Enchanted_Ice",
+              "predicates": [
+                {
+                  "$type": "ByAvatarWeaponType",
+                  "weaponTypes": [
+                    "WEAPON_CLAYMORE"
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "sheathPoint"
+                ]
+              },
+              "modifierName": "UNIQUE_Weapon_Pole_Enchanted_Ice",
+              "predicates": [
+                {
+                  "$type": "ByAvatarWeaponType",
+                  "weaponTypes": [
+                    "WEAPON_POLE"
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01",
+                  "sheathPoint"
+                ]
+              },
+              "modifierName": "UNIQUE_Weapon_Sword_Enchanted_Ice",
+              "predicates": [
+                {
+                  "$type": "ByAvatarWeaponType",
+                  "weaponTypes": [
+                    "WEAPON_SWORD_ONE_HAND"
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
         "UNIQUE_IceField_Handler": {
-          "modifierName": "",
-          "isUnique": true,
-          "duration": 10.0,
-          "elementDurability": 100.0,
-          "thinkInterval": 1.0,
+          "onKill": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_IceField_Handler",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 1,
+          "duration": 10,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
           "onThinkInterval": [
             {
               "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
               "otherTargets": {
                 "$type": "SelectTargetsByShape",
                 "shapeName": "CircleR8",
                 "campTargetType": "Alliance",
-                "sizeRatio": 1.0
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
               },
+              "modifierName": "IceField_Modifier",
               "predicates": [
                 {
                   "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
                   "entityTypes": [
                     "Avatar"
                   ]
                 }
               ],
-              "modifierName": "IceField_Modifier"
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
               "otherTargets": {
                 "$type": "SelectTargetsByShape",
                 "shapeName": "CircleR8",
                 "campTargetType": "Alliance",
-                "sizeRatio": 1.0
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
               },
+              "modifierName": "UNIQUE_Weapon_Enchanted_Berserker",
               "predicates": [
                 {
                   "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
                   "entityTypes": [
                     "Avatar"
                   ]
                 },
                 {
                   "$type": "ByAvatarWeaponType",
+                  "target": "Target",
                   "weaponTypes": [
                     "WEAPON_CLAYMORE",
                     "WEAPON_POLE",
@@ -426,280 +817,266 @@
                 },
                 {
                   "$type": "ByUnlockTalentParam",
-                  "target": "Applier",
-                  "talentParam": "Avatar_Chongyun_Talent_364"
+                  "talentParam": "Avatar_Chongyun_Talent_364",
+                  "target": "Applier"
                 }
               ],
-              "modifierName": "UNIQUE_Weapon_Enchanted_Berserker"
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
               "otherTargets": {
                 "$type": "SelectTargetsByShape",
                 "shapeName": "CircleR8",
                 "campTargetType": "Alliance",
-                "sizeRatio": 1.0
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
               },
+              "modifierName": "UNIQUE_Weapon_Enchanted_Defense",
               "predicates": [
                 {
                   "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
                   "entityTypes": [
                     "Avatar"
                   ]
                 },
                 {
                   "$type": "ByUnlockTalentParam",
-                  "target": "Applier",
-                  "talentParam": "Avatar_Chongyun_Talent_362"
+                  "talentParam": "Avatar_Chongyun_Talent_362",
+                  "target": "Applier"
                 }
               ],
-              "modifierName": "UNIQUE_Weapon_Enchanted_Defense"
+              "canBeHandledOnRecover": true
             }
           ],
-          "onKill": [
-            {
-              "$type": "RemoveUniqueModifier",
-              "modifierName": "UNIQUE_IceField_Handler"
-            }
-          ]
-        },
-        "UNIQUE_Weapon_Enchanted_Berserker": {
-          "modifierName": "",
           "isUnique": true,
-          "duration": 2.0999999046325684,
-          "elementDurability": 100.0,
-          "properties": {
-            "Animator_AttackSpeedRatio": "OverallSpeedRatio"
-          },
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "effectPattern": "Eff_Chongyun_ElementalSkill_Aura",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            }
-          ],
           "isLimitedProperties": true
-        },
-        "UNIQUE_Weapon_Enchanted_Defense": {
-          "modifierName": "",
-          "isUnique": true,
-          "duration": 2.0999999046325684,
-          "elementDurability": 100.0,
-          "properties": {
-            "Actor_SkillCDMinusRatio": "SkillCDMinusRatio"
-          },
-          "isLimitedProperties": true
-        },
-        "IceField_Modifier": {
-          "modifierName": "",
-          "duration": 0.5,
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "ApplyModifier",
-              "otherTargets": {
-                "$type": "SelectTargetsByEquipParts",
-                "equipPartNames": [
-                  "equip01",
-                  "sheathPoint"
-                ]
-              },
-              "predicates": [
-                {
-                  "$type": "ByAvatarWeaponType",
-                  "target": "Self",
-                  "weaponTypes": [
-                    "WEAPON_CLAYMORE"
-                  ]
-                }
-              ],
-              "modifierName": "UNIQUE_Weapon_Claymore_Enchanted_Ice"
-            },
-            {
-              "$type": "ApplyModifier",
-              "otherTargets": {
-                "$type": "SelectTargetsByEquipParts",
-                "equipPartNames": [
-                  "equip01",
-                  "sheathPoint"
-                ]
-              },
-              "predicates": [
-                {
-                  "$type": "ByAvatarWeaponType",
-                  "target": "Self",
-                  "weaponTypes": [
-                    "WEAPON_POLE"
-                  ]
-                }
-              ],
-              "modifierName": "UNIQUE_Weapon_Pole_Enchanted_Ice"
-            },
-            {
-              "$type": "ApplyModifier",
-              "otherTargets": {
-                "$type": "SelectTargetsByEquipParts",
-                "equipPartNames": [
-                  "equip01",
-                  "sheathPoint"
-                ]
-              },
-              "predicates": [
-                {
-                  "$type": "ByAvatarWeaponType",
-                  "target": "Self",
-                  "weaponTypes": [
-                    "WEAPON_SWORD_ONE_HAND"
-                  ]
-                }
-              ],
-              "modifierName": "UNIQUE_Weapon_Sword_Enchanted_Ice"
-            }
-          ]
         },
         "UNIQUE_Weapon_Claymore_Enchanted_Ice": {
-          "modifierName": "",
-          "isUnique": true,
-          "duration": "EnchantDuration",
-          "elementType": "Ice",
-          "elementDurability": 25.0,
-          "overrideWeaponElement": true,
           "onAdded": [
             {
               "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
               "effectPattern": "Eff_Chongyun_ElementalSkill_Buff_Claymore",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "elementType": "Ice",
+          "duration": "EnchantDuration",
+          "elementDurability": 25,
+          "overrideWeaponElement": true,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Weapon_Enchanted_Berserker": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Chongyun_ElementalSkill_Aura",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 2.0999999046325684,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Animator_AttackSpeedRatio": "OverallSpeedRatio"
+          }
+        },
+        "UNIQUE_Weapon_Enchanted_Defense": {
+          "duration": 2.0999999046325684,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_SkillCDMinusRatio": "SkillCDMinusRatio"
+          }
         },
         "UNIQUE_Weapon_Pole_Enchanted_Ice": {
-          "modifierName": "",
-          "isUnique": true,
-          "duration": "EnchantDuration",
-          "elementType": "Ice",
-          "elementDurability": 25.0,
-          "overrideWeaponElement": true,
           "onAdded": [
             {
               "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
               "effectPattern": "Eff_Chongyun_ElementalSkill_Buff_Pole",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "elementType": "Ice",
+          "duration": "EnchantDuration",
+          "elementDurability": 25,
+          "overrideWeaponElement": true,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
         },
         "UNIQUE_Weapon_Sword_Enchanted_Ice": {
-          "modifierName": "",
-          "isUnique": true,
-          "duration": "EnchantDuration",
-          "elementType": "Ice",
-          "elementDurability": 25.0,
-          "overrideWeaponElement": true,
           "onAdded": [
             {
               "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
               "effectPattern": "Eff_Chongyun_ElementalSkill_Buff_Sword",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "elementType": "Ice",
+          "duration": "EnchantDuration",
+          "elementDurability": 25,
+          "overrideWeaponElement": true,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
         }
       },
-      "onAdded": [
-        {
-          "$type": "AttachModifier",
-          "modifierName": "UNIQUE_IceField_Handler"
-        },
-        {
-          "$type": "AttachEffect",
-          "effectPattern": "Eff_Chongyun_ElementalSkill_IceCrystal",
-          "scale": 1.0,
-          "effectTempleteID": -1.0
-        },
-        {
-          "$type": "Predicated",
-          "target": "OriginOwner",
-          "targetPredicates": [
-            {
-              "$type": "ByUnlockTalentParam",
-              "talentParam": "Avatar_Chongyun_Talent_21"
-            }
-          ],
-          "successActions": [
-            {
-              "$type": "AttachEffect",
-              "effectPattern": "Eff_Chongyun_ElementalSkill_Area_Debuff",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            }
-          ]
-        }
-      ],
-      "onKill": [
-        {
-          "$type": "Predicated",
-          "targetPredicates": [
-            {
-              "$type": "ByUnlockTalentParam",
-              "talentParam": "Avatar_Chongyun_Talent_21"
-            }
-          ],
-          "successActions": [
-            {
-              "$type": "CreateGadget",
-              "born": {
-                "$type": "ConfigBornBySelf",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                }
-              },
-              "gadgetID": 41034011,
-              "campID": 1001,
-              "campTargetType": "Enemy"
-            }
-          ]
-        }
-      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
       "onFieldEnter": [
         {
           "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
           "otherTargets": {
             "$type": "SelectTargetsByShape",
             "shapeName": "CircleR8",
             "campTargetType": "Alliance",
-            "sizeRatio": 1.0
+            "sizeRatio": 1,
+            "NLNIBNNOOCK": {
+              "APKLAIJMEIL": {
+                "HHNLJKNBKPP": 180
+              },
+              "value": 10,
+              "direction": {
+                "maxAngle": 180
+              },
+              "onGroundRaycastUpDist": 2
+            }
           },
+          "modifierName": "IceField_Modifier",
           "predicates": [
             {
               "$type": "ByEntityTypes",
+              "target": "Target",
+              "value": -1,
               "entityTypes": [
                 "Avatar"
               ]
             }
           ],
-          "modifierName": "IceField_Modifier"
+          "canBeHandledOnRecover": true
         },
         {
           "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
           "otherTargets": {
             "$type": "SelectTargetsByShape",
             "shapeName": "CircleR8",
             "campTargetType": "Alliance",
-            "sizeRatio": 1.0
+            "sizeRatio": 1,
+            "NLNIBNNOOCK": {
+              "APKLAIJMEIL": {
+                "HHNLJKNBKPP": 180
+              },
+              "value": 10,
+              "direction": {
+                "maxAngle": 180
+              },
+              "onGroundRaycastUpDist": 2
+            }
           },
+          "modifierName": "UNIQUE_Weapon_Enchanted_Berserker",
           "predicates": [
             {
               "$type": "ByEntityTypes",
+              "target": "Target",
+              "value": -1,
               "entityTypes": [
                 "Avatar"
               ]
             },
             {
               "$type": "ByAvatarWeaponType",
+              "target": "Target",
               "weaponTypes": [
                 "WEAPON_CLAYMORE",
                 "WEAPON_POLE",
@@ -708,66 +1085,159 @@
             },
             {
               "$type": "ByUnlockTalentParam",
-              "target": "Applier",
-              "talentParam": "Avatar_Chongyun_Talent_364"
+              "talentParam": "Avatar_Chongyun_Talent_364",
+              "target": "Applier"
             }
           ],
-          "modifierName": "UNIQUE_Weapon_Enchanted_Berserker"
+          "canBeHandledOnRecover": true
         },
         {
           "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
           "otherTargets": {
             "$type": "SelectTargetsByShape",
             "shapeName": "CircleR8",
             "campTargetType": "Alliance",
-            "sizeRatio": 1.0
+            "sizeRatio": 1,
+            "NLNIBNNOOCK": {
+              "APKLAIJMEIL": {
+                "HHNLJKNBKPP": 180
+              },
+              "value": 10,
+              "direction": {
+                "maxAngle": 180
+              },
+              "onGroundRaycastUpDist": 2
+            }
           },
+          "modifierName": "UNIQUE_Weapon_Enchanted_Defense",
           "predicates": [
             {
               "$type": "ByEntityTypes",
+              "target": "Target",
+              "value": -1,
               "entityTypes": [
                 "Avatar"
               ]
             },
             {
               "$type": "ByUnlockTalentParam",
-              "target": "Applier",
-              "talentParam": "Avatar_Chongyun_Talent_362"
+              "talentParam": "Avatar_Chongyun_Talent_362",
+              "target": "Applier"
             }
           ],
-          "modifierName": "UNIQUE_Weapon_Enchanted_Defense"
+          "canBeHandledOnRecover": true
         }
       ]
     }
   },
   {
     "Default": {
-      "$type": "ConfigAbility",
-      "abilityName": "Avatar_Chongyun_IceCrystal_Dummy",
+      "onAdded": [
+        {
+          "$type": "SetSelfAttackTarget",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "SelectTargetsByShape",
+            "sortType": "Nearest",
+            "topLimit": 1,
+            "shapeName": "CircleR8",
+            "campTargetType": "Enemy",
+            "sizeRatio": 1,
+            "NLNIBNNOOCK": {
+              "APKLAIJMEIL": {
+                "HHNLJKNBKPP": 180
+              },
+              "value": 10,
+              "direction": {
+                "maxAngle": 180
+              },
+              "onGroundRaycastUpDist": 2
+            }
+          },
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "target": "Target",
+              "value": -1,
+              "entityTypes": [
+                "Monster"
+              ]
+            }
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByHasAttackTarget",
+              "target": "Target"
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "failActions": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "LaunchAttack_NoTarget",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "AttackDetect",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "LaunchAttack_HasTarget",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "AttackDetect",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
       "abilitySpecials": {
-        "IceSubHurtDelta": 0.0,
-        "IceSubHurtDuration": 0.0,
-        "ElementalArt_Damage_Percentage": 0.0,
-        "ElementalArt_Damage": 0.0
+        "ElementalArt_Damage": 0,
+        "ElementalArt_Damage_Percentage": 0,
+        "IceSubHurtDelta": 0,
+        "IceSubHurtDuration": 0
       },
+      "abilityName": "Avatar_Chongyun_IceCrystal_Dummy",
       "modifiers": {
         "AttackDetect": {
-          "modifierName": "",
-          "duration": 1.0,
-          "elementDurability": 100.0,
           "onAttackLanded": [
             {
               "$type": "Predicated",
-              "target": "Target",
               "targetPredicates": [
                 {
                   "$type": "ByAttackTags",
+                  "target": "Target",
                   "attackTags": [
                     "Elemental_Art"
                   ]
                 },
                 {
                   "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
                   "entityTypes": [
                     "Monster"
                   ]
@@ -775,1368 +1245,2809 @@
                 {
                   "$type": "ByTargetGlobalValue",
                   "key": "_ANIMAL_ENTITY_TYPE",
-                  "value": 0.0,
+                  "target": "Target",
                   "compareType": "NoneOrEqual"
+                }
+              ],
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Target",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "IceDown_Modifier",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "IceDown_Modifier": {
+          "duration": "IceSubHurtDuration",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_IceSubHurtDelta": "IceSubHurtDelta"
+          },
+          "state": "DefenseDown"
+        },
+        "LaunchAttack_HasTarget": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "_ABILITY_Chongyun_Talent_Blade_Pos",
+              "target": "SelfAttackTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelectedPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "onGround": true
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_ABILITY_Chongyun_Talent_Blade_Pos",
+                "onGround": true
+              },
+              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Single",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 0.699999988079071,
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_ABILITY_Chongyun_Talent_Blade_Pos",
+                "onGround": true
+              },
+              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Single_Bomb",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "target": "Caster",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "attackTag": "Elemental_Art",
+                  "forceCameraShake": true,
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "hitImpulseType": "LV7",
+                    "hitHaltTimeScale": 0.05000000074505806,
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "hitImpulseY": 600
+                    }
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "canBeModifiedBy": "OriginOwner",
+                  "cameraShake": {
+                    "shakeType": "CustomVector",
+                    "shakeDistance": 30,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    },
+                    "shakeTime": 0.11999999731779099,
+                    "shakeRange": 0.36000001430511475,
+                    "shakeDir": {
+                      "x": -0.20000000298023224,
+                      "y": 1
+                    }
+                  },
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "elementType": "Ice",
+                    "elementDurability": 25,
+                    "enBreak": 100,
+                    "elementRank": 1,
+                    "attackType": "Default",
+                    "strikeType": "Blunt",
+                    "damagePercentage": [
+                      "ElementalArt_Damage",
+                      "ElementalArt_Damage_Percentage",
+                      "MUL"
+                    ]
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "born": {
+                    "$type": "ConfigBornByGlobalValue",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "positionKey": "_ABILITY_Chongyun_Talent_Blade_Pos",
+                    "onGround": true
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "radius": 3.5,
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "LaunchAttack_NoTarget": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "_ABILITY_Chongyun_Talent_Blade_Pos",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "onGround": true
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "onGround": true
+              },
+              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Single",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 0.699999988079071,
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "onGround": true
+              },
+              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Single_Bomb",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "target": "Caster",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "attackTag": "Elemental_Art",
+                  "forceCameraShake": true,
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "hitImpulseType": "LV7",
+                    "hitHaltTimeScale": 0.05000000074505806,
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "hitImpulseY": 600
+                    }
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "canBeModifiedBy": "OriginOwner",
+                  "cameraShake": {
+                    "shakeType": "CustomVector",
+                    "shakeDistance": 30,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    },
+                    "shakeTime": 0.11999999731779099,
+                    "shakeRange": 0.36000001430511475,
+                    "shakeDir": {
+                      "x": -0.20000000298023224,
+                      "y": 1
+                    }
+                  },
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "elementType": "Ice",
+                    "elementDurability": 25,
+                    "enBreak": 100,
+                    "elementRank": 1,
+                    "attackType": "Default",
+                    "damagePercentage": [
+                      "ElementalArt_Damage",
+                      "ElementalArt_Damage_Percentage",
+                      "MUL"
+                    ]
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "onGround": true
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "radius": 3.5,
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Avatar_Chongyun_SoulUnleash_Single_Initiate",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Avatar_Chongyun_SoulUnleash_Initiate",
+      "modifiers": {
+        "Camera_Remover": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Chongyun_SoulUnleash_Weather": {
+          "duration": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWeatherMixin",
+              "actorIceSubHurtDelta": -1,
+              "transDuration": 0.699999988079071,
+              "type": "Skill",
+              "duHPRation": 1.399999976158142,
+              "weatherPattern": "Weather_Chongyun_ElementBurst"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Chongyun_SoulUnleash_Weather_4": {
+          "duration": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWeatherMixin",
+              "actorIceSubHurtDelta": -1,
+              "transDuration": 0.699999988079071,
+              "type": "Skill",
+              "duHPRation": 1.75,
+              "weatherPattern": "Weather_Chongyun_ElementBurst"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Chongyun_SoulUnleash_Weather_Handler": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Avatar_Chongyun_Talent_366",
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Chongyun_SoulUnleash_Weather",
+                  "canBeHandledOnRecover": true
                 }
               ],
               "successActions": [
                 {
                   "$type": "ApplyModifier",
-                  "target": "Target",
-                  "modifierName": "IceDown_Modifier"
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Chongyun_SoulUnleash_Weather_4",
+                  "canBeHandledOnRecover": true
                 }
-              ]
+              ],
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Invincible": {
+          "onAdded": [
+            {
+              "$type": "AttachAbilityStateResistance",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "durationRatio": 1,
+              "resistanceListID": 11002,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "Invincible"
         },
         "LaunchAttack_HasTarget": {
-          "modifierName": "",
-          "duration": 1.0,
-          "elementDurability": 100.0,
-          "thinkInterval": 0.699999988079071,
           "onAdded": [
             {
               "$type": "SetGlobalPos",
+              "key": "_ABILITY_Chongyun_ElementBurst_Pos",
               "target": "SelfAttackTarget",
-              "key": "_ABILITY_Chongyun_Talent_Blade_Pos",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
               "born": {
                 "$type": "ConfigBornBySelectedPoint",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
                 },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
                 "onGround": true
               },
-              "setTarget": false
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Single",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
               "born": {
                 "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
                 },
-                "onGround": true,
-                "positionKey": "_ABILITY_Chongyun_Talent_Blade_Pos",
-                "directionKey": ""
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
+                "onGround": true
               },
-              "scale": 1.0,
-              "effectTempleteID": -1.0
+              "effectPattern": "Eff_Chongyun_ElementalBurst_AlertArea",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Avatar_Chongyun_Talent_366",
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "TriggerAbility",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "abilityName": "Avatar_Chongyun_SoulUnleash_SoulBlades",
+                  "target": "Other",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerAbility",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "abilityName": "Avatar_Chongyun_SoulUnleash_SoulBlades_Quadra",
+                  "target": "Other",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
             }
           ],
-          "onThinkInterval": [
-            {
-              "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Single_Bomb",
-              "born": {
-                "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "onGround": true,
-                "positionKey": "_ABILITY_Chongyun_Talent_Blade_Pos",
-                "directionKey": ""
-              },
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            },
-            {
-              "$type": "TriggerAttackEvent",
-              "target": "Caster",
-              "attackEvent": {
-                "attackPattern": {
-                  "$type": "ConfigAttackSphere",
-                  "triggerType": "TriggerNoRepeat",
-                  "born": {
-                    "$type": "ConfigBornByGlobalValue",
-                    "offset": {
-                      "x": 0.0,
-                      "y": 0.0,
-                      "z": 0.0
-                    },
-                    "onGround": true,
-                    "positionKey": "_ABILITY_Chongyun_Talent_Blade_Pos",
-                    "directionKey": ""
-                  },
-                  "radius": 3.5
-                },
-                "attackInfo": {
-                  "attackTag": "Elemental_Art",
-                  "attenuationTag": "",
-                  "attenuationGroup": "default",
-                  "attackProperty": {
-                    "damagePercentage": [
-                      "ElementalArt_Damage",
-                      "ElementalArt_Damage_Percentage",
-                      "MUL"
-                    ],
-                    "damagePercentageRatio": 0.0,
-                    "elementType": "Ice",
-                    "elementDurability": 25.0,
-                    "strikeType": "Blunt",
-                    "enBreak": 100.0,
-                    "__exp_Arkhe": 0.0
-                  },
-                  "hitPattern": {
-                    "onHitEffectName": "",
-                    "__unk_Q3893899620": "",
-                    "hitImpulseType": "LV7",
-                    "overrideHitImpulse": {
-                      "hitLevel": "Air",
-                      "hitImpulseX": 0.0,
-                      "hitImpulseY": 600.0
-                    },
-                    "hitHaltTimeScale": 0.05000000074505806
-                  },
-                  "forceCameraShake": true,
-                  "cameraShake": {
-                    "shakeType": "CustomVector",
-                    "shakeRange": 0.36000001430511475,
-                    "shakeTime": 0.11999999731779099,
-                    "shakeDistance": 30.0,
-                    "shakeDir": {
-                      "x": -0.20000000298023224,
-                      "y": 1.0
-                    }
-                  },
-                  "canBeModifiedBy": "OriginOwner"
-                }
-              },
-              "targetType": "Enemy"
-            }
-          ]
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         },
         "LaunchAttack_NoTarget": {
-          "modifierName": "",
-          "duration": 1.0,
-          "elementDurability": 100.0,
-          "thinkInterval": 0.699999988079071,
           "onAdded": [
             {
               "$type": "SetGlobalPos",
-              "key": "_ABILITY_Chongyun_Talent_Blade_Pos",
-              "born": {
-                "$type": "ConfigBornBySelf",
-                "onGround": true
-              },
-              "setTarget": false
-            },
-            {
-              "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Single",
+              "key": "_ABILITY_Chongyun_ElementBurst_Pos",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
               "born": {
                 "$type": "ConfigBornBySelf",
                 "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
+                  "z": 5
                 },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
                 "onGround": true
               },
-              "scale": 1.0,
-              "effectTempleteID": -1.0
+              "setTarget": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
+                "onGround": true
+              },
+              "effectPattern": "Eff_Chongyun_ElementalBurst_AlertArea",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Avatar_Chongyun_Talent_366",
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "TriggerAbility",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "abilityName": "Avatar_Chongyun_SoulUnleash_SoulBlades",
+                  "target": "Other",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerAbility",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "abilityName": "Avatar_Chongyun_SoulUnleash_SoulBlades_Quadra",
+                  "target": "Other",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
             }
           ],
-          "onThinkInterval": [
-            {
-              "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Single_Bomb",
-              "born": {
-                "$type": "ConfigBornBySelf",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "onGround": true
-              },
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            },
-            {
-              "$type": "TriggerAttackEvent",
-              "target": "Caster",
-              "attackEvent": {
-                "attackPattern": {
-                  "$type": "ConfigAttackSphere",
-                  "triggerType": "TriggerNoRepeat",
-                  "born": {
-                    "$type": "ConfigBornBySelf",
-                    "offset": {
-                      "x": 0.0,
-                      "y": 0.0,
-                      "z": 0.0
-                    },
-                    "onGround": true
-                  },
-                  "radius": 3.5
-                },
-                "attackInfo": {
-                  "attackTag": "Elemental_Art",
-                  "attenuationTag": "",
-                  "attenuationGroup": "default",
-                  "attackProperty": {
-                    "damagePercentage": [
-                      "ElementalArt_Damage",
-                      "ElementalArt_Damage_Percentage",
-                      "MUL"
-                    ],
-                    "damagePercentageRatio": 0.0,
-                    "elementType": "Ice",
-                    "elementDurability": 25.0,
-                    "strikeType": "Default",
-                    "enBreak": 100.0,
-                    "__exp_Arkhe": 0.0
-                  },
-                  "hitPattern": {
-                    "onHitEffectName": "",
-                    "__unk_Q3893899620": "",
-                    "hitImpulseType": "LV7",
-                    "overrideHitImpulse": {
-                      "hitLevel": "Air",
-                      "hitImpulseX": 0.0,
-                      "hitImpulseY": 600.0
-                    },
-                    "hitHaltTimeScale": 0.05000000074505806
-                  },
-                  "forceCameraShake": true,
-                  "cameraShake": {
-                    "shakeType": "CustomVector",
-                    "shakeRange": 0.36000001430511475,
-                    "shakeTime": 0.11999999731779099,
-                    "shakeDistance": 30.0,
-                    "shakeDir": {
-                      "x": -0.20000000298023224,
-                      "y": 1.0
-                    }
-                  },
-                  "canBeModifiedBy": "OriginOwner"
-                }
-              },
-              "targetType": "Enemy"
-            }
-          ]
-        },
-        "IceDown_Modifier": {
-          "modifierName": "",
-          "duration": "IceSubHurtDuration",
-          "elementDurability": 100.0,
-          "properties": {
-            "Actor_IceSubHurtDelta": "IceSubHurtDelta"
-          },
-          "state": "DefenseDown"
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         }
       },
-      "onAdded": [
-        {
-          "$type": "SetSelfAttackTarget",
-          "otherTargets": {
-            "$type": "SelectTargetsByShape",
-            "topLimit": 1,
-            "sortType": "Nearest",
-            "shapeName": "CircleR8",
-            "campTargetType": "Enemy",
-            "sizeRatio": 1.0
-          },
-          "predicates": [
-            {
-              "$type": "ByEntityTypes",
-              "entityTypes": [
-                "Monster"
-              ]
-            }
-          ]
-        },
+      "onAbilityStart": [
         {
           "$type": "Predicated",
           "targetPredicates": [
             {
-              "$type": "ByHasAttackTarget"
+              "$type": "ByHasAttackTarget",
+              "target": "Target"
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "failActions": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "LaunchAttack_NoTarget",
+              "canBeHandledOnRecover": true
             }
           ],
           "successActions": [
             {
               "$type": "ApplyModifier",
-              "modifierName": "LaunchAttack_HasTarget"
-            },
-            {
-              "$type": "ApplyModifier",
-              "modifierName": "AttackDetect"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "LaunchAttack_HasTarget",
+              "canBeHandledOnRecover": true
             }
           ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ActCameraRadialBlur",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "cameraRadialBlur": {
+            "blurTime": 0.25,
+            "fadeTime": 0.30000001192092896,
+            "power": 0.800000011920929
+          },
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "cdRatio": 1,
+          "costStaminaRatio": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "skillID": 10403,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Avatar_Chongyun_Talent_366",
+              "target": "Target"
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
           "failActions": [
             {
-              "$type": "ApplyModifier",
-              "modifierName": "LaunchAttack_NoTarget"
-            },
-            {
-              "$type": "ApplyModifier",
-              "modifierName": "AttackDetect"
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Chongyun_ElementalBurst_Aura",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "successActions": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Chongyun_ElementalBurst_Aura_4",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Chongyun_SoulUnleash_Weather_Handler",
+          "canBeHandledOnRecover": true
         }
-      ]
-    }
-  },
-  {
-    "Default": {
-      "$type": "ConfigAbility",
-      "abilityName": "Avatar_Chongyun_SoulUnleash_Single_Initiate"
-    }
-  },
-  {
-    "Default": {
-      "$type": "ConfigAbility",
-      "abilityName": "Avatar_Chongyun_SoulUnleash_Initiate",
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
       "abilityMixins": [
         {
           "$type": "AttachToStateIDMixin",
           "stateIDs": [
             "Chongyun_SoulUnleash"
           ],
+          "actorIceSubHurtDelta": -1,
           "modifierName": "Invincible",
-          "__unk_Q2081332355": ""
-        }
-      ],
-      "modifiers": {
-        "Camera_Remover": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onRemoved": [
-            {
-              "$type": "AvatarExitCameraShot",
-              "doOffStage": true
-            }
-          ]
-        },
-        "Chongyun_SoulUnleash_Weather_Handler": {
-          "modifierName": "",
-          "duration": 0.5,
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "Predicated",
-              "targetPredicates": [
-                {
-                  "$type": "ByUnlockTalentParam",
-                  "talentParam": "Avatar_Chongyun_Talent_366"
-                }
-              ],
-              "successActions": [
-                {
-                  "$type": "ApplyModifier",
-                  "modifierName": "Chongyun_SoulUnleash_Weather_4"
-                }
-              ],
-              "failActions": [
-                {
-                  "$type": "ApplyModifier",
-                  "modifierName": "Chongyun_SoulUnleash_Weather"
-                }
-              ]
-            }
-          ]
-        },
-        "Chongyun_SoulUnleash_Weather": {
-          "modifierName": "",
-          "duration": 2.0,
-          "elementDurability": 100.0,
-          "modifierMixins": [
-            {
-              "$type": "TriggerWeatherMixin",
-              "type": "Skill",
-              "weatherPattern": "Weather_Chongyun_ElementBurst",
-              "transDuration": 0.699999988079071,
-              "duration": 1.399999976158142
-            }
-          ]
-        },
-        "Chongyun_SoulUnleash_Weather_4": {
-          "modifierName": "",
-          "duration": 2.0,
-          "elementDurability": 100.0,
-          "modifierMixins": [
-            {
-              "$type": "TriggerWeatherMixin",
-              "type": "Skill",
-              "weatherPattern": "Weather_Chongyun_ElementBurst",
-              "transDuration": 0.699999988079071,
-              "duration": 1.75
-            }
-          ]
-        },
-        "Invincible": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "state": "Invincible",
-          "onAdded": [
-            {
-              "$type": "AttachAbilityStateResistance",
-              "resistanceListID": 11002
-            }
-          ]
-        },
-        "LaunchAttack_HasTarget": {
-          "modifierName": "",
-          "duration": 0.5,
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "SetGlobalPos",
-              "target": "SelfAttackTarget",
-              "key": "_ABILITY_Chongyun_ElementBurst_Pos",
-              "born": {
-                "$type": "ConfigBornBySelectedPoint",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "onGround": true
-              },
-              "setTarget": false
-            },
-            {
-              "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_AlertArea",
-              "born": {
-                "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "onGround": true,
-                "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
-                "directionKey": ""
-              },
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            },
-            {
-              "$type": "Predicated",
-              "targetPredicates": [
-                {
-                  "$type": "ByUnlockTalentParam",
-                  "talentParam": "Avatar_Chongyun_Talent_366"
-                }
-              ],
-              "successActions": [
-                {
-                  "$type": "TriggerAbility",
-                  "abilityName": "Avatar_Chongyun_SoulUnleash_SoulBlades_Quadra"
-                }
-              ],
-              "failActions": [
-                {
-                  "$type": "TriggerAbility",
-                  "abilityName": "Avatar_Chongyun_SoulUnleash_SoulBlades"
-                }
-              ]
-            }
-          ]
-        },
-        "LaunchAttack_NoTarget": {
-          "modifierName": "",
-          "duration": 0.5,
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "SetGlobalPos",
-              "key": "_ABILITY_Chongyun_ElementBurst_Pos",
-              "born": {
-                "$type": "ConfigBornBySelf",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 5.0
-                },
-                "onGround": true
-              }
-            },
-            {
-              "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_AlertArea",
-              "born": {
-                "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "onGround": true,
-                "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
-                "directionKey": ""
-              },
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            },
-            {
-              "$type": "Predicated",
-              "targetPredicates": [
-                {
-                  "$type": "ByUnlockTalentParam",
-                  "talentParam": "Avatar_Chongyun_Talent_366"
-                }
-              ],
-              "successActions": [
-                {
-                  "$type": "TriggerAbility",
-                  "abilityName": "Avatar_Chongyun_SoulUnleash_SoulBlades_Quadra"
-                }
-              ],
-              "failActions": [
-                {
-                  "$type": "TriggerAbility",
-                  "abilityName": "Avatar_Chongyun_SoulUnleash_SoulBlades"
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "onAbilityStart": [
-        {
-          "$type": "Predicated",
-          "targetPredicates": [
-            {
-              "$type": "ByHasAttackTarget"
-            }
-          ],
-          "successActions": [
-            {
-              "$type": "ApplyModifier",
-              "modifierName": "LaunchAttack_HasTarget"
-            }
-          ],
-          "failActions": [
-            {
-              "$type": "ApplyModifier",
-              "modifierName": "LaunchAttack_NoTarget"
-            }
-          ]
-        },
-        {
-          "$type": "ActCameraRadialBlur",
-          "cameraRadialBlur": {
-            "power": 0.800000011920929,
-            "blurTime": 0.25,
-            "fadeTime": 0.30000001192092896
-          }
-        },
-        {
-          "$type": "AvatarSkillStart",
-          "skillID": 10403,
-          "cdRatio": 1.0,
-          "costStaminaRatio": 1.0
-        },
-        {
-          "$type": "Predicated",
-          "targetPredicates": [
-            {
-              "$type": "ByUnlockTalentParam",
-              "talentParam": "Avatar_Chongyun_Talent_366"
-            }
-          ],
-          "successActions": [
-            {
-              "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_Aura_4",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            }
-          ],
-          "failActions": [
-            {
-              "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_Aura",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            }
-          ]
-        },
-        {
-          "$type": "ApplyModifier",
-          "modifierName": "Chongyun_SoulUnleash_Weather_Handler"
+          "value": -1
         }
       ]
     }
   },
   {
     "Default": {
-      "$type": "ConfigAbility",
       "abilityName": "Avatar_Chongyun_SoulUnleash_SoulBlades",
       "modifiers": {
         "Timer1": {
-          "modifierName": "",
           "duration": 0.75,
-          "elementDurability": 100.0,
+          "elementDurability": 100,
+          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "TriggerAbility",
-              "abilityName": "Avatar_Chongyun_SoulUnleash_Damage"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Avatar_Chongyun_SoulUnleash_Damage",
+              "target": "Other",
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Bomb",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
               "born": {
                 "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
                 },
-                "onGround": true,
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
                 "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
-                "directionKey": ""
+                "onGround": true
               },
-              "scale": 1.0,
-              "effectTempleteID": -1.0
+              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Bomb",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "ApplyModifier",
-              "modifierName": "Timer2"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Timer2",
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         },
         "Timer2": {
-          "modifierName": "",
           "duration": 0.009999999776482582,
-          "elementDurability": 100.0,
+          "elementDurability": 100,
+          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "TriggerAbility",
-              "abilityName": "Avatar_Chongyun_SoulUnleash_Damage"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Avatar_Chongyun_SoulUnleash_Damage",
+              "target": "Other",
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Bomb",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
               "born": {
                 "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
                 },
-                "onGround": true,
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
                 "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
-                "directionKey": ""
+                "onGround": true
               },
-              "scale": 1.0,
-              "effectTempleteID": -1.0
+              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Bomb",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "ApplyModifier",
-              "modifierName": "Timer3"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Timer3",
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         },
         "Timer3": {
-          "modifierName": "",
           "duration": 0.009999999776482582,
-          "elementDurability": 100.0,
+          "elementDurability": 100,
+          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "TriggerAbility",
-              "abilityName": "Avatar_Chongyun_SoulUnleash_Damage"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Avatar_Chongyun_SoulUnleash_Damage",
+              "target": "Other",
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Bomb",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
               "born": {
                 "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
                 },
-                "onGround": true,
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
                 "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
-                "directionKey": ""
+                "onGround": true
               },
-              "scale": 1.0,
-              "effectTempleteID": -1.0
+              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Bomb",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         }
       },
       "onAbilityStart": [
         {
           "$type": "FireEffect",
-          "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
           "born": {
             "$type": "ConfigBornByGlobalValue",
-            "offset": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
             },
-            "onGround": true,
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
             "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
-            "directionKey": ""
+            "onGround": true
           },
-          "scale": 1.0,
-          "effectTempleteID": -1.0
+          "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
         },
         {
           "$type": "ApplyModifier",
-          "modifierName": "Timer1"
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Timer1",
+          "canBeHandledOnRecover": true
         }
-      ]
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
     }
   },
   {
     "Default": {
-      "$type": "ConfigAbility",
       "abilityName": "Avatar_Chongyun_SoulUnleash_SoulBlades_Quadra",
       "modifiers": {
         "Timer1": {
-          "modifierName": "",
           "duration": 0.75,
-          "elementDurability": 100.0,
+          "elementDurability": 100,
+          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "TriggerAbility",
-              "abilityName": "Avatar_Chongyun_SoulUnleash_Quadra_Damage"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Avatar_Chongyun_SoulUnleash_Quadra_Damage",
+              "target": "Other",
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Bomb",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
               "born": {
                 "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
                 },
-                "onGround": true,
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
                 "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
-                "directionKey": ""
+                "onGround": true
               },
-              "scale": 1.0,
-              "effectTempleteID": -1.0
+              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Bomb",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "ApplyModifier",
-              "modifierName": "Timer2"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Timer2",
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         },
         "Timer2": {
-          "modifierName": "",
           "duration": 0.019999999552965164,
-          "elementDurability": 100.0,
+          "elementDurability": 100,
+          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "TriggerAbility",
-              "abilityName": "Avatar_Chongyun_SoulUnleash_Quadra_Damage"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Avatar_Chongyun_SoulUnleash_Quadra_Damage",
+              "target": "Other",
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Bomb",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
               "born": {
                 "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
                 },
-                "onGround": true,
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
                 "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
-                "directionKey": ""
+                "onGround": true
               },
-              "scale": 1.0,
-              "effectTempleteID": -1.0
+              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Bomb",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "ApplyModifier",
-              "modifierName": "Timer3"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Timer3",
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         },
         "Timer3": {
-          "modifierName": "",
           "duration": 0.019999999552965164,
-          "elementDurability": 100.0,
+          "elementDurability": 100,
+          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "TriggerAbility",
-              "abilityName": "Avatar_Chongyun_SoulUnleash_Quadra_Damage"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Avatar_Chongyun_SoulUnleash_Quadra_Damage",
+              "target": "Other",
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Bomb",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
               "born": {
                 "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
                 },
-                "onGround": true,
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
                 "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
-                "directionKey": ""
+                "onGround": true
               },
-              "scale": 1.0,
-              "effectTempleteID": -1.0
+              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Bomb",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "ApplyModifier",
-              "modifierName": "Timer4"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Timer4",
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         },
         "Timer4": {
-          "modifierName": "",
           "duration": 0.15000000596046448,
-          "elementDurability": 100.0,
+          "elementDurability": 100,
+          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "TriggerAbility",
-              "abilityName": "Avatar_Chongyun_SoulUnleash_Quadra_Damage"
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Avatar_Chongyun_SoulUnleash_Quadra_Damage",
+              "target": "Other",
+              "canBeHandledOnRecover": true
             },
             {
               "$type": "FireEffect",
-              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Quadra_Bomb",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
               "born": {
                 "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
                 },
-                "onGround": true,
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
                 "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
-                "directionKey": ""
+                "onGround": true
               },
-              "scale": 1.0,
-              "effectTempleteID": -1.0
+              "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Quadra_Bomb",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         }
       },
       "onAbilityStart": [
         {
           "$type": "FireEffect",
-          "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Quadra",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
           "born": {
             "$type": "ConfigBornByGlobalValue",
-            "offset": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
             },
-            "onGround": true,
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
             "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
-            "directionKey": ""
+            "onGround": true
           },
-          "scale": 1.0,
-          "effectTempleteID": -1.0
+          "effectPattern": "Eff_Chongyun_ElementalBurst_SoulBlade_Quadra",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
         },
         {
           "$type": "ApplyModifier",
-          "modifierName": "Timer1"
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Timer1",
+          "canBeHandledOnRecover": true
         }
-      ]
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
     }
   },
   {
     "Default": {
-      "$type": "ConfigAbility",
+      "abilitySpecials": {
+        "ElementalBurst_Damage": 0,
+        "damagePercentage": 0
+      },
       "abilityName": "Avatar_Chongyun_SoulUnleash_Quadra_Damage",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "attackTag": "Elemental_Burst",
+              "forceCameraShake": true,
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV7",
+                "hitHaltTimeScale": 0.05000000074505806,
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "overrideHitImpulse": {
+                  "hitLevel": "Air",
+                  "hitImpulseY": 600
+                }
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeType": "CustomVector",
+                "shakeDistance": 30,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                },
+                "shakeTime": 0.11999999731779099,
+                "shakeRange": 0.36000001430511475,
+                "shakeDir": {
+                  "x": -0.20000000298023224,
+                  "y": 1
+                }
+              },
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "elementType": "Ice",
+                "elementDurability": 25,
+                "enBreak": 100,
+                "elementRank": 1,
+                "attackType": "Default",
+                "strikeType": "Blunt",
+                "damagePercentage": "ElementalBurst_Damage"
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
+                "onGround": true
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 3.5,
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
       "abilityMixins": [
         {
           "$type": "ModifyDamageMixin",
           "ignoreEventInfo": true,
+          "actorIceSubHurtDelta": -1,
           "damagePercentageRatio": "damagePercentage",
           "predicates": [
             {
-              "$type": "OPCGFDPNLFO"
+              "$type": "ByCompareWithTarget",
+              "target": "Target"
             },
             {
               "$type": "ByAttackTags",
+              "target": "Target",
               "attackTags": [
                 "Elemental_Burst"
               ]
             }
           ]
         }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilitySpecials": {
+        "ElementalBurst_Damage": 0
+      },
+      "abilityName": "Avatar_Chongyun_SoulUnleash_Damage",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "attackTag": "Elemental_Burst",
+              "forceCameraShake": true,
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV7",
+                "hitHaltTimeScale": 0.05000000074505806,
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "overrideHitImpulse": {
+                  "hitLevel": "Air",
+                  "hitImpulseY": 600
+                }
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeType": "CustomVector",
+                "shakeDistance": 30,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                },
+                "shakeTime": 0.11999999731779099,
+                "shakeRange": 0.36000001430511475,
+                "shakeDir": {
+                  "x": -0.20000000298023224,
+                  "y": 1
+                }
+              },
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "elementType": "Ice",
+                "elementDurability": 25,
+                "enBreak": 100,
+                "elementRank": 1,
+                "attackType": "Default",
+                "strikeType": "Blunt",
+                "damagePercentage": "ElementalBurst_Damage"
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
+                "onGround": true
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 3.5,
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Chongyun_ReviveElemEnergy_Handler",
+          "canBeHandledOnRecover": true
+        }
       ],
       "abilitySpecials": {
-        "ElementalBurst_Damage": 0.0,
-        "damagePercentage": 0.0
+        "baseEnergy": 0,
+        "duration": 0
       },
-      "onAbilityStart": [
-        {
-          "$type": "TriggerAttackEvent",
-          "attackEvent": {
-            "attackPattern": {
-              "$type": "ConfigAttackSphere",
-              "triggerType": "TriggerNoRepeat",
-              "born": {
-                "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "onGround": true,
-                "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
-                "directionKey": ""
-              },
-              "radius": 3.5
-            },
-            "attackInfo": {
-              "attackTag": "Elemental_Burst",
-              "attenuationTag": "",
-              "attenuationGroup": "default",
-              "attackProperty": {
-                "damagePercentage": "ElementalBurst_Damage",
-                "damagePercentageRatio": 0.0,
-                "elementType": "Ice",
-                "elementDurability": 25.0,
-                "strikeType": "Blunt",
-                "enBreak": 100.0,
-                "__exp_Arkhe": 0.0
-              },
-              "hitPattern": {
-                "onHitEffectName": "",
-                "__unk_Q3893899620": "",
-                "hitImpulseType": "LV7",
-                "overrideHitImpulse": {
-                  "hitLevel": "Air",
-                  "hitImpulseX": 0.0,
-                  "hitImpulseY": 600.0
-                },
-                "hitHaltTimeScale": 0.05000000074505806
-              },
-              "forceCameraShake": true,
-              "cameraShake": {
-                "shakeType": "CustomVector",
-                "shakeRange": 0.36000001430511475,
-                "shakeTime": 0.11999999731779099,
-                "shakeDistance": 30.0,
-                "shakeDir": {
-                  "x": -0.20000000298023224,
-                  "y": 1.0
-                }
-              },
-              "canBeModifiedBy": "OriginOwner"
-            }
-          },
-          "targetType": "Enemy"
-        }
-      ]
-    }
-  },
-  {
-    "Default": {
-      "$type": "ConfigAbility",
-      "abilityName": "Avatar_Chongyun_SoulUnleash_Damage",
-      "abilitySpecials": {
-        "ElementalBurst_Damage": 0.0
-      },
-      "onAbilityStart": [
-        {
-          "$type": "TriggerAttackEvent",
-          "attackEvent": {
-            "attackPattern": {
-              "$type": "ConfigAttackSphere",
-              "triggerType": "TriggerNoRepeat",
-              "born": {
-                "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "onGround": true,
-                "positionKey": "_ABILITY_Chongyun_ElementBurst_Pos",
-                "directionKey": ""
-              },
-              "radius": 3.5
-            },
-            "attackInfo": {
-              "attackTag": "Elemental_Burst",
-              "attenuationTag": "",
-              "attenuationGroup": "default",
-              "attackProperty": {
-                "damagePercentage": "ElementalBurst_Damage",
-                "damagePercentageRatio": 0.0,
-                "elementType": "Ice",
-                "elementDurability": 25.0,
-                "strikeType": "Blunt",
-                "enBreak": 100.0,
-                "__exp_Arkhe": 0.0
-              },
-              "hitPattern": {
-                "onHitEffectName": "",
-                "__unk_Q3893899620": "",
-                "hitImpulseType": "LV7",
-                "overrideHitImpulse": {
-                  "hitLevel": "Air",
-                  "hitImpulseX": 0.0,
-                  "hitImpulseY": 600.0
-                },
-                "hitHaltTimeScale": 0.05000000074505806
-              },
-              "forceCameraShake": true,
-              "cameraShake": {
-                "shakeType": "CustomVector",
-                "shakeRange": 0.36000001430511475,
-                "shakeTime": 0.11999999731779099,
-                "shakeDistance": 30.0,
-                "shakeDir": {
-                  "x": -0.20000000298023224,
-                  "y": 1.0
-                }
-              },
-              "canBeModifiedBy": "OriginOwner"
-            }
-          },
-          "targetType": "Enemy"
-        }
-      ]
-    }
-  },
-  {
-    "Default": {
-      "$type": "ConfigAbility",
+      "isDynamicAbility": true,
       "abilityName": "Avatar_Chongyun_HitReviveElemEnergy",
-      "abilitySpecials": {
-        "baseEnergy": 0.0,
-        "duration": 0.0
-      },
       "modifiers": {
         "Chongyun_ReviveElemEnergy_Handler": {
-          "modifierName": "",
-          "elementDurability": 100.0,
           "onAttackLanded": [
             {
               "$type": "Predicated",
-              "target": "Target",
               "targetPredicates": [
                 {
                   "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
                   "entityTypes": [
                     "Monster"
                   ]
                 },
                 {
                   "$type": "ByAny",
+                  "target": "Target",
                   "predicates": [
                     {
                       "$type": "ByHasElement",
+                      "target": "Target",
                       "element": "Ice"
                     },
                     {
                       "$type": "ByHasElement",
+                      "target": "Target",
                       "element": "Frozen"
                     }
                   ]
                 }
               ],
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
               "successActions": [
                 {
                   "$type": "ApplyModifier",
-                  "modifierName": "Revive_Timer"
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Revive_Timer",
+                  "canBeHandledOnRecover": true
                 }
-              ]
+              ],
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         },
         "Revive_Timer": {
-          "stacking": "Unique",
-          "modifierName": "",
-          "duration": "duration",
-          "elementDurability": 100.0,
           "onAdded": [
             {
               "$type": "ReviveElemEnergy",
+              "value": "baseEnergy",
+              "actorIceSubHurtDelta": -1,
               "doOffStage": true,
-              "value": "baseEnergy"
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "stacking": "Unique",
+          "duration": "duration",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         }
       },
-      "onAdded": [
-        {
-          "$type": "ApplyModifier",
-          "modifierName": "Chongyun_ReviveElemEnergy_Handler"
-        }
-      ],
-      "isDynamicAbility": true
-    }
-  },
-  {
-    "Default": {
-      "$type": "ConfigAbility",
-      "abilityName": "Avatar_Chongyun_NormalAttack_DamageHandler",
-      "abilityMixins": [
-        {
-          "$type": "ModifyDamageMixin",
-          "animEventNames": [
-            "ATK01"
-          ],
-          "damagePercentage": "NormalAttack_01_DamagePercentage",
-          "damagePercentageRatio": 0.0
-        },
-        {
-          "$type": "ModifyDamageMixin",
-          "animEventNames": [
-            "ATK02"
-          ],
-          "damagePercentage": "NormalAttack_02_DamagePercentage",
-          "damagePercentageRatio": 0.0
-        },
-        {
-          "$type": "ModifyDamageMixin",
-          "animEventNames": [
-            "ATK03"
-          ],
-          "damagePercentage": "NormalAttack_03_DamagePercentage",
-          "damagePercentageRatio": 0.0
-        },
-        {
-          "$type": "ModifyDamageMixin",
-          "animEventNames": [
-            "ATK04"
-          ],
-          "damagePercentage": "NormalAttack_04_DamagePercentage",
-          "damagePercentageRatio": 0.0
-        },
-        {
-          "$type": "ModifyDamageMixin",
-          "animEventNames": [
-            "ExtraAttack1"
-          ],
-          "damagePercentage": "ExtraAttack_Loop_DamagePercentage",
-          "damagePercentageRatio": 0.0
-        },
-        {
-          "$type": "ModifyDamageMixin",
-          "animEventNames": [
-            "ExtraAttack2"
-          ],
-          "damagePercentage": "ExtraAttack_End_DamagePercentage",
-          "damagePercentageRatio": 0.0
-        }
-      ],
-      "abilitySpecials": {
-        "NormalAttack_01_DamagePercentage": 0.0,
-        "NormalAttack_02_DamagePercentage": 0.0,
-        "NormalAttack_03_DamagePercentage": 0.0,
-        "NormalAttack_04_DamagePercentage": 0.0,
-        "ExtraAttack_Loop_DamagePercentage": 0.0,
-        "ExtraAttack_End_DamagePercentage": 0.0
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
       }
     }
   },
   {
     "Default": {
-      "$type": "ConfigAbility",
-      "abilityName": "Avatar_Chongyun_IceBlade",
-      "onAbilityStart": [
+      "abilitySpecials": {
+        "ExtraAttack_End_DamagePercentage": 0,
+        "ExtraAttack_Loop_DamagePercentage": 0,
+        "NormalAttack_01_DamagePercentage": 0,
+        "NormalAttack_02_DamagePercentage": 0,
+        "NormalAttack_03_DamagePercentage": 0,
+        "NormalAttack_04_DamagePercentage": 0
+      },
+      "abilityName": "Avatar_Chongyun_NormalAttack_DamageHandler",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
         {
-          "$type": "TriggerBullet",
-          "predicates": [
-            {
-              "$type": "ByUnlockTalentParam",
-              "talentParam": "Avatar_Chongyun_Talent_361"
-            }
-          ],
-          "bulletID": 41034101,
-          "born": {
-            "$type": "ConfigBornBySelf",
-            "offset": {
-              "x": 0.0,
-              "y": 0.5,
-              "z": 0.5
-            }
-          }
+          "$type": "ModifyDamageMixin",
+          "actorIceSubHurtDelta": -1,
+          "damagePercentage": "NormalAttack_01_DamagePercentage",
+          "animEventNames": [
+            "ATK01"
+          ]
         },
         {
-          "$type": "TriggerBullet",
-          "predicates": [
-            {
-              "$type": "ByUnlockTalentParam",
-              "talentParam": "Avatar_Chongyun_Talent_361"
-            }
-          ],
-          "bulletID": 41034101,
-          "born": {
-            "$type": "ConfigBornBySelf",
-            "offset": {
-              "x": 0.0,
-              "y": 0.5,
-              "z": 0.5
-            },
-            "direction": {
-              "$type": "ConfigDirectionByDefault",
-              "angleOffset": {
-                "x": 0.0,
-                "y": 25.0,
-                "z": 0.0
-              }
-            }
-          }
+          "$type": "ModifyDamageMixin",
+          "actorIceSubHurtDelta": -1,
+          "damagePercentage": "NormalAttack_02_DamagePercentage",
+          "animEventNames": [
+            "ATK02"
+          ]
         },
         {
-          "$type": "TriggerBullet",
-          "predicates": [
-            {
-              "$type": "ByUnlockTalentParam",
-              "talentParam": "Avatar_Chongyun_Talent_361"
-            }
-          ],
-          "bulletID": 41034101,
-          "born": {
-            "$type": "ConfigBornBySelf",
-            "offset": {
-              "x": 0.0,
-              "y": 0.5,
-              "z": 0.5
-            },
-            "direction": {
-              "$type": "ConfigDirectionByDefault",
-              "angleOffset": {
-                "x": 0.0,
-                "y": -25.0,
-                "z": 0.0
-              }
-            }
-          }
+          "$type": "ModifyDamageMixin",
+          "actorIceSubHurtDelta": -1,
+          "damagePercentage": "NormalAttack_03_DamagePercentage",
+          "animEventNames": [
+            "ATK03"
+          ]
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "actorIceSubHurtDelta": -1,
+          "damagePercentage": "NormalAttack_04_DamagePercentage",
+          "animEventNames": [
+            "ATK04"
+          ]
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "actorIceSubHurtDelta": -1,
+          "damagePercentage": "ExtraAttack_Loop_DamagePercentage",
+          "animEventNames": [
+            "ExtraAttack1"
+          ]
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "actorIceSubHurtDelta": -1,
+          "damagePercentage": "ExtraAttack_End_DamagePercentage",
+          "animEventNames": [
+            "ExtraAttack2"
+          ]
         }
       ]
     }
   },
   {
     "Default": {
-      "$type": "ConfigAbility",
-      "abilityName": "ChongyunTest_TestBlade_Hit",
+      "abilityName": "Avatar_Chongyun_IceBlade",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 0.5,
+              "z": 0.5
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "trackTarget": "SelfAttackTarget",
+          "predicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Avatar_Chongyun_Talent_361",
+              "target": "Target"
+            }
+          ],
+          "bulletID": 41034101,
+          "value": true,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        },
+        {
+          "$type": "TriggerBullet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 0.5,
+              "z": 0.5
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "$type": "ConfigDirectionByDefault",
+              "maxAngle": 180,
+              "angleOffset": {
+                "x": 25
+              }
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "trackTarget": "SelfAttackTarget",
+          "predicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Avatar_Chongyun_Talent_361",
+              "target": "Target"
+            }
+          ],
+          "bulletID": 41034101,
+          "value": true,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        },
+        {
+          "$type": "TriggerBullet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 0.5,
+              "z": 0.5
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "$type": "ConfigDirectionByDefault",
+              "maxAngle": 180,
+              "angleOffset": {
+                "x": -25
+              }
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "trackTarget": "SelfAttackTarget",
+          "predicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Avatar_Chongyun_Talent_361",
+              "target": "Target"
+            }
+          ],
+          "bulletID": 41034101,
+          "value": true,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "LoopState",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Damage",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "ModifyDamage",
+          "canBeHandledOnRecover": true
+        }
+      ],
       "abilitySpecials": {
-        "Chongyun_Talent_IceBlades_Damage": 0.0
+        "Chongyun_Talent_IceBlades_Damage": 0
       },
+      "abilityName": "ChongyunTest_TestBlade_Hit",
       "modifiers": {
-        "ModifyDamage": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "modifierMixins": [
-            {
-              "$type": "ModifyDamageMixin",
-              "attackTags": [
-                "IceBlades"
-              ],
-              "damagePercentage": "Chongyun_Talent_IceBlades_Damage",
-              "damagePercentageRatio": 0.0
-            }
-          ]
-        },
-        "LoopState": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "effectPattern": "Eff_Chongyun_Talent_IceBlades",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            }
-          ]
-        },
         "Damage": {
-          "modifierName": "",
-          "elementDurability": 100.0,
           "thinkInterval": 0.05000000074505806,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
           "onThinkInterval": [
             {
               "$type": "DamageByAttackValue",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackInfo": {
+                "attackTag": "NormalAttack_04",
+                "HBOOKFMCODC": {
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "onHitEffectName": "default"
+                },
+                "hitPattern": {
+                  "hitImpulseType": "LV0",
+                  "hitHaltTimeScale": 0.05000000074505806,
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "onHitEffectName": "none",
+                  "muteHitText": true
+                },
+                "INKGMIHAPMA": {
+                  "NDIBGPPKGJP": "Shake"
+                },
+                "cameraShake": {
+                  "shakeDistance": 20,
+                  "extension": {
+                    "rangeAttenuation": 0.5,
+                    "baseOnCamera": true,
+                    "baseCycle": 0.11999999731779099,
+                    "cycleDamping": 0.11999999731779099
+                  }
+                },
+                "attenuationGroup": "default",
+                "attackProperty": {
+                  "elementType": "Ice",
+                  "elementDurability": 25,
+                  "elementRank": 3,
+                  "attackType": "Default",
+                  "strikeType": "None"
+                }
+              },
               "otherTargets": {
                 "$type": "SelectTargetsByShape",
                 "shapeName": "CircleR1",
                 "campTargetType": "Enemy",
-                "sizeRatio": 1.0
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
               },
               "predicates": [
                 {
                   "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
                   "entityTypes": [
                     "Grass"
                   ]
                 }
               ],
-              "attackInfo": {
-                "attackTag": "NormalAttack_04",
-                "attenuationTag": "",
-                "attenuationGroup": "default",
-                "attackProperty": {
-                  "damagePercentage": 0.0,
-                  "damagePercentageRatio": 0.0,
-                  "elementType": "Ice",
-                  "elementRank": 3.0,
-                  "elementDurability": 25.0,
-                  "enBreak": 0.0,
-                  "__exp_Arkhe": 0.0
-                },
-                "hitPattern": {
-                  "onHitEffectName": "none",
-                  "__unk_Q3893899620": "",
-                  "hitImpulseType": "LV0",
-                  "hitHaltTimeScale": 0.05000000074505806,
-                  "muteHitText": true
-                }
-              }
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "isLimitedProperties": true
+        },
+        "LoopState": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Chongyun_Talent_IceBlades",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ModifyDamage": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "actorIceSubHurtDelta": -1,
+              "damagePercentage": "Chongyun_Talent_IceBlades_Damage",
+              "attackTags": [
+                "IceBlades"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         }
       },
-      "onAdded": [
-        {
-          "$type": "ApplyModifier",
-          "modifierName": "LoopState"
-        },
-        {
-          "$type": "ApplyModifier",
-          "modifierName": "Damage"
-        },
-        {
-          "$type": "ApplyModifier",
-          "modifierName": "ModifyDamage"
-        }
-      ]
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
     }
   },
   {
     "Default": {
-      "$type": "ConfigAbility",
+      "abilitySpecials": {
+        "FallingAnthem_Altitude_Lv0": 20,
+        "FallingAnthem_Altitude_Lv1": 40,
+        "FallingAnthem_Altitude_Lv2": 60,
+        "FallingAnthem_Altitude_Lv3": 100,
+        "FallingAnthem_Altitude_Lv4": 200,
+        "FallingAnthem_FallingDamageRatio": 0,
+        "FallingAnthem_FallingDamageRatio_Lv0": -1,
+        "FallingAnthem_FallingDamageRatio_Lv1": -1,
+        "FallingAnthem_FallingDamageRatio_Lv2": -0.8999999761581421,
+        "FallingAnthem_FallingDamageRatio_Lv3": -0.800000011920929,
+        "FallingAnthem_FallingDamageRatio_Lv4": -0.6000000238418579,
+        "FallingAnthem_Normal_Loop_Damage": 0,
+        "FallingAnthem_Normal_Rank_1_Damage": 0,
+        "FallingAnthem_Normal_Rank_2_Damage": 0
+      },
       "abilityName": "Avatar_Chongyun_FallingAnthem",
+      "modifiers": {
+        "FallingAnthem_AttachSelfEffect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Avatar_Claymore_FallAnthem_Self_02",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FallingAnthem_BS_Material": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Avatar_Claymore_FallAnthem_Self",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Avatar_Claymore_FallAnthem_BS",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FallingAnthem_BS_VelocityForce_Initialize": {
+          "onAdded": [
+            {
+              "$type": "RemoveVelocityForce",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "forces": [
+                "RushMoveType"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AddGravityScale": -2
+          }
+        },
+        "FallingAnthem_ClearVelocityForce": {
+          "onAdded": [
+            {
+              "$type": "RemoveVelocityForce",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "forces": [
+                "RushMoveType",
+                "InertiaType"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FallingAnthem_FallingDamageImmune_01": {
+          "onAdded": [
+            {
+              "$type": "ClearGlobalValue",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "useLimitRange": true,
+              "value": "FallingAnthem_FallingDamageRatio_Lv0",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "minValue": "FallingAnthem_FallingDamageRatio_Lv0",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "value": "FallingAnthem_Altitude_Lv0",
+                  "logic": "LesserOrEqual",
+                  "TargetAltitudeType": "Both"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv0"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "useLimitRange": true,
+              "value": "FallingAnthem_FallingDamageRatio_Lv1",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "minValue": "FallingAnthem_FallingDamageRatio_Lv1",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "value": "FallingAnthem_Altitude_Lv1",
+                  "logic": "LesserOrEqual",
+                  "TargetAltitudeType": "Both"
+                },
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "value": "FallingAnthem_Altitude_Lv0",
+                  "TargetAltitudeType": "Both"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv1"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "useLimitRange": true,
+              "value": "FallingAnthem_FallingDamageRatio_Lv2",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "minValue": "FallingAnthem_FallingDamageRatio_Lv2",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "value": "FallingAnthem_Altitude_Lv2",
+                  "logic": "LesserOrEqual",
+                  "TargetAltitudeType": "Both"
+                },
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "value": "FallingAnthem_Altitude_Lv1",
+                  "TargetAltitudeType": "Both"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv2"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "useLimitRange": true,
+              "value": "FallingAnthem_FallingDamageRatio_Lv3",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "minValue": "FallingAnthem_FallingDamageRatio_Lv3",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "value": "FallingAnthem_Altitude_Lv3",
+                  "logic": "LesserOrEqual",
+                  "TargetAltitudeType": "Both"
+                },
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "value": "FallingAnthem_Altitude_Lv2",
+                  "TargetAltitudeType": "Both"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv3"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "useLimitRange": true,
+              "value": "FallingAnthem_FallingDamageRatio_Lv4",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "minValue": "FallingAnthem_FallingDamageRatio_Lv4",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "value": "FallingAnthem_Altitude_Lv3",
+                  "TargetAltitudeType": "Both"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv4"
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "FallingAnthem_FallingDamageImmune_02",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FallingAnthem_FallingDamageImmune_02": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "overrideMapKey": "FallingAnthem_FallingDamageRatio",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "globalValueKey": "_ABILITY_FallingAttack_Altitude",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "FallingAnthem_FallingDamageImmune_03",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FallingAnthem_FallingDamageImmune_03": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_FallingDamageRatio": "FallingAnthem_FallingDamageRatio"
+          }
+        },
+        "FallingAnthem_Height_Detect": {
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "useLimitRange": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "value": 2.4000000953674316,
+                  "logic": "LesserOrEqual",
+                  "TargetAltitudeType": "Both"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "useLimitRange": true,
+              "value": 5,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "value": 2.4000000953674316,
+                  "TargetAltitudeType": "Both"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "FallingAnthem_UseCamera",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "value": 2.4000000953674316,
+                  "logic": "LesserOrEqual",
+                  "TargetAltitudeType": "Both"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "FallingAnthem_UseCamera",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Target",
+                  "value": 2.4000000953674316,
+                  "TargetAltitudeType": "Both"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorFloat",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "FallingAnthem_UseCamera",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "useLimitRange": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FallingAnthem_Landed_Camera": {
+          "onAdded": [
+            {
+              "$type": "AvatarCameraParam",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "target": "Target",
+                  "value": 1,
+                  "parameter": "FallingAnthem_UseCamera",
+                  "logic": "Equal"
+                }
+              ],
+              "cameraParam": {
+                "ELHHLIGJFDD": 1,
+                "forceRadiusDuration": 0.10000000149011612,
+                "shouldKeepForceRadius": true,
+                "OJENIIDAGKM": 1,
+                "forceRadius": 6
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FallingAnthem_LoopDamage": {
+          "thinkInterval": 0.30000001192092896,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "attackTag": "FallingAttack",
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "hitImpulseType": "LV2",
+                    "hitHaltTimeScale": 0.019999999552965164,
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "overrideByWeapon": true,
+                    "enBreak": 35,
+                    "elementRank": 1,
+                    "attackType": "Melee",
+                    "strikeType": "Slash",
+                    "damagePercentage": "FallingAnthem_Normal_Loop_Damage"
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "z": 1
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "radius": 1,
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "FallingAnthem_Loop_Normal": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                -1,
+                0.5,
+                1.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "FallingAnthem_Loop_Normal_Rank_1",
+                "FallingAnthem_Loop_Normal_Rank_2"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_ABILITY_FallingAnthem_UseCamera"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FallingAnthem_Loop_Normal_Rank_1": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Avatar_Claymore_FallAnthem_Loop_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FallingAnthem_Loop_Normal_Rank_2": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Avatar_Claymore_FallAnthem_Loop_02",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FallingAnthem_OverHead_Camera": {
+          "onAdded": [
+            {
+              "$type": "AvatarCameraParam",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "target": "Target",
+                  "value": 1,
+                  "parameter": "FallingAnthem_UseCamera",
+                  "logic": "Equal"
+                }
+              ],
+              "cameraParam": {
+                "ELHHLIGJFDD": 1,
+                "forceRadiusDuration": 0.20000000298023224,
+                "shouldKeepForceRadius": true,
+                "OJENIIDAGKM": 1,
+                "forceRadius": 4.5
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FallingAnthem_OverHead_Camera_Remover": {
+          "onAdded": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Inertia": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ApplyInertiaVelocityMixin",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "attackTag": "FallingAttack",
+              "forceCameraShake": true,
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV4",
+                "hitHaltTimeScale": 0.10000000149011612,
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "none"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "cameraShake": {
+                "shakeType": "CustomVector",
+                "shakeDistance": 30,
+                "extension": {
+                  "rangeAttenuation": 0.30000001192092896,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.23999999463558197
+                },
+                "shakeTime": 0.11999999731779099,
+                "shakeRange": 0.23999999463558197,
+                "shakeDir": {
+                  "y": 1
+                }
+              },
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "elementDurability": 25,
+                "overrideByWeapon": true,
+                "enBreak": 150,
+                "elementRank": 1,
+                "attackType": "Melee",
+                "strikeType": "Blunt",
+                "damagePercentage": "FallingAnthem_Normal_Rank_1_Damage"
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "fanAngle": 360,
+              "height": 2,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": -0.5,
+                  "z": 1
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 3,
+              "massiveAttackRatio": 1
+            }
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "target": "Target",
+              "compareType": "NoneOrEqual",
+              "forceByCaster": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "attackTag": "FallingAttack",
+              "forceCameraShake": true,
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV7",
+                "hitHaltTimeScale": 0.10000000149011612,
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "none",
+                "overrideHitImpulse": {
+                  "hitLevel": "Air",
+                  "hitImpulseY": 800
+                }
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "cameraShake": {
+                "shakeType": "CustomVector",
+                "shakeDistance": 30,
+                "extension": {
+                  "rangeAttenuation": 0.30000001192092896,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.4000000059604645
+                },
+                "shakeTime": 0.20000000298023224,
+                "shakeRange": 0.5,
+                "shakeDir": {
+                  "y": 1,
+                  "z": 1
+                }
+              },
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "elementDurability": 25,
+                "overrideByWeapon": true,
+                "enBreak": 200,
+                "elementRank": 1,
+                "attackType": "Melee",
+                "strikeType": "Blunt",
+                "damagePercentage": "FallingAnthem_Normal_Rank_2_Damage"
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "fanAngle": 360,
+              "height": 2,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": -0.5,
+                  "z": 1
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 5,
+              "massiveAttackRatio": 1
+            }
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "target": "Target",
+              "value": 1,
+              "forceByCaster": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "target": "Target",
+              "compareType": "NoneOrEqual",
+              "forceByCaster": true
+            }
+          ],
+          "effectPattern": "Eff_Avatar_Claymore_FallAnthem_Strike_01",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "target": "Target",
+              "value": 1,
+              "forceByCaster": true
+            }
+          ],
+          "effectPattern": "Eff_Avatar_Claymore_FallAnthem_Strike_02",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
       "abilityMixins": [
         {
           "$type": "AvatarChangeSkillMixin",
-          "jumpSkillID": 5036010,
-          "flySkillID": 5036010
+          "actorIceSubHurtDelta": -1,
+          "flySkillID": 5036010,
+          "priority": "AvatarCommon",
+          "jumpSkillID": 5036010
         },
         {
           "$type": "AttachToStateIDMixin",
           "stateIDs": [
             "FallingAnthem_BS"
           ],
+          "actorIceSubHurtDelta": -1,
           "modifierName": "FallingAnthem_BS_Material",
-          "__unk_Q2081332355": ""
+          "value": -1
         },
         {
           "$type": "AttachToStateIDMixin",
           "stateIDs": [
             "FallingAnthem_Loop"
           ],
+          "actorIceSubHurtDelta": -1,
           "modifierName": "FallingAnthem_Loop_Normal",
-          "__unk_Q2081332355": ""
+          "value": -1
         },
         {
           "$type": "AttachToAnimatorStateIDMixin",
@@ -2145,16 +4056,18 @@
             "FallingAnthem_Loop",
             "FallingAnthem_Loop_Low"
           ],
+          "actorIceSubHurtDelta": -1,
           "modifierName": "FallingAnthem_LoopDamage",
-          "__unk_Q2081332355": ""
+          "value": -1
         },
         {
           "$type": "AttachToStateIDMixin",
           "stateIDs": [
             "FallingAnthem_BS"
           ],
+          "actorIceSubHurtDelta": -1,
           "modifierName": "FallingAnthem_BS_VelocityForce_Initialize",
-          "__unk_Q2081332355": ""
+          "value": -1
         },
         {
           "$type": "AttachToStateIDMixin",
@@ -2164,8 +4077,9 @@
             "FallingAnthem_AS_1",
             "FallingAnthem_AS_2"
           ],
+          "actorIceSubHurtDelta": -1,
           "modifierName": "FallingAnthem_Height_Detect",
-          "__unk_Q2081332355": ""
+          "value": -1
         },
         {
           "$type": "AttachToStateIDMixin",
@@ -2175,8 +4089,9 @@
             "FallingAnthem_AS_1",
             "FallingAnthem_AS_2"
           ],
+          "actorIceSubHurtDelta": -1,
           "modifierName": "FallingAnthem_FallingDamageImmune_01",
-          "__unk_Q2081332355": ""
+          "value": -1
         },
         {
           "$type": "AttachToStateIDMixin",
@@ -2184,8 +4099,9 @@
             "FallingAnthem_BS",
             "FallingAnthem_Loop"
           ],
+          "actorIceSubHurtDelta": -1,
           "modifierName": "Inertia",
-          "__unk_Q2081332355": ""
+          "value": -1
         },
         {
           "$type": "AttachToStateIDMixin",
@@ -2195,16 +4111,18 @@
             "FallingAnthem_AS_1",
             "FallingAnthem_AS_2"
           ],
+          "actorIceSubHurtDelta": -1,
           "modifierName": "FallingAnthem_OverHead_Camera",
-          "__unk_Q2081332355": ""
+          "value": -1
         },
         {
           "$type": "AttachToStateIDMixin",
           "stateIDs": [
             "FallingAnthem_BS"
           ],
+          "actorIceSubHurtDelta": -1,
           "modifierName": "FallingAnthem_ClearVelocityForce",
-          "__unk_Q2081332355": ""
+          "value": -1
         },
         {
           "$type": "AttachToAnimatorStateIDMixin",
@@ -2212,601 +4130,9 @@
             "FallingAnthem_BS_2",
             "FallingAnthem_Loop"
           ],
+          "actorIceSubHurtDelta": -1,
           "modifierName": "FallingAnthem_AttachSelfEffect",
-          "__unk_Q2081332355": ""
-        }
-      ],
-      "abilitySpecials": {
-        "FallingAnthem_Normal_Loop_Damage": 0.0,
-        "FallingAnthem_Normal_Rank_1_Damage": 0.0,
-        "FallingAnthem_Normal_Rank_2_Damage": 0.0,
-        "FallingAnthem_Altitude_Lv0": 20.0,
-        "FallingAnthem_Altitude_Lv1": 40.0,
-        "FallingAnthem_Altitude_Lv2": 60.0,
-        "FallingAnthem_Altitude_Lv3": 100.0,
-        "FallingAnthem_Altitude_Lv4": 200.0,
-        "FallingAnthem_FallingDamageRatio_Lv0": -1.0,
-        "FallingAnthem_FallingDamageRatio_Lv1": -1.0,
-        "FallingAnthem_FallingDamageRatio_Lv2": -0.8999999761581421,
-        "FallingAnthem_FallingDamageRatio_Lv3": -0.800000011920929,
-        "FallingAnthem_FallingDamageRatio_Lv4": -0.6000000238418579,
-        "FallingAnthem_FallingDamageRatio": 0.0
-      },
-      "modifiers": {
-        "FallingAnthem_AttachSelfEffect": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "effectPattern": "Eff_Avatar_Claymore_FallAnthem_Self_02",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            }
-          ]
-        },
-        "FallingAnthem_BS_Material": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "FireEffect",
-              "effectPattern": "Eff_Avatar_Claymore_FallAnthem_Self",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            },
-            {
-              "$type": "FireEffect",
-              "effectPattern": "Eff_Avatar_Claymore_FallAnthem_BS",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            }
-          ]
-        },
-        "FallingAnthem_BS_VelocityForce_Initialize": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "properties": {
-            "Actor_AddGravityScale": -2.0
-          },
-          "onAdded": [
-            {
-              "$type": "RemoveVelocityForce",
-              "forces": [
-                "RushMoveType"
-              ]
-            }
-          ]
-        },
-        "FallingAnthem_LoopDamage": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "thinkInterval": 0.30000001192092896,
-          "onThinkInterval": [
-            {
-              "$type": "TriggerAttackEvent",
-              "attackEvent": {
-                "attackPattern": {
-                  "$type": "ConfigAttackSphere",
-                  "triggerType": "TriggerNoRepeat",
-                  "born": {
-                    "$type": "ConfigBornBySelf",
-                    "offset": {
-                      "x": 0.0,
-                      "y": 0.0,
-                      "z": 1.0
-                    }
-                  },
-                  "radius": 1.0
-                },
-                "attackInfo": {
-                  "attackTag": "FallingAttack",
-                  "attenuationTag": "",
-                  "attenuationGroup": "default",
-                  "attackProperty": {
-                    "damagePercentage": "FallingAnthem_Normal_Loop_Damage",
-                    "damagePercentageRatio": 0.0,
-                    "elementDurability": 0.0,
-                    "overrideByWeapon": true,
-                    "strikeType": "Slash",
-                    "enBreak": 35.0,
-                    "attackType": "Melee",
-                    "__exp_Arkhe": 0.0
-                  },
-                  "hitPattern": {
-                    "onHitEffectName": "default",
-                    "__unk_Q3893899620": "",
-                    "hitImpulseType": "LV2",
-                    "hitHaltTimeScale": 0.019999999552965164
-                  }
-                }
-              },
-              "targetType": "Enemy"
-            }
-          ]
-        },
-        "FallingAnthem_FallingDamageImmune_01": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "ClearGlobalValue",
-              "key": "_ABILITY_FallingAttack_Altitude"
-            },
-            {
-              "$type": "AddGlobalValue",
-              "predicates": [
-                {
-                  "$type": "ByTargetAltitude",
-                  "logic": "LesserOrEqual",
-                  "value": "FallingAnthem_Altitude_Lv0"
-                }
-              ],
-              "value": "FallingAnthem_FallingDamageRatio_Lv0",
-              "key": "_ABILITY_FallingAttack_Altitude",
-              "useLimitRange": true,
-              "maxValue": "FallingAnthem_FallingDamageRatio_Lv0",
-              "minValue": "FallingAnthem_FallingDamageRatio_Lv0"
-            },
-            {
-              "$type": "AddGlobalValue",
-              "predicates": [
-                {
-                  "$type": "ByTargetAltitude",
-                  "logic": "LesserOrEqual",
-                  "value": "FallingAnthem_Altitude_Lv1"
-                },
-                {
-                  "$type": "ByTargetAltitude",
-                  "value": "FallingAnthem_Altitude_Lv0"
-                }
-              ],
-              "value": "FallingAnthem_FallingDamageRatio_Lv1",
-              "key": "_ABILITY_FallingAttack_Altitude",
-              "useLimitRange": true,
-              "maxValue": "FallingAnthem_FallingDamageRatio_Lv1",
-              "minValue": "FallingAnthem_FallingDamageRatio_Lv1"
-            },
-            {
-              "$type": "AddGlobalValue",
-              "predicates": [
-                {
-                  "$type": "ByTargetAltitude",
-                  "logic": "LesserOrEqual",
-                  "value": "FallingAnthem_Altitude_Lv2"
-                },
-                {
-                  "$type": "ByTargetAltitude",
-                  "value": "FallingAnthem_Altitude_Lv1"
-                }
-              ],
-              "value": "FallingAnthem_FallingDamageRatio_Lv2",
-              "key": "_ABILITY_FallingAttack_Altitude",
-              "useLimitRange": true,
-              "maxValue": "FallingAnthem_FallingDamageRatio_Lv2",
-              "minValue": "FallingAnthem_FallingDamageRatio_Lv2"
-            },
-            {
-              "$type": "AddGlobalValue",
-              "predicates": [
-                {
-                  "$type": "ByTargetAltitude",
-                  "logic": "LesserOrEqual",
-                  "value": "FallingAnthem_Altitude_Lv3"
-                },
-                {
-                  "$type": "ByTargetAltitude",
-                  "value": "FallingAnthem_Altitude_Lv2"
-                }
-              ],
-              "value": "FallingAnthem_FallingDamageRatio_Lv3",
-              "key": "_ABILITY_FallingAttack_Altitude",
-              "useLimitRange": true,
-              "maxValue": "FallingAnthem_FallingDamageRatio_Lv3",
-              "minValue": "FallingAnthem_FallingDamageRatio_Lv3"
-            },
-            {
-              "$type": "AddGlobalValue",
-              "predicates": [
-                {
-                  "$type": "ByTargetAltitude",
-                  "value": "FallingAnthem_Altitude_Lv3"
-                }
-              ],
-              "value": "FallingAnthem_FallingDamageRatio_Lv4",
-              "key": "_ABILITY_FallingAttack_Altitude",
-              "useLimitRange": true,
-              "maxValue": "FallingAnthem_FallingDamageRatio_Lv4",
-              "minValue": "FallingAnthem_FallingDamageRatio_Lv4"
-            },
-            {
-              "$type": "AttachModifier",
-              "modifierName": "FallingAnthem_FallingDamageImmune_02"
-            }
-          ]
-        },
-        "FallingAnthem_FallingDamageImmune_02": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "SetGlobalValueToOverrideMap",
-              "globalValueKey": "_ABILITY_FallingAttack_Altitude",
-              "overrideMapKey": "FallingAnthem_FallingDamageRatio"
-            },
-            {
-              "$type": "AttachModifier",
-              "modifierName": "FallingAnthem_FallingDamageImmune_03"
-            }
-          ]
-        },
-        "FallingAnthem_FallingDamageImmune_03": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "properties": {
-            "Actor_FallingDamageRatio": "FallingAnthem_FallingDamageRatio"
-          }
-        },
-        "FallingAnthem_Loop_Normal": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "modifierMixins": [
-            {
-              "$type": "AttachModifierToSelfGlobalValueMixin",
-              "globalValueKey": "_ABILITY_FallingAnthem_UseCamera",
-              "defaultGlobalValueOnCreate": 0.0,
-              "valueSteps": [
-                -1.0,
-                0.5,
-                1.5
-              ],
-              "modifierNameSteps": [
-                "FallingAnthem_Loop_Normal_Rank_1",
-                "FallingAnthem_Loop_Normal_Rank_2"
-              ]
-            }
-          ]
-        },
-        "FallingAnthem_Loop_Normal_Rank_1": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "FireEffect",
-              "effectPattern": "Eff_Avatar_Claymore_FallAnthem_Loop_01",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            }
-          ]
-        },
-        "FallingAnthem_Loop_Normal_Rank_2": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "effectPattern": "Eff_Avatar_Claymore_FallAnthem_Loop_02",
-              "scale": 1.0,
-              "effectTempleteID": -1.0
-            }
-          ]
-        },
-        "Inertia": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "modifierMixins": [
-            {
-              "$type": "ApplyInertiaVelocityMixin",
-              "useXZ": false,
-              "useY": false
-            }
-          ]
-        },
-        "FallingAnthem_Height_Detect": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "AddGlobalValue",
-              "predicates": [
-                {
-                  "$type": "ByTargetAltitude",
-                  "logic": "LesserOrEqual",
-                  "value": 2.4000000953674316
-                }
-              ],
-              "value": 0.0,
-              "key": "_ABILITY_FallingAnthem_UseCamera",
-              "useLimitRange": true,
-              "maxValue": 0.0,
-              "minValue": 0.0
-            },
-            {
-              "$type": "AddGlobalValue",
-              "predicates": [
-                {
-                  "$type": "ByTargetAltitude",
-                  "value": 2.4000000953674316
-                }
-              ],
-              "value": 5.0,
-              "key": "_ABILITY_FallingAnthem_UseCamera",
-              "useLimitRange": true,
-              "maxValue": 1.0,
-              "minValue": 0.0
-            },
-            {
-              "$type": "SetAnimatorFloat",
-              "predicates": [
-                {
-                  "$type": "ByTargetAltitude",
-                  "logic": "LesserOrEqual",
-                  "value": 2.4000000953674316
-                }
-              ],
-              "floatID": "FallingAnthem_UseCamera",
-              "value": 0.0
-            },
-            {
-              "$type": "SetAnimatorFloat",
-              "predicates": [
-                {
-                  "$type": "ByTargetAltitude",
-                  "value": 2.4000000953674316
-                }
-              ],
-              "floatID": "FallingAnthem_UseCamera",
-              "value": 1.0
-            }
-          ],
-          "onRemoved": [
-            {
-              "$type": "SetAnimatorFloat",
-              "floatID": "FallingAnthem_UseCamera",
-              "value": 0.0
-            },
-            {
-              "$type": "AddGlobalValue",
-              "value": 0.0,
-              "key": "_ABILITY_FallingAnthem_UseCamera",
-              "useLimitRange": true,
-              "maxValue": 0.0,
-              "minValue": 0.0
-            }
-          ]
-        },
-        "FallingAnthem_OverHead_Camera": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "AvatarCameraParam",
-              "predicates": [
-                {
-                  "$type": "ByAnimatorFloat",
-                  "logic": "Equal",
-                  "value": 1.0,
-                  "parameter": "FallingAnthem_UseCamera"
-                }
-              ],
-              "cameraParam": {
-                "forceRadius": 4.5,
-                "forceRadiusDuration": 0.20000000298023224,
-                "shouldKeepForceRadius": true
-              }
-            }
-          ]
-        },
-        "FallingAnthem_OverHead_Camera_Remover": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "AvatarExitCameraShot",
-              "doOffStage": true
-            }
-          ]
-        },
-        "FallingAnthem_Landed_Camera": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "AvatarCameraParam",
-              "predicates": [
-                {
-                  "$type": "ByAnimatorFloat",
-                  "logic": "Equal",
-                  "value": 1.0,
-                  "parameter": "FallingAnthem_UseCamera"
-                }
-              ],
-              "cameraParam": {
-                "forceRadius": 6.0,
-                "forceRadiusDuration": 0.10000000149011612,
-                "shouldKeepForceRadius": true
-              }
-            }
-          ]
-        },
-        "FallingAnthem_ClearVelocityForce": {
-          "modifierName": "",
-          "elementDurability": 100.0,
-          "onAdded": [
-            {
-              "$type": "RemoveVelocityForce",
-              "forces": [
-                "RushMoveType",
-                "InertiaType"
-              ]
-            }
-          ]
-        }
-      },
-      "onAbilityStart": [
-        {
-          "$type": "TriggerAttackEvent",
-          "predicates": [
-            {
-              "$type": "ByTargetGlobalValue",
-              "key": "_ABILITY_FallingAnthem_UseCamera",
-              "value": 0.0,
-              "forceByCaster": true,
-              "compareType": "NoneOrEqual"
-            }
-          ],
-          "attackEvent": {
-            "attackPattern": {
-              "$type": "ConfigAttackCircle",
-              "triggerType": "TriggerNoRepeat",
-              "born": {
-                "$type": "ConfigBornByTarget",
-                "offset": {
-                  "x": 0.0,
-                  "y": -0.5,
-                  "z": 1.0
-                }
-              },
-              "height": 2.0,
-              "radius": 3.0
-            },
-            "attackInfo": {
-              "attackTag": "FallingAttack",
-              "attenuationTag": "",
-              "attenuationGroup": "default",
-              "attackProperty": {
-                "damagePercentage": "FallingAnthem_Normal_Rank_1_Damage",
-                "damagePercentageRatio": 0.0,
-                "elementDurability": 25.0,
-                "overrideByWeapon": true,
-                "strikeType": "Blunt",
-                "enBreak": 150.0,
-                "attackType": "Melee",
-                "__exp_Arkhe": 0.0
-              },
-              "hitPattern": {
-                "onHitEffectName": "none",
-                "__unk_Q3893899620": "",
-                "hitImpulseType": "LV4",
-                "hitHaltTimeScale": 0.10000000149011612
-              },
-              "forceCameraShake": true,
-              "cameraShake": {
-                "shakeType": "CustomVector",
-                "shakeRange": 0.23999999463558197,
-                "shakeTime": 0.11999999731779099,
-                "shakeDistance": 30.0,
-                "shakeDir": {
-                  "y": 1.0
-                },
-                "extension": {
-                  "baseCycle": 0.23999999463558197,
-                  "cycleDamping": 0.0,
-                  "rangeAttenuation": 0.30000001192092896
-                }
-              }
-            }
-          },
-          "targetType": "Enemy"
-        },
-        {
-          "$type": "TriggerAttackEvent",
-          "predicates": [
-            {
-              "$type": "ByTargetGlobalValue",
-              "key": "_ABILITY_FallingAnthem_UseCamera",
-              "value": 1.0,
-              "forceByCaster": true
-            }
-          ],
-          "attackEvent": {
-            "attackPattern": {
-              "$type": "ConfigAttackCircle",
-              "triggerType": "TriggerNoRepeat",
-              "born": {
-                "$type": "ConfigBornByTarget",
-                "offset": {
-                  "x": 0.0,
-                  "y": -0.5,
-                  "z": 1.0
-                }
-              },
-              "height": 2.0,
-              "radius": 5.0
-            },
-            "attackInfo": {
-              "attackTag": "FallingAttack",
-              "attenuationTag": "",
-              "attenuationGroup": "default",
-              "attackProperty": {
-                "damagePercentage": "FallingAnthem_Normal_Rank_2_Damage",
-                "damagePercentageRatio": 0.0,
-                "elementDurability": 25.0,
-                "overrideByWeapon": true,
-                "strikeType": "Blunt",
-                "enBreak": 200.0,
-                "attackType": "Melee",
-                "__exp_Arkhe": 0.0
-              },
-              "hitPattern": {
-                "onHitEffectName": "none",
-                "__unk_Q3893899620": "",
-                "hitImpulseType": "LV7",
-                "overrideHitImpulse": {
-                  "hitLevel": "Air",
-                  "hitImpulseX": 0.0,
-                  "hitImpulseY": 800.0
-                },
-                "hitHaltTimeScale": 0.10000000149011612
-              },
-              "forceCameraShake": true,
-              "cameraShake": {
-                "shakeType": "CustomVector",
-                "shakeRange": 0.5,
-                "shakeTime": 0.20000000298023224,
-                "shakeDistance": 30.0,
-                "shakeDir": {
-                  "y": 1.0,
-                  "z": 1.0
-                },
-                "extension": {
-                  "baseCycle": 0.4000000059604645,
-                  "cycleDamping": 0.0,
-                  "rangeAttenuation": 0.30000001192092896
-                }
-              }
-            }
-          },
-          "targetType": "Enemy"
-        },
-        {
-          "$type": "FireEffect",
-          "predicates": [
-            {
-              "$type": "ByTargetGlobalValue",
-              "key": "_ABILITY_FallingAnthem_UseCamera",
-              "value": 0.0,
-              "forceByCaster": true,
-              "compareType": "NoneOrEqual"
-            }
-          ],
-          "effectPattern": "Eff_Avatar_Claymore_FallAnthem_Strike_01",
-          "scale": 1.0,
-          "effectTempleteID": -1.0
-        },
-        {
-          "$type": "FireEffect",
-          "predicates": [
-            {
-              "$type": "ByTargetGlobalValue",
-              "key": "_ABILITY_FallingAnthem_UseCamera",
-              "value": 1.0,
-              "forceByCaster": true
-            }
-          ],
-          "effectPattern": "Eff_Avatar_Claymore_FallAnthem_Strike_02",
-          "scale": 1.0,
-          "effectTempleteID": -1.0
+          "value": -1
         }
       ]
     }

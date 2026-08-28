@@ -1,0 +1,39 @@
+local base_info = {
+	group_id = 133101299
+}
+monsters = {
+}
+
+npcs = {
+}
+
+regions = {
+	
+}
+
+variables = {
+}
+
+triggers = {
+	
+}
+gadgets = {
+	{ config_id = 299003, gadget_id = 70900051, pos = { x = 1458.348, y = 213.845, z = 1524.436 }, rot = { x = 0, y = 0, z = 0 }, level = 1, route_id = 0, state = 201 },
+	{ config_id = 299001, gadget_id = 70900051, pos = { x = 1448.879, y = 212.450, z = 1546.127 }, rot = { x = 0, y = 0, z = 0 }, level = 1, route_id = 0, state = 201 },
+}
+init_config = {
+	suite = 1,
+	end_suite = 0,
+	rand_suite = false
+}
+suites = {
+	{
+		-- suite_id = 1,
+		-- description = ,
+		monsters = {  },
+		gadgets = { 299003, 299001 },
+		regions = { },
+		triggers = { },
+		rand_weight = 100
+	}
+}

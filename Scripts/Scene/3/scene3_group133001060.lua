@@ -24,7 +24,8 @@ local defs = {
 	--目标点
 	target_point = 60035,
 	--挑战时间
-	time = 210,
+	time = 210
+,
 	--教学Region
 	guide_regionID = 60018,
 	--Reminder提示用region

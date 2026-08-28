@@ -53,7 +53,7 @@ variables = {
 
 -- 初始化时创建
 init_config = {
-	suite = 3,
+	suite = 1,
 	end_suite = 2,
 	rand_suite = false
 }

@@ -27,7 +27,7 @@ local defs = {
 
 
         --镜头注目
-        look_pos = {x=555, y=555, z=555},
+        look_pos = {x=555.000, y=555.000, z=555.000},
         duration = 2,
 }
 

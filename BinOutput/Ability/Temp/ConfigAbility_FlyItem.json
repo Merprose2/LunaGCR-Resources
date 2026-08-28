@@ -1,112 +1,217 @@
 [
   {
     "Default": {
-      "$type": "ConfigAbility",
+      "isDynamicAbility": true,
       "abilityName": "Activity_FlyItem",
       "modifiers": {
-        "UNIQUE_Flying_SpeedUp_Team": {
-          "stacking": "Unique",
-          "modifierName": "",
-          "isUnique": true,
-          "duration": 30.0,
-          "bonusCritical": 100.0,
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "target": "Team",
-              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Widget_FlySpeedUp_Use_Loop",
-              "effectTempleteID": -1.0
-            },
-            {
-              "$type": "AttachModifier",
-              "target": "CurTeamAvatars",
-              "modifierName": "AttachEffect_Fly"
-            }
-          ]
-        },
         "AttachEffect_Fly": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
-          "modifierMixins": [
-            {
-              "$type": "AttachToStateIDMixin",
-              "stateIDs": ["Fly", "Fall"],
-              "modifierName": "AttachEffect_Fly_FireEffect"
-            }
-          ],
-          "properties": {
-            "Actor_FlyForwardSpeedMaxRatio": 0.30000001192092896
-          },
           "onAdded": [
             {
               "$type": "FireEffect",
               "target": "CurLocalAvatar",
-              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Widget_FlySpeedUp_Use",
-              "effectTempleteID": -1.0
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_Widget_FlySpeedUp_Use",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "Fly",
+                "Fall",
+                "SpecialFly"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "AttachEffect_Fly_FireEffect",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_FlyForwardSpeedMaxRatio": 0.30000001192092896
+          }
         },
         "AttachEffect_Fly_FireEffect": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "AttachEffect_Fly_FireEffect_Team",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "AttachEffect_Fly_FireEffect_Team": {
           "onAdded": [
             {
               "$type": "AttachEffect",
-              "target": "Team",
-              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Widget_FlySpeedUp",
-              "effectTempleteID": -1.0
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_Widget_FlySpeedUp",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
             }
-          ]
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Flying_SpeedUp_Team": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_Widget_FlySpeedUp_Use_Loop",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "AttachEffect_Fly",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": 30,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
         }
       },
       "onAbilityStart": [
         {
           "$type": "ApplyModifier",
           "target": "Team",
-          "modifierName": "UNIQUE_Flying_SpeedUp_Team"
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Flying_SpeedUp_Team",
+          "canBeHandledOnRecover": true
         }
       ],
-      "isDynamicAbility": true
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
     }
   },
   {
     "Default": {
-      "$type": "ConfigAbility",
+      "isDynamicAbility": true,
       "abilityName": "Activity_WindFieldItem",
       "modifiers": {
         "UNIQUE_Activity_WindFieldItem_Create": {
-          "stacking": "Unique",
-          "modifierName": "",
-          "isUnique": true,
-          "duration": 2.0,
-          "bonusCritical": 100.0,
           "onAdded": [
             {
               "$type": "CreateGadget",
               "muteRemoteAction": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
               "born": {
                 "$type": "ConfigBornBySelf",
                 "offset": {
-                  "x": 0.0,
-                  "y": -0.20000000298023224,
-                  "z": 0.0
+                  "x": -0.20000000298023224
                 },
-                "FIOMHONCCNM": true
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "campID": 5001,
+              "KLGHKKGGHEA": {
+                "CBLLACNAMON": true,
+                "DBOLJFPPFGI": 0.5,
+                "JOCOGLBCMEJ": 0.5,
+                "LKEBJHCDOHB": true
               },
               "gadgetID": 44000579,
-              "campID": 5001
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
             }
-          ]
+          ],
+          "stacking": "Unique",
+          "duration": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
         }
       },
       "onAbilityStart": [
         {
           "$type": "ApplyModifier",
           "target": "CurLocalAvatar",
-          "modifierName": "UNIQUE_Activity_WindFieldItem_Create"
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_WindFieldItem_Create",
+          "canBeHandledOnRecover": true
         }
       ],
-      "isDynamicAbility": true
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
     }
   }
 ]

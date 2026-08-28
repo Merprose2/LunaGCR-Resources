@@ -1,0 +1,294 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_ChameleonSkillEnergy_6_1",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "DoubleJumpGVHandler",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_TriggerJumpInput",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "ChangeColorDoorState",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "Vehicle",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "HandleCurveReachEvent",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Safe_ColorStateChangeListener",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "__unk_Q2982101340": [
+        "GV_ColorChangingParkour_TeamColor",
+        "GV_AllowJumpInput",
+        "GV_TriggerJumpInput",
+        "GV_ChangeColorDoorInput"
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Team_6_1_ChameleonController_GameLogic_Input",
+      "modifiers": {
+        "Avatar_InitChangeColorSkill": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ActivitySkillMixin",
+              "actorIceSubHurtDelta": -1,
+              "priority": "Activity",
+              "PEONHILPDLC": 20160
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ChangeColorDoorInput": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_ColorChangingParkour_TeamColor",
+              "value": [
+                0,
+                "GV_ColorChangingParkour_TeamColor",
+                "SUB"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ChangeColorDoorState": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                1.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enable": true,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "ChangeColorDoorInput"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_ChangeColorDoorInput",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "DoubleJumpGVHandler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                1.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enable": true,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "TryDoubleJump"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_TriggerJumpInput",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "HandleCurveReachEvent": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "LevelCurveMixin",
+              "BEDOJLFENKK": [
+                "6.1ChameleonParkour_NotifyGroupA"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "EDFJOMKHLFM": [
+                [
+                  {
+                    "$type": "SetGlobalValueV2",
+                    "key": "GV_AttachArcLightColor",
+                    "target": "Team",
+                    "value": 1,
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "canBeHandledOnRecover": true
+                  },
+                  {
+                    "$type": "DebugLog",
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "content": "GV_AttachArcLightColor => 1",
+                    "canBeHandledOnRecover": true
+                  }
+                ]
+              ],
+              "tag": "ArcLight"
+            },
+            {
+              "$type": "LevelCurveMixin",
+              "BEDOJLFENKK": [
+                "6.1ChameleonParkour_NotifyGroupB"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "EDFJOMKHLFM": [
+                [
+                  {
+                    "$type": "SetGlobalValueV2",
+                    "key": "GV_AttachArcLightColor",
+                    "target": "Team",
+                    "value": -1,
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "canBeHandledOnRecover": true
+                  },
+                  {
+                    "$type": "DebugLog",
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "content": "GV_AttachArcLightColor => -1",
+                    "canBeHandledOnRecover": true
+                  }
+                ]
+              ],
+              "tag": "ArcLight"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "Invincible"
+        },
+        "Safe_ColorStateChangeListener": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "AttachModifier",
+                  "target": "Vehicle",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "HandleCurveReachEvent",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_ColorChangingParkour_TeamColor"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TryDoubleJump": {
+          "onAdded": [
+            {
+              "$type": "TryTriggerArcLightSpeedup",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "FODKMMKKJFM",
+                  "target": "Vehicle",
+                  "IFKACJEBAKF": [
+                    "ArcLightJumpOut",
+                    "ArcChangeRail"
+                  ],
+                  "KKGICJMCBGN": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.25,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_TriggerJumpInput",
+              "target": "Team",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_ColorChangingParkour_TeamColor",
+          "target": "Team",
+          "value": [
+            0,
+            "GV_ColorChangingParkour_TeamColor",
+            "SUB"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  }
+]

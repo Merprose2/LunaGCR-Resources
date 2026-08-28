@@ -1,0 +1,530 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "OceanCurrent_Parkou_DetectBubble",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "OceanCurrent_Parkou_BoostEffect",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_OceanCurrentBoost_Trail",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "Detect_Bubble_Dis": 15,
+        "Detect_Bubble_Dis02": 48
+      },
+      "isDynamicAbility": true,
+      "abilityName": "Activity_OceanCurrent_Parkour_AvatarAbility",
+      "modifiers": {
+        "OceanCurrent_Parkou_BoostEffect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_SpeedWaterBall_Buff_01_State",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                9999
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enable": true,
+              "modifierNameSteps": [
+                "OceanCurrent_Parkou_BoostEffect_On"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_OceanCurrentBoost_Trail",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OceanCurrent_Parkou_BoostEffect_On": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "State",
+              "value": 203,
+              "type": "Int",
+              "effectPattern": "Eff_SceneObj_SpeedWaterBall_Buff_01_State",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "State",
+              "type": "Int",
+              "effectPattern": "Eff_SceneObj_SpeedWaterBall_Buff_01_State",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OceanCurrent_Parkou_DetectBubble": {
+          "thinkInterval": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "DBPHPMIHBCO",
+                "sortType": "Nearest",
+                "topLimit": 5,
+                "tag": "Is_OceanCurrent_Bubble"
+              },
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "OceanCurrent_Bubble_Show",
+                  "target": "Target",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetPositionToSelfPosition",
+                      "target": "Target",
+                      "value": "Detect_Bubble_Dis",
+                      "compareType": "XYZ",
+                      "logic": "LesserOrEqual"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "Is_Bubble_SpecDistance",
+                      "target": "Target",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "OceanCurrent_Bubble_Show",
+                  "target": "Target",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetPositionToSelfPosition",
+                      "target": "Target",
+                      "value": "Detect_Bubble_Dis02",
+                      "compareType": "XYZ",
+                      "logic": "LesserOrEqual"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "Is_Bubble_SpecDistance",
+                      "target": "Target",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "OceanCurrent_Parkou_StopGallery": {
+          "onAdded": [
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "CurGalleryControlGroup",
+              "funcName": "SLC_OceanCurrent_Parkou_StopGallery",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onRemoved": [
+        {
+          "$type": "KillGadget",
+          "target": "CurTeamAvatars",
+          "gadgetInfo": {
+            "configID": 70330667
+          },
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "LevelCurveMixin",
+          "BEDOJLFENKK": [
+            "Activity_Oceancurrent_CreateGadget",
+            "Activity_Oceancurrent_ActiveGadget",
+            "Activity_Oceancurrent_End",
+            "Activity_Oceancurrent_SetGroupVar"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "EDFJOMKHLFM": [
+            [
+              {
+                "$type": "SetCurveProgressInfoToGlobalValue",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "PFCIBLHFIAL": "GV_UnderOceanCurrent_Index_",
+                "canBeHandledOnRecover": true
+              },
+              {
+                "$type": "SetGlobalValueToOverrideMap",
+                "overrideMapKey": "CurveIndex",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "globalValueKey": "GV_UnderOceanCurrent_Index_0",
+                "canBeHandledOnRecover": true
+              },
+              {
+                "$type": "SetGlobalValueToOverrideMap",
+                "overrideMapKey": "IsNeadClear",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "globalValueKey": "GV_UnderOceanCurrent_Index_1",
+                "canBeHandledOnRecover": true
+              },
+              {
+                "$type": "ServerLuaCall",
+                "param2": "IsNeadClear",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "luaCallType": "CurGalleryControlGroup",
+                "param1": "CurveIndex",
+                "paramNum": 2,
+                "funcName": "SLC_CreateSuite",
+                "canBeHandledOnRecover": true
+              }
+            ],
+            [
+              {
+                "$type": "SetCurveProgressInfoToGlobalValue",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "PFCIBLHFIAL": "GV_UnderOceanCurrent_Index_",
+                "canBeHandledOnRecover": true
+              },
+              {
+                "$type": "SetGlobalValueToOverrideMap",
+                "overrideMapKey": "CurveIndex",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "globalValueKey": "GV_UnderOceanCurrent_Index_0",
+                "canBeHandledOnRecover": true
+              },
+              {
+                "$type": "ServerLuaCall",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "luaCallType": "CurGalleryControlGroup",
+                "param1": "CurveIndex",
+                "paramNum": 1,
+                "funcName": "SLC_GadgetState_GearStart",
+                "canBeHandledOnRecover": true
+              }
+            ],
+            [
+              {
+                "$type": "ServerLuaCall",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "luaCallType": "CurGalleryControlGroup",
+                "funcName": "SLC_Oceancurrent_End",
+                "canBeHandledOnRecover": true
+              }
+            ],
+            [
+              {
+                "$type": "SetCurveProgressInfoToGlobalValue",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "PFCIBLHFIAL": "GV_UnderOceanCurrent_Index_",
+                "canBeHandledOnRecover": true
+              },
+              {
+                "$type": "SetGlobalValueToOverrideMap",
+                "overrideMapKey": "CurveIndex",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "globalValueKey": "GV_UnderOceanCurrent_Index_0",
+                "canBeHandledOnRecover": true
+              },
+              {
+                "$type": "ServerLuaCall",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "luaCallType": "CurGalleryControlGroup",
+                "param1": "CurveIndex",
+                "paramNum": 1,
+                "funcName": "SLC_OceanCurrent_SetGroupVar",
+                "canBeHandledOnRecover": true
+              }
+            ]
+          ],
+          "tag": "OceanCurrent_Activity"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Sprint",
+            "Walk",
+            "Run",
+            "Swim",
+            "Fly",
+            "Climb"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "OceanCurrent_Parkou_StopGallery",
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Nutcracker_BGM_Protector",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "RegionAbility_Boss_Nutcracker_TeamAbility",
+      "modifiers": {
+        "Nutcracker_BGM_Protector": {
+          "onAdded": [
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "luaCallType": "SpecificGroup",
+              "CallParamList": [
+                133402002
+              ],
+              "funcName": "SLC_Nutcracker_OnAbilityReady",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "actorIceSubHurtDelta": -1,
+              "onRemoved": [
+                {
+                  "$type": "TriggerAudio",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "operation": {
+                    "$type": "ConfigAudioEventOp",
+                    "operation": {
+                      "text": "SetState_SpecialQuest_off"
+                    }
+                  },
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Nutcracker_BGM_State_0": {
+          "onAdded": [
+            {
+              "$type": "TriggerAudio",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "operation": {
+                "$type": "ConfigAudioEventOp",
+                "operation": {
+                  "text": "SetState_SpecialQuest_off"
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Nutcracker_BGM_State_1": {
+          "onAdded": [
+            {
+              "$type": "TriggerAudio",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "operation": {
+                "$type": "ConfigAudioEventOp",
+                "operation": {
+                  "text": "SetState_v40_Nutcracker_S01"
+                }
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "RegionAbility_Boss_Nutcracker_TeamAbility",
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Nutcracker_BGM_State_2": {
+          "onAdded": [
+            {
+              "$type": "TriggerAudio",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "operation": {
+                "$type": "ConfigAudioEventOp",
+                "operation": {
+                  "text": "SetState_v40_Nutcracker_S02"
+                }
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "RegionAbility_Boss_Nutcracker_TeamAbility",
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onRemoved": [
+        {
+          "$type": "TriggerAudio",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "operation": {
+            "$type": "ConfigAudioEventOp",
+            "operation": {
+              "text": "SetState_SpecialQuest_off"
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAudio",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "operation": {
+            "$type": "ConfigAudioEventOp",
+            "operation": {
+              "text": "SetState_specialQuest_on"
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5,
+            2.5
+          ],
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Nutcracker_BGM_State_0",
+            "Nutcracker_BGM_State_1",
+            "Nutcracker_BGM_State_2"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_BGM_State"
+        }
+      ]
+    }
+  }
+]

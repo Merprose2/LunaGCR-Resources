@@ -1,89 +1,108 @@
 [
   {
     "Default": {
-      "$type": "ConfigAbility",
-      "abilityName": "DynamicAbility_MichiaeMatsuri_Pressure",
-      "abilityMixins": [
+      "onAdded": [
         {
-          "$type": "DoActionOnGlobalValueChangeMixin",
+          "$type": "SetGlobalValueToOverrideMap",
+          "overrideMapKey": "DeBuffStacking",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
           "globalValueKey": "SGV_MichiaeMatsuri_DarkPressure",
-          "actions": [
-            {
-              "$type": "SetGlobalValueToOverrideMap",
-              "globalValueKey": "SGV_MichiaeMatsuri_DarkPressure",
-              "overrideMapKey": "DeBuffStacking"
-            },
-            {
-              "$type": "RemoveModifier",
-              "modifierName": "MichiaeMatsuri_Pressure"
-            },
-            {
-              "$type": "ApplyModifier",
-              "modifierName": "MichiaeMatsuri_Pressure"
-            }
-          ]
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "MichiaeMatsuri_Pressure",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "MichiaeMatsuri_Pressure",
+          "canBeHandledOnRecover": true
         }
       ],
       "abilitySpecials": {
-        "SubDefenceRatio": 0.0,
-        "SubAttackRatio": 0.0,
-        "DeBuffStacking": 0.0
+        "DeBuffStacking": 0,
+        "SubAttackRatio": 0,
+        "SubDefenceRatio": 0
       },
+      "abilityName": "DynamicAbility_MichiaeMatsuri_Pressure",
       "modifiers": {
         "MichiaeMatsuri_Pressure": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
+          "elementDurability": 100,
+          "minus_one": -1,
           "modifierMixins": [
             {
               "$type": "LocalAvatarsMixin",
+              "actorIceSubHurtDelta": -1,
               "modifierName": "UNIQUE_MichiaeMatsuri_Pressure_Avatar"
             },
             {
               "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
-              "globalValueKey": "SGV_MichiaeMatsuri_DarkPressure",
-              "valueSteps": [7.5, 30.0],
-              "modifierNameSteps": ["MichiaeMatsuri_Pressure_Debuffeffect_Team"]
+              "valueSteps": [
+                7.5,
+                30
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "MichiaeMatsuri_Pressure_Debuffeffect_Team"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_MichiaeMatsuri_DarkPressure"
             }
-          ]
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "MichiaeMatsuri_Pressure_Debuffeffect_Avatar": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "DefenseDown"
         },
         "MichiaeMatsuri_Pressure_Debuffeffect_Team": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
+          "elementDurability": 100,
+          "minus_one": -1,
           "modifierMixins": [
             {
               "$type": "LocalAvatarsMixin",
+              "actorIceSubHurtDelta": -1,
               "modifierName": "MichiaeMatsuri_Pressure_Debuffeffect_Avatar"
             }
-          ]
-        },
-        "MichiaeMatsuri_Pressure_Debuffeffect_Avatar": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
-          "state": "DefenseDown"
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
         },
         "UNIQUE_MichiaeMatsuri_Pressure_Avatar": {
-          "modifierName": "",
-          "isUnique": true,
-          "bonusCritical": 100.0,
+          "elementDurability": 100,
+          "minus_one": -1,
           "modifierMixins": [
             {
               "$type": "ModifyDamageMixin",
               "ignoreEventInfo": true,
-              "damagePercentageRatio": ["SubAttackRatio", "DeBuffStacking", "MUL"]
+              "actorIceSubHurtDelta": -1,
+              "damagePercentageRatio": [
+                "SubAttackRatio",
+                "DeBuffStacking",
+                "MUL"
+              ]
             }
           ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
           "properties": {
-            "Actor_FireSubHurtDelta": [
-              "SubDefenceRatio",
-              "DeBuffStacking",
-              "MUL"
-            ],
             "Actor_ElecSubHurtDelta": [
               "SubDefenceRatio",
               "DeBuffStacking",
               "MUL"
             ],
-            "Actor_WaterSubHurtDelta": [
+            "Actor_FireSubHurtDelta": [
               "SubDefenceRatio",
               "DeBuffStacking",
               "MUL"
@@ -93,12 +112,12 @@
               "DeBuffStacking",
               "MUL"
             ],
-            "Actor_WindSubHurtDelta": [
+            "Actor_IceSubHurtDelta": [
               "SubDefenceRatio",
               "DeBuffStacking",
               "MUL"
             ],
-            "Actor_IceSubHurtDelta": [
+            "Actor_PhysicalSubHurtDelta": [
               "SubDefenceRatio",
               "DeBuffStacking",
               "MUL"
@@ -108,7 +127,12 @@
               "DeBuffStacking",
               "MUL"
             ],
-            "Actor_PhysicalSubHurtDelta": [
+            "Actor_WaterSubHurtDelta": [
+              "SubDefenceRatio",
+              "DeBuffStacking",
+              "MUL"
+            ],
+            "Actor_WindSubHurtDelta": [
               "SubDefenceRatio",
               "DeBuffStacking",
               "MUL"
@@ -116,19 +140,41 @@
           }
         }
       },
-      "onAdded": [
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
         {
-          "$type": "SetGlobalValueToOverrideMap",
-          "globalValueKey": "SGV_MichiaeMatsuri_DarkPressure",
-          "overrideMapKey": "DeBuffStacking"
-        },
-        {
-          "$type": "RemoveModifier",
-          "modifierName": "MichiaeMatsuri_Pressure"
-        },
-        {
-          "$type": "ApplyModifier",
-          "modifierName": "MichiaeMatsuri_Pressure"
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "actorIceSubHurtDelta": -1,
+          "actions": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "overrideMapKey": "DeBuffStacking",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "globalValueKey": "SGV_MichiaeMatsuri_DarkPressure",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "MichiaeMatsuri_Pressure",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "MichiaeMatsuri_Pressure",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "globalValueKey": "SGV_MichiaeMatsuri_DarkPressure"
         }
       ]
     }

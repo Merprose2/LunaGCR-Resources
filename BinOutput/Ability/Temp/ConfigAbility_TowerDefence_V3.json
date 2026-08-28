@@ -1,36 +1,56 @@
 [
   {
     "Default": {
-      "$type": "ConfigAbility",
-      "abilityName": "Ability_TowerDefence_V3_Avatar_SkillCDMinus",
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "M_SkillCDMinus",
+          "canBeHandledOnRecover": true
+        }
+      ],
       "abilitySpecials": {
         "SkillCDMinusRatio": 0.3499999940395355
       },
+      "abilityName": "Ability_TowerDefence_V3_Avatar_SkillCDMinus",
       "modifiers": {
         "M_SkillCDMinus": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
           "properties": {
             "Actor_SkillCDMinusRatio": "SkillCDMinusRatio"
           }
         }
       },
-      "onAdded": [
-        {
-          "$type": "ApplyModifier",
-          "modifierName": "M_SkillCDMinus"
-        }
-      ]
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
     }
   },
   {
     "Default": {
-      "$type": "ConfigAbility",
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "M_Strengthen",
+          "canBeHandledOnRecover": true
+        }
+      ],
       "abilityName": "Ability_TowerDefence_V3_Avatar_Strengthen",
       "modifiers": {
         "M_Strengthen": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
           "properties": {
             "Actor_FlyForwardSpeedMaxRatio": 0.25,
             "Animator_AttackSpeedRatio": 0.25,
@@ -38,75 +58,124 @@
           }
         }
       },
-      "onAdded": [
-        {
-          "$type": "ApplyModifier",
-          "modifierName": "M_Strengthen"
-        }
-      ]
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
     }
   },
   {
     "Default": {
-      "$type": "ConfigAbility",
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "M_Weaken_Monster_Health_Recover",
+          "canBeHandledOnRecover": true
+        }
+      ],
       "abilityName": "Ability_TowerDefence_V3_Avatar_Weaken_Monster_Health_Recover",
       "modifiers": {
+        "M_Monster_Health_Recover": {
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "TD_V3: 给怪物上血量回复减弱Modifier",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_AbyssCarpet_Enhanced",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_HealedAddDelta": -1
+          }
+        },
         "M_Weaken_Monster_Health_Recover": {
-          "modifierName": "",
-          "bonusCritical": 100.0,
           "thinkInterval": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
           "onThinkInterval": [
             {
               "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
               "otherTargets": {
                 "$type": "SelectTargetsByShape",
                 "sortType": "Nearest",
                 "shapeName": "CircleR4",
                 "campTargetType": "All",
-                "OBHNBNDMPFN": 1.0
-              },
-              "targetPredicates": [
-                {
-                  "$type": "ByEntityTypes",
-                  "entityTypes": ["Monster"]
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
                 }
-              ],
+              },
               "successActions": [
                 {
                   "$type": "ApplyModifier",
                   "target": "Target",
-                  "modifierName": "M_Monster_Health_Recover"
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "M_Monster_Health_Recover",
+                  "canBeHandledOnRecover": true
                 }
-              ]
+              ],
+              "canBeHandledOnRecover": true
             }
-          ]
-        },
-        "M_Monster_Health_Recover": {
-          "modifierName": "",
-          "duration": 1.0,
-          "bonusCritical": 100.0,
-          "properties": {
-            "Actor_HealedAddDelta": -1.0
-          },
-          "onAdded": [
-            {
-              "$type": "DebugLog",
-              "content": "TD_V3: 给怪物上血量回复减弱Modifier"
-            },
-            {
-              "$type": "AttachEffect",
-              "healLimitedByCasterMaxHPRatio": "Eff_Monster_AbyssCarpet_Enhanced",
-              "effectTempleteID": -1.0
-            }
-          ]
+          ],
+          "isLimitedProperties": true
         }
       },
-      "onAdded": [
-        {
-          "$type": "ApplyModifier",
-          "modifierName": "M_Weaken_Monster_Health_Recover"
-        }
-      ]
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
     }
   }
 ]
