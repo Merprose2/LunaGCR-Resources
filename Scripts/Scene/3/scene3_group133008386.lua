@@ -103,7 +103,7 @@ function action_EVENT_GADGET_STATE_CHANGE_386005(context, evt)
 		ScriptLib.ChangeGroupVariableValue(context,"start",-1)
 	end
 	
-	local pos = {x=1367.000, y=277.000, z=-1119.000}
+	local pos = {x=1367, y=277, z=-1119}
 	if ScriptLib.GetGroupVariableValue(context, "start") == #suites[1].gadgets then
 		ScriptLib.CreateGadget(context, { config_id = defs.gadget_id })
 	                ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, duration = 3, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 1 })

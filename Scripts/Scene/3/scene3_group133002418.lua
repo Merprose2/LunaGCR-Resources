@@ -383,7 +383,7 @@ end
 -- 触发操作
 function action_EVENT_GADGET_CREATE_418035(context, evt)
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=1080.000,y=285.000,z=-439.000}
+	local pos = {x=1080,y=285,z=-439}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 400010, pos, 25) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -429,7 +429,7 @@ end
 
 -- 触发操作
 function action_EVENT_SELECT_OPTION_418064(context, evt)
-	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=1097.705, y= 285.861, z=-438.728}, radius = 2, rot = {x=0, y=269.461, z=0}}) 
+	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=1097.705, y= 285.8612, z=-438.728}, radius = 2, rot = {x=0, y=269.461, z=0}}) 
 	
 	return 0
 end

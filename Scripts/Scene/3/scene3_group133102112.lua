@@ -13,7 +13,7 @@ local defs = {
 	aoe_interval = 30,
 	stage_monster_list = {112005,112007,112006,112008},
 	gadget_reward = 112021,
-	look_pos = {x=1790.000,y=201.000,z=278.000},
+	look_pos = {x=1790,y=201,z=278},
 	look_dur = 3
 }
 
@@ -235,7 +235,7 @@ end
 function action_EVENT_ENTER_REGION_112026(context, evt)
 	ScriptLib.SetGroupVariableValue(context, "first_see", 0)
 	ScriptLib.BeginCameraSceneLook(context, {look_pos = defs.look_pos, duration = defs.look_dur, is_force = true, is_broadcast = false})
-	ScriptLib.ShowReminderRadius(context, 600000, { x = 1787.425, y = 202.55, z = 275.011 }, 50) 
+	ScriptLib.ShowReminderRadius(context, 600000, { x = 1787.425, y = 202.55, z = 275.0107 }, 50) 
 	return 0
 end
 

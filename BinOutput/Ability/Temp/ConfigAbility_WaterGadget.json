@@ -1,191 +1,112 @@
 [
   {
     "Default": {
-      "onAdded": [
-        {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "Raining",
-          "canBeHandledOnRecover": true
-        }
-      ],
+      "$type": "ConfigAbility",
       "abilityName": "Raining",
       "modifiers": {
         "Raining": {
+          "modifierName": "",
+          "duration": 8.0,
+          "bonusCritical": 100.0,
           "thinkInterval": 0.10000000149011612,
-          "duration": 8,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
           "onThinkInterval": [
             {
               "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "otherTargets": {
                 "$type": "SelectTargetsByShape",
                 "shapeName": "CircleR5",
                 "campTargetType": "All",
-                "sizeRatio": 1,
-                "NLNIBNNOOCK": {
-                  "APKLAIJMEIL": {
-                    "HHNLJKNBKPP": 180
-                  },
-                  "value": 10,
-                  "direction": {
-                    "maxAngle": 180
-                  },
-                  "onGroundRaycastUpDist": 2
-                }
+                "OBHNBNDMPFN": 1.0
               },
-              "modifierName": "WetModifier",
-              "canBeHandledOnRecover": true
+              "modifierName": "WetModifier"
             }
-          ],
-          "isLimitedProperties": true
+          ]
         },
         "WetModifier": {
+          "modifierName": "",
+          "duration": 8.0,
+          "elementType": "Water",
+          "bonusCritical": 40.0,
+          "overrideWeaponElement": true,
           "onAdded": [
             {
               "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_Element_Wet",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
+              "healLimitedByCasterMaxHPRatio": "Eff_Element_Wet",
+              "effectTempleteID": -1.0
             }
-          ],
-          "elementType": "Water",
-          "duration": 8,
-          "elementDurability": 40,
-          "overrideWeaponElement": true,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         }
       },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Raining"
+        }
+      ]
     }
   },
   {
     "Default": {
-      "onAdded": [
-        {
-          "$type": "AttachModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "ElementWaterModifier",
-          "canBeHandledOnRecover": true
-        }
-      ],
+      "$type": "ConfigAbility",
       "abilityName": "Test_KapokFlower_Interact",
       "modifiers": {
         "ElementWaterModifier": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "onBeingHit": [
-            {
-              "$type": "SetAnimatorBool",
-              "value": true,
-              "boolID": "BeHitWater",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "predicates": [
-                {
-                  "$type": "ByHitElement",
-                  "target": "Target",
-                  "element": "Water"
-                }
-              ],
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "RemoveModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "ElementWaterModifier",
-              "predicates": [
-                {
-                  "$type": "ByHitElement",
-                  "target": "Target",
-                  "element": "Water"
-                }
-              ],
-              "canBeHandledOnRecover": true
-            }
-          ],
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "onRemoved": [
             {
               "$type": "AttachModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Grow",
-              "canBeHandledOnRecover": true
+              "modifierName": "Grow"
             }
           ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          "onBeingHit": [
+            {
+              "$type": "SetAnimatorBool",
+              "predicates": [
+                {
+                  "$type": "ByHitElement",
+                  "element": "Water"
+                }
+              ],
+              "boolID": "BeHitWater",
+              "ratio": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "predicates": [
+                {
+                  "$type": "ByHitElement",
+                  "element": "Water"
+                }
+              ],
+              "modifierName": "ElementWaterModifier"
+            }
+          ]
         },
         "Grow": {
+          "modifierName": "",
+          "duration": 1.100000023841858,
+          "bonusCritical": 100.0,
           "onAdded": [
             {
               "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_ItemFlower_Bloom",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
+              "healLimitedByCasterMaxHPRatio": "Eff_ItemFlower_Bloom",
+              "effectTempleteID": -1.0
             }
           ],
-          "duration": 1.100000023841858,
-          "elementDurability": 100,
-          "minus_one": -1,
           "onRemoved": [
             {
-              "$type": "NFAAEHMHAJL",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
+              "$type": "TriggerGadgetInteractive"
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         }
       },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "ElementWaterModifier"
+        }
+      ]
     }
   }
 ]

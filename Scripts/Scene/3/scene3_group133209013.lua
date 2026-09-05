@@ -5,8 +5,7 @@ local base_info = {
 
 -- DEFS_MISCS
 local defs = {
-	RegionID =  13062
-,
+	RegionID =  13062,
 	group_1 = 133209013
 }
 

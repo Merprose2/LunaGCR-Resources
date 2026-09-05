@@ -15,8 +15,7 @@ local defs = {
         [31001] = {cell = 31001, lines = {31006, 31010, 31019}, nodes = {31007}},
         [31002] = {cell = 31002, lines = {31005, 31008, 31017}, nodes = {31007}},
         [31003] = {cell = 31003, lines = {31008, 31009, 31018}, nodes = {}}
-    }
-,
+    },
 
     -- 指定初始激活的电池id，未指定则默认初始未激活
     activeCells = {},
@@ -200,8 +199,8 @@ function action_EVENT_GADGET_STATE_CHANGE_31022(context, evt)
 		return -1
 	end
 	
-	-- 触发镜头注目，注目位置为坐标{x=-1546.866, y = 230.727, z=2326.842}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-1546.866, y=230.727, z=2326.842}
+	-- 触发镜头注目，注目位置为坐标{x=-1546.866, y=230.7271, z=2326.842}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-1546.866, y=230.7271, z=2326.842}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

@@ -380,7 +380,7 @@ end
 -- 触发操作
 function action_EVENT_PLATFORM_REACH_POINT_155015(context, evt)
 	-- 触发镜头注目，注目位置为坐标（-381，244，719），持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-381.000, y=244.000, z=719.000}
+		local pos = {x=-381, y=244, z=719}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 1,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -464,7 +464,7 @@ end
 -- 触发操作
 function action_EVENT_ANY_MONSTER_DIE_155018(context, evt)
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-391.000,y=252.000,z=687.000}
+	local pos = {x=-391,y=252,z=687}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 1110216, pos, 50) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -542,7 +542,7 @@ function action_EVENT_PLATFORM_REACH_POINT_155020(context, evt)
 	end
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-396.000,y=264.000,z=618.000}
+	local pos = {x=-396,y=264,z=618}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 1110218, pos, 150) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1

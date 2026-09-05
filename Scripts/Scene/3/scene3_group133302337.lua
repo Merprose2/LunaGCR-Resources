@@ -125,7 +125,7 @@ end
 
 -- 触发操作
 function action_EVENT_SELECT_OPTION_337009(context, evt)
-	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=723.270, y=818.850, z=57.640}, radius = 2, rot = {x=0, y=0, z=0},scene_id=6}) 
+	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=723.27, y=818.85, z=57.64}, radius = 2, rot = {x=0, y=0, z=0},scene_id=6}) 
 	return 0
 end
 

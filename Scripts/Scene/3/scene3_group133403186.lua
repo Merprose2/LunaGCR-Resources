@@ -2,7 +2,7 @@ local base_info = {
 	group_id = 133403186
 }
 monsters = {
-	{ config_id = 186001, drop_id = 1000100, persistent = true, monster_id = 26170101, pos = { x = 2166.556, y = 357.300, z = 4393.380 }, rot = { x = 0, y = 71.618, z = 0 }, level = 1, drop_tag = "采集动物", area_id = 5, pose_id = 101 },
+	{ config_id = 186001, drop_id = 1000100, persistent = true, monster_id = 26170101, pos = { x = 2166.556, y = 357.3, z = 4393.38 }, rot = { x = 0, y = 71.618, z = 0 }, level = 1, drop_tag = "采集动物", area_id = 5, pose_id = 101 },
 }
 
 npcs = {

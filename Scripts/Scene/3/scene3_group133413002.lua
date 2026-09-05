@@ -4,7 +4,7 @@ local base_info = {
 }
 
 monsters = {
-    { config_id = 2001, monster_id = 26140101, pos = { x = 1137.127, y = 37.317, z = 3783.612 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 36, drop_id = 1000100, pose_id = 111 }
+    { config_id = 2001, monster_id = 26140101, pos = { x = 1137.126953, y = 37.317001, z = 3783.612061 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 36, drop_id = 1000100, pose_id = 111 }
 }
 
 

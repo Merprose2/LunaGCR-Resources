@@ -61,7 +61,7 @@ garbages = {
 
 -- 初始化时创建
 init_config = {
-	suite = 2,
+	suite = 1,
 	end_suite = 1,
 	rand_suite = false
 }
@@ -148,6 +148,12 @@ end
 
 -- 触发操作
 function action_EVENT_GROUP_LOAD_657004(context, evt)
+		-- Keep old pre-Cryo-Hypostasis heat-source/item puzzle group disabled.
+		if 0 ~= ScriptLib.RefreshGroup(context, { group_id = 133008658, suite = 2 }) then
+			ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : refresh_group_to_suite")
+			return -1
+		end
+		
 		-- 重新生成指定group，指定suite
 		if 0 ~= ScriptLib.RefreshGroup(context, { group_id = 133008048, suite = 2 }) then
 	    ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : refresh_group_to_suite")
@@ -200,6 +206,12 @@ function action_EVENT_QUEST_START_657005(context, evt)
 	    ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : refresh_group_to_suite")
 			return -1
 		end
+		
+		-- Force post-unlock Cryo Hypostasis arena state.
+		ScriptLib.RefreshGroup(context, { group_id = 133008658, suite = 2 })
+		ScriptLib.RefreshGroup(context, { group_id = 133008380, suite = 3 })
+		ScriptLib.RefreshGroup(context, { group_id = 133008381, suite = 3 })
+		ScriptLib.RefreshGroup(context, { group_id = 133008382, suite = 1 })
 	
 	return 0
 end

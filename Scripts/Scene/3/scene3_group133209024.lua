@@ -282,7 +282,7 @@ function action_EVENT_PLATFORM_REACH_POINT_24006(context, evt)
 	end
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-2610.000,y=200.000,z=-3964.000}
+	local pos = {x=-2610,y=200,z=-3964}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 20130903, pos, 60) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -500,7 +500,7 @@ function action_EVENT_PLATFORM_REACH_POINT_24017(context, evt)
 	    ScriptLib.RemoveExtraGroupSuite(context, 133209024, 4)
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-2609.000,y=200.000,z=-3998.000}
+	local pos = {x=-2609,y=200,z=-3998}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 20130906, pos, 60) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -556,7 +556,7 @@ function action_EVENT_PLATFORM_REACH_POINT_24032(context, evt)
 	    ScriptLib.AddExtraGroupSuite(context, 133209024, 3)
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-2606.000,y=200.000,z=-3933.000}
+	local pos = {x=-2606,y=200,z=-3933}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 20130901, pos, 60) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1

@@ -1,15 +1,24 @@
 [
   {
     "Default": {
-      "isDynamicAbility": true,
+      "$type": "ConfigAbility",
       "abilityName": "ActivityAbility_Lannaluo_Handler",
+      "abilityMixins": [
+        {
+          "$type": "AvatarCombatMixin",
+          "OJIADBPIBAO": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "EndChannelTrigger"
+            }
+          ]
+        }
+      ],
       "onRemoved": [
         {
           "$type": "SetAnimatorTrigger",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": true,
-          "triggerID": "EndChannelTrigger",
-          "canBeHandledOnRecover": true
+          "cdDelta": true,
+          "triggerID": "EndChannelTrigger"
         }
       ],
       "onAbilityStart": [
@@ -19,869 +28,581 @@
             {
               "$type": "ByTargetGlobalValue",
               "key": "_ABILITY_Lannaluo_IsInState",
-              "target": "Target",
-              "value": 1
-            }
-          ],
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "failActions": [
-            {
-              "$type": "SetAnimatorTrigger",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "triggerID": "StartChannelTrigger",
-              "canBeHandledOnRecover": true
+              "ratio": 1.0
             }
           ],
           "successActions": [
             {
               "$type": "SetAnimatorTrigger",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "triggerID": "EndChannelTrigger",
-              "canBeHandledOnRecover": true
+              "triggerID": "EndChannelTrigger"
             }
           ],
-          "canBeHandledOnRecover": true
-        }
-      ],
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      },
-      "abilityMixins": [
-        {
-          "$type": "AvatarCombatMixin",
-          "onEnterCombat": [
+          "failActions": [
             {
               "$type": "SetAnimatorTrigger",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "triggerID": "EndChannelTrigger",
-              "canBeHandledOnRecover": true
+              "triggerID": "StartChannelTrigger"
             }
-          ],
-          "actorIceSubHurtDelta": -1
+          ]
         }
-      ]
+      ],
+      "isDynamicAbility": true
     }
   },
   {
     "Default": {
-      "abilitySpecials": {
-        "Skill_State": 0
-      },
-      "onKill": [
+      "$type": "ConfigAbility",
+      "abilityName": "ActivityAbility_Lannaluo_Shoot",
+      "abilityMixins": [
         {
-          "$type": "ChangePlayMode",
-          "muteRemoteAction": true,
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": true,
-          "FPFLACICBBN": "LannaluoState",
-          "authorityOnly": true,
-          "canBeHandledOnRecover": true
+          "$type": "AttachToWidgetStateMixin",
+          "OMEGFFOGHHK": [220053, 220071],
+          "OCMNJLLGKDE": [
+            {
+              "$type": "AttachModifier",
+              "cdDelta": true,
+              "modifierName": "ActivityAbility_Lannaluo_Shoot_Handler"
+            }
+          ],
+          "MPAPIGOKCAM": [
+            {
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "ActivityAbility_Lannaluo_Shoot_Handler"
+            }
+          ]
         }
       ],
-      "isDynamicAbility": true,
-      "abilityName": "ActivityAbility_Lannaluo_Shoot",
+      "abilitySpecials": {
+        "Skill_State": 0.0
+      },
       "modifiers": {
+        "ActivityAbility_Lannaluo_Shoot_Handler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["Channel_BS", "Channel_Loop"],
+              "modifierName": "ActivityAbility_Lannaluo_ChangePlayMode"
+            },
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["Channel_BS", "Channel_Loop"],
+              "modifierName": "ActivityAbility_Lannaluo_Focus"
+            }
+          ]
+        },
         "ActivityAbility_Lannaluo_ChangePlayMode": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "WidgetLightUpControlMixin",
+              "MLLIMCLICNI": 220053
+            },
+            {
+              "$type": "WidgetLightUpControlMixin",
+              "MLLIMCLICNI": 220071
+            }
+          ],
           "onAdded": [
             {
               "$type": "ChangePlayMode",
+              "cdDelta": true,
               "muteRemoteAction": true,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "toPlayMode": "LannaluoState",
-              "authorityOnly": true,
-              "canBeHandledOnRecover": true
+              "toPlayMode": "LannaluoState"
             },
             {
               "$type": "SetGlobalValue",
+              "ratio": 1.0,
               "key": "_ABILITY_Lannaluo_IsInState",
-              "value": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "BOLOANKLBDK",
-              "actorIceSubHurtDelta": -1,
-              "targetWidgetMaterialId": 220053
-            },
-            {
-              "$type": "BOLOANKLBDK",
-              "actorIceSubHurtDelta": -1,
-              "targetWidgetMaterialId": 220071
+              "maxValue": 0.0,
+              "minValue": 0.0
             }
           ],
           "onRemoved": [
             {
               "$type": "ChangePlayMode",
+              "cdDelta": true,
               "muteRemoteAction": true,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "FPFLACICBBN": "LannaluoState",
-              "authorityOnly": true,
-              "canBeHandledOnRecover": true
+              "DLEICBJFEKN": "LannaluoState"
             },
             {
               "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
               "key": "_ABILITY_Lannaluo_IsInState",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "canBeHandledOnRecover": true
+              "maxValue": 0.0,
+              "minValue": 0.0
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
         "ActivityAbility_Lannaluo_Focus": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "onAdded": [
             {
               "$type": "AvatarEnterFocus",
-              "vcamFov": 30,
+              "cameraFollowLower": {
+                "x": 0.6000000238418579,
+                "y": 0.20000000298023224,
+                "z": -1.7999999523162842
+              },
               "cameraFollowUpper": {
                 "x": 0.6000000238418579,
                 "y": -0.10000000149011612,
                 "z": -1.7999999523162842
               },
+              "cameraFollowMaxDegree": 40.0,
+              "cameraFollowMinDegree": -40.0,
               "dragButtonName": "Skill2",
-              "cameraFollowMinDegree": -40,
               "assistance": {
+                "ps4": {
+                  "useGyro": true
+                },
                 "ps5": {
-                  "useGyro": true
-                },
-                "IJDKCJGBBII": {
-                  "useGyro": true
-                },
-                "IKEDPKIGLON": {
                   "useGyro": true
                 },
                 "other": {
                   "useGyro": true
                 }
               },
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "ELIECGGIHFH": {
-                "actorIceSubHurtDelta": -1,
-                "doOffStage": false,
-                "PHKMLJFMNIH": -1,
-                "canBeHandledOnRecover": true
-              },
-              "FDDPEAMAADJ": -60,
-              "FKFAKILENIA": -1,
-              "GEIIPGCGHPJ": {
-                "BPFLPMNCDJC": -1,
-                "IHKBILOKGBD": -1,
-                "KEGFEEAJFFN": -1
-              },
-              "GFNHGHHFIPG": -1,
-              "HOEGDDBJEJO": -1,
-              "cameraFollowLower": {
-                "x": 0.6000000238418579,
-                "y": 0.20000000298023224,
-                "z": -1.7999999523162842
-              },
-              "KMBEGJMJEDP": {
-                "GDBEBFCAKNL": 1,
-                "GGDNOMPMKKE": 1,
-                "JOOKDFOEKIA": -1,
-                "OAMODBPBKLD": -1
-              },
-              "NOPLPLOOMMB": true,
-              "OPMJOMPBHPM": true,
-              "cameraFollowMaxDegree": 40,
-              "canBeHandledOnRecover": true
+              "canMove": false,
+              "showCrosshair": false,
+              "vcamFov": 30.0,
+              "disableAnim": true
             },
             {
               "$type": "SetAnimatorBool",
-              "value": true,
               "boolID": "LockMotionFlagExitChannel",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
+              "ratio": true
             },
             {
               "$type": "SetGlobalValue",
+              "ratio": 1.0,
               "key": "_ABILITY_Common_IsChannelState",
-              "value": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
+              "maxValue": 0.0,
+              "minValue": 0.0
             }
           ],
-          "elementDurability": 100,
-          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "AvatarExitFocus",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "keepRotation": true,
-              "PHKMLJFMNIH": -1,
-              "canBeHandledOnRecover": true
+              "cdDelta": true,
+              "keepRotation": true
             },
             {
               "$type": "SetAnimatorBool",
-              "boolID": "LockMotionFlagExitChannel",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "canBeHandledOnRecover": true
+              "cdDelta": true,
+              "boolID": "LockMotionFlagExitChannel"
             },
             {
               "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
               "key": "_ABILITY_Common_IsChannelState",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "canBeHandledOnRecover": true
+              "maxValue": 0.0,
+              "minValue": 0.0
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "ActivityAbility_Lannaluo_Shoot_Handler": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "AttachToStateIDMixin",
-              "stateIDs": [
-                "Channel_BS",
-                "Channel_Loop"
-              ],
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "ActivityAbility_Lannaluo_ChangePlayMode",
-              "value": -1
-            },
-            {
-              "$type": "AttachToStateIDMixin",
-              "stateIDs": [
-                "Channel_BS",
-                "Channel_Loop"
-              ],
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "ActivityAbility_Lannaluo_Focus",
-              "value": -1
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "ActivityAbility_Lannaluo_Skill_CD": {
-          "onAdded": [
-            {
-              "$type": "SetGlobalValue",
-              "key": "_ABILITY_Lannaluo_CD",
-              "value": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "duration": 1,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "onRemoved": [
-            {
-              "$type": "SetGlobalValue",
-              "key": "_ABILITY_Lannaluo_CD",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
         "ActivityAbility_Lannaluo_TriggerShoot": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
           "onAdded": [
             {
               "$type": "SetGlobalValueToOverrideMap",
-              "overrideMapKey": "Skill_State",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "globalValueKey": "_ABILITY_Lannaluo_SkillState",
-              "canBeHandledOnRecover": true
+              "overrideMapKey": "Skill_State"
             },
             {
               "$type": "SetGlobalValue",
+              "ratio": "Skill_State",
               "key": "_ABILITY_Lannaluo_Skill_InTime",
-              "value": "Skill_State",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
+              "maxValue": 0.0,
+              "minValue": 0.0
             },
             {
               "$type": "TriggerBullet",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
+              "bulletID": 420000017,
               "born": {
                 "$type": "ConfigBornByAttachPoint",
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2,
                 "attachPointName": "FocusAnchor"
-              },
-              "trackTarget": "SelfAttackTarget",
-              "bulletID": 420000017,
-              "value": true,
-              "canBeHandledOnRecover": true,
-              "lifeByOwnerV2": true
+              }
             },
             {
               "$type": "AvatarSkillStart",
-              "cdRatio": 1,
-              "costStaminaRatio": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "skillID": 20330,
-              "canBeHandledOnRecover": true
+              "amount": 1.0,
+              "costStaminaRatio": 1.0
+            }
+          ]
+        },
+        "ActivityAbility_Lannaluo_Skill_CD": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "_ABILITY_Lannaluo_CD",
+              "maxValue": 0.0,
+              "minValue": 0.0
             }
           ],
-          "duration": 0.5,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Lannaluo_CD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
         }
       },
       "onAbilityStart": [
         {
           "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "ActivityAbility_Lannaluo_TriggerShoot",
-          "canBeHandledOnRecover": true
+          "modifierName": "ActivityAbility_Lannaluo_TriggerShoot"
         },
         {
           "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "ActivityAbility_Lannaluo_Skill_CD",
-          "canBeHandledOnRecover": true
+          "modifierName": "ActivityAbility_Lannaluo_Skill_CD"
         }
       ],
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      },
-      "abilityMixins": [
+      "onKill": [
         {
-          "$type": "AttachToWidgetStateMixin",
-          "actorIceSubHurtDelta": -1,
-          "onActive": [
-            {
-              "$type": "AttachModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "ActivityAbility_Lannaluo_Shoot_Handler",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "targetWidgetMaterialIDs": [
-            220053,
-            220071
-          ],
-          "onDisable": [
-            {
-              "$type": "RemoveModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "ActivityAbility_Lannaluo_Shoot_Handler",
-              "canBeHandledOnRecover": true
-            }
-          ]
+          "$type": "ChangePlayMode",
+          "cdDelta": true,
+          "muteRemoteAction": true,
+          "DLEICBJFEKN": "LannaluoState"
         }
-      ]
+      ],
+      "isDynamicAbility": true
     }
   },
   {
     "Default": {
-      "onAdded": [
+      "$type": "ConfigAbility",
+      "abilityName": "ActivityAbility_Lannaluo_Skill",
+      "abilityMixins": [
         {
-          "$type": "SetGlobalValue",
-          "key": "_ABILITY_Lannaluo_SkillState",
-          "value": 1,
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "AttachModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "ActivityAbility_Lannaluo_Skill_Add",
-          "canBeHandledOnRecover": true
+          "$type": "AttachToWidgetStateMixin",
+          "OMEGFFOGHHK": [220053, 220071],
+          "OCMNJLLGKDE": [
+            {
+              "$type": "AttachModifier",
+              "cdDelta": true,
+              "modifierName": "ActivityAbility_Lannaluo_Skill_Handler"
+            }
+          ],
+          "MPAPIGOKCAM": [
+            {
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "ActivityAbility_Lannaluo_Skill_Handler"
+            }
+          ]
         }
       ],
-      "isDynamicAbility": true,
-      "abilityName": "ActivityAbility_Lannaluo_Skill",
       "modifiers": {
-        "ActivityAbility_Lannaluo_Eff_01": {
-          "onAdded": [
+        "ActivityAbility_Lannaluo_Skill_Handler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
             {
-              "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_SceneObj_Lannaluo_Aim_Charge_01",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "ActivityAbility_Lannaluo_Eff_02": {
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_SceneObj_Lannaluo_Aim_Charge_02",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "ActivityAbility_Lannaluo_Eff_03": {
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_SceneObj_Lannaluo_Aim_Charge_03",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "ActivityAbility_Lannaluo_Skill_01": {
-          "onAdded": [
-            {
-              "$type": "SetGlobalValue",
-              "key": "_FURIOUSMONOLITH_THROW_RANGE",
-              "value": 15,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["Channel_BS", "Channel_Loop"],
+              "modifierName": "ActivityAbility_Lannaluo_SwitchSkill"
             },
             {
-              "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_SceneObj_Lannaluo_Aim_Line_01",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["Channel_BS", "Channel_Loop"],
+              "modifierName": "ActivityAbility_Lannaluo_Skill_Handler_01"
             }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "ActivityAbility_Lannaluo_Skill_02": {
-          "onAdded": [
-            {
-              "$type": "SetGlobalValue",
-              "key": "_FURIOUSMONOLITH_THROW_RANGE",
-              "value": 15,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_SceneObj_Lannaluo_Aim_Line_02",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "ActivityAbility_Lannaluo_Skill_03": {
-          "onAdded": [
-            {
-              "$type": "SetGlobalValue",
-              "key": "_FURIOUSMONOLITH_THROW_RANGE",
-              "value": 15,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_SceneObj_Lannaluo_Aim_Line_03",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
         "ActivityAbility_Lannaluo_Skill_Add": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 2.0,
           "onAdded": [
             {
-              "$type": "RemoveAvatarSkillInfo",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "skillID": 20330,
-              "canBeHandledOnRecover": true
+              "$type": "AddAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20330
             },
             {
-              "$type": "RemoveAvatarSkillInfo",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "skillID": 20331,
-              "canBeHandledOnRecover": true
+              "$type": "AddAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20331
             }
           ],
-          "thinkInterval": 2,
-          "elementDurability": 100,
-          "minus_one": -1,
           "onRemoved": [
             {
-              "$type": "AddAvatarSkillInfo",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
+              "$type": "RemoveAvatarSkillInfo",
+              "cdDelta": true,
               "skillID": 20330,
-              "IOEKFKNMBMH": true,
-              "canBeHandledOnRecover": true
+              "doOffStage": true
             },
             {
-              "$type": "AddAvatarSkillInfo",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
+              "$type": "RemoveAvatarSkillInfo",
+              "cdDelta": true,
               "skillID": 20331,
-              "IOEKFKNMBMH": true,
-              "canBeHandledOnRecover": true
+              "doOffStage": true
             }
           ],
-          "IAKPBCLBNKF": -1,
           "onThinkInterval": [
             {
-              "$type": "RemoveAvatarSkillInfo",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "skillID": 20330,
-              "canBeHandledOnRecover": true
+              "$type": "AddAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20330
             },
             {
-              "$type": "RemoveAvatarSkillInfo",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "skillID": 20331,
-              "canBeHandledOnRecover": true
+              "$type": "AddAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20331
             }
-          ],
-          "isLimitedProperties": true
-        },
-        "ActivityAbility_Lannaluo_Skill_Handler": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "AttachToStateIDMixin",
-              "stateIDs": [
-                "Channel_BS",
-                "Channel_Loop"
-              ],
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "ActivityAbility_Lannaluo_SwitchSkill",
-              "value": -1
-            },
-            {
-              "$type": "AttachToStateIDMixin",
-              "stateIDs": [
-                "Channel_BS",
-                "Channel_Loop"
-              ],
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "ActivityAbility_Lannaluo_Skill_Handler_01",
-              "value": -1
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "ActivityAbility_Lannaluo_Skill_Handler_01": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "AttachModifierToSelfGlobalValueMixin",
-              "valueSteps": [
-                -0.5,
-                0.5,
-                1.5
-              ],
-              "actorIceSubHurtDelta": -1,
-              "modifierNameSteps": [
-                "ActivityAbility_Lannaluo_Skill_Handler_02",
-                "Blank"
-              ],
-              "removeAppliedModifier": true,
-              "globalValueKey": "_ABILITY_Lannaluo_CD"
-            },
-            {
-              "$type": "AttachModifierToSelfGlobalValueMixin",
-              "valueSteps": [
-                0.5,
-                1.5,
-                2.5,
-                3.5
-              ],
-              "actorIceSubHurtDelta": -1,
-              "modifierNameSteps": [
-                "ActivityAbility_Lannaluo_Eff_01",
-                "ActivityAbility_Lannaluo_Eff_02",
-                "ActivityAbility_Lannaluo_Eff_03"
-              ],
-              "removeAppliedModifier": true,
-              "globalValueKey": "_ABILITY_Lannaluo_SkillState"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "ActivityAbility_Lannaluo_Skill_Handler_02": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "AttachModifierToSelfGlobalValueMixin",
-              "valueSteps": [
-                0.5,
-                1.5,
-                2.5,
-                3.5
-              ],
-              "actorIceSubHurtDelta": -1,
-              "modifierNameSteps": [
-                "ActivityAbility_Lannaluo_Skill_01",
-                "ActivityAbility_Lannaluo_Skill_02",
-                "ActivityAbility_Lannaluo_Skill_03"
-              ],
-              "removeAppliedModifier": true,
-              "globalValueKey": "_ABILITY_Lannaluo_SkillState"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
         "ActivityAbility_Lannaluo_SwitchSkill": {
-          "elementDurability": 100,
-          "minus_one": -1,
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "modifierMixins": [
             {
               "$type": "SwitchSkillIDMixin",
-              "actorIceSubHurtDelta": -1,
-              "skillID": 20330,
-              "priority": "Playmode"
+              "priority": "Playmode",
+              "skillID": 20330
             },
             {
               "$type": "SwitchSkillIDMixin",
-              "actorIceSubHurtDelta": -1,
-              "skillID": 20331,
+              "priority": "Playmode",
               "skillIndex": 1,
-              "priority": "Playmode"
+              "skillID": 20331
             },
             {
               "$type": "AttachModifierToGlobalValueMixin",
-              "valueSteps": [
-                0.5,
-                1.5,
-                2.5,
-                3.5,
-                4.5
-              ],
-              "actorIceSubHurtDelta": -1,
-              "enable": true,
               "globalValueTarget": "Team",
+              "globalValueKey": "SGV_LanlaluoCommander",
+              "valueSteps": [0.5, 1.5, 2.5, 3.5, 4.5],
               "modifierNameSteps": [
                 "ActivityAbility_Lannaluo_Switch_Forbid",
                 "ActivityAbility_Lannaluo_Switch_Forbid",
                 "ActivityAbility_Lannaluo_Switch_Forbid",
                 "Blank"
               ],
-              "removeAppliedModifier": true,
-              "globalValueKey": "SGV_LanlaluoCommander",
               "actionQueues": [
                 [
                   {
                     "$type": "SetGlobalValue",
+                    "ratio": 1.0,
                     "key": "_ABILITY_Lannaluo_SkillState",
-                    "value": 1,
-                    "actorIceSubHurtDelta": -1,
-                    "doOffStage": false,
-                    "canBeHandledOnRecover": true
+                    "maxValue": 0.0,
+                    "minValue": 0.0
                   }
                 ],
                 [
                   {
                     "$type": "SetGlobalValue",
+                    "ratio": 2.0,
                     "key": "_ABILITY_Lannaluo_SkillState",
-                    "value": 2,
-                    "actorIceSubHurtDelta": -1,
-                    "doOffStage": false,
-                    "canBeHandledOnRecover": true
+                    "maxValue": 0.0,
+                    "minValue": 0.0
                   }
                 ],
                 [
                   {
                     "$type": "SetGlobalValue",
+                    "ratio": 3.0,
                     "key": "_ABILITY_Lannaluo_SkillState",
-                    "value": 3,
-                    "actorIceSubHurtDelta": -1,
-                    "doOffStage": false,
-                    "canBeHandledOnRecover": true
+                    "maxValue": 0.0,
+                    "minValue": 0.0
                   }
                 ],
                 [
                   {
                     "$type": "SetGlobalValue",
-                    "key": "_ABILITY_Lannaluo_SkillState",
-                    "value": 1,
-                    "actorIceSubHurtDelta": -1,
-                    "doOffStage": false,
                     "predicates": [
                       {
                         "$type": "ByTargetGlobalValue",
                         "key": "_ABILITY_Lannaluo_SkillState",
-                        "target": "Target",
+                        "ratio": 0.0,
                         "compareType": "NoneOrEqual"
                       }
                     ],
-                    "canBeHandledOnRecover": true
+                    "ratio": 1.0,
+                    "key": "_ABILITY_Lannaluo_SkillState",
+                    "maxValue": 0.0,
+                    "minValue": 0.0
                   }
                 ]
-              ],
-              "PNELLOCFHCP": true
+              ]
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
         "ActivityAbility_Lannaluo_Switch_Forbid": {
-          "elementDurability": 100,
-          "minus_one": -1,
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "modifierMixins": [
             {
               "$type": "HideActionSlotMixin",
-              "actorIceSubHurtDelta": -1,
-              "slotType": "Slot2"
+              "MGEIMONNADI": "Slot2"
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
+        },
+        "ActivityAbility_Lannaluo_Skill_Handler_01": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_Lannaluo_CD",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": [
+                "ActivityAbility_Lannaluo_Skill_Handler_02",
+                "Blank"
+              ]
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_Lannaluo_SkillState",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [0.5, 1.5, 2.5, 3.5],
+              "modifierNameSteps": [
+                "ActivityAbility_Lannaluo_Eff_01",
+                "ActivityAbility_Lannaluo_Eff_02",
+                "ActivityAbility_Lannaluo_Eff_03"
+              ]
+            }
+          ]
         },
         "Blank": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "ActivityAbility_Lannaluo_Skill_Handler_02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_Lannaluo_SkillState",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [0.5, 1.5, 2.5, 3.5],
+              "modifierNameSteps": [
+                "ActivityAbility_Lannaluo_Skill_01",
+                "ActivityAbility_Lannaluo_Skill_02",
+                "ActivityAbility_Lannaluo_Skill_03"
+              ]
+            }
+          ]
+        },
+        "ActivityAbility_Lannaluo_Skill_01": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 15.0,
+              "key": "_FURIOUSMONOLITH_THROW_RANGE",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Lannaluo_Aim_Line_01",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ActivityAbility_Lannaluo_Skill_02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 15.0,
+              "key": "_FURIOUSMONOLITH_THROW_RANGE",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Lannaluo_Aim_Line_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ActivityAbility_Lannaluo_Skill_03": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 15.0,
+              "key": "_FURIOUSMONOLITH_THROW_RANGE",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Lannaluo_Aim_Line_03",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ActivityAbility_Lannaluo_Eff_01": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Lannaluo_Aim_Charge_01",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ActivityAbility_Lannaluo_Eff_02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Lannaluo_Aim_Charge_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ActivityAbility_Lannaluo_Eff_03": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Lannaluo_Aim_Charge_03",
+              "effectTempleteID": -1.0
+            }
+          ]
         }
       },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 1.0,
+          "key": "_ABILITY_Lannaluo_SkillState",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "ActivityAbility_Lannaluo_Skill_Add"
+        }
+      ],
       "onAbilityStart": [
         {
           "$type": "Predicated",
@@ -889,481 +610,246 @@
             {
               "$type": "ByTargetGlobalValue",
               "key": "_ABILITY_Lannaluo_SkillState",
-              "target": "Target",
-              "value": 3
-            }
-          ],
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "failActions": [
-            {
-              "$type": "AddGlobalValue",
-              "key": "_ABILITY_Lannaluo_SkillState",
-              "useLimitRange": true,
-              "value": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "minValue": 1,
-              "canBeHandledOnRecover": true,
-              "maxValue": 3
+              "ratio": 3.0
             }
           ],
           "successActions": [
             {
               "$type": "SetGlobalValue",
+              "ratio": 1.0,
               "key": "_ABILITY_Lannaluo_SkillState",
-              "value": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
+              "maxValue": 0.0,
+              "minValue": 0.0
             }
           ],
-          "canBeHandledOnRecover": true
+          "failActions": [
+            {
+              "$type": "AddGlobalValue",
+              "ratio": 1.0,
+              "key": "_ABILITY_Lannaluo_SkillState",
+              "useLimitRange": true,
+              "maxValue": 3.0,
+              "minValue": 1.0
+            }
+          ]
         },
         {
           "$type": "AvatarSkillStart",
-          "cdRatio": 1,
-          "costStaminaRatio": 1,
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
           "skillID": 20331,
-          "canBeHandledOnRecover": true
+          "amount": 0.5,
+          "costStaminaRatio": 1.0
         }
       ],
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      },
-      "abilityMixins": [
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "ActivityAbility_Lannaluo_Shooter",
+      "onAbilityStart": [
         {
-          "$type": "AttachToWidgetStateMixin",
-          "actorIceSubHurtDelta": -1,
-          "onActive": [
-            {
-              "$type": "AttachModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "ActivityAbility_Lannaluo_Skill_Handler",
-              "canBeHandledOnRecover": true
+          "$type": "CreateGadget",
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 0.0,
+              "y": 0.5,
+              "z": 0.0
             }
-          ],
-          "targetWidgetMaterialIDs": [
-            220053,
-            220071
-          ],
-          "onDisable": [
-            {
-              "$type": "RemoveModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "ActivityAbility_Lannaluo_Skill_Handler",
-              "canBeHandledOnRecover": true
-            }
-          ]
+          },
+          "gadgetID": 420000018,
+          "campID": 1001,
+          "campTargetType": "Enemy"
         }
       ]
     }
   },
   {
     "Default": {
-      "abilityName": "ActivityAbility_Lannaluo_Shooter",
-      "onAbilityStart": [
-        {
-          "$type": "CreateGadget",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "campTargetType": "Enemy",
-          "born": {
-            "$type": "ConfigBornBySelf",
-            "offset": {
-              "x": 0.5
-            },
-            "APKLAIJMEIL": {
-              "HHNLJKNBKPP": 180
-            },
-            "value": 10,
-            "direction": {
-              "maxAngle": 180
-            },
-            "onGroundRaycastUpDist": 2
-          },
-          "campID": 1001,
-          "KLGHKKGGHEA": {
-            "CBLLACNAMON": true,
-            "DBOLJFPPFGI": 0.5,
-            "JOCOGLBCMEJ": 0.5,
-            "LKEBJHCDOHB": true
-          },
-          "gadgetID": 420000018,
-          "canBeHandledOnRecover": true,
-          "lifeByOwnerV2": true
-        }
-      ],
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
-    }
-  },
-  {
-    "Default": {
-      "onAdded": [
-        {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "ActivityAbility_Lannaluo_Trigger_Skill01",
-          "predicates": [
-            {
-              "$type": "ByTargetGlobalValue",
-              "key": "_ABILITY_Lannaluo_Skill_InTime",
-              "target": "OriginOwner",
-              "value": 1
-            }
-          ],
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "ActivityAbility_Lannaluo_Trigger_Skill02",
-          "predicates": [
-            {
-              "$type": "ByTargetGlobalValue",
-              "key": "_ABILITY_Lannaluo_Skill_InTime",
-              "target": "OriginOwner",
-              "value": 2
-            }
-          ],
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "ActivityAbility_Lannaluo_Trigger_Skill03",
-          "predicates": [
-            {
-              "$type": "ByTargetGlobalValue",
-              "key": "_ABILITY_Lannaluo_Skill_InTime",
-              "target": "OriginOwner",
-              "value": 3
-            }
-          ],
-          "canBeHandledOnRecover": true
-        }
-      ],
+      "$type": "ConfigAbility",
       "abilityName": "ActivityAbility_Lannaluo_Gadget",
       "modifiers": {
         "ActivityAbility_Lannaluo_Trigger_Skill01": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
           "onAdded": [
             {
               "$type": "FireEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_SceneObj_Lannaluo_SkillBurst_01",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Lannaluo_SkillBurst_01",
+              "effectTempleteID": -1.0
             }
           ],
-          "duration": 1,
-          "elementDurability": 100,
-          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "TriggerAttackEvent",
-              "targetType": "Enemy",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf"
+                  },
+                  "radius": 3.5
+                },
                 "attackInfo": {
                   "attackTag": "Activity_Lannaluo_Type_01",
-                  "HBOOKFMCODC": {
-                    "BPIJOAMNKIH": {
-                      "GGOHGMFHHEC": true,
-                      "value": 1
-                    },
-                    "onHitEffectName": "default"
-                  },
-                  "hitPattern": {
-                    "hitImpulseType": "LV1",
-                    "BPIJOAMNKIH": {
-                      "GGOHGMFHHEC": true,
-                      "value": 1
-                    },
-                    "onHitEffectName": "none",
-                    "muteHitText": true
-                  },
-                  "INKGMIHAPMA": {
-                    "NDIBGPPKGJP": "Shake"
-                  },
-                  "cameraShake": {
-                    "shakeDistance": 20,
-                    "extension": {
-                      "rangeAttenuation": 0.5,
-                      "baseOnCamera": true,
-                      "baseCycle": 0.11999999731779099,
-                      "cycleDamping": 0.11999999731779099
-                    }
-                  },
+                  "attenuationTag": "",
                   "attenuationGroup": "default",
                   "attackProperty": {
+                    "damagePercentage": 0.0,
+                    "damagePercentageRatio": 0.0,
                     "elementType": "AntiFire",
-                    "elementRank": 1,
-                    "attackType": "Default"
+                    "bonusCritical": 0.0,
+                    "strikeType": "Default",
+                    "enBreak": 0.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "none",
+                    "hitImpulseType": "LV1",
+                    "muteHitText": true
                   }
-                },
-                "attackPattern": {
-                  "$type": "ConfigAttackSphere",
-                  "born": {
-                    "$type": "ConfigBornBySelf",
-                    "APKLAIJMEIL": {
-                      "HHNLJKNBKPP": 180
-                    },
-                    "value": 10,
-                    "direction": {
-                      "maxAngle": 180
-                    },
-                    "onGroundRaycastUpDist": 2
-                  },
-                  "MPNIJNGFBIH": {
-                    "INOCAOHPEBB": {
-                      "GGOHGMFHHEC": true,
-                      "value": 1
-                    }
-                  },
-                  "triggerType": "TriggerNoRepeat",
-                  "radius": 3.5,
-                  "massiveAttackRatio": 1
                 }
               },
-              "canBeHandledOnRecover": true
+              "targetType": "Enemy"
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
         "ActivityAbility_Lannaluo_Trigger_Skill02": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
           "onAdded": [
             {
               "$type": "FireEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_SceneObj_Lannaluo_SkillBurst_02",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Lannaluo_SkillBurst_02",
+              "effectTempleteID": -1.0
             }
           ],
-          "duration": 1,
-          "elementDurability": 100,
-          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "TriggerAttackEvent",
-              "targetType": "Enemy",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf"
+                  },
+                  "radius": 3.5
+                },
                 "attackInfo": {
                   "attackTag": "Activity_Lannaluo_Type_02",
-                  "HBOOKFMCODC": {
-                    "BPIJOAMNKIH": {
-                      "GGOHGMFHHEC": true,
-                      "value": 1
-                    },
-                    "onHitEffectName": "default"
-                  },
-                  "hitPattern": {
-                    "hitImpulseType": "LV1",
-                    "BPIJOAMNKIH": {
-                      "GGOHGMFHHEC": true,
-                      "value": 1
-                    },
-                    "onHitEffectName": "none",
-                    "muteHitText": true
-                  },
-                  "INKGMIHAPMA": {
-                    "NDIBGPPKGJP": "Shake"
-                  },
-                  "cameraShake": {
-                    "shakeDistance": 20,
-                    "extension": {
-                      "rangeAttenuation": 0.5,
-                      "baseOnCamera": true,
-                      "baseCycle": 0.11999999731779099,
-                      "cycleDamping": 0.11999999731779099
-                    }
-                  },
+                  "attenuationTag": "",
                   "attenuationGroup": "default",
                   "attackProperty": {
+                    "damagePercentage": 0.0,
+                    "damagePercentageRatio": 0.0,
                     "elementType": "AntiFire",
-                    "elementRank": 1,
-                    "attackType": "Default"
+                    "bonusCritical": 0.0,
+                    "strikeType": "Default",
+                    "enBreak": 0.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "none",
+                    "hitImpulseType": "LV1",
+                    "muteHitText": true
                   }
-                },
-                "attackPattern": {
-                  "$type": "ConfigAttackSphere",
-                  "born": {
-                    "$type": "ConfigBornBySelf",
-                    "APKLAIJMEIL": {
-                      "HHNLJKNBKPP": 180
-                    },
-                    "value": 10,
-                    "direction": {
-                      "maxAngle": 180
-                    },
-                    "onGroundRaycastUpDist": 2
-                  },
-                  "MPNIJNGFBIH": {
-                    "INOCAOHPEBB": {
-                      "GGOHGMFHHEC": true,
-                      "value": 1
-                    }
-                  },
-                  "triggerType": "TriggerNoRepeat",
-                  "radius": 3.5,
-                  "massiveAttackRatio": 1
                 }
               },
-              "canBeHandledOnRecover": true
+              "targetType": "Enemy"
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
         "ActivityAbility_Lannaluo_Trigger_Skill03": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
           "onAdded": [
             {
               "$type": "FireEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_SceneObj_Lannaluo_SkillBurst_03",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Lannaluo_SkillBurst_03",
+              "effectTempleteID": -1.0
             }
           ],
-          "duration": 1,
-          "elementDurability": 100,
-          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "TriggerAttackEvent",
-              "targetType": "Enemy",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "attackEvent": {
-                "attackInfo": {
-                  "attackTag": "Activity_Lannaluo_Type_03",
-                  "HBOOKFMCODC": {
-                    "BPIJOAMNKIH": {
-                      "GGOHGMFHHEC": true,
-                      "value": 1
-                    },
-                    "onHitEffectName": "default"
-                  },
-                  "hitPattern": {
-                    "hitImpulseType": "LV1",
-                    "BPIJOAMNKIH": {
-                      "GGOHGMFHHEC": true,
-                      "value": 1
-                    },
-                    "onHitEffectName": "none",
-                    "muteHitText": true
-                  },
-                  "INKGMIHAPMA": {
-                    "NDIBGPPKGJP": "Shake"
-                  },
-                  "cameraShake": {
-                    "shakeDistance": 20,
-                    "extension": {
-                      "rangeAttenuation": 0.5,
-                      "baseOnCamera": true,
-                      "baseCycle": 0.11999999731779099,
-                      "cycleDamping": 0.11999999731779099
-                    }
-                  },
-                  "attenuationGroup": "default",
-                  "attackProperty": {
-                    "elementType": "AntiFire",
-                    "elementRank": 1,
-                    "attackType": "Default"
-                  }
-                },
                 "attackPattern": {
                   "$type": "ConfigAttackSphere",
-                  "born": {
-                    "$type": "ConfigBornBySelf",
-                    "APKLAIJMEIL": {
-                      "HHNLJKNBKPP": 180
-                    },
-                    "value": 10,
-                    "direction": {
-                      "maxAngle": 180
-                    },
-                    "onGroundRaycastUpDist": 2
-                  },
-                  "MPNIJNGFBIH": {
-                    "INOCAOHPEBB": {
-                      "GGOHGMFHHEC": true,
-                      "value": 1
-                    }
-                  },
                   "triggerType": "TriggerNoRepeat",
-                  "radius": 3.5,
-                  "massiveAttackRatio": 1
+                  "born": {
+                    "$type": "ConfigBornBySelf"
+                  },
+                  "radius": 3.5
+                },
+                "attackInfo": {
+                  "attackTag": "Activity_Lannaluo_Type_03",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 0.0,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "AntiFire",
+                    "bonusCritical": 0.0,
+                    "strikeType": "Default",
+                    "enBreak": 0.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "none",
+                    "hitImpulseType": "LV1",
+                    "muteHitText": true
+                  }
                 }
               },
-              "canBeHandledOnRecover": true
+              "targetType": "Enemy"
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         }
       },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "OriginOwner",
+              "key": "_ABILITY_Lannaluo_Skill_InTime",
+              "ratio": 1.0
+            }
+          ],
+          "modifierName": "ActivityAbility_Lannaluo_Trigger_Skill01"
+        },
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "OriginOwner",
+              "key": "_ABILITY_Lannaluo_Skill_InTime",
+              "ratio": 2.0
+            }
+          ],
+          "modifierName": "ActivityAbility_Lannaluo_Trigger_Skill02"
+        },
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "OriginOwner",
+              "key": "_ABILITY_Lannaluo_Skill_InTime",
+              "ratio": 3.0
+            }
+          ],
+          "modifierName": "ActivityAbility_Lannaluo_Trigger_Skill03"
+        }
+      ]
     }
   }
 ]

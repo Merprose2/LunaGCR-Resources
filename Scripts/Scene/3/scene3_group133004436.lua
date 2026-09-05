@@ -340,7 +340,7 @@ function action_EVENT_QUEST_START_436026(context, evt)
 	ScriptLib.AddExtraGroupSuite(context, defs.group_id, 3)
 	
 	-- 触发镜头注目，注目位置为坐标（0，0，0），持续时间为0秒，并且为强制注目形式，不广播其他玩家
-	local pos = {x=2296.000, y=261.000, z=-761.000}
+	local pos = {x=2296, y=261, z=-761}
 	if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos,  duration = 1, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 1 }) then
 	return -1
 	end 

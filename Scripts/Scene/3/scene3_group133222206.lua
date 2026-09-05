@@ -5,8 +5,7 @@ local base_info = {
 
 -- DEFS_MISCS
 local wakuraConfig =
-{
-    -- 布设时请务必保持上下Rotation相同，需要初始值不同的场合请通过GadgetState控制
+{    -- 布设时请务必保持上下Rotation相同，需要初始值不同的场合请通过GadgetState控制
     -- Index与Rotation无严格要求，务必锚定红色数字1为第一面，按照逆时钟推算Index即可
     -- 举例 上下为两个六边形，红色数字1为第一面，同时下六边形GadgetState为 203。
     -- 那么upNum从1开始依次计数。downNum也是从1开始依次计数。(在编辑器界面你无法看到下六边形转到4）

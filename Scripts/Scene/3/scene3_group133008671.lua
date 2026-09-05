@@ -27,7 +27,7 @@ local defs = {
         coin_suits = {2,3,4,5,6},
         gallery_id = 13003,
         end_gadget = 671016, 
-        look_pos = {x=1344.000, y=323.000, z=-728.000},
+        look_pos = {x=1344, y=323, z=-728},
         duration = 2,
 guide_regionID = 671044,
         father_challenge = 2003013

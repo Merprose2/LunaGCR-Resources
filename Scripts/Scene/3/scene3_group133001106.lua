@@ -141,7 +141,7 @@ function action_EVENT_SEAL_BATTLE_END_103(context, evt)
 		end 
 	
 	-- 触发镜头注目，注目位置为坐标（1562，252，-1640），持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=1562.000, y=252.000, z=-1640.000}
+		local pos = {x=1562, y=252, z=-1640}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, duration = 2, is_force = true, is_broadcast = false }) then
 					return -1
 				end 

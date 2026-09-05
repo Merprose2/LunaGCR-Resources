@@ -1,84 +1,64 @@
 [
   {
     "Default": {
-      "onAdded": [
-        {
-          "$type": "AttachModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "ElementRockModifier",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "AddGlobalValue",
-          "key": "_HIT_TIMES_LEFT",
-          "useLimitRange": true,
-          "value": 1,
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "canBeHandledOnRecover": true,
-          "maxValue": 1
-        }
-      ],
+      "$type": "ConfigAbility",
       "abilityName": "Test_OreIron_Interact",
       "modifiers": {
         "ElementRockModifier": {
-          "elementDurability": 100,
-          "minus_one": -1,
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "onBeingHit": [
             {
-              "$type": "NFAAEHMHAJL",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
+              "$type": "TriggerGadgetInteractive",
               "predicates": [
                 {
                   "$type": "ByHitElement",
-                  "target": "Target",
                   "element": "Fire"
                 },
                 {
                   "$type": "ByTargetGlobalValue",
                   "key": "_HIT_TIMES_LEFT",
-                  "target": "Target",
-                  "value": 1
+                  "ratio": 1.0
                 }
-              ],
-              "canBeHandledOnRecover": true
+              ]
             },
             {
               "$type": "AddGlobalValue",
-              "key": "_HIT_TIMES_LEFT",
-              "useLimitRange": true,
-              "value": -1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "predicates": [
                 {
                   "$type": "ByHitElement",
-                  "target": "Target",
                   "element": "Fire"
                 },
                 {
                   "$type": "ByTargetGlobalValue",
                   "key": "_HIT_TIMES_LEFT",
-                  "target": "Target",
+                  "ratio": 0.0,
                   "compareType": "MoreThan"
                 }
               ],
-              "canBeHandledOnRecover": true,
-              "maxValue": 3
+              "ratio": -1.0,
+              "key": "_HIT_TIMES_LEFT",
+              "useLimitRange": true,
+              "maxValue": 3.0,
+              "minValue": 0.0
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         }
       },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "ElementRockModifier"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "ratio": 1.0,
+          "key": "_HIT_TIMES_LEFT",
+          "useLimitRange": true,
+          "maxValue": 1.0,
+          "minValue": 0.0
+        }
+      ]
     }
   }
 ]

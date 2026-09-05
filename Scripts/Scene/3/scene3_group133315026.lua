@@ -140,7 +140,7 @@ suites = {
 -- 触发操作
 function action_EVENT_ENTER_REGION_26001(context, evt)
 	-- 触发镜头注目，注目位置为坐标（142，243，2386），持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=142.000, y=243.000, z=2386.000}
+		local pos = {x=142, y=243, z=2386}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -190,7 +190,7 @@ function action_EVENT_ANY_MONSTER_DIE_26009(context, evt)
 	    ScriptLib.AddExtraGroupSuite(context, 133315026, 5)
 	
 	-- 触发镜头注目，注目位置为坐标（252，252，2484），持续时间为3秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=252.000, y=252.000, z=2484.000}
+		local pos = {x=252, y=252, z=2484}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 3, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

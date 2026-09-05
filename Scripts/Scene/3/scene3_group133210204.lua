@@ -152,7 +152,7 @@ function action_EVENT_ANY_MONSTER_DIE_204017(context, evt)
 	    ScriptLib.AddExtraGroupSuite(context, 133210204, 3)
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-4074.294,y=201.046,z=-652.365}
+	local pos = {x=-4074.294,y=201.0461,z=-652.3647}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 1110371, pos, 50) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1

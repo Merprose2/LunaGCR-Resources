@@ -1,788 +1,575 @@
 [
   {
     "Default": {
-      "onAdded": [
-        {
-          "$type": "SetGlobalValue",
-          "key": "_Activity_ToMoon_Part1_Level",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "AttachModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "Activity_ToMoon_Part1_Handler",
-          "canBeHandledOnRecover": true
-        }
-      ],
-      "abilitySpecials": {
-        "Attack_Duration": 90,
-        "Heal_Interval": 1,
-        "Heal_Ratio": 0.10000000149011612,
-        "Kill_Count": 0,
-        "Kill_MaxCount": 10,
-        "Kill_PerDamgeUp": 0.05999999865889549
-      },
-      "isDynamicAbility": true,
+      "$type": "ConfigAbility",
       "abilityName": "ActivityAbility_ToMoon_FoodChallenge_Part1",
+      "abilitySpecials": {
+        "Kill_Count": 0.0,
+        "Kill_MaxCount": 10.0,
+        "Kill_PerDamgeUp": 0.05999999865889549,
+        "Attack_Duration": 90.0,
+        "Heal_Interval": 1.0,
+        "Heal_Ratio": 0.10000000149011612
+      },
       "modifiers": {
-        "Activity_ToMoon_Part1_AttackBuff": {
-          "onAdded": [
-            {
-              "$type": "SetGlobalValue",
-              "key": "_ABILITY_Activity_ToMoon_Part1_Count",
-              "target": "Team",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "AttachModifier",
-              "target": "CurTeamAvatars",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "Activity_ToMoon_Part1_AttackBuff_OnAvatar",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "thinkInterval": 1,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "onThinkInterval": [
-            {
-              "$type": "AttachModifier",
-              "target": "CurTeamAvatars",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "Activity_ToMoon_Part1_AttackBuff_OnAvatar",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "isLimitedProperties": true
-        },
-        "Activity_ToMoon_Part1_AttackBuff_OnAvatar": {
-          "stacking": "Unique",
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "DoActionByKillingMixin",
-              "onKill": [
-                {
-                  "$type": "Predicated",
-                  "targetPredicates": [
-                    {
-                      "$type": "ByEntityTypes",
-                      "target": "Target",
-                      "value": -1,
-                      "entityTypes": [
-                        "Monster"
-                      ]
-                    },
-                    {
-                      "$type": "ByTargetGlobalValue",
-                      "key": "_ANIMAL_ENTITY_TYPE",
-                      "target": "Target",
-                      "compareType": "NoneOrEqual"
-                    }
-                  ],
-                  "target": "Other",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": true,
-                  "successActions": [
-                    {
-                      "$type": "AddGlobalValue",
-                      "key": "_ABILITY_Activity_ToMoon_Part1_Count",
-                      "useLimitRange": true,
-                      "target": "Team",
-                      "value": 1,
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": true,
-                      "canBeHandledOnRecover": true,
-                      "maxValue": "Kill_MaxCount"
-                    },
-                    {
-                      "$type": "SetGlobalValueToOverrideMap",
-                      "target": "Team",
-                      "overrideMapKey": "Kill_Count",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": true,
-                      "globalValueKey": "_ABILITY_Activity_ToMoon_Part1_Count",
-                      "canBeHandledOnRecover": true
-                    },
-                    {
-                      "$type": "RemoveUniqueModifier",
-                      "target": "CurTeamAvatars",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": true,
-                      "modifierName": "UNIQUE_Activity_ToMoon_Part1_AttackBuff",
-                      "canBeHandledOnRecover": true
-                    },
-                    {
-                      "$type": "AttachModifier",
-                      "target": "CurTeamAvatars",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": true,
-                      "modifierName": "UNIQUE_Activity_ToMoon_Part1_AttackBuff",
-                      "canBeHandledOnRecover": true
-                    }
-                  ],
-                  "canBeHandledOnRecover": true
-                }
-              ],
-              "actorIceSubHurtDelta": -1,
-              "detectWindow": 0.4000000059604645
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "Activity_ToMoon_Part1_DefendBuff": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "CurLocalAvatarMixin",
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "Activity_ToMoon_Part1_DefendBuff_OnAvatar"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "Activity_ToMoon_Part1_DefendBuff_FlyHealHP": {
-          "thinkInterval": "Heal_Interval",
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "onThinkInterval": [
-            {
-              "$type": "HealHP",
-              "value": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "amountByTargetMaxHPRatio": "Heal_Ratio",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "isLimitedProperties": true
-        },
-        "Activity_ToMoon_Part1_DefendBuff_OnAvatar": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "AttachToStateIDMixin",
-              "stateIDs": [
-                "FlyStart",
-                "Fly"
-              ],
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "Activity_ToMoon_Part1_DefendBuff_FlyHealHP",
-              "value": -1,
-              "isCheckOnAttach": true
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
         "Activity_ToMoon_Part1_Handler": {
-          "onAdded": [
-            {
-              "$type": "ServerLuaCall",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "luaCallType": "CurChallengeGroup",
-              "funcName": "RefreshSacrificeNum",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "modifierMixins": [
             {
               "$type": "ServerUpdateGlobalValueMixin",
               "key": "_Activity_ToMoon_Part1_Level",
               "useLimitRange": true,
-              "actorIceSubHurtDelta": -1,
-              "maxValue": 10
+              "maxValue": 10.0,
+              "minValue": 0.0
             },
             {
               "$type": "AttachModifierToSelfGlobalValueMixin",
-              "valueSteps": [
-                1.5,
-                3.5,
-                10
-              ],
-              "actorIceSubHurtDelta": -1,
+              "globalValueKey": "_Activity_ToMoon_Part1_Level",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [1.5, 3.5, 10.0],
               "modifierNameSteps": [
                 "Activity_ToMoon_Part1_Lv2",
                 "Activity_ToMoon_Part1_Lv4"
-              ],
-              "removeAppliedModifier": true,
-              "globalValueKey": "_Activity_ToMoon_Part1_Level"
+              ]
             }
           ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          "onAdded": [
+            {
+              "$type": "ServerLuaCall",
+              "luaCallType": "CurChallengeGroup",
+              "funcName": "RefreshSacrificeNum",
+              "FDPBPIHKEGH": 0.0,
+              "FJCBPCIDMGJ": 0.0,
+              "NDCPJDDPIMD": 0.0
+            }
+          ]
         },
         "Activity_ToMoon_Part1_Lv2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "onAdded": [
             {
               "$type": "AttachModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Activity_ToMoon_Part1_AttackBuff",
-              "canBeHandledOnRecover": true
+              "modifierName": "Activity_ToMoon_Part1_AttackBuff"
             }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
         "Activity_ToMoon_Part1_Lv4": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "onAdded": [
             {
               "$type": "AttachModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Activity_ToMoon_Part1_AttackBuff",
-              "canBeHandledOnRecover": true
+              "modifierName": "Activity_ToMoon_Part1_AttackBuff"
             },
             {
               "$type": "AttachModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Activity_ToMoon_Part1_DefendBuff",
-              "canBeHandledOnRecover": true
+              "modifierName": "Activity_ToMoon_Part1_DefendBuff"
+            }
+          ]
+        },
+        "Activity_ToMoon_Part1_AttackBuff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_ToMoon_Part1_Count",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "cdDelta": true,
+              "modifierName": "Activity_ToMoon_Part1_AttackBuff_OnAvatar"
             }
           ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "cdDelta": true,
+              "modifierName": "Activity_ToMoon_Part1_AttackBuff_OnAvatar"
+            }
+          ]
+        },
+        "Activity_ToMoon_Part1_AttackBuff_OnAvatar": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByKillingMixin",
+              "detectWindow": 0.4000000059604645,
+              "onKill": [
+                {
+                  "$type": "Predicated",
+                  "target": "Other",
+                  "cdDelta": true,
+                  "targetPredicates": [
+                    {
+                      "$type": "ByEntityTypes",
+                      "entityTypes": ["Monster"]
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ANIMAL_ENTITY_TYPE",
+                      "ratio": 0.0,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "AddGlobalValue",
+                      "target": "Team",
+                      "cdDelta": true,
+                      "ratio": 1.0,
+                      "key": "_ABILITY_Activity_ToMoon_Part1_Count",
+                      "useLimitRange": true,
+                      "maxValue": "Kill_MaxCount",
+                      "minValue": 0.0
+                    },
+                    {
+                      "$type": "SetGlobalValueToOverrideMap",
+                      "target": "Team",
+                      "cdDelta": true,
+                      "globalValueKey": "_ABILITY_Activity_ToMoon_Part1_Count",
+                      "overrideMapKey": "Kill_Count"
+                    },
+                    {
+                      "$type": "RemoveUniqueModifier",
+                      "target": "CurTeamAvatars",
+                      "cdDelta": true,
+                      "modifierName": "UNIQUE_Activity_ToMoon_Part1_AttackBuff"
+                    },
+                    {
+                      "$type": "AttachModifier",
+                      "target": "CurTeamAvatars",
+                      "cdDelta": true,
+                      "modifierName": "UNIQUE_Activity_ToMoon_Part1_AttackBuff"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "UNIQUE_Activity_ToMoon_Part1_AttackBuff": {
           "stacking": "Unique",
-          "duration": "Attack_Duration",
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "reApplyModifierOnStateChange": true,
+          "modifierName": "",
           "isUnique": true,
-          "isLimitedProperties": true,
+          "duration": "Attack_Duration",
+          "bonusCritical": 100.0,
           "properties": {
-            "Actor_AddHurtDelta": [
-              "Kill_PerDamgeUp",
-              "Kill_Count",
-              "MUL"
-            ]
+            "Actor_AddHurtDelta": ["Kill_PerDamgeUp", "Kill_Count", "MUL"]
           },
-          "state": "AttackUp"
+          "state": "AttackUp",
+          "isLimitedProperties": true
+        },
+        "Activity_ToMoon_Part1_DefendBuff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixin",
+              "modifierName": "Activity_ToMoon_Part1_DefendBuff_OnAvatar"
+            }
+          ]
+        },
+        "Activity_ToMoon_Part1_DefendBuff_OnAvatar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["FlyStart", "Fly"],
+              "modifierName": "Activity_ToMoon_Part1_DefendBuff_FlyHealHP",
+              "isCheckOnAttach": true
+            }
+          ]
+        },
+        "Activity_ToMoon_Part1_DefendBuff_FlyHealHP": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heal_Interval",
+          "onThinkInterval": [
+            {
+              "$type": "HealHP",
+              "GGLMMJHNGMO": "Heal_Ratio"
+            }
+          ]
         }
       },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "_Activity_ToMoon_Part1_Level",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Activity_ToMoon_Part1_Handler"
+        }
+      ],
+      "isDynamicAbility": true
     }
   },
   {
     "Default": {
-      "onAdded": [
-        {
-          "$type": "SetGlobalValue",
-          "key": "_Activity_ToMoon_Part2_Level",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "AttachModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "Activity_ToMoon_Part2_Handler",
-          "canBeHandledOnRecover": true
-        }
-      ],
-      "abilitySpecials": {
-        "Heal_Interval": 2,
-        "Heal_Ratio": 0.10000000149011612,
-        "MasteryUp": 300
-      },
-      "isDynamicAbility": true,
+      "$type": "ConfigAbility",
       "abilityName": "ActivityAbility_ToMoon_FoodChallenge_Part2",
+      "abilitySpecials": {
+        "MasteryUp": 300.0,
+        "Heal_Ratio": 0.10000000149011612,
+        "Heal_Interval": 2.0
+      },
       "modifiers": {
         "Activity_ToMoon_Part2_Handler": {
-          "onAdded": [
-            {
-              "$type": "ServerLuaCall",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "luaCallType": "CurChallengeGroup",
-              "funcName": "RefreshSacrificeNum",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "modifierMixins": [
             {
               "$type": "ServerUpdateGlobalValueMixin",
               "key": "_Activity_ToMoon_Part2_Level",
               "useLimitRange": true,
-              "actorIceSubHurtDelta": -1,
-              "maxValue": 10
+              "maxValue": 10.0,
+              "minValue": 0.0
             },
             {
               "$type": "AttachModifierToSelfGlobalValueMixin",
-              "valueSteps": [
-                1.5,
-                3.5,
-                10
-              ],
-              "actorIceSubHurtDelta": -1,
+              "globalValueKey": "_Activity_ToMoon_Part2_Level",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [1.5, 3.5, 10.0],
               "modifierNameSteps": [
                 "Activity_ToMoon_Part2_Lv2_OnTeam",
                 "Activity_ToMoon_Part2_Lv4_OnTeam"
-              ],
-              "removeAppliedModifier": true,
-              "globalValueKey": "_Activity_ToMoon_Part2_Level"
+              ]
             }
           ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "Activity_ToMoon_Part2_HealWarmFire": {
           "onAdded": [
             {
-              "$type": "HealHP",
-              "value": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "amountByTargetMaxHPRatio": "Heal_Ratio",
-              "canBeHandledOnRecover": true
+              "$type": "ServerLuaCall",
+              "luaCallType": "CurChallengeGroup",
+              "funcName": "RefreshSacrificeNum",
+              "FDPBPIHKEGH": 0.0,
+              "FJCBPCIDMGJ": 0.0,
+              "NDCPJDDPIMD": 0.0
             }
-          ],
-          "stacking": "Unique",
-          "duration": [
-            "Heal_Interval",
-            0.20000000298023224,
-            "SUB"
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "Activity_ToMoon_Part2_Lv2_OnAvatar": {
-          "thinkInterval": 0.5,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "onThinkInterval": [
-            {
-              "$type": "Predicated",
-              "targetPredicates": [
-                {
-                  "$type": "ByEntityTypes",
-                  "target": "Target",
-                  "value": -1,
-                  "entityTypes": [
-                    "Gadget"
-                  ]
-                },
-                {
-                  "$type": "ByTargetGlobalValue",
-                  "key": "_ABILITY_SceneObj_ToMoon_WarmTag",
-                  "target": "Target",
-                  "value": 1
-                }
-              ],
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "otherTargets": {
-                "$type": "SelectTargetsByShape",
-                "shapeName": "CircleR6.5H5",
-                "campTargetType": "All",
-                "sizeRatio": 1,
-                "NLNIBNNOOCK": {
-                  "APKLAIJMEIL": {
-                    "HHNLJKNBKPP": 180
-                  },
-                  "value": 10,
-                  "direction": {
-                    "maxAngle": 180
-                  },
-                  "onGroundRaycastUpDist": 2
-                }
-              },
-              "successActions": [
-                {
-                  "$type": "RemoveUniqueModifier",
-                  "target": "CurTeamAvatars",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "UNIQUE_Activity_ToMoon_Part2_MasteryUp",
-                  "canBeHandledOnRecover": true
-                },
-                {
-                  "$type": "AttachModifier",
-                  "target": "CurTeamAvatars",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "UNIQUE_Activity_ToMoon_Part2_MasteryUp",
-                  "canBeHandledOnRecover": true
-                }
-              ],
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "isLimitedProperties": true
+          ]
         },
         "Activity_ToMoon_Part2_Lv2_OnTeam": {
-          "elementDurability": 100,
-          "minus_one": -1,
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "modifierMixins": [
             {
               "$type": "CurLocalAvatarMixinV2",
-              "actorIceSubHurtDelta": -1,
               "modifierName": "Activity_ToMoon_Part2_Lv2_OnAvatar"
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
-        "Activity_ToMoon_Part2_Lv4_OnAvatar": {
+        "Activity_ToMoon_Part2_Lv2_OnAvatar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "thinkInterval": 0.5,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
           "onThinkInterval": [
             {
               "$type": "Predicated",
-              "targetPredicates": [
-                {
-                  "$type": "ByEntityTypes",
-                  "target": "Target",
-                  "value": -1,
-                  "entityTypes": [
-                    "Gadget"
-                  ]
-                },
-                {
-                  "$type": "ByTargetGlobalValue",
-                  "key": "_ABILITY_SceneObj_ToMoon_WarmTag",
-                  "target": "Target",
-                  "value": 1
-                }
-              ],
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "otherTargets": {
                 "$type": "SelectTargetsByShape",
                 "shapeName": "CircleR6.5H5",
                 "campTargetType": "All",
-                "sizeRatio": 1,
-                "NLNIBNNOOCK": {
-                  "APKLAIJMEIL": {
-                    "HHNLJKNBKPP": 180
-                  },
-                  "value": 10,
-                  "direction": {
-                    "maxAngle": 180
-                  },
-                  "onGroundRaycastUpDist": 2
-                }
+                "OBHNBNDMPFN": 1.0
               },
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Gadget"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_SceneObj_ToMoon_WarmTag",
+                  "ratio": 1.0
+                }
+              ],
               "successActions": [
                 {
                   "$type": "RemoveUniqueModifier",
                   "target": "CurTeamAvatars",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "UNIQUE_Activity_ToMoon_Part2_MasteryUp",
-                  "canBeHandledOnRecover": true
+                  "modifierName": "UNIQUE_Activity_ToMoon_Part2_MasteryUp"
                 },
                 {
                   "$type": "AttachModifier",
                   "target": "CurTeamAvatars",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "UNIQUE_Activity_ToMoon_Part2_MasteryUp",
-                  "canBeHandledOnRecover": true
+                  "modifierName": "UNIQUE_Activity_ToMoon_Part2_MasteryUp"
+                }
+              ]
+            }
+          ]
+        },
+        "UNIQUE_Activity_ToMoon_Part2_MasteryUp": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_ElemMasteryDelta": "MasteryUp"
+          },
+          "state": "AttackUp",
+          "isLimitedProperties": true
+        },
+        "Activity_ToMoon_Part2_Lv4_OnTeam": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "Activity_ToMoon_Part2_Lv4_OnAvatar"
+            }
+          ]
+        },
+        "Activity_ToMoon_Part2_Lv4_OnAvatar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR6.5H5",
+                "campTargetType": "All",
+                "OBHNBNDMPFN": 1.0
+              },
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Gadget"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_SceneObj_ToMoon_WarmTag",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "RemoveUniqueModifier",
+                  "target": "CurTeamAvatars",
+                  "modifierName": "UNIQUE_Activity_ToMoon_Part2_MasteryUp"
+                },
+                {
+                  "$type": "AttachModifier",
+                  "target": "CurTeamAvatars",
+                  "modifierName": "UNIQUE_Activity_ToMoon_Part2_MasteryUp"
                 },
                 {
                   "$type": "ApplyModifier",
                   "target": "Other",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "Activity_ToMoon_Part2_HealWarmFire",
-                  "canBeHandledOnRecover": true
+                  "modifierName": "Activity_ToMoon_Part2_HealWarmFire"
                 }
-              ],
-              "canBeHandledOnRecover": true
+              ]
             }
-          ],
-          "isLimitedProperties": true
+          ]
         },
-        "Activity_ToMoon_Part2_Lv4_OnTeam": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "CurLocalAvatarMixinV2",
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "Activity_ToMoon_Part2_Lv4_OnAvatar"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "UNIQUE_Activity_ToMoon_Part2_MasteryUp": {
+        "Activity_ToMoon_Part2_HealWarmFire": {
           "stacking": "Unique",
-          "duration": 1,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "reApplyModifierOnStateChange": true,
-          "isUnique": true,
-          "isLimitedProperties": true,
-          "properties": {
-            "Actor_ElemMasteryDelta": "MasteryUp"
-          },
-          "state": "AttackUp"
+          "modifierName": "",
+          "duration": ["Heal_Interval", 0.20000000298023224, "SUB"],
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "HealHP",
+              "GGLMMJHNGMO": "Heal_Ratio"
+            }
+          ]
         }
       },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "_Activity_ToMoon_Part2_Level",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Activity_ToMoon_Part2_Handler"
+        }
+      ],
+      "isDynamicAbility": true
     }
   },
   {
     "Default": {
-      "onAdded": [
-        {
-          "$type": "SetGlobalValue",
-          "key": "_Activity_ToMoon_Part3_Level",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "AttachModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "Activity_ToMoon_Part3_Handler",
-          "canBeHandledOnRecover": true
-        }
-      ],
+      "$type": "ConfigAbility",
+      "abilityName": "ActivityAbility_ToMoon_FoodChallenge_Part3",
       "abilitySpecials": {
-        "Attack_Duration": 10,
         "Attack_Ratio": 0.30000001192092896,
+        "Attack_Duration": 10.0,
         "Shield_Up": 0.6000000238418579
       },
-      "isDynamicAbility": true,
-      "abilityName": "ActivityAbility_ToMoon_FoodChallenge_Part3",
       "modifiers": {
-        "Activity_ToMoon_Part3_AttackBuff": {
-          "onAdded": [
-            {
-              "$type": "AttachModifier",
-              "target": "CurTeamAvatars",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Activity_ToMoon_Part3_AttackBuff_BurstCheck",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "thinkInterval": 1,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "onThinkInterval": [
-            {
-              "$type": "AttachModifier",
-              "target": "CurTeamAvatars",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Activity_ToMoon_Part3_AttackBuff_BurstCheck",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "isLimitedProperties": true
-        },
-        "Activity_ToMoon_Part3_AttackBuff_BurstCheck": {
-          "stacking": "Unique",
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "OnAvatarUseSkillMixin",
-              "actorIceSubHurtDelta": -1,
-              "onTriggerUltimateSkill": [
-                {
-                  "$type": "AttachModifier",
-                  "target": "CurTeamAvatars",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "Activity_ToMoon_Part3_AttackUp",
-                  "canBeHandledOnRecover": true
-                }
-              ],
-              "clearSkillIdDelay": 0.20000000298023224
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "Activity_ToMoon_Part3_AttackUp": {
-          "stacking": "MultipleRefresh",
-          "duration": "Attack_Duration",
-          "elementDurability": 100,
-          "minus_one": -1,
-          "stackingOption": {
-            "maxModifierNumForMultipleType": 4
-          },
-          "IAKPBCLBNKF": -1,
-          "reApplyModifierOnStateChange": true,
-          "isLimitedProperties": true,
-          "properties": {
-            "Actor_AttackRatio": "Attack_Ratio"
-          },
-          "state": "AttackUp"
-        },
-        "Activity_ToMoon_Part3_DefendBuff": {
-          "onAdded": [
-            {
-              "$type": "AttachModifier",
-              "target": "CurTeamAvatars",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Activity_ToMoon_Part3_ShieldUp",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "thinkInterval": 1,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "onThinkInterval": [
-            {
-              "$type": "AttachModifier",
-              "target": "CurTeamAvatars",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Activity_ToMoon_Part3_ShieldUp",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "isLimitedProperties": true
-        },
         "Activity_ToMoon_Part3_Handler": {
-          "onAdded": [
-            {
-              "$type": "ServerLuaCall",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "luaCallType": "CurChallengeGroup",
-              "funcName": "RefreshSacrificeNum",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "modifierMixins": [
             {
               "$type": "ServerUpdateGlobalValueMixin",
               "key": "_Activity_ToMoon_Part3_Level",
               "useLimitRange": true,
-              "actorIceSubHurtDelta": -1,
-              "maxValue": 10
+              "maxValue": 10.0,
+              "minValue": 0.0
             },
             {
               "$type": "AttachModifierToSelfGlobalValueMixin",
-              "valueSteps": [
-                1.5,
-                3.5,
-                10
-              ],
-              "actorIceSubHurtDelta": -1,
+              "globalValueKey": "_Activity_ToMoon_Part3_Level",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [1.5, 3.5, 10.0],
               "modifierNameSteps": [
                 "Activity_ToMoon_Part3_Lv2",
                 "Activity_ToMoon_Part3_Lv4"
-              ],
-              "removeAppliedModifier": true,
-              "globalValueKey": "_Activity_ToMoon_Part3_Level"
+              ]
             }
           ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          "onAdded": [
+            {
+              "$type": "ServerLuaCall",
+              "luaCallType": "CurChallengeGroup",
+              "funcName": "RefreshSacrificeNum",
+              "FDPBPIHKEGH": 0.0,
+              "FJCBPCIDMGJ": 0.0,
+              "NDCPJDDPIMD": 0.0
+            }
+          ]
         },
         "Activity_ToMoon_Part3_Lv2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "onAdded": [
             {
               "$type": "AttachModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Activity_ToMoon_Part3_AttackBuff",
-              "canBeHandledOnRecover": true
+              "modifierName": "Activity_ToMoon_Part3_AttackBuff"
             }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
         "Activity_ToMoon_Part3_Lv4": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "onAdded": [
             {
               "$type": "AttachModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Activity_ToMoon_Part3_AttackBuff",
-              "canBeHandledOnRecover": true
+              "modifierName": "Activity_ToMoon_Part3_AttackBuff"
             },
             {
               "$type": "AttachModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Activity_ToMoon_Part3_DefendBuff",
-              "canBeHandledOnRecover": true
+              "modifierName": "Activity_ToMoon_Part3_DefendBuff"
+            }
+          ]
+        },
+        "Activity_ToMoon_Part3_AttackBuff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "Activity_ToMoon_Part3_AttackBuff_BurstCheck"
             }
           ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "Activity_ToMoon_Part3_AttackBuff_BurstCheck"
+            }
+          ]
+        },
+        "Activity_ToMoon_Part3_AttackBuff_BurstCheck": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "OnAvatarUseSkillMixin",
+              "onTriggerUltimateSkill": [
+                {
+                  "$type": "AttachModifier",
+                  "target": "CurTeamAvatars",
+                  "modifierName": "Activity_ToMoon_Part3_AttackUp"
+                }
+              ],
+              "CJJAFBGFGFD": 0.20000000298023224
+            }
+          ]
+        },
+        "Activity_ToMoon_Part3_AttackUp": {
+          "stacking": "MultipleRefresh",
+          "stackingOption": {
+            "abilitySpecialName": "",
+            "maxModifierNumForMultipleType": 4.0
+          },
+          "modifierName": "",
+          "duration": "Attack_Duration",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_AttackRatio": "Attack_Ratio"
+          },
+          "state": "AttackUp",
           "isLimitedProperties": true
+        },
+        "Activity_ToMoon_Part3_DefendBuff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "Activity_ToMoon_Part3_ShieldUp"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "Activity_ToMoon_Part3_ShieldUp"
+            }
+          ]
         },
         "Activity_ToMoon_Part3_ShieldUp": {
           "stacking": "Unique",
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "reApplyModifierOnStateChange": true,
-          "isLimitedProperties": true,
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "properties": {
             "Actor_ShieldCostMinusRatio": "Shield_Up"
-          }
+          },
+          "isLimitedProperties": true
         }
       },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "_Activity_ToMoon_Part3_Level",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Activity_ToMoon_Part3_Handler"
+        }
+      ],
+      "isDynamicAbility": true
     }
   }
 ]

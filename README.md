@@ -11,5 +11,4 @@
 * iam-akuzihs for resources
 * kitkat for 6.5 base [resources](https://github.com/kitkat033/LunaGC-Resources)
 * Kuroo \& Rafs-kk for resources
-* kunps organisation for 7.0 resources
 

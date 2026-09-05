@@ -8,15 +8,13 @@ local defs = {
 	--战斗开始加载suit（空气墙等）
 	add_onStart = {2},
 	--开启流程的操作台configID
-	gadget_starter = 66007
-,
+	gadget_starter = 66007,
 	--领奖台configID
 	gadget_reward = 66003,
 	--Boss的ConfigID
 	boss_id = 66005,
                 --暖源的IDlist
-                heat_id = 
-{66009,66010,66011},
+                heat_id = {66009,66010,66011},
 
 	--点位configID
 	point_list = {66012,66013,66014},
@@ -212,7 +210,7 @@ end
 
 -- 触发操作
 function action_EVENT_SELECT_OPTION_66018(context, evt)
-	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=1097.705, y= 285.861, z=-438.728}, radius = 2, rot = {x=0, y=269.461, z=0}}) 
+	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=1097.705, y= 285.8612, z=-438.728}, radius = 2, rot = {x=0, y=269.461, z=0}}) 
 	
 	return 0
 end

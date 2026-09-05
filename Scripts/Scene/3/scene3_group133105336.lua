@@ -12,7 +12,7 @@ local defs = {
 	route_info = {{route_id = 310500109, point_id = 5, gadget = 336014},{route_id = 310500109, point_id = 20, gadget = 336015},{route_id = 310500109, point_id = 32, gadget = 336016}},
 	final_info = {route_id = 310500108, point_id = 6},
 	seelie_base = 336013,
-	reminder_pos = {x=882.000,y=301.000,z=-467.000},
+	reminder_pos = {x=882,y=301,z=-467},
 	challenge = {{id = 58, weight = 25, temp_r = 5 },{id = 59, weight = 25, temp_r = 6 }, {id = 60, weight = 25, temp_r = 7 }, {id = 61, weight = 25, temp_r = 8}},
 	timedOre = 336008
 }

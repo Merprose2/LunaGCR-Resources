@@ -656,8 +656,8 @@ end
 
 -- 触发操作
 function action_EVENT_VARIABLE_CHANGE_367024(context, evt)
-	local pos = {x=-2349.314, y=206.701, z=5561.435}
-	local pos_follow = {x=-2349.314, y = 198.901, z=5522.008}
+	local pos = {x=-2349.314, y=206.7013, z=5561.435}
+	local pos_follow = {x=-2349.314, y=198.9008, z=5522.008}
 	ScriptLib.BeginCameraSceneLook(context, { 
 	look_pos = pos, is_allow_input = false, duration = 6, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	is_set_follow_pos = true,is_abs_follow_pos = true,

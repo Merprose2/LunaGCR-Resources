@@ -131,7 +131,7 @@ end
 function action_EVENT_TIME_AXIS_PASS_133005(context, evt)
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=-4712.000, y=215.000, z=-3673.000}
+		local pos = {x=-4712, y=215, z=-3673}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "Sfx_Quest_underConstruction", play_type= 1, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1
@@ -153,7 +153,7 @@ end
 function action_EVENT_TIME_AXIS_PASS_133006(context, evt)
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=-4712.000, y=215.000, z=-3673.000}
+		local pos = {x=-4712, y=215, z=-3673}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "Sfx_Quest_underConstruction", play_type= 2, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1

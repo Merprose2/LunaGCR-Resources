@@ -14,8 +14,7 @@ local defs = {
         -- [cell_config_id] = {cell = cell_config_id, lines = {line01_config_id, line02_config_id, ...}, nodes = {node01_config_id, ...}}
         [233001] = {cell = 233001, lines = {}, nodes = {}},
         [233002] = {cell = 233002, lines = {}, nodes = {}}
-    }
-,
+    },
 
     -- 指定初始激活的电池id，未指定则默认初始未激活
     activeCells = {233001,233002},

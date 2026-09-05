@@ -18,7 +18,7 @@ block_rects = {
 }
 
 -- Dummy Points
-dummy_points = { }
+dummy_points = { "dummy_points" }
 
 -- Routes
 routes_config = { }

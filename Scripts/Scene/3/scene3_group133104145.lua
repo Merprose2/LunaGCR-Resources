@@ -130,7 +130,7 @@ function action_EVENT_ENTER_REGION_145006(context, evt)
 	end
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=734.000,y=203.000,z=221.000}
+	local pos = {x=734,y=203,z=221}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 1110209, pos, 80) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -195,7 +195,7 @@ function action_EVENT_SELECT_OPTION_145008(context, evt)
 	end
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=732.000,y=203.000,z=224.000}
+	local pos = {x=732,y=203,z=224}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 1110211, pos, 80) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -225,7 +225,7 @@ function action_EVENT_ENTER_REGION_145009(context, evt)
 		end
 	
 	-- 触发镜头注目，注目位置为坐标（731，206，222），持续时间为3.5秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=731.000, y=206.000, z=222.000}
+		local pos = {x=731, y=206, z=222}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 3.5, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -241,7 +241,7 @@ function action_EVENT_ENTER_REGION_145009(context, evt)
 	end
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=742.000,y=204.000,z=245.000}
+	local pos = {x=742,y=204,z=245}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 1110214, pos, 90) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1

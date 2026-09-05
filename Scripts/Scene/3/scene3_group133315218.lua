@@ -102,8 +102,8 @@ function action_EVENT_GADGET_STATE_CHANGE_218004(context, evt)
 	  return -1
 	end
 	
-	-- 触发镜头注目，注目位置为坐标{x = 130.831, y = 99.984, z=2969.619}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=130.831, y=99.984, z=2969.619}
+	-- 触发镜头注目，注目位置为坐标{x=130.8309, y=99.98446, z=2969.619}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=130.8309, y=99.98446, z=2969.619}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 1,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

@@ -212,8 +212,8 @@ function action_EVENT_SELECT_OPTION_318009(context, evt)
 	ScriptLib.InitTimeAxis(context, "opendoor", {1,3,5,7}, false)
 	
 	
-	-- 触发镜头注目，注目位置为坐标{x=-2344.31, y = 85.281, z=4410.529}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-2344.310, y=85.281, z=4410.529}
+	-- 触发镜头注目，注目位置为坐标{x=-2344.31, y=85.28073, z=4410.529}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-2344.31, y=85.28073, z=4410.529}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

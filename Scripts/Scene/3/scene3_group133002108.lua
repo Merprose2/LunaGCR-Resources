@@ -10,8 +10,7 @@ local defs = {
 	--开启流程的操作台configID
 	boss_id = 108001,
                 --暖源的IDlist
-                heat_id = 
-{108011,108012,108013},
+                heat_id = {108011,108012,108013},
 
 	--点位configID
 	point_list = {108014,108015,108030},

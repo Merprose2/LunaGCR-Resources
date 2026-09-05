@@ -217,7 +217,7 @@ function action_EVENT_SELECT_OPTION_113013(context, evt)
 	
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=-3726.000, y=238.000, z=-3056.000}
+		local pos = {x=-3726, y=238, z=-3056}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "Sfx_Quest_underConstruction", play_type= 1, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1
@@ -270,7 +270,7 @@ function action_EVENT_SELECT_OPTION_113014(context, evt)
 	
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=-3719.000, y=236.000, z=-3079.000}
+		local pos = {x=-3719, y=236, z=-3079}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "Sfx_Quest_underConstruction", play_type= 1, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1
@@ -323,7 +323,7 @@ function action_EVENT_SELECT_OPTION_113015(context, evt)
 	
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=-3620.000, y=214.000, z=-3150.000}
+		local pos = {x=-3620, y=214, z=-3150}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "Sfx_Quest_underConstruction", play_type= 1, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1

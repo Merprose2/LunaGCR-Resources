@@ -13,8 +13,7 @@ local defs = {
         -- 每一项均需严格遵循下述格式，没有line或者node则留空，不能不创建！
         -- [cell_config_id] = {cell = cell_config_id, lines = {line01_config_id, line02_config_id, ...}, nodes = {node01_config_id, ...}}
         [0] = {cell = 0, lines = {}, nodes = {}}
-    }
-,
+    },
 
     -- 指定初始激活的电池id，未指定则默认初始未激活
     activeCells = {},

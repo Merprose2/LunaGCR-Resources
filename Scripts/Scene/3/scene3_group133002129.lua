@@ -93,7 +93,7 @@ end
 function action_EVENT_ENTER_REGION_129001(context, evt)
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=1272.000, y=296.000, z=-1041.000}
+		local pos = {x=1272, y=296, z=-1041}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "sfx_snow_run_02", play_type= 1, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1
@@ -118,7 +118,7 @@ end
 function action_EVENT_ENTER_REGION_129002(context, evt)
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=1233.000, y=306.000, z=-1070.000}
+		local pos = {x=1233, y=306, z=-1070}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "sfx_snow_run_02", play_type= 1, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1
@@ -143,7 +143,7 @@ end
 function action_EVENT_ENTER_REGION_129003(context, evt)
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=1201.000, y=318.000, z=-1056.000}
+		local pos = {x=1201, y=318, z=-1056}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "sfx_snow_run_02", play_type= 1, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1

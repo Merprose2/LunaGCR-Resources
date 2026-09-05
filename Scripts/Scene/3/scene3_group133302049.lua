@@ -446,8 +446,8 @@ function action_EVENT_ENTER_REGION_49025(context, evt)
 		return -1
 	end
 	
-	-- 触发镜头注目，注目位置为坐标{x = -341.009, y=260.5, z=2223.972}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-341.009, y=260.500, z=2223.972}
+	-- 触发镜头注目，注目位置为坐标{x=-341.0091, y=260.5, z=2223.972}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-341.0091, y=260.5, z=2223.972}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 1,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -653,7 +653,7 @@ end
 function action_EVENT_ENTER_REGION_49047(context, evt)
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=355.000, y=262.000, z=2229.000}
+		local pos = {x=355, y=262, z=2229}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "Audio_Lua_kanun_melody_6", play_type= 1, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1

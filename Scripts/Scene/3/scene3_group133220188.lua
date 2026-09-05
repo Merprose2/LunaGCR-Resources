@@ -171,7 +171,7 @@ suites = {
 -- 触发操作
 function action_EVENT_TIMER_EVENT_188001(context, evt)
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-1852.000,y=205.000,z=-4222.000}
+	local pos = {x=-1852,y=205,z=-4222}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, -1074246794, pos, 100) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -208,7 +208,7 @@ end
 -- 触发操作
 function action_EVENT_TIMER_EVENT_188015(context, evt)
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-1852.000,y=205.000,z=-4222.000}
+	local pos = {x=-1852,y=205,z=-4222}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, -1074246791, pos, 100) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -236,7 +236,7 @@ function action_EVENT_ANY_MONSTER_DIE_188022(context, evt)
 	    ScriptLib.AddExtraGroupSuite(context, 133220188, 4)
 	
 	-- 触发镜头注目，注目位置为坐标（-1853.58，204.06，-4237.66），持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-1853.580, y=204.060, z=-4237.660}
+		local pos = {x=-1853.58, y=204.06, z=-4237.66}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

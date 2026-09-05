@@ -104,14 +104,14 @@ end
 function action_EVENT_ANY_MONSTER_DIE_262017(context, evt)
 	-- play_type含义：1·代表开始播放； 2·代表停止播放
 	-- 在指定位置播放或停止音效资源
-		local pos = {x=626.000, y=221.000, z=-480.000}
+		local pos = {x=626, y=221, z=-480}
 	    if 0 ~= ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "LevelHornSound001", play_type= 1, is_broadcast = false }) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_soundplay")
 					return -1
 		end 
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=626.000,y=221.000,z=-480.000}
+	local pos = {x=626,y=221,z=-480}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 400004, pos, 50) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1

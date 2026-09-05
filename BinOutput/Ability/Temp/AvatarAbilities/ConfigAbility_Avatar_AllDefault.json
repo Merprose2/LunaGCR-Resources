@@ -1,114 +1,83 @@
 [
   {
     "Default": {
-      "isDynamicAbility": true,
+      "$type": "ConfigAbility",
       "abilityName": "Avatar_DefaultAbility_VisionReplaceDieInvincible",
+      "abilityMixins": [
+        {
+          "$type": "DoReviveMixin",
+          "onReviveActions": [
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "doOffStage": true,
+              "modifierName": "UNIQUE_VisionReplaceDieInvincible_Invincible"
+            }
+          ]
+        }
+      ],
       "modifiers": {
         "UNIQUE_VisionReplaceDieInvincible_Invincible": {
-          "duration": 2.5,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
+          "modifierName": "",
           "isUnique": true,
-          "isLimitedProperties": true,
+          "duration": 2.5,
+          "elementDurability": 100.0,
           "state": "Invincible"
         }
-      },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
       },
       "onAvatarIn": [
         {
           "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "UNIQUE_VisionReplaceDieInvincible_Invincible",
           "predicates": [
             {
               "$type": "ByAny",
-              "target": "Target",
               "predicates": [
                 {
-                  "$type": "ByEntityAppearVisionType",
-                  "visionType": "VisionReborn",
-                  "target": "Target"
+                  "$type": "BMMFNKJMPDP",
+                  "visionType": "VisionReborn"
                 },
                 {
-                  "$type": "ByEntityAppearVisionType",
-                  "visionType": "VisionReplaceDie",
-                  "target": "Target"
+                  "$type": "BMMFNKJMPDP",
+                  "visionType": "VisionReplaceDie"
                 }
               ]
             }
           ],
-          "canBeHandledOnRecover": true
+          "modifierName": "UNIQUE_VisionReplaceDieInvincible_Invincible"
         }
       ],
-      "abilityMixins": [
-        {
-          "$type": "DoReviveMixin",
-          "actorIceSubHurtDelta": -1,
-          "GEKJHFLNCLA": true,
-          "MMLFABGAGIK": [
-            {
-              "$type": "ApplyModifier",
-              "target": "CurLocalAvatar",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "UNIQUE_VisionReplaceDieInvincible_Invincible",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "ONKJKPPOBKB": true
-        }
-      ]
+      "isDynamicAbility": true
     }
   },
   {
     "Default": {
-      "isDynamicAbility": true,
+      "$type": "ConfigAbility",
       "abilityName": "Avatar_DefaultAbility_AvartarInShaderChange",
-      "EPGDGGEIHCC": true,
       "modifiers": {
         "ShaderLerp": {
+          "modifierName": "",
           "duration": 1.2999999523162842,
-          "elementDurability": 100,
-          "minus_one": -1,
+          "elementDurability": 100.0,
           "modifierMixins": [
             {
-              "$type": "ShaderLerpMixin",
-              "actorIceSubHurtDelta": -1,
+              "$type": "IBAMBHPLNNA",
               "type": "CharacterDissolve"
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
         "UNIQUE_Special_ShaderLerp": {
+          "modifierName": "",
+          "isUnique": true,
           "duration": 1.2999999523162842,
-          "elementDurability": 100,
-          "minus_one": -1,
+          "elementDurability": 100.0,
           "modifierMixins": [
             {
-              "$type": "ShaderLerpMixin",
-              "forceStopWhenRemoved": true,
-              "actorIceSubHurtDelta": -1,
-              "type": "CharacterDissolve"
+              "$type": "IBAMBHPLNNA",
+              "type": "CharacterDissolve",
+              "forceStopWhenRemoved": true
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isUnique": true,
-          "isLimitedProperties": true
+          ]
         }
-      },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
       },
       "onAvatarIn": [
         {
@@ -117,142 +86,24 @@
             {
               "$type": "ByTargetGlobalValue",
               "key": "_AvartarInShaderChange_Special",
-              "target": "Target",
-              "value": 1
-            }
-          ],
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "failActions": [
-            {
-              "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "ShaderLerp",
-              "canBeHandledOnRecover": true
+              "value": 1.0
             }
           ],
           "successActions": [
             {
               "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "UNIQUE_Special_ShaderLerp",
-              "canBeHandledOnRecover": true
+              "modifierName": "UNIQUE_Special_ShaderLerp"
             }
           ],
-          "canBeHandledOnRecover": true
-        }
-      ]
-    }
-  },
-  {
-    "Default": {
-      "isDynamicAbility": true,
-      "abilityName": "Avatar_DefaultAbility_ManualClearSurfaceTypeInSpecificState",
-      "modifiers": {
-        "Avatar_ManualClearSurfaceType": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
+          "failActions": [
             {
-              "$type": "OverrideSurfaceTypeMixin",
-              "actorIceSubHurtDelta": -1
+              "$type": "ApplyModifier",
+              "modifierName": "ShaderLerp"
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         }
-      },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      },
-      "abilityMixins": [
-        {
-          "$type": "AttachToAnimatorStateIDMixin",
-          "actorIceSubHurtDelta": -1,
-          "stateGroupIDs": [
-            "State_Group_Avatar_ManualClearSurfaceType"
-          ],
-          "modifierName": "Avatar_ManualClearSurfaceType",
-          "value": -1
-        }
-      ]
-    }
-  },
-  {
-    "Default": {
-      "isDynamicAbility": true,
-      "abilityName": "Avatar_DefaultAbility_HideWeaponInDiveStream",
-      "modifiers": {
-        "Avatar_HideWeaponInDiveStream": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "AttachActionToModifierMixin",
-              "onAdded": [
-                {
-                  "$type": "TriggerHideWeapon",
-                  "modifyAnotherValue": true,
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "enable": true,
-                  "PIHLOKJAPKO": [
-                    "equip00",
-                    "equip01",
-                    "equip02",
-                    "equip03",
-                    "sheathPoint"
-                  ],
-                  "canBeHandledOnRecover": true
-                }
-              ],
-              "actorIceSubHurtDelta": -1,
-              "onRemoved": [
-                {
-                  "$type": "TriggerHideWeapon",
-                  "modifyAnotherValue": true,
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": true,
-                  "visible": true,
-                  "enable": true,
-                  "PIHLOKJAPKO": [
-                    "equip00",
-                    "equip01",
-                    "equip02",
-                    "equip03",
-                    "sheathPoint"
-                  ],
-                  "canBeHandledOnRecover": true
-                }
-              ]
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        }
-      },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      },
-      "abilityMixins": [
-        {
-          "$type": "AttachToStateIDMixin",
-          "stateIDs": [
-            "DiveStream"
-          ],
-          "actorIceSubHurtDelta": -1,
-          "modifierName": "Avatar_HideWeaponInDiveStream",
-          "value": -1
-        }
-      ]
+      ],
+      "isDynamicAbility": true
     }
   }
 ]

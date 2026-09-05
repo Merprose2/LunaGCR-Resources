@@ -1,1879 +1,1139 @@
 [
   {
     "Default": {
-      "onAdded": [
-        {
-          "$type": "RemoveUniqueModifier",
-          "target": "Team",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": true,
-          "modifierName": "UNIQUE_ActivityAbility_Endora_Handler",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "AttachModifier",
-          "target": "Team",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": true,
-          "modifierName": "UNIQUE_ActivityAbility_Endora_Handler",
-          "canBeHandledOnRecover": true
-        }
-      ],
-      "isDynamicAbility": true,
+      "$type": "ConfigAbility",
       "abilityName": "ActivityAbility_Endora_Handler",
-      "modifiers": {
-        "AimHideEndora": {
-          "onAdded": [
-            {
-              "$type": "SendEffectTrigger",
-              "target": "Team",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "parameter": "Die",
-              "effectPattern": "Eff_Activity_Endora",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "onRemoved": [
-            {
-              "$type": "SendEffectTrigger",
-              "target": "Team",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "parameter": "Show",
-              "effectPattern": "Eff_Activity_Endora",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "UNIQUE_ActivityAbility_Endora_Effect": {
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": true,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_Activity_Endora",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "stacking": "Unique",
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isUnique": true,
-          "isLimitedProperties": true
-        },
-        "UNIQUE_ActivityAbility_Endora_Handler": {
-          "onAdded": [
-            {
-              "$type": "RemoveUniqueModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "UNIQUE_ActivityAbility_Endora_RemoveEffect",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "RemoveUniqueModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "UNIQUE_ActivityAbility_Endora_Effect",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "UNIQUE_ActivityAbility_Endora_Effect",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "stacking": "Unique",
-          "elementDurability": 100,
-          "minus_one": -1,
-          "onRemoved": [
-            {
-              "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "UNIQUE_ActivityAbility_Endora_RemoveEffect",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isUnique": true,
-          "isLimitedProperties": true
-        },
-        "UNIQUE_ActivityAbility_Endora_RemoveEffect": {
-          "onAdded": [
-            {
-              "$type": "SendEffectTrigger",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "parameter": "Die",
-              "effectPattern": "Eff_Activity_Endora",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "duration": 2,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "onRemoved": [
-            {
-              "$type": "RemoveUniqueModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "UNIQUE_ActivityAbility_Endora_Effect",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isUnique": true,
-          "isLimitedProperties": true
-        }
-      },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      },
-      "onAvatarIn": [
-        {
-          "$type": "AttachModifier",
-          "target": "Team",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": true,
-          "modifierName": "UNIQUE_ActivityAbility_Endora_Handler",
-          "canBeHandledOnRecover": true
-        }
-      ],
       "abilityMixins": [
         {
           "$type": "AttachToStateIDMixin",
-          "stateIDs": [
-            "ShootBS",
-            "Shoot",
-            "FastAim",
-            "FastAimShoot"
-          ],
-          "actorIceSubHurtDelta": -1,
-          "modifierName": "AimHideEndora",
-          "value": -1
+          "stateIDs": ["ShootBS", "Shoot", "FastAim", "FastAimShoot"],
+          "modifierName": "AimHideEndora"
         },
         {
           "$type": "StageReadyMixin",
-          "actorIceSubHurtDelta": -1,
           "onStageReady": [
             {
               "$type": "RemoveUniqueModifier",
               "target": "Team",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "UNIQUE_ActivityAbility_Endora_Handler",
-              "canBeHandledOnRecover": true
+              "cdDelta": true,
+              "modifierName": "UNIQUE_ActivityAbility_Endora_Handler"
             },
             {
               "$type": "AttachModifier",
               "target": "Team",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "UNIQUE_ActivityAbility_Endora_Handler",
-              "canBeHandledOnRecover": true
+              "cdDelta": true,
+              "modifierName": "UNIQUE_ActivityAbility_Endora_Handler"
             }
           ]
         }
-      ]
+      ],
+      "modifiers": {
+        "UNIQUE_ActivityAbility_Endora_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_ActivityAbility_Endora_RemoveEffect"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_ActivityAbility_Endora_Effect"
+            },
+            {
+              "$type": "ApplyModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_ActivityAbility_Endora_Effect"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_ActivityAbility_Endora_RemoveEffect"
+            }
+          ]
+        },
+        "UNIQUE_ActivityAbility_Endora_Effect": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "cdDelta": true,
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "UNIQUE_ActivityAbility_Endora_RemoveEffect": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 2.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Die",
+              "IIKEHINGEME": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_ActivityAbility_Endora_Effect"
+            }
+          ]
+        },
+        "AimHideEndora": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "target": "Team",
+              "parameter": "Die",
+              "IIKEHINGEME": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "target": "Team",
+              "parameter": "Show",
+              "IIKEHINGEME": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "target": "Team",
+          "cdDelta": true,
+          "modifierName": "UNIQUE_ActivityAbility_Endora_Handler"
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "cdDelta": true,
+          "modifierName": "UNIQUE_ActivityAbility_Endora_Handler"
+        }
+      ],
+      "onAvatarIn": [
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "cdDelta": true,
+          "modifierName": "UNIQUE_ActivityAbility_Endora_Handler"
+        }
+      ],
+      "isDynamicAbility": true
     }
   },
   {
     "Default": {
-      "isDynamicAbility": true,
+      "$type": "ConfigAbility",
       "abilityName": "ActivityAbility_Endora_SwtichSkill",
       "modifiers": {
-        "SwitchSkill": {
-          "onAdded": [
-            {
-              "$type": "ChangePlayMode",
-              "muteRemoteAction": true,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "toPlayMode": "EndoraState",
-              "authorityOnly": true,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "SwitchSkillIDMixin",
-              "actorIceSubHurtDelta": -1,
-              "skillID": 20020,
-              "skillIndex": 1,
-              "priority": "Playmode"
-            }
-          ],
-          "onRemoved": [
-            {
-              "$type": "ChangePlayMode",
-              "muteRemoteAction": true,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "FPFLACICBBN": "EndoraState",
-              "authorityOnly": true,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
         "UNIQUE_ActivityAbility_Endora_AddSkillInfo": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
           "onAdded": [
             {
-              "$type": "RemoveAvatarSkillInfo",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "skillID": 20020,
-              "canBeHandledOnRecover": true
+              "$type": "AddAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20020
             },
             {
               "$type": "AvatarSkillStart",
-              "cdRatio": 1,
-              "costStaminaRatio": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "skillID": 20020,
-              "canBeHandledOnRecover": true
+              "amount": 0.05000000074505806,
+              "costStaminaRatio": 1.0
             },
             {
               "$type": "SendEffectTrigger",
               "target": "Team",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "parameter": "SwitchSkill",
-              "value": 1,
+              "IIKEHINGEME": "",
               "type": "Bool",
-              "effectPattern": "Eff_Activity_Endora",
-              "canBeHandledOnRecover": true
+              "value": 1,
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora"
             },
             {
               "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "SwitchSkill",
-              "canBeHandledOnRecover": true
+              "cdDelta": true,
+              "modifierName": "SwitchSkill"
             }
           ],
-          "elementDurability": 100,
-          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "SendEffectTrigger",
               "target": "Team",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "parameter": "SwitchSkill",
+              "IIKEHINGEME": "",
               "type": "Bool",
-              "effectPattern": "Eff_Activity_Endora",
-              "canBeHandledOnRecover": true
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora"
             },
             {
               "$type": "RemoveModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "SwitchSkill",
-              "canBeHandledOnRecover": true
+              "cdDelta": true,
+              "modifierName": "SwitchSkill"
             },
             {
-              "$type": "AddAvatarSkillInfo",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "skillID": 20020,
-              "canBeHandledOnRecover": true
+              "$type": "RemoveAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20020
+            }
+          ]
+        },
+        "SwitchSkill": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "priority": "Playmode",
+              "skillIndex": 1,
+              "skillID": 20020
             }
           ],
-          "IAKPBCLBNKF": -1,
-          "isUnique": true,
-          "isLimitedProperties": true
+          "onAdded": [
+            {
+              "$type": "ChangePlayMode",
+              "cdDelta": true,
+              "muteRemoteAction": true,
+              "toPlayMode": "EndoraState"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ChangePlayMode",
+              "cdDelta": true,
+              "muteRemoteAction": true,
+              "DLEICBJFEKN": "EndoraState"
+            }
+          ]
         }
       },
       "onAbilityStart": [
         {
           "$type": "AttachModifier",
           "target": "CurTeamAvatars",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": true,
-          "modifierName": "UNIQUE_ActivityAbility_Endora_AddSkillInfo",
-          "canBeHandledOnRecover": true
+          "cdDelta": true,
+          "modifierName": "UNIQUE_ActivityAbility_Endora_AddSkillInfo"
         }
       ],
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "isDynamicAbility": true
     }
   },
   {
     "Default": {
-      "isDynamicAbility": true,
+      "$type": "ConfigAbility",
       "abilityName": "ActivityAbility_Endora_RemoveSkill",
       "onAbilityStart": [
         {
           "$type": "RemoveUniqueModifier",
           "target": "CurTeamAvatars",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": true,
-          "modifierName": "UNIQUE_ActivityAbility_Endora_AddSkillInfo",
-          "canBeHandledOnRecover": true
+          "cdDelta": true,
+          "modifierName": "UNIQUE_ActivityAbility_Endora_AddSkillInfo"
         }
       ],
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "isDynamicAbility": true
     }
   },
   {
     "Default": {
-      "isDynamicAbility": true,
+      "$type": "ConfigAbility",
       "abilityName": "ActivityAbility_Endora_Bubble_AimPress",
-      "modifiers": {
-        "Charge": {
-          "onAdded": [
-            {
-              "$type": "SetGlobalValue",
-              "key": "ActivityAbility_Endora_Throw_Range",
-              "useLimitRange": true,
-              "value": 4,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "minValue": 3.5,
-              "canBeHandledOnRecover": true,
-              "maxValue": 20
-            },
-            {
-              "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_Activity_Endora_Line",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "thinkInterval": 0.10000000149011612,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "onThinkInterval": [
-            {
-              "$type": "AddGlobalValue",
-              "key": "ActivityAbility_Endora_Throw_Range",
-              "useLimitRange": true,
-              "value": 0.4000000059604645,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "minValue": 3.5,
-              "canBeHandledOnRecover": true,
-              "maxValue": 20
-            }
-          ],
-          "isLimitedProperties": true
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Channel_BS", "Channel_Loop"],
+          "modifierName": "CheckChannelLoop"
         },
-        "CheckChannelLoop": {
-          "onAdded": [
-            {
-              "$type": "AttachModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Focus",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "AttachModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Charge",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "thinkInterval": 0.10000000149011612,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "onRemoved": [
+        {
+          "$type": "ButtonHoldChargeMixin",
+          "skillID": 20020,
+          "secondChargeTime": 0.11999999731779099,
+          "OnReleaseCharged": [
             {
               "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "RemovedFocusState",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "onThinkInterval": [
-            {
-              "$type": "SetAnimatorTrigger",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "triggerID": "EndChannelTrigger",
+              "cdDelta": true,
               "predicates": [
                 {
                   "$type": "ByTargetGlobalValue",
                   "key": "_ActivityAbility_Endora_IsFocus",
-                  "target": "Target",
+                  "ratio": 0.0,
                   "compareType": "NoneOrEqual"
                 }
               ],
-              "canBeHandledOnRecover": true
+              "modifierName": "Shoot_Short"
+            },
+            {
+              "$type": "ApplyModifier",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ActivityAbility_Endora_IsFocus",
+                  "ratio": 1.0
+                }
+              ],
+              "modifierName": "Shoot"
             }
           ],
-          "isLimitedProperties": true
-        },
-        "Focus": {
+          "OnBeginSecondCharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "StartChannelTrigger"
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "LockMotionFlagExitChannel",
+              "ratio": true
+            }
+          ],
+          "OnReleaseSecondCharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "cdDelta": true,
+              "triggerID": "EndChannelTrigger"
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "cdDelta": true,
+              "boolID": "LockMotionFlagExitChannel"
+            },
+            {
+              "$type": "ApplyModifier",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ActivityAbility_Endora_IsFocus",
+                  "ratio": 1.0
+                }
+              ],
+              "modifierName": "Shoot"
+            }
+          ],
+          "chargeStateIDs": ["Channel_Loop"]
+        }
+      ],
+      "modifiers": {
+        "Shoot_Short": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
           "onAdded": [
             {
-              "$type": "SetGlobalValue",
-              "key": "_ActivityAbility_Endora_IsFocus",
-              "value": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
+              "$type": "AvatarSkillStart",
+              "skillID": 20020,
+              "amount": 1.0,
+              "costStaminaRatio": 1.0
             },
             {
               "$type": "SendEffectTrigger",
               "target": "Team",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
+              "parameter": "Attack_AS",
+              "IIKEHINGEME": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Skill_AS",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetGlobalPos",
+              "target": "Team",
+              "key": "_ActivityAbility_Endora_Shoot_POS",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "setTarget": false
+            },
+            {
+              "$type": "KillGadget",
+              "target": "CurTeamAvatars",
+              "cdDelta": true,
+              "gadgetInfo": {
+                "configID": 44000103
+              }
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 44000102,
+              "born": {
+                "$type": "LBFHLMJGELJ",
+                "offset": {
+                  "x": 0.6499999761581421,
+                  "y": 0.4699999988079071,
+                  "z": 0.0
+                },
+                "LDPAKEFHAOK": "_ActivityAbility_Endora_Shoot_POS",
+                "IDGILJNLJGN": ""
+              }
+            }
+          ]
+        },
+        "Shoot": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 20020,
+              "amount": 1.0,
+              "costStaminaRatio": 1.0
+            },
+            {
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "Focus"
+            },
+            {
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "Charge"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "target": "Team",
+              "parameter": "Attack_AS",
+              "IIKEHINGEME": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Skill_AS",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetGlobalPos",
+              "target": "Team",
+              "key": "_ActivityAbility_Endora_Shoot_POS",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "setTarget": false
+            },
+            {
+              "$type": "KillGadget",
+              "target": "CurTeamAvatars",
+              "cdDelta": true,
+              "gadgetInfo": {
+                "configID": 44000103
+              }
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 44000101,
+              "born": {
+                "$type": "LBFHLMJGELJ",
+                "offset": {
+                  "x": 0.6499999761581421,
+                  "y": 0.4699999988079071,
+                  "z": 0.0
+                },
+                "LDPAKEFHAOK": "_ActivityAbility_Endora_Shoot_POS",
+                "IDGILJNLJGN": ""
+              }
+            }
+          ]
+        },
+        "Focus": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "_ActivityAbility_Endora_IsFocus",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "target": "Team",
               "parameter": "Attack_BS",
-              "effectPattern": "Eff_Activity_Endora",
-              "canBeHandledOnRecover": true
+              "IIKEHINGEME": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora"
             },
             {
               "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_Activity_Endora_Skill_BS",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Skill_BS",
+              "effectTempleteID": -1.0
             },
             {
               "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_Activity_Endora_Skill_Loop",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Skill_Loop",
+              "effectTempleteID": -1.0
             },
             {
               "$type": "AvatarEnterFocus",
-              "vcamFov": 45,
-              "cameraFollowUpper": {
-                "x": 0.5,
-                "y": -0.20000000298023224
-              },
-              "dragButtonName": "Skill2",
-              "cameraFollowMinDegree": -60,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "ELIECGGIHFH": {
-                "actorIceSubHurtDelta": -1,
-                "doOffStage": false,
-                "PHKMLJFMNIH": -1,
-                "canBeHandledOnRecover": true
-              },
-              "FDDPEAMAADJ": -60,
-              "FKFAKILENIA": -1,
-              "GEIIPGCGHPJ": {
-                "BPFLPMNCDJC": -1,
-                "IHKBILOKGBD": -1,
-                "KEGFEEAJFFN": -1
-              },
-              "GFNHGHHFIPG": -1,
-              "HOEGDDBJEJO": -1,
               "cameraFollowLower": {
                 "x": 0.800000011920929,
                 "y": 0.20000000298023224,
                 "z": -1.5
               },
-              "KMBEGJMJEDP": {
-                "GDBEBFCAKNL": 1,
-                "GGDNOMPMKKE": 1,
-                "JOOKDFOEKIA": -1,
-                "OAMODBPBKLD": -1
+              "cameraFollowUpper": {
+                "x": 0.5,
+                "y": -0.20000000298023224
               },
-              "NOPLPLOOMMB": true,
-              "OPMJOMPBHPM": true,
-              "cameraFollowMaxDegree": 60,
-              "canBeHandledOnRecover": true
+              "dragButtonName": "Skill2",
+              "canMove": false,
+              "showCrosshair": false,
+              "disableAnim": true
             }
           ],
-          "elementDurability": 100,
-          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "AvatarExitFocus",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "keepRotation": true,
-              "PHKMLJFMNIH": -1,
-              "canBeHandledOnRecover": true
+              "cdDelta": true,
+              "keepRotation": true
             },
             {
               "$type": "ClearGlobalValue",
-              "key": "_ActivityAbility_Endora_IsFocus",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "canBeHandledOnRecover": true
+              "cdDelta": true,
+              "key": "_ActivityAbility_Endora_IsFocus"
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
-        "RemovedFocusState": {
+        "Charge": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.10000000149011612,
           "onAdded": [
             {
-              "$type": "RemoveModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "Focus",
-              "canBeHandledOnRecover": true
+              "$type": "SetGlobalValue",
+              "ratio": 4.0,
+              "key": "ActivityAbility_Endora_Throw_Range",
+              "useLimitRange": true,
+              "maxValue": 20.0,
+              "minValue": 3.5
             },
             {
-              "$type": "RemoveModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "Charge",
-              "canBeHandledOnRecover": true
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Line",
+              "effectTempleteID": -1.0
             }
           ],
-          "stacking": "Multiple",
-          "duration": 0.10000000149011612,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValue",
+              "ratio": 0.4000000059604645,
+              "key": "ActivityAbility_Endora_Throw_Range",
+              "useLimitRange": true,
+              "maxValue": 20.0,
+              "minValue": 3.5
+            }
+          ]
         },
-        "Shoot": {
+        "CheckChannelLoop": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.10000000149011612,
           "onAdded": [
             {
-              "$type": "AvatarSkillStart",
-              "cdRatio": 1,
-              "costStaminaRatio": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "skillID": 20020,
-              "canBeHandledOnRecover": true
+              "$type": "AttachModifier",
+              "modifierName": "Focus"
             },
             {
-              "$type": "RemoveModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "Focus",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "RemoveModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "Charge",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "SendEffectTrigger",
-              "target": "Team",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "parameter": "Attack_AS",
-              "effectPattern": "Eff_Activity_Endora",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "FireEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_Activity_Endora_Skill_AS",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "SetGlobalPos",
-              "key": "_ActivityAbility_Endora_Shoot_POS",
-              "target": "Team",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "born": {
-                "$type": "ConfigBornByTarget",
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "KillGadget",
-              "target": "CurTeamAvatars",
-              "gadgetInfo": {
-                "configID": 44000103
-              },
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "TriggerBullet",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "born": {
-                "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.4699999988079071,
-                  "y": 0.6499999761581421
-                },
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2,
-                "positionKey": "_ActivityAbility_Endora_Shoot_POS"
-              },
-              "trackTarget": "SelfAttackTarget",
-              "bulletID": 44000101,
-              "value": true,
-              "canBeHandledOnRecover": true,
-              "lifeByOwnerV2": true
+              "$type": "AttachModifier",
+              "modifierName": "Charge"
             }
           ],
-          "duration": 0.10000000149011612,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "Shoot_Short": {
-          "onAdded": [
-            {
-              "$type": "AvatarSkillStart",
-              "cdRatio": 1,
-              "costStaminaRatio": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "skillID": 20020,
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "SendEffectTrigger",
-              "target": "Team",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "parameter": "Attack_AS",
-              "effectPattern": "Eff_Activity_Endora",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "FireEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_Activity_Endora_Skill_AS",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "SetGlobalPos",
-              "key": "_ActivityAbility_Endora_Shoot_POS",
-              "target": "Team",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "born": {
-                "$type": "ConfigBornByTarget",
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "KillGadget",
-              "target": "CurTeamAvatars",
-              "gadgetInfo": {
-                "configID": 44000103
-              },
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "TriggerBullet",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "born": {
-                "$type": "ConfigBornByGlobalValue",
-                "offset": {
-                  "x": 0.4699999988079071,
-                  "y": 0.6499999761581421
-                },
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2,
-                "positionKey": "_ActivityAbility_Endora_Shoot_POS"
-              },
-              "trackTarget": "SelfAttackTarget",
-              "bulletID": 44000102,
-              "value": true,
-              "canBeHandledOnRecover": true,
-              "lifeByOwnerV2": true
-            }
-          ],
-          "duration": 0.10000000149011612,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        }
-      },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      },
-      "abilityMixins": [
-        {
-          "$type": "AttachToStateIDMixin",
-          "stateIDs": [
-            "Channel_BS",
-            "Channel_Loop"
-          ],
-          "actorIceSubHurtDelta": -1,
-          "modifierName": "CheckChannelLoop",
-          "value": -1
-        },
-        {
-          "$type": "ButtonHoldChargeMixin",
-          "actorIceSubHurtDelta": -1,
-          "OnBeginSecondCharged": [
-            {
-              "$type": "SetAnimatorTrigger",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "triggerID": "StartChannelTrigger",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "SetAnimatorBool",
-              "value": true,
-              "boolID": "LockMotionFlagExitChannel",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "skillID": 20020,
-          "OnReleaseCharged": [
+          "onRemoved": [
             {
               "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "Shoot_Short",
+              "cdDelta": true,
+              "modifierName": "RemovedFocusState"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SetAnimatorTrigger",
               "predicates": [
                 {
                   "$type": "ByTargetGlobalValue",
                   "key": "_ActivityAbility_Endora_IsFocus",
-                  "target": "Target",
+                  "ratio": 0.0,
                   "compareType": "NoneOrEqual"
                 }
               ],
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "Shoot",
-              "predicates": [
-                {
-                  "$type": "ByTargetGlobalValue",
-                  "key": "_ActivityAbility_Endora_IsFocus",
-                  "target": "Target",
-                  "value": 1
-                }
-              ],
-              "canBeHandledOnRecover": true
+              "triggerID": "EndChannelTrigger"
             }
-          ],
-          "JLIGNEBOAHM": [
+          ]
+        },
+        "RemovedFocusState": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
             {
-              "$type": "SetAnimatorTrigger",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "triggerID": "EndChannelTrigger",
-              "canBeHandledOnRecover": true
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "Focus"
             },
             {
-              "$type": "SetAnimatorBool",
-              "boolID": "LockMotionFlagExitChannel",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "modifierName": "Shoot",
-              "predicates": [
-                {
-                  "$type": "ByTargetGlobalValue",
-                  "key": "_ActivityAbility_Endora_IsFocus",
-                  "target": "Target",
-                  "value": 1
-                }
-              ],
-              "canBeHandledOnRecover": true
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "Charge"
             }
-          ],
-          "secondChargeTime": 0.11999999731779099,
-          "chargeStateIDs": [
-            "Channel_Loop"
           ]
         }
-      ],
+      },
       "onAvatarOut": [
         {
           "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": true,
-          "modifierName": "RemovedFocusState",
-          "canBeHandledOnRecover": true
+          "cdDelta": true,
+          "modifierName": "RemovedFocusState"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_EndoraGadgetSkill_BubbleBullet",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Skill_BulletTrail",
+          "effectTempleteID": -1.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["Monster"]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": -0.5,
+                  "z": 0.0
+                }
+              },
+              "gadgetID": 44000103,
+              "campID": 1001,
+              "campTargetType": "Enemy"
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": -0.4000000059604645
+                }
+              },
+              "gadgetID": 44000103,
+              "campID": 1001,
+              "campTargetType": "All"
+            }
+          ]
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "target": "Caster",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf"
+              },
+              "radius": 5.0
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.0,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 100.0,
+                "damageExtra": 0.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV0",
+                "hitHaltTimeScale": 0.009999999776482582,
+                "muteHitText": true
+              }
+            }
+          },
+          "targetType": "Enemy"
         }
       ]
     }
   },
   {
     "Default": {
-      "onAdded": [
-        {
-          "$type": "AttachEffect",
-          "actorIceSubHurtDelta": -1,
-          "scale": 1,
-          "doOffStage": false,
-          "born": {
-            "APKLAIJMEIL": {
-              "HHNLJKNBKPP": 180
-            },
-            "value": 10,
-            "direction": {
-              "maxAngle": 180
-            },
-            "onGroundRaycastUpDist": 2
-          },
-          "effectPattern": "Eff_Activity_Endora_Skill_BulletTrail",
-          "effectTempleteID": -1,
-          "canBeHandledOnRecover": true
-        }
-      ],
-      "abilityName": "Activity_EndoraGadgetSkill_BubbleBullet",
-      "onAbilityStart": [
-        {
-          "$type": "Predicated",
-          "targetPredicates": [
-            {
-              "$type": "ByEntityTypes",
-              "target": "Target",
-              "value": -1,
-              "entityTypes": [
-                "Monster"
-              ]
-            }
-          ],
-          "target": "Target",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "failActions": [
-            {
-              "$type": "CreateGadget",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "campTargetType": "All",
-              "born": {
-                "$type": "ConfigBornByCollisionPoint",
-                "offset": {
-                  "z": -0.4000000059604645
-                },
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "campID": 1001,
-              "KLGHKKGGHEA": {
-                "CBLLACNAMON": true,
-                "DBOLJFPPFGI": 0.5,
-                "JOCOGLBCMEJ": 0.5,
-                "LKEBJHCDOHB": true
-              },
-              "gadgetID": 44000103,
-              "canBeHandledOnRecover": true,
-              "lifeByOwnerV2": true
-            }
-          ],
-          "successActions": [
-            {
-              "$type": "CreateGadget",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "campTargetType": "Enemy",
-              "born": {
-                "$type": "ConfigBornByCollisionPoint",
-                "offset": {
-                  "x": -0.5
-                },
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "campID": 1001,
-              "KLGHKKGGHEA": {
-                "CBLLACNAMON": true,
-                "DBOLJFPPFGI": 0.5,
-                "JOCOGLBCMEJ": 0.5,
-                "LKEBJHCDOHB": true
-              },
-              "gadgetID": 44000103,
-              "canBeHandledOnRecover": true,
-              "lifeByOwnerV2": true
-            }
-          ],
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "TriggerAttackEvent",
-          "targetType": "Enemy",
-          "target": "Caster",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "attackEvent": {
-            "attackInfo": {
-              "HBOOKFMCODC": {
-                "BPIJOAMNKIH": {
-                  "GGOHGMFHHEC": true,
-                  "value": 1
-                },
-                "onHitEffectName": "default"
-              },
-              "hitPattern": {
-                "hitImpulseType": "LV0",
-                "hitHaltTimeScale": 0.009999999776482582,
-                "BPIJOAMNKIH": {
-                  "GGOHGMFHHEC": true,
-                  "value": 1
-                },
-                "onHitEffectName": "default",
-                "muteHitText": true
-              },
-              "INKGMIHAPMA": {
-                "NDIBGPPKGJP": "Shake"
-              },
-              "cameraShake": {
-                "shakeDistance": 20,
-                "extension": {
-                  "rangeAttenuation": 0.5,
-                  "baseOnCamera": true,
-                  "baseCycle": 0.11999999731779099,
-                  "cycleDamping": 0.11999999731779099
-                }
-              },
-              "attenuationGroup": "default",
-              "attackProperty": {
-                "elementDurability": 100,
-                "enBreak": 30,
-                "elementRank": 1,
-                "attackType": "Default",
-                "strikeType": "None"
-              }
-            },
-            "attackPattern": {
-              "$type": "ConfigAttackCircle",
-              "fanAngle": 360,
-              "born": {
-                "$type": "ConfigBornBySelf",
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "MPNIJNGFBIH": {
-                "INOCAOHPEBB": {
-                  "GGOHGMFHHEC": true,
-                  "value": 1
-                }
-              },
-              "triggerType": "TriggerNoRepeat",
-              "radius": 5,
-              "massiveAttackRatio": 1
-            }
-          },
-          "canBeHandledOnRecover": true
-        }
-      ],
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
-    }
-  },
-  {
-    "Default": {
-      "onAdded": [
-        {
-          "$type": "SetGlobalValueToOverrideMap",
-          "overrideMapKey": "Endora_Bubble_Bullet_SpeedUp",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "IFPCOKFPPBG": "DummyThrowSpeed",
-          "isFromOwner": true,
-          "globalValueKey": "ActivityAbility_Endora_Throw_Range",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "AttachModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "SpeedUP",
-          "canBeHandledOnRecover": true
-        }
-      ],
-      "abilitySpecials": {
-        "Endora_Bubble_Bullet_SpeedUp": 0
-      },
+      "$type": "ConfigAbility",
       "abilityName": "Activity_EndoraGadgetSkill_BubbleBulletSpeed_Fix",
+      "abilitySpecials": {
+        "Endora_Bubble_Bullet_SpeedUp": 0.0
+      },
       "modifiers": {
         "SpeedUP": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true,
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "properties": {
             "Actor_BulletMoveSpeedRatio": "Endora_Bubble_Bullet_SpeedUp"
           }
         }
       },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "abilityFormula": "DummyThrowSpeed",
+          "isFromOwner": true,
+          "globalValueKey": "ActivityAbility_Endora_Throw_Range",
+          "overrideMapKey": "Endora_Bubble_Bullet_SpeedUp"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "SpeedUP"
+        }
+      ]
     }
   },
   {
     "Default": {
-      "onAdded": [
-        {
-          "$type": "FireEffect",
-          "actorIceSubHurtDelta": -1,
-          "scale": 1,
-          "doOffStage": false,
-          "born": {
-            "APKLAIJMEIL": {
-              "HHNLJKNBKPP": 180
-            },
-            "value": 10,
-            "direction": {
-              "maxAngle": 180
-            },
-            "onGroundRaycastUpDist": 2
-          },
-          "effectPattern": "Eff_Activity_Endora_Skill_BulletHit",
-          "effectTempleteID": -1,
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "AttachModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "TriggerCheck",
-          "canBeHandledOnRecover": true
-        }
-      ],
+      "$type": "ConfigAbility",
       "abilityName": "Activity_EndoraGadgetSkill_BubbleArea",
       "modifiers": {
-        "Create_Trigger": {
-          "onAdded": [
-            {
-              "$type": "FireEffect",
-              "target": "Caster",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_Activity_Endora_Skill_BulletHit",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "SetGlobalValue",
-              "key": "_Activity_Oceanid_Bubble_Area_IsTrigger",
-              "useLimitRange": true,
-              "value": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true,
-              "maxValue": 1
-            },
-            {
-              "$type": "RemoveModifier",
-              "target": "Caster",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "TriggerCheck",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "CreateGadget",
-              "target": "Caster",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "campTargetType": "Enemy",
-              "born": {
-                "$type": "ConfigBornBySelf",
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "campID": 1001,
-              "KLGHKKGGHEA": {
-                "CBLLACNAMON": true,
-                "DBOLJFPPFGI": 0.5,
-                "JOCOGLBCMEJ": 0.5,
-                "LKEBJHCDOHB": true
-              },
-              "gadgetID": 44000104,
-              "canBeHandledOnRecover": true,
-              "lifeByOwnerV2": true
-            }
-          ],
-          "duration": 0.10000000149011612,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
         "TriggerCheck": {
+          "modifierName": "",
+          "duration": 3.0,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.15000000596046448,
           "onAdded": [
             {
               "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_Activity_Endora_Skill_BulletArea",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Skill_BulletArea",
+              "effectTempleteID": -1.0
             },
             {
               "$type": "Predicated",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "topLimit": 1,
+                "entityTypePriority": ["Monster", "Gadget"],
+                "shapeName": "CircleR2",
+                "campTargetType": "Enemy",
+                "OBHNBNDMPFN": 1.0
+              },
               "targetPredicates": [
                 {
                   "$type": "ByEntityTypes",
-                  "target": "Target",
-                  "value": -1,
-                  "entityTypes": [
-                    "Monster"
-                  ]
+                  "entityTypes": ["Monster"]
                 },
                 {
                   "$type": "ByTargetGlobalValue",
                   "key": "_ANIMAL_ENTITY_TYPE",
-                  "target": "Target",
+                  "ratio": 0.0,
                   "compareType": "NoneOrEqual"
                 }
               ],
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "otherTargets": {
-                "$type": "SelectTargetsByShape",
-                "topLimit": 1,
-                "shapeName": "CircleR2",
-                "campTargetType": "Enemy",
-                "entityTypePriority": [
-                  "Monster",
-                  "Gadget"
-                ],
-                "sizeRatio": 1,
-                "NLNIBNNOOCK": {
-                  "APKLAIJMEIL": {
-                    "HHNLJKNBKPP": 180
-                  },
-                  "value": 10,
-                  "direction": {
-                    "maxAngle": 180
-                  },
-                  "onGroundRaycastUpDist": 2
-                }
-              },
               "successActions": [
                 {
                   "$type": "ApplyModifier",
                   "target": "Caster",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "Create_Trigger",
-                  "canBeHandledOnRecover": true
+                  "modifierName": "Create_Trigger"
                 }
-              ],
-              "canBeHandledOnRecover": true
+              ]
             }
           ],
-          "thinkInterval": 0.15000000596046448,
-          "duration": 3,
-          "elementDurability": 100,
-          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "FireEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
               "predicates": [
                 {
                   "$type": "ByTargetGlobalValue",
                   "key": "_Activity_Oceanid_Bubble_Area_IsTrigger",
-                  "target": "Target",
+                  "ratio": 0.0,
                   "compareType": "NoneOrEqual"
                 }
               ],
-              "effectPattern": "Eff_Activity_Endora_Skill_BulletArea_AS",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Skill_BulletArea_AS",
+              "effectTempleteID": -1.0
             }
           ],
-          "IAKPBCLBNKF": -1,
           "onThinkInterval": [
             {
               "$type": "Predicated",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "topLimit": 1,
+                "entityTypePriority": ["Monster", "Gadget"],
+                "shapeName": "CircleR2",
+                "campTargetType": "Enemy",
+                "OBHNBNDMPFN": 1.0
+              },
               "targetPredicates": [
                 {
                   "$type": "ByEntityTypes",
-                  "target": "Target",
-                  "value": -1,
-                  "entityTypes": [
-                    "Monster"
-                  ]
+                  "entityTypes": ["Monster"]
                 },
                 {
                   "$type": "ByTargetGlobalValue",
                   "key": "_ANIMAL_ENTITY_TYPE",
-                  "target": "Target",
+                  "ratio": 0.0,
                   "compareType": "NoneOrEqual"
                 }
               ],
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "otherTargets": {
-                "$type": "SelectTargetsByShape",
-                "topLimit": 1,
-                "shapeName": "CircleR2",
-                "campTargetType": "Enemy",
-                "entityTypePriority": [
-                  "Monster",
-                  "Gadget"
-                ],
-                "sizeRatio": 1,
-                "NLNIBNNOOCK": {
-                  "APKLAIJMEIL": {
-                    "HHNLJKNBKPP": 180
-                  },
-                  "value": 10,
-                  "direction": {
-                    "maxAngle": 180
-                  },
-                  "onGroundRaycastUpDist": 2
-                }
-              },
               "successActions": [
                 {
                   "$type": "ApplyModifier",
                   "target": "Caster",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "Create_Trigger",
-                  "canBeHandledOnRecover": true
+                  "modifierName": "Create_Trigger"
                 }
-              ],
-              "canBeHandledOnRecover": true
+              ]
             }
-          ],
-          "isLimitedProperties": true
+          ]
+        },
+        "Create_Trigger": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "target": "Caster",
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Skill_BulletHit",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "_Activity_Oceanid_Bubble_Area_IsTrigger",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "RemoveModifier",
+              "target": "Caster",
+              "modifierName": "TriggerCheck"
+            },
+            {
+              "$type": "CreateGadget",
+              "target": "Caster",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              "gadgetID": 44000104,
+              "campID": 1001,
+              "campTargetType": "Enemy"
+            }
+          ]
         }
       },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Skill_BulletHit",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "TriggerCheck"
+        }
+      ]
     }
   },
   {
     "Default": {
-      "onAdded": [
-        {
-          "$type": "AttachModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": true,
-          "modifierName": "TriggerAttack_Event",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "TriggerAttackEvent",
-          "targetType": "Enemy",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "attackEvent": {
-            "attackInfo": {
-              "HBOOKFMCODC": {
-                "hitImpulseType": "LV0",
-                "BPIJOAMNKIH": {
-                  "GGOHGMFHHEC": true,
-                  "value": 1
-                },
-                "onHitEffectName": "default"
-              },
-              "hitPattern": {
-                "hitImpulseType": "LV1",
-                "BPIJOAMNKIH": {
-                  "GGOHGMFHHEC": true,
-                  "value": 1
-                },
-                "onHitEffectName": "default"
-              },
-              "INKGMIHAPMA": {
-                "NDIBGPPKGJP": "Shake"
-              },
-              "cameraShake": {
-                "shakeDistance": 20,
-                "extension": {
-                  "rangeAttenuation": 0.5,
-                  "baseOnCamera": true,
-                  "baseCycle": 0.11999999731779099,
-                  "cycleDamping": 0.11999999731779099
-                }
-              },
-              "attenuationGroup": "default",
-              "KMBFALFAJCI": true,
-              "attackProperty": {
-                "elementDurability": 100,
-                "enBreak": 30,
-                "elementRank": 1,
-                "attackType": "Default",
-                "strikeType": "None"
-              }
-            },
-            "attackPattern": {
-              "$type": "ConfigAttackCircle",
-              "fanAngle": 360,
-              "born": {
-                "$type": "ConfigBornBySelf",
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "MPNIJNGFBIH": {
-                "INOCAOHPEBB": {
-                  "GGOHGMFHHEC": true,
-                  "value": 1
-                }
-              },
-              "triggerType": "TriggerNoRepeat",
-              "radius": 1.2000000476837158,
-              "massiveAttackRatio": 1
-            }
-          },
-          "canBeHandledOnRecover": true
-        }
-      ],
-      "abilitySpecials": {
-        "Bubble_Struggle_Duration": 5
-      },
+      "$type": "ConfigAbility",
       "abilityName": "Activity_EndoraGadgetSkill_BubbleTrigger",
+      "abilitySpecials": {
+        "Bubble_Struggle_Duration": 5.0
+      },
       "modifiers": {
         "TriggerAttack_Event": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "onAttackLanded": [
             {
               "$type": "Predicated",
+              "target": "Target",
               "targetPredicates": [
                 {
                   "$type": "ByEntityTypes",
-                  "target": "Target",
-                  "value": -1,
-                  "entityTypes": [
-                    "Monster"
-                  ]
+                  "entityTypes": ["Monster"]
                 }
               ],
-              "target": "Target",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "successActions": [
                 {
                   "$type": "Predicated",
+                  "target": "Target",
                   "targetPredicates": [
                     {
                       "$type": "ByTargetGlobalValue",
                       "key": "_MONSTERAFFIX_OCEANID_ANIMAL_SPMASK",
-                      "target": "Target",
-                      "value": 1
-                    }
-                  ],
-                  "target": "Target",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "failActions": [
-                    {
-                      "$type": "ClearGlobalValue",
-                      "key": "_Activity_Oceanid_Bubble_Struggle_OnRemoveKill",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "canBeHandledOnRecover": true
-                    },
-                    {
-                      "$type": "RemoveUniqueModifier",
-                      "target": "Target",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Normal_Handle",
-                      "canBeHandledOnRecover": true
-                    },
-                    {
-                      "$type": "RemoveUniqueModifier",
-                      "target": "Target",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Normal",
-                      "canBeHandledOnRecover": true
-                    },
-                    {
-                      "$type": "ApplyModifier",
-                      "target": "Target",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Normal",
-                      "canBeHandledOnRecover": true
+                      "ratio": 1.0
                     }
                   ],
                   "successActions": [
                     {
                       "$type": "RemoveUniqueModifier",
                       "target": "Target",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Special",
-                      "canBeHandledOnRecover": true
+                      "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Special"
                     },
                     {
                       "$type": "ApplyModifier",
                       "target": "Target",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Special",
-                      "canBeHandledOnRecover": true
+                      "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Special"
                     }
                   ],
-                  "canBeHandledOnRecover": true
+                  "failActions": [
+                    {
+                      "$type": "ClearGlobalValue",
+                      "key": "_Activity_Oceanid_Bubble_Struggle_OnRemoveKill"
+                    },
+                    {
+                      "$type": "RemoveUniqueModifier",
+                      "target": "Target",
+                      "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Normal_Handle"
+                    },
+                    {
+                      "$type": "RemoveUniqueModifier",
+                      "target": "Target",
+                      "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Normal"
+                    },
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Target",
+                      "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Normal"
+                    }
+                  ]
                 }
-              ],
-              "canBeHandledOnRecover": true
+              ]
             }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "UNIQUE_Debuff_Bubble_Struggle_Normal": {
-          "duration": "Bubble_Struggle_Duration",
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "AttachToAbilityStateMixin",
-              "actorIceSubHurtDelta": -1,
-              "abilityStates": [
-                "Struggle"
-              ],
-              "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Normal_Handle"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isUnique": true,
-          "isLimitedProperties": true,
-          "state": "Struggle"
-        },
-        "UNIQUE_Debuff_Bubble_Struggle_Normal_Handle": {
-          "onAdded": [
-            {
-              "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_Activity_Endora_Skill_Bubble_Normal",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "onKill": [
-            {
-              "$type": "RemoveUniqueModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Normal",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "onRemoved": [
-            {
-              "$type": "FireEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "$type": "ConfigBornByAttachPoint",
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2,
-                "attachPointName": "RootNode"
-              },
-              "effectPattern": "Eff_Activity_Endora_Skill_Bubble_Normal_AS",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isUnique": true,
-          "isLimitedProperties": true,
-          "properties": {
-            "Actor_AddGravityScale": -2
-          }
+          ]
         },
         "UNIQUE_Debuff_Bubble_Struggle_Special": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": "Bubble_Struggle_Duration",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_AddGravityScale": -2.0
+          },
           "onAdded": [
             {
               "$type": "SetAnimatorBool",
-              "value": true,
               "boolID": "CanBeStruggle",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
+              "ratio": true
             },
             {
               "$type": "AttachEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
-              },
-              "effectPattern": "Eff_Activity_Endora_Skill_Bubble",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Skill_Bubble",
+              "effectTempleteID": -1.0
             },
             {
               "$type": "SetGlobalValue",
+              "ratio": 1.0,
               "key": "_Activity_Oceanid_Bubble_Struggle_OnRemoveKill",
               "useLimitRange": true,
-              "value": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true,
-              "maxValue": 1
+              "maxValue": 1.0,
+              "minValue": 0.0
             }
           ],
-          "onKill": [
-            {
-              "$type": "RemoveUniqueModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Special",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "duration": "Bubble_Struggle_Duration",
-          "elementDurability": 100,
-          "minus_one": -1,
           "onRemoved": [
             {
               "$type": "SetAnimatorBool",
-              "boolID": "CanBeStruggle",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
+              "boolID": "CanBeStruggle"
             },
             {
               "$type": "FireEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Skill_Bubble_AS",
               "born": {
                 "$type": "ConfigBornByAttachPoint",
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2,
                 "attachPointName": "RootNode"
               },
-              "effectPattern": "Eff_Activity_Endora_Skill_Bubble_AS",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
+              "effectTempleteID": -1.0
             },
             {
               "$type": "KillSelf",
-              "killSelfType": "Normal",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "configIdArray": [
-                70000000
-              ],
               "predicates": [
                 {
                   "$type": "ByTargetGlobalValue",
                   "key": "_Activity_Oceanid_Bubble_Struggle_OnRemoveKill",
-                  "target": "Target",
-                  "value": 1,
+                  "ratio": 1.0,
                   "compareType": "MoreThanAndEqual"
                 }
-              ],
-              "canBeHandledOnRecover": true
+              ]
             },
             {
               "$type": "ClearGlobalValue",
-              "key": "_Activity_Oceanid_Bubble_Struggle_OnRemoveKill",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "canBeHandledOnRecover": true
+              "key": "_Activity_Oceanid_Bubble_Struggle_OnRemoveKill"
             }
           ],
-          "IAKPBCLBNKF": -1,
+          "onKill": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Special"
+            }
+          ]
+        },
+        "UNIQUE_Debuff_Bubble_Struggle_Normal": {
+          "modifierName": "",
           "isUnique": true,
-          "isLimitedProperties": true,
+          "duration": "Bubble_Struggle_Duration",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToAbilityStateMixin",
+              "abilityStates": ["Struggle"],
+              "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Normal_Handle"
+            }
+          ],
+          "state": "Struggle"
+        },
+        "UNIQUE_Debuff_Bubble_Struggle_Normal_Handle": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
           "properties": {
-            "Actor_AddGravityScale": -2
-          }
+            "Actor_AddGravityScale": -2.0
+          },
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Skill_Bubble_Normal",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Activity_Endora_Skill_Bubble_Normal_AS",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Debuff_Bubble_Struggle_Normal"
+            }
+          ]
         }
       },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "cdDelta": true,
+          "modifierName": "TriggerAttack_Event"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              "radius": 1.2000000476837158
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.0,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 100.0,
+                "damageExtra": 0.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV1"
+              },
+              "canHitHead": true,
+              "hitHeadPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV0"
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
     }
   },
   {
     "Default": {
-      "onAdded": [
-        {
-          "$type": "AttachModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": true,
-          "modifierName": "UNIQUE_ActivityAbility_Endora_AvatarUpBuff",
-          "canBeHandledOnRecover": true
-        }
-      ],
-      "isDynamicAbility": true,
+      "$type": "ConfigAbility",
       "abilityName": "ActivityAbility_Endora_AvatarUpBuff",
       "modifiers": {
         "UNIQUE_ActivityAbility_Endora_AvatarUpBuff": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "reApplyModifierOnStateChange": true,
+          "modifierName": "",
           "isUnique": true,
-          "isLimitedProperties": true,
+          "bonusCritical": 100.0,
           "properties": {
             "Actor_ChargeEfficiencyDelta": 0.30000001192092896,
             "Actor_WaterSubHurtDelta": 0.30000001192092896
-          }
+          },
+          "isLimitedProperties": true
         }
       },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "cdDelta": true,
+          "modifierName": "UNIQUE_ActivityAbility_Endora_AvatarUpBuff"
+        }
+      ],
+      "isDynamicAbility": true
     }
   }
 ]

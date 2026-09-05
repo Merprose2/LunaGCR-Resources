@@ -17,8 +17,7 @@ defs.receiverList = {
 
 local engineerLaserConfigID = 204002
 local turnOption = 435
-
-local correctState = 0
+local correctState = 0
 
 --================================================================
 -- 

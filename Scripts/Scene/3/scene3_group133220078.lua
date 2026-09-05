@@ -151,7 +151,7 @@ function action_EVENT_QUEST_FINISH_78004(context, evt)
 		
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-3366.000,y=227.000,z=-4591.000}
+	local pos = {x=-3366,y=227,z=-4591}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 31021174, pos, 80) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -189,7 +189,7 @@ end
 -- 触发操作
 function action_EVENT_ENTER_REGION_78008(context, evt)
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-3308.000,y=200.000,z=-4535.000}
+	local pos = {x=-3308,y=200,z=-4535}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 31021176, pos, 100) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -230,7 +230,7 @@ end
 -- 触发操作
 function action_EVENT_ENTER_REGION_78011(context, evt)
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-3308.000,y=200.000,z=-4535.000}
+	local pos = {x=-3308,y=200,z=-4535}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 31021176, pos, 100) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -271,7 +271,7 @@ end
 -- 触发操作
 function action_EVENT_ENTER_REGION_78012(context, evt)
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-3308.000,y=200.000,z=-4535.000}
+	local pos = {x=-3308,y=200,z=-4535}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 31021176, pos, 100) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -302,7 +302,7 @@ function action_EVENT_QUEST_FINISH_78014(context, evt)
 		
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-3263.000,y=210.000,z=-4554.000}
+	local pos = {x=-3263,y=210,z=-4554}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 31021175, pos, 80) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -327,7 +327,7 @@ function action_EVENT_QUEST_FINISH_78015(context, evt)
 		
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=-3374.000,y=229.000,z=-4540.000}
+	local pos = {x=-3374,y=229,z=-4540}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 31021175, pos, 80) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1

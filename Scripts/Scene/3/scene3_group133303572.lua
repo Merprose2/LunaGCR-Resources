@@ -126,8 +126,8 @@ function action_EVENT_GADGET_STATE_CHANGE_572008(context, evt)
 	  return -1
 	end
 	
-	-- 触发镜头注目，注目位置为坐标{x=-1460.967, y = 131.041, z=3341.507}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-1460.967, y=131.041, z=3341.507}
+	-- 触发镜头注目，注目位置为坐标{x=-1460.967, y=131.0407, z=3341.507}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-1460.967, y=131.0407, z=3341.507}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -156,8 +156,8 @@ function action_EVENT_GADGET_STATE_CHANGE_572009(context, evt)
 	  return -1
 	end
 	
-	-- 触发镜头注目，注目位置为坐标{x=-1459.801, y = 131.275, z=3329.016}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-1459.801, y=131.275, z=3329.016}
+	-- 触发镜头注目，注目位置为坐标{x=-1459.801, y=131.2753, z=3329.016}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-1459.801, y=131.2753, z=3329.016}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -186,8 +186,8 @@ function action_EVENT_GADGET_STATE_CHANGE_572010(context, evt)
 	  return -1
 	end
 	
-	-- 触发镜头注目，注目位置为坐标{x=-1449.223, y = 131.101, z=3335.401}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-1449.223, y=131.101, z=3335.401}
+	-- 触发镜头注目，注目位置为坐标{x=-1449.223, y=131.1008, z=3335.401}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-1449.223, y=131.1008, z=3335.401}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -233,8 +233,8 @@ function action_EVENT_GADGET_STATE_CHANGE_572011(context, evt)
 	-- 删除suite2的所有内容
 	    ScriptLib.RemoveExtraGroupSuite(context, 133303572, 2)
 	
-	-- 触发镜头注目，注目位置为坐标{x=-1456.495, y = 129.014, z=3335.813}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-1456.495, y=129.014, z=3335.813}
+	-- 触发镜头注目，注目位置为坐标{x=-1456.495, y=129.0145, z=3335.813}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-1456.495, y=129.0145, z=3335.813}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

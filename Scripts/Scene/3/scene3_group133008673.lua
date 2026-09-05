@@ -6,7 +6,7 @@ local base_info = {
 -- DEFS_MISCS
 local defs = {
        end_gadget = 673016, 
-       look_pos = {x=1177.000, y=408.000, z=-1028.000},
+       look_pos = {x=1177, y=408, z=-1028},
        duration = 2,
 
         father_challenge = 2003011,

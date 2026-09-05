@@ -21,8 +21,8 @@ local defs = {
 
 -- 怪物
 monsters = {
-	{ config_id = 1001, monster_id = 29070103, pos = { x = 0.000, y = 5.800, z = 1.000 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 1, title_id = 161, special_name_id = 2016101, isElite = true },
-	{ config_id = 1002, monster_id = 29070104, pos = { x = 0.000, y = -58.140, z = -30.000 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 1, title_id = 161, special_name_id = 2016101, isElite = true }
+	{ config_id = 1001, monster_id = 29070103, pos = { x = 0.000, y = 5.800, z = 1.000 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 1, title_id = 161, special_name_id = 12, isElite = true },
+	{ config_id = 1002, monster_id = 29070104, pos = { x = 0.000, y = -58.140, z = -30.000 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 1, title_id = 161, special_name_id = 12, isElite = true }
 }
 
 -- NPC

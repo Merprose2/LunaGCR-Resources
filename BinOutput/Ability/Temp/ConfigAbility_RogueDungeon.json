@@ -1,683 +1,155 @@
 [
   {
     "Default": {
-      "onAdded": [
+      "$type": "ConfigAbility",
+      "abilityName": "DynamicAbility_RogueDungeon_Level",
+      "abilityMixins": [
         {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "AttackByLevelEntityHandler",
-          "canBeHandledOnRecover": true
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_ROGUE_BOMBREJECT",
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": ["BombRejectHandler"]
         },
         {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "ChargeSpeedByLevelEntityHandler",
-          "canBeHandledOnRecover": true
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_ROGUECURSE_MONSTERBUFF",
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": ["MonsterGetBuff"]
         },
         {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "MuteHurtByLevelEntityHandler",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "DefenceByLevelEntityHandler",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "MasteryByGearHandler",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "ReviveRoomBuffHandler",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "BattleRoomBuffHandler",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "SetGlobalValueToOverrideMap",
-          "overrideMapKey": "attackbylevelentity_LV",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "globalValueKey": "SGV_ROGUE_ATTACKBYLEVELENTITY",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "RemoveModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "AttackByLevelEntity_Manager",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "AttackByLevelEntity_Manager",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "SetGlobalValueToOverrideMap",
-          "overrideMapKey": "chargebylevelentity_LV",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "globalValueKey": "SGV_ROGUE_CHARGEBYLEVELENTITY",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "RemoveModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "ChargeByLevelEntity_Manager",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "ChargeByLevelEntity_Manager",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "SetGlobalValueToOverrideMap",
-          "overrideMapKey": "mutehurtbylevelentity_LV",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "globalValueKey": "SGV_ROGUE_MUTEHURTBYLEVELENTITY",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "RemoveModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "MuteHurtByLevelEntity_Manager",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "MuteHurtByLevelEntity_Manager",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "SetGlobalValueToOverrideMap",
-          "overrideMapKey": "defencebylevelentity_LV",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "globalValueKey": "SGV_ROGUE_DEFENCEBYLEVELENTITY",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "RemoveModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "DefenceByLevelEntity_Manager",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "ApplyModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "DefenceByLevelEntity_Manager",
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "Predicated",
-          "targetPredicates": [
-            {
-              "$type": "ByTargetGlobalValue",
-              "key": "SGV_ROGUE_REVIVEROOMBUFF",
-              "target": "Team",
-              "compareType": "MoreThan"
-            }
-          ],
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "successActions": [
-            {
-              "$type": "SetGlobalValueToOverrideMap",
-              "overrideMapKey": "reviveroombuff_LV",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "globalValueKey": "SGV_ROGUE_REVIVEROOMBUFF",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "RemoveModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "ReviveRoomBuff_Manager",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "ReviveRoomBuff_Manager",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "canBeHandledOnRecover": true
-        },
-        {
-          "$type": "Predicated",
-          "targetPredicates": [
-            {
-              "$type": "ByTargetGlobalValue",
-              "key": "SGV_ROGUE_BATTLEROOMBUFF",
-              "target": "Team",
-              "compareType": "MoreThan"
-            }
-          ],
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "successActions": [
-            {
-              "$type": "SetGlobalValueToOverrideMap",
-              "overrideMapKey": "battleroombuff_LV",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "globalValueKey": "SGV_ROGUE_BATTLEROOMBUFF",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "RemoveModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "BattleRoomBuff_Manager",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "BattleRoomBuff_Manager",
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "canBeHandledOnRecover": true
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_ROGUECURSE_BOMBDAMAGE",
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": ["BombExtraDamage"]
         }
       ],
       "abilitySpecials": {
-        "MAX_attackbylevelentity_LV": 20,
-        "MAX_battleroombuff_LV": 6,
-        "MAX_chargebylevelentity_LV": 10,
-        "MAX_defencebylevelentity_LV": 10,
-        "MAX_masterybygear_LV": 20,
-        "MAX_mutehurtbylevelentity_LV": 10,
-        "MAX_reviveroombuff_LV": 2,
+        "attackbylevelentity_LV": 0.0,
+        "masterybygear_LV": 0.0,
+        "reviveroombuff_LV": 0.0,
+        "battleroombuff_LV": 0.0,
+        "chargebylevelentity_LV": 0.0,
+        "mutehurtbylevelentity_LV": 0.0,
+        "defencebylevelentity_LV": 0.0,
+        "MAX_attackbylevelentity_LV": 20.0,
+        "MAX_mutehurtbylevelentity_LV": 10.0,
+        "MAX_defencebylevelentity_LV": 10.0,
+        "MAX_chargebylevelentity_LV": 10.0,
+        "MAX_masterybygear_LV": 20.0,
+        "MAX_reviveroombuff_LV": 2.0,
+        "MAX_battleroombuff_LV": 6.0,
         "PER_attackbylevelentity": 0.012000000104308128,
-        "PER_battleroombuff": 0.03999999910593033,
         "PER_chargebylevelentity": 0.019999999552965164,
-        "PER_defencebylevelentity": 0.019999999552965164,
-        "PER_masterybygear": 1,
         "PER_mutehurtbylevelentity": 0.009999999776482582,
+        "PER_defencebylevelentity": 0.019999999552965164,
+        "PER_masterybygear": 1.0,
         "PER_reviveroombuff": 0.11999999731779099,
-        "attackbylevelentity_LV": 0,
-        "battleroombuff_LV": 0,
-        "chargebylevelentity_LV": 0,
-        "defencebylevelentity_LV": 0,
-        "masterybygear_LV": 0,
-        "mutehurtbylevelentity_LV": 0,
-        "reviveroombuff_LV": 0
+        "PER_battleroombuff": 0.03999999910593033
       },
-      "abilityName": "DynamicAbility_RogueDungeon_Level",
       "modifiers": {
-        "AttackByLevelEntityHandler": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "DoActionOnGlobalValueChangeMixin",
-              "actorIceSubHurtDelta": -1,
-              "actions": [
-                {
-                  "$type": "SetGlobalValueToOverrideMap",
-                  "overrideMapKey": "attackbylevelentity_LV",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "globalValueKey": "SGV_ROGUE_ATTACKBYLEVELENTITY",
-                  "canBeHandledOnRecover": true
-                },
-                {
-                  "$type": "RemoveModifier",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "AttackByLevelEntity_Manager",
-                  "canBeHandledOnRecover": true
-                },
-                {
-                  "$type": "ApplyModifier",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "AttackByLevelEntity_Manager",
-                  "canBeHandledOnRecover": true
-                }
-              ],
-              "globalValueKey": "SGV_ROGUE_ATTACKBYLEVELENTITY"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+        "MonsterGetBuff": {
+          "modifierName": "",
+          "bonusCritical": 100.0
         },
-        "AttackByLevelEntity_Manager": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
+        "UNIQUE_MonsterGetBuff_Effect": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
             {
-              "$type": "LocalAvatarsMixin",
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "UNIQUE_AttackByLevelEntity_Avatar"
+              "$type": "AddGlobalValue",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "GV_ROGUE_CURSEEFF",
+              "maxValue": 0.0,
+              "minValue": 0.0
             }
           ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "BattleRoomBuffHandler": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
+          "onRemoved": [
             {
-              "$type": "DoActionOnGlobalValueChangeMixin",
-              "actorIceSubHurtDelta": -1,
-              "actions": [
-                {
-                  "$type": "Predicated",
-                  "targetPredicates": [
-                    {
-                      "$type": "ByTargetGlobalValue",
-                      "key": "SGV_ROGUE_BATTLEROOMBUFF",
-                      "target": "Team",
-                      "compareType": "MoreThan"
-                    }
-                  ],
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "successActions": [
-                    {
-                      "$type": "SetGlobalValueToOverrideMap",
-                      "overrideMapKey": "battleroombuff_LV",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "globalValueKey": "SGV_ROGUE_BATTLEROOMBUFF",
-                      "canBeHandledOnRecover": true
-                    },
-                    {
-                      "$type": "RemoveModifier",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "modifierName": "BattleRoomBuff_Manager",
-                      "canBeHandledOnRecover": true
-                    },
-                    {
-                      "$type": "ApplyModifier",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "modifierName": "BattleRoomBuff_Manager",
-                      "canBeHandledOnRecover": true
-                    }
-                  ],
-                  "canBeHandledOnRecover": true
-                }
-              ],
-              "globalValueKey": "SGV_ROGUE_BATTLEROOMBUFF"
+              "$type": "AddGlobalValue",
+              "cdDelta": true,
+              "ratio": -1.0,
+              "key": "GV_ROGUE_CURSEEFF",
+              "maxValue": 0.0,
+              "minValue": 0.0
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "BattleRoomBuff_Manager": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "LocalAvatarsMixin",
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "UNIQUE_BattleRoomBuff_Avatar"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
         "BombExtraDamage": {
-          "elementDurability": 100,
-          "minus_one": -1,
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "modifierMixins": [
             {
               "$type": "LocalAvatarsMixin",
-              "actorIceSubHurtDelta": -1,
               "modifierName": "UNIQUE_BombExtraDamage_Effect"
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
-        "BombRejectHandler": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
+        "UNIQUE_BombExtraDamage_Effect": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
             {
-              "$type": "LocalAvatarsMixin",
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "UNIQUE_BombReject_Avatar"
+              "$type": "AddGlobalValue",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "GV_ROGUE_CURSEEFF",
+              "maxValue": 0.0,
+              "minValue": 0.0
             }
           ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "ChargeByLevelEntity_Manager": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
+          "onRemoved": [
             {
-              "$type": "LocalAvatarsMixin",
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "UNIQUE_ChargeByLevelEntity_Avatar"
+              "$type": "AddGlobalValue",
+              "cdDelta": true,
+              "ratio": -1.0,
+              "key": "GV_ROGUE_CURSEEFF",
+              "maxValue": 0.0,
+              "minValue": 0.0
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
-        "ChargeSpeedByLevelEntityHandler": {
-          "elementDurability": 100,
-          "minus_one": -1,
+        "AttackByLevelEntityHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "modifierMixins": [
             {
               "$type": "DoActionOnGlobalValueChangeMixin",
-              "actorIceSubHurtDelta": -1,
+              "globalValueKey": "SGV_ROGUE_ATTACKBYLEVELENTITY",
               "actions": [
                 {
                   "$type": "SetGlobalValueToOverrideMap",
-                  "overrideMapKey": "chargebylevelentity_LV",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "globalValueKey": "SGV_ROGUE_CHARGEBYLEVELENTITY",
-                  "canBeHandledOnRecover": true
+                  "globalValueKey": "SGV_ROGUE_ATTACKBYLEVELENTITY",
+                  "overrideMapKey": "attackbylevelentity_LV"
                 },
                 {
                   "$type": "RemoveModifier",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "ChargeByLevelEntity_Manager",
-                  "canBeHandledOnRecover": true
+                  "modifierName": "AttackByLevelEntity_Manager"
                 },
                 {
                   "$type": "ApplyModifier",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "ChargeByLevelEntity_Manager",
-                  "canBeHandledOnRecover": true
+                  "modifierName": "AttackByLevelEntity_Manager"
                 }
-              ],
-              "globalValueKey": "SGV_ROGUE_CHARGEBYLEVELENTITY"
+              ]
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
-        "DefenceByLevelEntityHandler": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "DoActionOnGlobalValueChangeMixin",
-              "actorIceSubHurtDelta": -1,
-              "actions": [
-                {
-                  "$type": "SetGlobalValueToOverrideMap",
-                  "overrideMapKey": "defencebylevelentity_LV",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "globalValueKey": "SGV_ROGUE_DEFENCEBYLEVELENTITY",
-                  "canBeHandledOnRecover": true
-                },
-                {
-                  "$type": "RemoveModifier",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "DefenceByLevelEntity_Manager",
-                  "canBeHandledOnRecover": true
-                },
-                {
-                  "$type": "ApplyModifier",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "DefenceByLevelEntity_Manager",
-                  "canBeHandledOnRecover": true
-                }
-              ],
-              "globalValueKey": "SGV_ROGUE_DEFENCEBYLEVELENTITY"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "DefenceByLevelEntity_Manager": {
-          "elementDurability": 100,
-          "minus_one": -1,
+        "AttackByLevelEntity_Manager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "modifierMixins": [
             {
               "$type": "LocalAvatarsMixin",
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "UNIQUE_DefenceByLevelEntity_Avatar"
+              "modifierName": "UNIQUE_AttackByLevelEntity_Avatar"
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "MasteryByGearHandler": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "DoActionOnGlobalValueChangeMixin",
-              "actorIceSubHurtDelta": -1,
-              "actions": [
-                {
-                  "$type": "SetGlobalValueToOverrideMap",
-                  "overrideMapKey": "masterybygear_LV",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "globalValueKey": "SGV_ROGUE_MASTERYBYGEAR",
-                  "canBeHandledOnRecover": true
-                },
-                {
-                  "$type": "RemoveModifier",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "MasteryByGear_Manager",
-                  "canBeHandledOnRecover": true
-                },
-                {
-                  "$type": "ApplyModifier",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "modifierName": "MasteryByGear_Manager",
-                  "canBeHandledOnRecover": true
-                }
-              ],
-              "globalValueKey": "SGV_ROGUE_MASTERYBYGEAR"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "MasteryByGear_Manager": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "LocalAvatarsMixin",
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "UNIQUE_MasteryByGear_Avatar"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "MonsterGetBuff": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "MuteHurtByLevelEntityHandler": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "DoActionOnGlobalValueChangeMixin",
-              "actorIceSubHurtDelta": -1,
-              "actions": [
-                {
-                  "$type": "Predicated",
-                  "targetPredicates": [
-                    {
-                      "$type": "ByTargetGlobalValue",
-                      "key": "SGV_ROGUE_MUTEHURTBYLEVELENTITY",
-                      "target": "Team",
-                      "value": "MAX_mutehurtbylevelentity_LV",
-                      "compareType": "LessAndEqual"
-                    }
-                  ],
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "successActions": [
-                    {
-                      "$type": "SetGlobalValueToOverrideMap",
-                      "overrideMapKey": "mutehurtbylevelentity_LV",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "globalValueKey": "SGV_ROGUE_MUTEHURTBYLEVELENTITY",
-                      "canBeHandledOnRecover": true
-                    },
-                    {
-                      "$type": "RemoveModifier",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "modifierName": "MuteHurtByLevelEntity_Manager",
-                      "canBeHandledOnRecover": true
-                    },
-                    {
-                      "$type": "ApplyModifier",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "modifierName": "MuteHurtByLevelEntity_Manager",
-                      "canBeHandledOnRecover": true
-                    }
-                  ],
-                  "canBeHandledOnRecover": true
-                }
-              ],
-              "globalValueKey": "SGV_ROGUE_MUTEHURTBYLEVELENTITY"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "MuteHurtByLevelEntity_Manager": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "LocalAvatarsMixin",
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "UNIQUE_MuteHurtByLevelEntity_Avatar"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "ReviveRoomBuffHandler": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "DoActionOnGlobalValueChangeMixin",
-              "actorIceSubHurtDelta": -1,
-              "actions": [
-                {
-                  "$type": "Predicated",
-                  "targetPredicates": [
-                    {
-                      "$type": "ByTargetGlobalValue",
-                      "key": "SGV_ROGUE_REVIVEROOMBUFF",
-                      "target": "Team",
-                      "compareType": "MoreThan"
-                    }
-                  ],
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
-                  "successActions": [
-                    {
-                      "$type": "SetGlobalValueToOverrideMap",
-                      "overrideMapKey": "reviveroombuff_LV",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "globalValueKey": "SGV_ROGUE_REVIVEROOMBUFF",
-                      "canBeHandledOnRecover": true
-                    },
-                    {
-                      "$type": "RemoveModifier",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "modifierName": "ReviveRoomBuff_Manager",
-                      "canBeHandledOnRecover": true
-                    },
-                    {
-                      "$type": "ApplyModifier",
-                      "actorIceSubHurtDelta": -1,
-                      "doOffStage": false,
-                      "modifierName": "ReviveRoomBuff_Manager",
-                      "canBeHandledOnRecover": true
-                    }
-                  ],
-                  "canBeHandledOnRecover": true
-                }
-              ],
-              "globalValueKey": "SGV_ROGUE_REVIVEROOMBUFF"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "ReviveRoomBuff_Manager": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "modifierMixins": [
-            {
-              "$type": "LocalAvatarsMixin",
-              "actorIceSubHurtDelta": -1,
-              "modifierName": "UNIQUE_ReviveRoomBuff_Avatar"
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
         "UNIQUE_AttackByLevelEntity_Avatar": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
+          "modifierName": "",
           "isUnique": true,
-          "isLimitedProperties": true,
+          "bonusCritical": 100.0,
           "properties": {
             "Actor_AddHurtDelta": [
               "PER_attackbylevelentity",
@@ -686,70 +158,45 @@
             ]
           }
         },
-        "UNIQUE_BattleRoomBuff_Avatar": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isUnique": true,
-          "isLimitedProperties": true,
-          "properties": {
-            "Actor_AddHurtDelta": [
-              "PER_battleroombuff",
-              "battleroombuff_LV",
-              "MUL",
-              "PER_battleroombuff",
-              "SUB"
-            ]
-          }
-        },
-        "UNIQUE_BombExtraDamage_Effect": {
-          "onAdded": [
-            {
-              "$type": "AddGlobalValue",
-              "key": "GV_ROGUE_CURSEEFF",
-              "value": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "onRemoved": [
-            {
-              "$type": "AddGlobalValue",
-              "key": "GV_ROGUE_CURSEEFF",
-              "value": -1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isUnique": true,
-          "isLimitedProperties": true
-        },
-        "UNIQUE_BombReject_Avatar": {
-          "elementDurability": 100,
-          "minus_one": -1,
+        "ChargeSpeedByLevelEntityHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
           "modifierMixins": [
             {
-              "$type": "RejectAttackMixin",
-              "attackTag": "Rogue_BombAttack",
-              "actorIceSubHurtDelta": -1,
-              "type": "RejectAll"
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "globalValueKey": "SGV_ROGUE_CHARGEBYLEVELENTITY",
+              "actions": [
+                {
+                  "$type": "SetGlobalValueToOverrideMap",
+                  "globalValueKey": "SGV_ROGUE_CHARGEBYLEVELENTITY",
+                  "overrideMapKey": "chargebylevelentity_LV"
+                },
+                {
+                  "$type": "RemoveModifier",
+                  "modifierName": "ChargeByLevelEntity_Manager"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "ChargeByLevelEntity_Manager"
+                }
+              ]
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isUnique": true,
-          "isLimitedProperties": true
+          ]
+        },
+        "ChargeByLevelEntity_Manager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "LocalAvatarsMixin",
+              "modifierName": "UNIQUE_ChargeByLevelEntity_Avatar"
+            }
+          ]
         },
         "UNIQUE_ChargeByLevelEntity_Avatar": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
+          "modifierName": "",
           "isUnique": true,
-          "isLimitedProperties": true,
+          "bonusCritical": 100.0,
           "properties": {
             "Actor_ChargeEfficiencyDelta": [
               "PER_chargebylevelentity",
@@ -758,69 +205,61 @@
             ]
           }
         },
-        "UNIQUE_DefenceByLevelEntity_Avatar": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isUnique": true,
-          "isLimitedProperties": true,
-          "properties": {
-            "Actor_DefenceRatio": [
-              "PER_defencebylevelentity",
-              "defencebylevelentity_LV",
-              "MUL"
-            ]
-          }
-        },
-        "UNIQUE_MasteryByGear_Avatar": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isUnique": true,
-          "isLimitedProperties": true,
-          "properties": {
-            "Actor_ElemMasteryDelta": [
-              10,
-              "masterybygear_LV",
-              "MUL"
-            ]
-          }
-        },
-        "UNIQUE_MonsterGetBuff_Effect": {
-          "onAdded": [
+        "MuteHurtByLevelEntityHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
             {
-              "$type": "AddGlobalValue",
-              "key": "GV_ROGUE_CURSEEFF",
-              "value": 1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "canBeHandledOnRecover": true
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "globalValueKey": "SGV_ROGUE_MUTEHURTBYLEVELENTITY",
+              "actions": [
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Team",
+                      "key": "SGV_ROGUE_MUTEHURTBYLEVELENTITY",
+                      "ratio": "MAX_mutehurtbylevelentity_LV",
+                      "compareType": "LessAndEqual"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "SetGlobalValueToOverrideMap",
+                      "globalValueKey": "SGV_ROGUE_MUTEHURTBYLEVELENTITY",
+                      "overrideMapKey": "mutehurtbylevelentity_LV"
+                    },
+                    {
+                      "$type": "RemoveModifier",
+                      "modifierName": "MuteHurtByLevelEntity_Manager"
+                    },
+                    {
+                      "$type": "ApplyModifier",
+                      "modifierName": "MuteHurtByLevelEntity_Manager"
+                    }
+                  ]
+                }
+              ]
             }
-          ],
-          "elementDurability": 100,
-          "minus_one": -1,
-          "onRemoved": [
+          ]
+        },
+        "MuteHurtByLevelEntity_Manager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
             {
-              "$type": "AddGlobalValue",
-              "key": "GV_ROGUE_CURSEEFF",
-              "value": -1,
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": true,
-              "canBeHandledOnRecover": true
+              "$type": "LocalAvatarsMixin",
+              "modifierName": "UNIQUE_MuteHurtByLevelEntity_Avatar"
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isUnique": true,
-          "isLimitedProperties": true
+          ]
         },
         "UNIQUE_MuteHurtByLevelEntity_Avatar": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
+          "modifierName": "",
           "isUnique": true,
-          "isLimitedProperties": true,
+          "bonusCritical": 100.0,
           "properties": {
-            "Actor_ElecSubHurtDelta": [
+            "Actor_PhysicalSubHurtDelta": [
               "PER_mutehurtbylevelentity",
               "mutehurtbylevelentity_LV",
               "MUL"
@@ -830,22 +269,7 @@
               "mutehurtbylevelentity_LV",
               "MUL"
             ],
-            "Actor_GrassSubHurtDelta": [
-              "PER_mutehurtbylevelentity",
-              "mutehurtbylevelentity_LV",
-              "MUL"
-            ],
-            "Actor_IceSubHurtDelta": [
-              "PER_mutehurtbylevelentity",
-              "mutehurtbylevelentity_LV",
-              "MUL"
-            ],
-            "Actor_PhysicalSubHurtDelta": [
-              "PER_mutehurtbylevelentity",
-              "mutehurtbylevelentity_LV",
-              "MUL"
-            ],
-            "Actor_RockSubHurtDelta": [
+            "Actor_ElecSubHurtDelta": [
               "PER_mutehurtbylevelentity",
               "mutehurtbylevelentity_LV",
               "MUL"
@@ -855,19 +279,192 @@
               "mutehurtbylevelentity_LV",
               "MUL"
             ],
+            "Actor_GrassSubHurtDelta": [
+              "PER_mutehurtbylevelentity",
+              "mutehurtbylevelentity_LV",
+              "MUL"
+            ],
             "Actor_WindSubHurtDelta": [
+              "PER_mutehurtbylevelentity",
+              "mutehurtbylevelentity_LV",
+              "MUL"
+            ],
+            "Actor_IceSubHurtDelta": [
+              "PER_mutehurtbylevelentity",
+              "mutehurtbylevelentity_LV",
+              "MUL"
+            ],
+            "Actor_RockSubHurtDelta": [
               "PER_mutehurtbylevelentity",
               "mutehurtbylevelentity_LV",
               "MUL"
             ]
           }
         },
-        "UNIQUE_ReviveRoomBuff_Avatar": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
+        "DefenceByLevelEntityHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "globalValueKey": "SGV_ROGUE_DEFENCEBYLEVELENTITY",
+              "actions": [
+                {
+                  "$type": "SetGlobalValueToOverrideMap",
+                  "globalValueKey": "SGV_ROGUE_DEFENCEBYLEVELENTITY",
+                  "overrideMapKey": "defencebylevelentity_LV"
+                },
+                {
+                  "$type": "RemoveModifier",
+                  "modifierName": "DefenceByLevelEntity_Manager"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "DefenceByLevelEntity_Manager"
+                }
+              ]
+            }
+          ]
+        },
+        "DefenceByLevelEntity_Manager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "LocalAvatarsMixin",
+              "modifierName": "UNIQUE_DefenceByLevelEntity_Avatar"
+            }
+          ]
+        },
+        "UNIQUE_DefenceByLevelEntity_Avatar": {
+          "modifierName": "",
           "isUnique": true,
-          "isLimitedProperties": true,
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_DefenceRatio": [
+              "PER_defencebylevelentity",
+              "defencebylevelentity_LV",
+              "MUL"
+            ]
+          }
+        },
+        "BombRejectHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "LocalAvatarsMixin",
+              "modifierName": "UNIQUE_BombReject_Avatar"
+            }
+          ]
+        },
+        "UNIQUE_BombReject_Avatar": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "RejectAttackMixin",
+              "attackTag": "Rogue_BombAttack"
+            }
+          ]
+        },
+        "MasteryByGearHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "globalValueKey": "SGV_ROGUE_MASTERYBYGEAR",
+              "actions": [
+                {
+                  "$type": "SetGlobalValueToOverrideMap",
+                  "globalValueKey": "SGV_ROGUE_MASTERYBYGEAR",
+                  "overrideMapKey": "masterybygear_LV"
+                },
+                {
+                  "$type": "RemoveModifier",
+                  "modifierName": "MasteryByGear_Manager"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "MasteryByGear_Manager"
+                }
+              ]
+            }
+          ]
+        },
+        "MasteryByGear_Manager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "LocalAvatarsMixin",
+              "modifierName": "UNIQUE_MasteryByGear_Avatar"
+            }
+          ]
+        },
+        "UNIQUE_MasteryByGear_Avatar": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_ElemMasteryDelta": [10.0, "masterybygear_LV", "MUL"]
+          }
+        },
+        "ReviveRoomBuffHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "globalValueKey": "SGV_ROGUE_REVIVEROOMBUFF",
+              "actions": [
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Team",
+                      "key": "SGV_ROGUE_REVIVEROOMBUFF",
+                      "ratio": 0.0,
+                      "compareType": "MoreThan"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "SetGlobalValueToOverrideMap",
+                      "globalValueKey": "SGV_ROGUE_REVIVEROOMBUFF",
+                      "overrideMapKey": "reviveroombuff_LV"
+                    },
+                    {
+                      "$type": "RemoveModifier",
+                      "modifierName": "ReviveRoomBuff_Manager"
+                    },
+                    {
+                      "$type": "ApplyModifier",
+                      "modifierName": "ReviveRoomBuff_Manager"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "ReviveRoomBuff_Manager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "LocalAvatarsMixin",
+              "modifierName": "UNIQUE_ReviveRoomBuff_Avatar"
+            }
+          ]
+        },
+        "UNIQUE_ReviveRoomBuff_Avatar": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
           "properties": {
             "Actor_AddHurtDelta": [
               "PER_reviveroombuff",
@@ -877,53 +474,205 @@
               "SUB"
             ]
           }
+        },
+        "BattleRoomBuffHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "globalValueKey": "SGV_ROGUE_BATTLEROOMBUFF",
+              "actions": [
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Team",
+                      "key": "SGV_ROGUE_BATTLEROOMBUFF",
+                      "ratio": 0.0,
+                      "compareType": "MoreThan"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "SetGlobalValueToOverrideMap",
+                      "globalValueKey": "SGV_ROGUE_BATTLEROOMBUFF",
+                      "overrideMapKey": "battleroombuff_LV"
+                    },
+                    {
+                      "$type": "RemoveModifier",
+                      "modifierName": "BattleRoomBuff_Manager"
+                    },
+                    {
+                      "$type": "ApplyModifier",
+                      "modifierName": "BattleRoomBuff_Manager"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "BattleRoomBuff_Manager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "LocalAvatarsMixin",
+              "modifierName": "UNIQUE_BattleRoomBuff_Avatar"
+            }
+          ]
+        },
+        "UNIQUE_BattleRoomBuff_Avatar": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_AddHurtDelta": [
+              "PER_battleroombuff",
+              "battleroombuff_LV",
+              "MUL",
+              "PER_battleroombuff",
+              "SUB"
+            ]
+          }
         }
       },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      },
-      "abilityMixins": [
+      "onAdded": [
         {
-          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
-          "valueSteps": [
-            0.5,
-            1.5
-          ],
-          "actorIceSubHurtDelta": -1,
-          "modifierNameSteps": [
-            "BombRejectHandler"
-          ],
-          "removeAppliedModifier": true,
-          "globalValueKey": "SGV_ROGUE_BOMBREJECT"
+          "$type": "ApplyModifier",
+          "modifierName": "AttackByLevelEntityHandler"
         },
         {
-          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
-          "valueSteps": [
-            0.5,
-            1.5
-          ],
-          "actorIceSubHurtDelta": -1,
-          "modifierNameSteps": [
-            "MonsterGetBuff"
-          ],
-          "removeAppliedModifier": true,
-          "globalValueKey": "SGV_ROGUECURSE_MONSTERBUFF"
+          "$type": "ApplyModifier",
+          "modifierName": "ChargeSpeedByLevelEntityHandler"
         },
         {
-          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
-          "valueSteps": [
-            0.5,
-            1.5
+          "$type": "ApplyModifier",
+          "modifierName": "MuteHurtByLevelEntityHandler"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "DefenceByLevelEntityHandler"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "MasteryByGearHandler"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ReviveRoomBuffHandler"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "BattleRoomBuffHandler"
+        },
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "globalValueKey": "SGV_ROGUE_ATTACKBYLEVELENTITY",
+          "overrideMapKey": "attackbylevelentity_LV"
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "AttackByLevelEntity_Manager"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "AttackByLevelEntity_Manager"
+        },
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "globalValueKey": "SGV_ROGUE_CHARGEBYLEVELENTITY",
+          "overrideMapKey": "chargebylevelentity_LV"
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "ChargeByLevelEntity_Manager"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ChargeByLevelEntity_Manager"
+        },
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "globalValueKey": "SGV_ROGUE_MUTEHURTBYLEVELENTITY",
+          "overrideMapKey": "mutehurtbylevelentity_LV"
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "MuteHurtByLevelEntity_Manager"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "MuteHurtByLevelEntity_Manager"
+        },
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "globalValueKey": "SGV_ROGUE_DEFENCEBYLEVELENTITY",
+          "overrideMapKey": "defencebylevelentity_LV"
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "DefenceByLevelEntity_Manager"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "DefenceByLevelEntity_Manager"
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Team",
+              "key": "SGV_ROGUE_REVIVEROOMBUFF",
+              "ratio": 0.0,
+              "compareType": "MoreThan"
+            }
           ],
-          "actorIceSubHurtDelta": -1,
-          "modifierNameSteps": [
-            "BombExtraDamage"
+          "successActions": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "globalValueKey": "SGV_ROGUE_REVIVEROOMBUFF",
+              "overrideMapKey": "reviveroombuff_LV"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "ReviveRoomBuff_Manager"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "ReviveRoomBuff_Manager"
+            }
+          ]
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Team",
+              "key": "SGV_ROGUE_BATTLEROOMBUFF",
+              "ratio": 0.0,
+              "compareType": "MoreThan"
+            }
           ],
-          "removeAppliedModifier": true,
-          "globalValueKey": "SGV_ROGUECURSE_BOMBDAMAGE"
+          "successActions": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "globalValueKey": "SGV_ROGUE_BATTLEROOMBUFF",
+              "overrideMapKey": "battleroombuff_LV"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "BattleRoomBuff_Manager"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "BattleRoomBuff_Manager"
+            }
+          ]
         }
       ]
     }

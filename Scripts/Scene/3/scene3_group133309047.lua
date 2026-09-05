@@ -163,8 +163,8 @@ suites = {
 
 -- 触发操作
 function action_EVENT_CHALLENGE_SUCCESS_47012(context, evt)
-	-- 触发镜头注目，注目位置为坐标{x=-2321.137, y = -34.414, z=5375.171}，持续时间为3秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-2321.137, y=-34.414, z=5375.171}
+	-- 触发镜头注目，注目位置为坐标{x=-2321.137, y=-34.41365, z=5375.171}，持续时间为3秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-2321.137, y=-34.41365, z=5375.171}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 3, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -314,7 +314,7 @@ function action_EVENT_SELECT_OPTION_47017(context, evt)
 		end 
 	
 	-- 触发镜头注目，注目位置为坐标（-2332.525，-35.62978，5377.425），持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-2332.525, y=-35.630, z=5377.425}
+		local pos = {x=-2332.525, y=-35.62978, z=5377.425}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -366,8 +366,8 @@ end
 
 -- 触发操作
 function action_EVENT_ENTER_REGION_47041(context, evt)
-	-- 触发镜头注目，注目位置为坐标{x=-2366.518, y = 70.507, z=5378.012}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-2366.518, y=70.507, z=5378.012}
+	-- 触发镜头注目，注目位置为坐标{x=-2366.518, y=70.50684, z=5378.012}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=-2366.518, y=70.50684, z=5378.012}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

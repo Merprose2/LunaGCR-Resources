@@ -24,8 +24,7 @@ local defs = {
 
 -- DEFS_MISCS
 connectInfo = 
-{
-	{defs.gadget_Teleport_1,defs.gadget_Teleport_2,defs.pointarray_1,10}
+{	{defs.gadget_Teleport_1,defs.gadget_Teleport_2,defs.pointarray_1,10}
 }
 
 --================================================================

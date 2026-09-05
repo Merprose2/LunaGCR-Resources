@@ -278,7 +278,7 @@ function action_EVENT_SELECT_OPTION_170017(context, evt)
 		end 
 	
 	-- 触发镜头注目，注目位置为坐标（-5899.751，200.7936，-2707.539），持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-5899.751, y=200.794, z=-2707.539}
+		local pos = {x=-5899.751, y=200.7936, z=-2707.539}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -302,7 +302,7 @@ end
 -- 触发操作
 function action_EVENT_GADGET_STATE_CHANGE_170019(context, evt)
 	-- 触发镜头注目，注目位置为坐标（-5947.954，218.5854，-2629.875），持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-5947.954, y=218.585, z=-2629.875}
+		local pos = {x=-5947.954, y=218.5854, z=-2629.875}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

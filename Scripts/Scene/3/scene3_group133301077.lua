@@ -13,8 +13,8 @@ local defs = {
 	weatherId = 4056,
 	fatherChallenge = 267,
 	childChallenge = {268,269 },
-	transParam_Pos = {x = -203.633, y = 225.990, z = 3516.570},
-	transParam_Rot = {x = 1, y = 319.625, z = 1},
+	transParam_Pos = {x = -203.6333, y = 225.99, z = 3516.57},
+	transParam_Rot = {x = 1, y = 319.6249, z = 1},
 	transParam_Radius = 1,
 	visionType = 33010004
 }

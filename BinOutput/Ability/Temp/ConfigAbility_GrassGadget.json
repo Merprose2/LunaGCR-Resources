@@ -1,377 +1,233 @@
 [
   {
     "Default": {
-      "onAdded": [
-        {
-          "$type": "AttachModifier",
-          "actorIceSubHurtDelta": -1,
-          "doOffStage": false,
-          "modifierName": "NormalModifier",
-          "canBeHandledOnRecover": true
-        }
-      ],
+      "$type": "ConfigAbility",
       "abilityName": "Oil_Interact",
       "modifiers": {
-        "Burning": {
-          "thinkInterval": 1,
-          "duration": 1.2000000476837158,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "onThinkInterval": [
+        "NormalModifier": {
+          "modifierName": "",
+          "elementType": "Wood",
+          "bonusCritical": 5.0,
+          "isElementDurabilityMutable": false,
+          "onBeingHit": [
             {
-              "$type": "DamageByAttackValue",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "attackInfo": {
-                "HBOOKFMCODC": {
-                  "BPIJOAMNKIH": {
-                    "GGOHGMFHHEC": true,
-                    "value": 1
-                  },
-                  "onHitEffectName": "default"
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByHitElement",
+                  "element": "Fire"
                 },
-                "hitPattern": {
-                  "hitHaltTimeScale": 0.009999999776482582,
-                  "BPIJOAMNKIH": {
-                    "GGOHGMFHHEC": true,
-                    "value": 1
-                  },
-                  "onHitEffectName": "default",
-                  "overrideHitImpulse": {
-                    "hitLevel": "Air",
-                    "hitImpulseY": 420
-                  }
-                },
-                "INKGMIHAPMA": {
-                  "NDIBGPPKGJP": "Shake"
-                },
-                "cameraShake": {
-                  "shakeDistance": 20,
-                  "extension": {
-                    "rangeAttenuation": 0.5,
-                    "baseOnCamera": true,
-                    "baseCycle": 0.11999999731779099,
-                    "cycleDamping": 0.11999999731779099
-                  }
-                },
-                "attenuationGroup": "default",
-                "attackProperty": {
-                  "elementType": "Fire",
-                  "elementDurability": 40,
-                  "enBreak": 30,
-                  "elementRank": 1,
-                  "attackType": "Default",
-                  "damagePercentage": 0.10000000149011612
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "OOKBGJPMLJC",
+                      "element": "Fire"
+                    }
+                  ]
                 }
-              },
-              "otherTargets": {
-                "$type": "SelectTargetsByShape",
-                "shapeName": "CircleR5",
-                "campTargetType": "SelfCamp",
-                "sizeRatio": 1,
-                "NLNIBNNOOCK": {
-                  "APKLAIJMEIL": {
-                    "HHNLJKNBKPP": 180
-                  },
-                  "value": 10,
-                  "direction": {
-                    "maxAngle": 180
-                  },
-                  "onGroundRaycastUpDist": 2
+              ],
+              "modifierName": "Burning"
+            },
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByHitElement",
+                  "element": "Fire"
+                },
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "OOKBGJPMLJC",
+                      "element": "Fire"
+                    }
+                  ]
                 }
-              },
+              ],
+              "modifierName": "On_Burning"
+            }
+          ]
+        },
+        "On_Burning": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Delay"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_FireBasin_Smoke",
               "born": {
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
                 },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2
+                "attachPointName": "attachPoint"
               },
-              "canBeHandledOnRecover": true
+              "effectTempleteID": -1.0
             }
           ],
-          "isLimitedProperties": true
+          "onBeingHit": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByHitElement",
+                  "element": "Water"
+                }
+              ],
+              "modifierName": "Check_Fire"
+            },
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByHitElement",
+                  "element": "Ice"
+                }
+              ],
+              "modifierName": "Check_Fire"
+            }
+          ]
+        },
+        "Check_Fire": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "OOKBGJPMLJC",
+                      "element": "Fire"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "On_Burning"
+            }
+          ]
         },
         "Check_Around": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
           "onAdded": [
             {
               "$type": "Predicated",
               "targetPredicates": [
                 {
-                  "$type": "ByHasElement",
-                  "target": "Target",
+                  "$type": "OOKBGJPMLJC",
                   "element": "Fire"
                 }
               ],
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "successActions": [
                 {
                   "$type": "DamageByAttackValue",
                   "target": "Caster",
-                  "actorIceSubHurtDelta": -1,
-                  "doOffStage": false,
                   "attackInfo": {
-                    "HBOOKFMCODC": {
-                      "BPIJOAMNKIH": {
-                        "GGOHGMFHHEC": true,
-                        "value": 1
-                      },
-                      "onHitEffectName": "default"
-                    },
-                    "hitPattern": {
-                      "hitHaltTimeScale": 0.009999999776482582,
-                      "BPIJOAMNKIH": {
-                        "GGOHGMFHHEC": true,
-                        "value": 1
-                      },
-                      "onHitEffectName": "default",
-                      "overrideHitImpulse": {
-                        "hitLevel": "Air",
-                        "hitImpulseY": 420
-                      }
-                    },
-                    "INKGMIHAPMA": {
-                      "NDIBGPPKGJP": "Shake"
-                    },
-                    "cameraShake": {
-                      "shakeDistance": 20,
-                      "extension": {
-                        "rangeAttenuation": 0.5,
-                        "baseOnCamera": true,
-                        "baseCycle": 0.11999999731779099,
-                        "cycleDamping": 0.11999999731779099
-                      }
-                    },
+                    "attackTag": "",
+                    "attenuationTag": "",
                     "attenuationGroup": "default",
                     "attackProperty": {
+                      "damagePercentage": 0.10000000149011612,
+                      "damagePercentageRatio": 0.0,
                       "elementType": "Fire",
-                      "elementDurability": 40,
-                      "enBreak": 30,
-                      "elementRank": 1,
-                      "attackType": "Default",
-                      "damagePercentage": 0.10000000149011612
-                    }
-                  },
-                  "born": {
-                    "APKLAIJMEIL": {
-                      "HHNLJKNBKPP": 180
+                      "bonusCritical": 40.0,
+                      "strikeType": "Default",
+                      "FKGFPFNOJMN": 0.0
                     },
-                    "value": 10,
-                    "direction": {
-                      "maxAngle": 180
-                    },
-                    "onGroundRaycastUpDist": 2
-                  },
-                  "canBeHandledOnRecover": true
-                }
-              ],
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "duration": 0.20000000298023224,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
-        },
-        "Check_Fire": {
-          "duration": 0.20000000298023224,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "onRemoved": [
-            {
-              "$type": "RemoveModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "On_Burning",
-              "predicates": [
-                {
-                  "$type": "ByNot",
-                  "target": "Target",
-                  "predicates": [
-                    {
-                      "$type": "ByHasElement",
-                      "target": "Target",
-                      "element": "Fire"
+                    "hitPattern": {
+                      "onHitEffectName": "default",
+                      "hitImpulseType": "",
+                      "overrideHitImpulse": {
+                        "hitLevel": "Air",
+                        "BLHKKKALNDK": 0.0,
+                        "hitImpulseY": 420.0
+                      },
+                      "hitHaltTimeScale": 0.009999999776482582
                     }
-                  ]
+                  }
                 }
-              ],
-              "canBeHandledOnRecover": true
+              ]
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         },
         "Delay": {
-          "thinkInterval": 3,
+          "modifierName": "",
           "duration": 4.5,
-          "elementDurability": 100,
-          "minus_one": -1,
-          "IAKPBCLBNKF": -1,
+          "bonusCritical": 100.0,
+          "thinkInterval": 3.0,
           "onThinkInterval": [
             {
               "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
               "otherTargets": {
                 "$type": "SelectTargetsByShape",
                 "shapeName": "CircleR5",
                 "campTargetType": "SelfCamp",
-                "sizeRatio": 1,
-                "NLNIBNNOOCK": {
-                  "APKLAIJMEIL": {
-                    "HHNLJKNBKPP": 180
-                  },
-                  "value": 10,
-                  "direction": {
-                    "maxAngle": 180
-                  },
-                  "onGroundRaycastUpDist": 2
-                }
+                "OBHNBNDMPFN": 1.0
               },
-              "modifierName": "Check_Around",
-              "canBeHandledOnRecover": true
+              "modifierName": "Check_Around"
             }
-          ],
-          "isLimitedProperties": true
+          ]
         },
-        "NormalModifier": {
-          "elementType": "Wood",
-          "elementDurability": 5,
-          "minus_one": -1,
-          "onBeingHit": [
+        "Burning": {
+          "modifierName": "",
+          "duration": 1.2000000476837158,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onThinkInterval": [
             {
-              "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Burning",
-              "predicates": [
-                {
-                  "$type": "ByHitElement",
-                  "target": "Target",
-                  "element": "Fire"
-                },
-                {
-                  "$type": "ByNot",
-                  "target": "Target",
-                  "predicates": [
-                    {
-                      "$type": "ByHasElement",
-                      "target": "Target",
-                      "element": "Fire"
-                    }
-                  ]
-                }
-              ],
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "On_Burning",
-              "predicates": [
-                {
-                  "$type": "ByHitElement",
-                  "target": "Target",
-                  "element": "Fire"
-                },
-                {
-                  "$type": "ByNot",
-                  "target": "Target",
-                  "predicates": [
-                    {
-                      "$type": "ByHasElement",
-                      "target": "Target",
-                      "element": "Fire"
-                    }
-                  ]
-                }
-              ],
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "IAKPBCLBNKF": -1
-        },
-        "On_Burning": {
-          "elementDurability": 100,
-          "minus_one": -1,
-          "onBeingHit": [
-            {
-              "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Check_Fire",
-              "predicates": [
-                {
-                  "$type": "ByHitElement",
-                  "target": "Target",
-                  "element": "Water"
-                }
-              ],
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Check_Fire",
-              "predicates": [
-                {
-                  "$type": "ByHitElement",
-                  "target": "Target",
-                  "element": "Ice"
-                }
-              ],
-              "canBeHandledOnRecover": true
-            }
-          ],
-          "onRemoved": [
-            {
-              "$type": "ApplyModifier",
-              "actorIceSubHurtDelta": -1,
-              "doOffStage": false,
-              "modifierName": "Delay",
-              "canBeHandledOnRecover": true
-            },
-            {
-              "$type": "FireEffect",
-              "actorIceSubHurtDelta": -1,
-              "scale": 1,
-              "doOffStage": false,
-              "born": {
-                "$type": "ConfigBornByAttachPoint",
-                "APKLAIJMEIL": {
-                  "HHNLJKNBKPP": 180
-                },
-                "value": 10,
-                "direction": {
-                  "maxAngle": 180
-                },
-                "onGroundRaycastUpDist": 2,
-                "attachPointName": "attachPoint"
+              "$type": "DamageByAttackValue",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "campTargetType": "SelfCamp",
+                "OBHNBNDMPFN": 1.0
               },
-              "effectPattern": "Eff_FireBasin_Smoke",
-              "effectTempleteID": -1,
-              "canBeHandledOnRecover": true
+              "attackInfo": {
+                "attackTag": "",
+                "attenuationTag": "",
+                "attenuationGroup": "default",
+                "attackProperty": {
+                  "damagePercentage": 0.10000000149011612,
+                  "damagePercentageRatio": 0.0,
+                  "elementType": "Fire",
+                  "bonusCritical": 40.0,
+                  "strikeType": "Default",
+                  "FKGFPFNOJMN": 0.0
+                },
+                "hitPattern": {
+                  "onHitEffectName": "default",
+                  "hitImpulseType": "",
+                  "overrideHitImpulse": {
+                    "hitLevel": "Air",
+                    "BLHKKKALNDK": 0.0,
+                    "hitImpulseY": 420.0
+                  },
+                  "hitHaltTimeScale": 0.009999999776482582
+                }
+              }
             }
-          ],
-          "IAKPBCLBNKF": -1,
-          "isLimitedProperties": true
+          ]
         }
       },
-      "LKLPDIMKLKI": {
-        "elementDurability": 100,
-        "minus_one": -1,
-        "IAKPBCLBNKF": -1,
-        "isLimitedProperties": true
-      }
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "NormalModifier"
+        }
+      ]
     }
   }
 ]

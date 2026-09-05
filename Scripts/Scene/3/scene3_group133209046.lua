@@ -121,7 +121,7 @@ end
 function action_EVENT_SELECT_OPTION_46004(context, evt)
 	-- 将使用操作台的玩家传送至目标点
 		if evt.uid ~= nil then
-	    local t_pos = {x=-2368.540, y=199.860, z=-4151.150}
+	    local t_pos = {x=-2368.54, y=199.86, z=-4151.15}
 	    if 0 ~= ScriptLib.TransPlayerToPos(context, {uid_list = {evt.uid}, pos = t_pos, rot = {x=0, y=-166.322, z=0}}) then
 	      ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : trans_player_byOption")
 	      return -1

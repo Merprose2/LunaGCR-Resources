@@ -9,7 +9,7 @@ local defs = {
 	blossom_chest = 431010,
 	ice_storm = 431011,
 	gadget_list = {{s = 431015, t = 431012},{s = 431016, t = 431013},{s = 431017, t = 431014}},
-	reminder_pos = {x=1415.000,y=282.000,z=-1031.000},
+	reminder_pos = {x=1415,y=282,z=-1031},
 	challenge = {{id = 58, weight = 25, temp_r = 5 },{id = 59, weight = 25, temp_r = 6 }, {id = 60, weight = 25, temp_r = 7 }, {id = 61, weight = 25, temp_r = 8}}
 }
 

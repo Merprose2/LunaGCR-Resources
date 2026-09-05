@@ -188,7 +188,7 @@ end
 
 -- 触发操作
 function action_EVENT_SELECT_OPTION_214003(context, evt)
-	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-1110.681, y= -32.558, z=5475.348}, radius = 2, rot = {x=0, y=134.61, z=0},scene_id=3})
+	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-1110.681, y= -32.55792, z=5475.348}, radius = 2, rot = {x=0, y=134.61, z=0},scene_id=3})
 	
 	return 0
 end
@@ -237,7 +237,7 @@ end
 
 -- 触发操作
 function action_EVENT_SELECT_OPTION_214012(context, evt)
-	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-1489.843, y= 45.788, z=5617.260}, radius = 2, rot = {x=0, y = 105.060, z=0},scene_id=3})
+	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-1489.843, y= 45.78767, z=5617.26}, radius = 2, rot = {x=0, y=105.0602, z=0},scene_id=3})
 	
 	return 0
 end
@@ -325,7 +325,7 @@ end
 
 -- 触发操作
 function action_EVENT_SELECT_OPTION_214020(context, evt)
-	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-2350.097, y= -173.862, z=5324.314}, radius = 2, rot = {x=0, y=0, z=0},scene_id=3})
+	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-2350.097, y= -173.8621, z=5324.314}, radius = 2, rot = {x=0, y=0, z=0},scene_id=3})
 	
 	return 0
 end
@@ -367,7 +367,7 @@ end
 
 -- 触发操作
 function action_EVENT_SELECT_OPTION_214023(context, evt)
-	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-765.836, y= -338.725, z=5438.522}, radius = 2, rot = {x=0, y=0, z=0},scene_id=3})
+	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-765.836, y= -338.7253, z=5438.522}, radius = 2, rot = {x=0, y=0, z=0},scene_id=3})
 	
 	return 0
 end
@@ -409,7 +409,7 @@ end
 
 -- 触发操作
 function action_EVENT_SELECT_OPTION_214025(context, evt)
-	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-2000.131, y= 299.066, z=4091.058}, radius = 2, rot = {x=0, y=322.032, z=0},scene_id=3})
+	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-2000.131, y= 299.0656, z=4091.058}, radius = 2, rot = {x=0, y=322.032, z=0},scene_id=3})
 	
 	return 0
 end
@@ -451,7 +451,7 @@ end
 
 -- 触发操作
 function action_EVENT_SELECT_OPTION_214038(context, evt)
-	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-2237.250, y= 50.480, z=5568.330}, radius = 2, rot = {x=0, y=270, z=0},scene_id=3})
+	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-2237.25, y= 50.48, z=5568.33}, radius = 2, rot = {x=0, y=270, z=0},scene_id=3})
 	
 	return 0
 end
@@ -473,7 +473,7 @@ end
 
 -- 触发操作
 function action_EVENT_SELECT_OPTION_214039(context, evt)
-	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-2425.771, y=110.668, z=5236.500}, radius = 2, rot = {x=0, y=0, z=0},scene_id=3})
+	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-2425.771, y=110.6675, z=5236.5}, radius = 2, rot = {x=0, y=0, z=0},scene_id=3})
 	
 	return 0
 end
@@ -515,7 +515,7 @@ end
 
 -- 触发操作
 function action_EVENT_SELECT_OPTION_214041(context, evt)
-	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-1481.910, y=83.103, z=4503.920}, radius = 2, rot = {x=0, y=189, z=0},scene_id=3})
+	ScriptLib.TransPlayerToPos(context, {uid_list = {context.uid}, pos = {x=-1481.91, y=83.10291, z=4503.92}, radius = 2, rot = {x=0, y=189, z=0},scene_id=3})
 	
 	return 0
 end

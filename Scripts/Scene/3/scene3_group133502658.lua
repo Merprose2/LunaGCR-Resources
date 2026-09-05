@@ -5,7 +5,7 @@ local base_info = {
 
 
 monsters = {
-    { config_id = 658001, monster_id = 24090201, pos = { x = -2746.264, y = 68.077, z = 8334.459 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 36, drop_id = 1000100, pose_id = 100}
+    { config_id = 658001, monster_id = 24090201, pos = { x = -2746.263916015625, y = 68.0770034790039, z = 8334.458984375 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 36, drop_id = 1000100, pose_id = 100}
 }
 -- spawn
 init_config = {
