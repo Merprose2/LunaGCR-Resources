@@ -32,6 +32,54 @@ jobs:
       with:
         path: resources
         fetch-depth: 0
+        lfs: true
+
+    - name: Ensure Git LFS resources are materialized
+      working-directory: resources
+      shell: bash
+      run: |
+        git lfs install --local
+        git lfs pull
+        git lfs checkout
+        echo "LFS-tracked files:"
+        git lfs ls-files
+
+    - name: Verify critical LFS resources
+      working-directory: resources
+      shell: bash
+      run: |
+        python3 - <<'PY'
+        from pathlib import Path
+    
+        files = [
+            Path("ExcelBinOutput/TalkExcelConfigData.json"),
+            Path("ExcelBinOutput/DialogExcelConfigData.json"),
+        ]
+    
+        for path in files:
+            if not path.exists():
+                raise SystemExit(f"ERROR: Missing resource: {path}")
+    
+            size = path.stat().st_size
+    
+            with path.open("r", encoding="utf-8-sig") as f:
+                while True:
+                    c = f.read(1)
+                    if not c:
+                        raise SystemExit(f"ERROR: {path} is empty")
+                    if not c.isspace():
+                        break
+    
+            print(f"{path}: {size:,} bytes, first token={c!r}")
+    
+            if c != "[":
+                raise SystemExit(
+                    f"ERROR: {path} is not a materialized JSON array. "
+                    "It may still be a Git LFS pointer."
+                )
+    
+        print("Critical LFS resource verification passed.")
+        PY
 
     - name: Check out LunaGC server repository
       uses: actions/checkout@v4
