@@ -1,0 +1,421 @@
+[
+  {
+    "Default": {
+      "abilityName": "Monster_Meleagris_None_Steer",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "Alert"
+          ],
+          "startNormalizedTime": 0.12999999523162842,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.5
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 10,
+          "steerStateIDs": [
+            "Alert_Move"
+          ],
+          "IBMKLKNGDEA": true,
+          "attackAngle": 180,
+          "endNormalizedTime": 999
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "Alert_Run"
+          ],
+          "startNormalizedTime": 0.2199999988079071,
+          "IBMKLKNGDEA": true,
+          "attackAngle": 180,
+          "endNormalizedTime": 0.3499999940395355
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 150,
+          "steerStateIDs": [
+            "Alert2"
+          ],
+          "startNormalizedTime": 0.12999999523162842,
+          "IBMKLKNGDEA": true,
+          "attackAngle": 180,
+          "endNormalizedTime": 0.5
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Meleagris_None_Alert",
+      "modifiers": {
+        "AlertMoveEffect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Animal_Meleagris_Turn",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "DistanceChecker": {
+          "thinkInterval": 0.014999999664723873,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 2,
+                  "logic": "LesserOrEqual"
+                }
+              ],
+              "target": "SelfAttackTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "TargetNear",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "value": true,
+                  "boolID": "TargetNear",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "GadgetShowEnd": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "target": "Target",
+                  "value": 5,
+                  "parameter": "PoseID",
+                  "logic": "Equal"
+                }
+              ],
+              "effectPattern": "Eff_Animal_Meleagris_Dizzy",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "FleeNow",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "target": "Target",
+                  "value": 5,
+                  "parameter": "PoseID",
+                  "logic": "Equal"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": 1,
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "target": "Target",
+                  "value": 5,
+                  "parameter": "PoseID",
+                  "logic": "Equal"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "intID": "FleeNow"
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "GadgetShow",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "target": "Target",
+                  "value": 5,
+                  "parameter": "PoseID",
+                  "logic": "Equal"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Alert_Loop",
+            "Alert_Loop2",
+            "Alert_Move"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "DistanceChecker",
+          "value": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Born",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "GadgetShowEnd",
+          "normalizeStart": 0.2800000011920929,
+          "normalizeEnd": 0.5799999833106995,
+          "value": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Alert_Move"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "AlertMoveEffect",
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Meleagris_None_Flee",
+      "modifiers": {
+        "DisappearTimer": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "Disappear",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetCanDieImmediately",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "IHNFPMODKPE": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "StartDither",
+              "CJKPCCEKEGA": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "duHPRation": 3,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "HideUIBillBoard",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "hide": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Disappear",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "ELJJHIPAFKC": true,
+              "KBKCMPMOKGM": true,
+              "duHPRation": 1.5,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FleeMode_Monitor": {
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": 1,
+              "canBeHandledOnRecover": true,
+              "intID": "FleeNow"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnBeingHit_Monitor": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onBeingHit": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "OnBeingHit",
+              "mpTriggerOnRemote": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnBeingHit_Reset": {
+          "onAdded": [
+            {
+              "$type": "ResetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "triggerID": "OnBeingHit",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Alert"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "OnBeingHit_Reset",
+          "value": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Alert_Loop",
+            "Alert_Loop2",
+            "Alert_Move"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "OnBeingHit_Monitor",
+          "value": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Alert_Run",
+            "Alert2"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "FleeMode_Monitor",
+          "value": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Disappear"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "DisappearTimer",
+          "value": -1
+        }
+      ]
+    }
+  }
+]

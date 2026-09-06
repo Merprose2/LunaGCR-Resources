@@ -1,0 +1,3300 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "Vehicle_Common_Occupied_Handler",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Common_GetOnVehicle_StateBlackList_Handler",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Common_GetOffVehicle_StateWhiteList_Handler",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Common_GetOffVehicle_DisableButton_Handler",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "Mosasaurus_Stealth_Handler",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Vehicle_Natsaurus_Common_01",
+      "modifiers": {
+        "DenyLock": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "DenyLockOn"
+        },
+        "GhostToEmeny": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "IsGhostToEnemy"
+        },
+        "Invincible": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "Invincible"
+        },
+        "Mosasaurus_Stealth_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AIPerceptionMixin",
+              "featureTagIDs": [
+                4047,
+                4048
+              ],
+              "actorIceSubHurtDelta": -1,
+              "FFHOHJDMECL": 4
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Check_NatLand_Area": {
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasModifier",
+                  "target": "Target",
+                  "modifierName": "UNIQUE_TeamModifier_NatLand_Area"
+                }
+              ],
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Predicated UNIQUE_TeamModifier_NatLand_Area > failActions",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "Disable_Eff_SaurTotem",
+                  "target": "Vehicle",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "TriggerVehicleOff",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ILMHBGFOAJN",
+                  "target": "Vehicle",
+                  "configIdArray": [
+                    45004101
+                  ]
+                },
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHasModifier",
+                      "target": "Team",
+                      "modifierName": "TeamModifier_PaintSeelie_VehicleOff"
+                    },
+                    {
+                      "$type": "ByNot",
+                      "target": "Target",
+                      "predicates": [
+                        {
+                          "$type": "ByHasModifier",
+                          "target": "Team",
+                          "modifierName": "UNIQUE_TeamModifier_NatLand_PaintSeelie_Area"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "Disable_Eff_SaurTotem",
+                  "target": "Vehicle",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "TriggerVehicleOff",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "KillSelf",
+                  "killSelfType": "Normal",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "configIdArray": [
+                    45004101
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Common_GetOffVehicle_DisableButton": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Vehicle_GetOff_DisableButton",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Vehicle_GetOff_DisableButton",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Common_GetOffVehicle_DisableButton_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "Standby",
+                "NormalMove",
+                "Jump",
+                "Slip",
+                "StandbyShow",
+                "Swim",
+                "ArcLightMoving",
+                "DrillingExit",
+                "SprintDash",
+                "SprintDashBS",
+                "Sprint",
+                "SprintBS"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "animatorWhiteList": [
+                "DrillingGroundExitFallToGround",
+                "FallOnGround",
+                "FallOnGroundLit",
+                "FallToGroundRun",
+                "FallToGroundRunHard"
+              ],
+              "modifierName": "UNIQUE_Common_GetOffVehicle_DisableButton",
+              "isCheckOnAttach": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Common_GetOffVehicle_StateWhiteList": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Vehicle_GetOff_WhiteList",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Vehicle_GetOff_WhiteList",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Common_GetOffVehicle_StateWhiteList_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "Standby",
+                "NormalMove",
+                "ArcLightMoving",
+                "Swim",
+                "StandbyShow",
+                "MoveRushAS",
+                "DrillingExit",
+                "SprintDash",
+                "SprintDashBS",
+                "Sprint",
+                "SprintBS"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "animatorWhiteList": [
+                "DrillingGroundExitFallToGround",
+                "FallOnGround",
+                "FallOnGroundLit",
+                "FallToGroundRun",
+                "FallToGroundRunHard"
+              ],
+              "modifierName": "UNIQUE_Common_GetOffVehicle_StateWhiteList",
+              "isCheckOnAttach": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Common_GetOnVehicle_CanNotUseDriving": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Team_Common_GetOnVehicle_CanNotUseDriving",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Common_GetOnVehicle_StateBlackList_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enable": true,
+              "modifierNameSteps": [
+                "Blank",
+                "UNIQUE_Common_GetOnVehicle_CanNotUseDriving"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_NatsaurusVehicle_CanNotUseDriving_Flag",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Common_Vehicle_Occupied": {
+          "onAdded": [
+            {
+              "$type": "EnablePushColliderName",
+              "setEnable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "pushColliderNames": [
+                "PushCollider"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "GV_AvatarAbility_HoldOnUI_Index04",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "FPDFKHJBHOJ",
+                  "target": "Target",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Natsaurus_TransferedVehicle",
+                  "target": "Target",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "MonsterConvert",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_ABILITY_Natsaurus_TransferedVehicle",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetAnimatorBool",
+                  "value": true,
+                  "boolID": "MonsterConvert",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_GetOnVehicle_SetShaderCtrl",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "intID": "SaurTotemShaderCtrl"
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_VehicleRestrict",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Check_NatLand_Area",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "DoWatcherSystemAction",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "watcherId": 81506,
+              "authorityOnly": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Common_Vehicle_Unoccupied": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "Invincible",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "GhostToEmeny",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "DenyLock",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Vehicle_Restrict",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "pushColliderNames": [
+                "PushCollider"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_GetOffVehicle_SetShaderCtrl",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Vehicle_Exit_Type",
+                  "target": "Target",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "enable": true,
+              "value": 3,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 2,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Vehicle_Exit_Type",
+                  "target": "Target",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "intID": "SaurTotemShaderCtrl"
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_KillSelf_CountDown",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "Disable_Eff_SaurTotem",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_KillSelf_CountDown",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Mosasaurus_Is_In_ArcLight",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Vehicle_DrillHead_Enhanced_Remover",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "Invincible",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "GhostToEmeny",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "DenyLock",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "pushColliderNames": [
+                "PushCollider"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "PJAKKOGPKBP",
+              "actorIceSubHurtDelta": -1,
+              "EMNIAOMNIEF": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_KillSelf_CountDown": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "Disable_SubTagScanEntityMixin",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_KillSelf_Die_Pattern",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "configIdArray": [
+                45003011,
+                45003021,
+                45003031,
+                45003041,
+                45003051,
+                45003053,
+                45003061,
+                45004010,
+                45004020,
+                45004030,
+                45003042,
+                45003052,
+                45003014,
+                45004101,
+                45004102,
+                45004103,
+                45004104,
+                45004105,
+                45004106,
+                45003111,
+                45003121,
+                45003131,
+                45003151,
+                45003161
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_KillSelf_Die_Pattern": {
+          "duration": 5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DiePatternSwitchMixin",
+              "useRagDoll": true,
+              "dieForceDisappearTime": 1.5,
+              "dieShaderData": "MonsterInvisible",
+              "muteHitBox": true,
+              "dieShaderDisableDurationTime": -1,
+              "actorIceSubHurtDelta": -1,
+              "dieEndTime": 1.5,
+              "dieDenyLockOn": true,
+              "dieIgnoreTriggerBullet": true,
+              "dieShaderEnableDurationTime": -1,
+              "mutePushCollider": true,
+              "NHKKKCFDJGB": true,
+              "NINELBLOAHG": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Team_Common_GetOnVehicle_CanNotUseDriving": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "Disable_Transfer_Vehicle_From_Motion",
+              "target": "Team",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "useDummyAbility": true,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "Disable_Transfer_Vehicle_From_Motion",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Team_PhlogistonBar_Visible": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "PhlogistonAreaMixin",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_Eff_Bisonsaurus_Handler": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Vehicle_Natsaurus_Bisonsaurus_SaurTotem",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Enable",
+              "value": 1,
+              "type": "Bool",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Vehicle_Natsaurus_Bisonsaurus_SaurTotem",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Appear",
+              "value": 1,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Vehicle_Natsaurus_Bisonsaurus_SaurTotem",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "value": 1,
+                  "type": "Bool",
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Bisonsaurus_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Appear",
+                  "value": 1,
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Bisonsaurus_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            },
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "type": "Bool",
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Bisonsaurus_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Disappear",
+                  "value": 1,
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Bisonsaurus_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_Eff_Drillhead_Handler": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Vehicle_Natsaurus_Drillhead_SaurTotem",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Enable",
+              "value": 1,
+              "type": "Bool",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Vehicle_Natsaurus_Drillhead_SaurTotem",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Appear",
+              "value": 1,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Vehicle_Natsaurus_Drillhead_SaurTotem",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "value": 1,
+                  "type": "Bool",
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Drillhead_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Appear",
+                  "value": 1,
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Drillhead_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            },
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "type": "Bool",
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Drillhead_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Disappear",
+                  "value": 1,
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Drillhead_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_Eff_Flamingo_Handler": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Vehicle_Natsaurus_Flamingo_SaurTotem",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Enable",
+              "value": 1,
+              "type": "Bool",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Vehicle_Natsaurus_Flamingo_SaurTotem",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Appear",
+              "value": 1,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Vehicle_Natsaurus_Flamingo_SaurTotem",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "value": 1,
+                  "type": "Bool",
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Flamingo_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Appear",
+                  "value": 1,
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Flamingo_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            },
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "type": "Bool",
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Flamingo_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Disappear",
+                  "value": 1,
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Flamingo_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_Eff_Hookwalker_Handler": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Vehicle_Natsaurus_Hookwalker_SaurTotem",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Enable",
+              "value": 1,
+              "type": "Bool",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Vehicle_Natsaurus_Hookwalker_SaurTotem",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Appear",
+              "value": 1,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Vehicle_Natsaurus_Hookwalker_SaurTotem",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "value": 1,
+                  "type": "Bool",
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Hookwalker_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Appear",
+                  "value": 1,
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Hookwalker_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            },
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "type": "Bool",
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Hookwalker_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Disappear",
+                  "value": 1,
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Hookwalker_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_Eff_Mosasaurus_Handler": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Vehicle_Natsaurus_Mosasaurus_SaurTotem",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Enable",
+              "value": 1,
+              "type": "Bool",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Vehicle_Natsaurus_Mosasaurus_SaurTotem",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Appear",
+              "value": 1,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Vehicle_Natsaurus_Mosasaurus_SaurTotem",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "value": 1,
+                  "type": "Bool",
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Mosasaurus_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Appear",
+                  "value": 1,
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Mosasaurus_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            },
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "type": "Bool",
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Mosasaurus_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Disappear",
+                  "value": 1,
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Mosasaurus_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_Eff_PaintSeelie_Handler": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_PaintSeelie_SaurTotem",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Enable",
+              "value": 1,
+              "type": "Bool",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_PaintSeelie_SaurTotem",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Appear",
+              "value": 1,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_PaintSeelie_SaurTotem",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "value": 1,
+                  "type": "Bool",
+                  "effectPattern": "Eff_SceneObj_PaintSeelie_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Appear",
+                  "value": 1,
+                  "effectPattern": "Eff_SceneObj_PaintSeelie_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            },
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "type": "Bool",
+                  "effectPattern": "Eff_SceneObj_PaintSeelie_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Disappear",
+                  "value": 1,
+                  "effectPattern": "Eff_SceneObj_PaintSeelie_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_Eff_Shamansaurus_Handler": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Vehicle_Natsaurus_Shamansaurus_SaurTotem",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Enable",
+              "value": 1,
+              "type": "Bool",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Vehicle_Natsaurus_Shamansaurus_SaurTotem",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Appear",
+              "value": 1,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "target": "Target",
+                      "value": 3,
+                      "parameter": "SaurTotemShaderCtrl",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Vehicle_Natsaurus_Shamansaurus_SaurTotem",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "value": 1,
+                  "type": "Bool",
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Shamansaurus_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Appear",
+                  "value": 1,
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Shamansaurus_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            },
+            {
+              "$type": "DoActionByStateIDMixin",
+              "stateIDs": [
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enterActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Enable",
+                  "type": "Bool",
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Shamansaurus_SaurTotem",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Disappear",
+                  "value": 1,
+                  "effectPattern": "Eff_Vehicle_Natsaurus_Shamansaurus_SaurTotem",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_EffectHandler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enable": true,
+              "modifierNameSteps": [
+                "UNIQUE_Vehicle_Common_SaurTotem_EffectHandler_Normal"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "Disable_Eff_SaurTotem",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_EffectHandler_Enable": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_Eff_Drillhead_Handler",
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30011
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_Eff_Hookwalker_Handler",
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30012
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_Eff_Mosasaurus_Handler",
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30013
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_Eff_Flamingo_Handler",
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30014
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_Eff_Shamansaurus_Handler",
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30015
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_Eff_Bisonsaurus_Handler",
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30016
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_Eff_PaintSeelie_Handler",
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30019
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_EffectHandler_Normal": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enable": true,
+              "modifierNameSteps": [
+                "UNIQUE_Vehicle_Common_SaurTotem_EffectHandler_Enable"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_Mosasaurus_Is_In_ArcLight",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_GetOffVehicle_SetShaderCtrl": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "enable": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "SaurTotemShaderCtrl"
+            }
+          ],
+          "duration": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorInt",
+              "enable": true,
+              "value": 3,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "SaurTotemShaderCtrl"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_GetOnVehicle_SetShaderCtrl": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "enable": true,
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "SaurTotemShaderCtrl"
+            }
+          ],
+          "duration": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorInt",
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "SaurTotemShaderCtrl"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerpHandler": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Drillhead_Handler",
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30011
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Hookwalker_Handler",
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30012
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Mosasaurus_Handler",
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30013
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30017
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Flamingo_Handler",
+                  "predicates": [
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        30014
+                      ],
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Flamingo_Ghost_Handler",
+                  "predicates": [
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        30014
+                      ],
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30018
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Shamansaurus_Handler",
+                  "predicates": [
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        30015
+                      ],
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Shamansaurus_Ghost_Handler",
+                  "predicates": [
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        30015
+                      ],
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Bisonsaurus_Handler",
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30016
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_PaintSeelie_Handler",
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30019
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Bisonsaurus": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderLerpMixin",
+              "forceStopWhenRemoved": true,
+              "actorIceSubHurtDelta": -1,
+              "type": "NatsaurusSaurTotem_Bisonsaurus"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Bisonsaurus_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem",
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Bisonsaurus",
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1,
+              "isCheckOnAttach": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Drillhead": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderLerpMixin",
+              "forceStopWhenRemoved": true,
+              "actorIceSubHurtDelta": -1,
+              "type": "NatsaurusSaurTotem_Drillhead"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Drillhead_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem",
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Drillhead",
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1,
+              "isCheckOnAttach": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Flamingo": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderLerpMixin",
+              "forceStopWhenRemoved": true,
+              "actorIceSubHurtDelta": -1,
+              "type": "NatsaurusSaurTotem_Flamingo"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Flamingo_Ghost_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Flamingo_Ghost_ToVehicle",
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1,
+              "isCheckOnAttach": true
+            },
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Flamingo",
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1,
+              "isCheckOnAttach": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Flamingo_Ghost_ToVehicle": {
+          "duration": 0.550000011920929,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderLerpMixin",
+              "forceStopWhenRemoved": true,
+              "actorIceSubHurtDelta": -1,
+              "type": "NatsaurusSaurTotem_Flamingo"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Flamingo_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem",
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Flamingo",
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1,
+              "isCheckOnAttach": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Hookwalker": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderLerpMixin",
+              "forceStopWhenRemoved": true,
+              "actorIceSubHurtDelta": -1,
+              "type": "NatsaurusSaurTotem_Hookwalker"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Hookwalker_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem",
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Hookwalker",
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1,
+              "isCheckOnAttach": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Mosasaurus": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderLerpMixin",
+              "forceStopWhenRemoved": true,
+              "actorIceSubHurtDelta": -1,
+              "type": "NatsaurusSaurTotem_Mosasaurus"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Mosasaurus_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem",
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Mosasaurus",
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1,
+              "isCheckOnAttach": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_PaintSeelie": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderLerpMixin",
+              "forceStopWhenRemoved": true,
+              "actorIceSubHurtDelta": -1,
+              "type": "NatsaurusSaurTotem_PaintSeelie"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_PaintSeelie_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem",
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_PaintSeelie",
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1,
+              "isCheckOnAttach": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Shamansaurus": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderLerpMixin",
+              "forceStopWhenRemoved": true,
+              "actorIceSubHurtDelta": -1,
+              "type": "NatsaurusSaurTotem_Shamansaurus"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Shamansaurus_Ghost_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ChangeToVehicle"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Shamansaurus_Ghost_ToVehicle",
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1,
+              "isCheckOnAttach": true
+            },
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ChangeToSaurTotem"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Shamansaurus",
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1,
+              "isCheckOnAttach": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Shamansaurus_Ghost_ToVehicle": {
+          "duration": 0.550000011920929,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderLerpMixin",
+              "forceStopWhenRemoved": true,
+              "actorIceSubHurtDelta": -1,
+              "type": "NatsaurusSaurTotem_Shamansaurus"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Shamansaurus_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ChangeToVehicle",
+                "ChangeToSaurTotem"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerp_Shamansaurus",
+              "attackTrigger": "SaurTotem Layer",
+              "value": -1,
+              "isCheckOnAttach": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Common_SaurTotem_VehicleRestrict": {
+          "duration": 0.4000000059604645,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "VehicleRestrictMixin",
+              "CIHKLOIHEMD": true,
+              "actorIceSubHurtDelta": -1,
+              "OAHIPDAIKHB": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_DrillHead_Enhanced_Remover": {
+          "onAdded": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Vehicle_Natsaurus_Drillhead_Enhanced_Shader",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.05000000074505806,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_FullyRestrict": {
+          "onAdded": [
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "renderNames": [
+                "Body"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "VehicleRestrictMixin",
+              "actorIceSubHurtDelta": -1,
+              "LMKBBJKDOPN": true,
+              "OBOJPLPOCLA": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "setEnable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "renderNames": [
+                "Body"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Vehicle_Restrict": {
+          "thinkInterval": 1.5,
+          "onReconnect": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Vehicle_FullyRestrict",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "VehicleRestrictMixin",
+              "CIHKLOIHEMD": true,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Vehicle_FullyRestrict",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "Vehicle_Common_Occupied_Handler": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_ShaderLerpHandler",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Vehicle_Common_SaurTotem_EffectHandler",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "Disable_Eff_SaurTotem",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_Mosasaurus_Is_In_ArcLight",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "enable": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ILMHBGFOAJN",
+                  "target": "Target",
+                  "configIdArray": [
+                    45004101,
+                    45004106
+                  ]
+                },
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30019
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "intID": "PaintSeelieType"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "enable": true,
+              "value": 3,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ILMHBGFOAJN",
+                  "target": "Target",
+                  "configIdArray": [
+                    45004103
+                  ]
+                },
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30019
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "intID": "PaintSeelieType"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "enable": true,
+              "value": 4,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ILMHBGFOAJN",
+                  "target": "Target",
+                  "configIdArray": [
+                    45004104,
+                    45004105
+                  ]
+                },
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    30019
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "intID": "PaintSeelieType"
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "GV_AvatarAbility_HoldOnUI_Index04",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnVehicleInteractPostMixin",
+              "actorIceSubHurtDelta": -1,
+              "NFPAFDMIGFA": [
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "KEKKOFMAIKG",
+                      "AOIJCHFDLOA": true,
+                      "target": "Target",
+                      "FOAFAFJDONL": "DestoryVehcile"
+                    }
+                  ],
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "failActions": [
+                    {
+                      "$type": "SetGlobalValue",
+                      "key": "_ABILITY_Vehicle_Exit_Type",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "SetGlobalValue",
+                      "key": "_ABILITY_Vehicle_Exit_Type",
+                      "value": 1,
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            },
+            {
+              "$type": "GFHCOKDKKJA",
+              "actorIceSubHurtDelta": -1,
+              "globalValueKey": "_ABILITY_Vehicle_Driving_Flag"
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enable": true,
+              "modifierNameSteps": [
+                "UNIQUE_Common_Vehicle_Unoccupied",
+                "UNIQUE_Common_Vehicle_Occupied"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_ABILITY_Vehicle_Driving_Flag",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "Vehicle_Natsaurus_Normal_ServerBuff_Handler",
+      "modifiers": {
+        "SERVER_Natsaurus_Normal_AvatarStatue_Handler": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Driving_Natsaurus_Flag",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Natsaurus_Normal_AvatarStatue_Invincible",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Natsaurus_Normal_AvatarStatue_IsGhostToEnemy",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Natsaurus_Normal_AvatarStatue_LockHP",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachAbilityStateResistance",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "durationRatio": 1,
+              "resistanceListID": 15001,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachAbilityStateResistance",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "durationRatio": 1,
+              "resistanceListID": 15002,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Multiple",
+          "thinkInterval": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Driving_Natsaurus_Flag",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Skiff_Normal_AvatarOut",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddVelocityForce",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "velocity": 1.5,
+              "HDPIKNLINNC": true,
+              "JBJFDCOBKBA": 1,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "maxAngle": 180,
+                  "angleOffset": {
+                    "y": -90
+                  }
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "forceType": "SpeedupType",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Avatar_Driving_Natsaurus_Flag",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Natsaurus_Normal_AvatarStatue_Invincible",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Natsaurus_Normal_AvatarStatue_IsGhostToEnemy",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Natsaurus_Normal_AvatarStatue_LockHP",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true,
+          "state": "DenyLockOn"
+        },
+        "UNIQUE_Natsaurus_Normal_AvatarStatue_Invincible": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "state": "Invincible"
+        },
+        "UNIQUE_Natsaurus_Normal_AvatarStatue_IsGhostToEnemy": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "state": "IsGhostToEnemy"
+        },
+        "UNIQUE_Natsaurus_Normal_AvatarStatue_LockHP": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "state": "LockHP"
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Vehicle_Natsaurus_Common_ChargeExit",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "VehicleButtonHoldChargeMixin",
+          "actorIceSubHurtDelta": -1,
+          "OnBeginUncharged": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "GV_AvatarAbility_HoldOnUI_Index04",
+              "value": 0.5,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "inputActionType": "Action6",
+          "OnReleaseCharged": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "GV_AvatarAbility_HoldOnUI_Index04",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "inputActionControllerType": "VehicleSkillController",
+          "secondChargeTime": 999999,
+          "OnBeginCharged": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "GV_AvatarAbility_HoldOnUI_Index04",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Vehicle_GetOff_WhiteList",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ILMHBGFOAJN",
+                      "target": "Target",
+                      "configIdArray": [
+                        45004101,
+                        45004102,
+                        45004103,
+                        45004104,
+                        45004105,
+                        45004106
+                      ]
+                    }
+                  ],
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "failActions": [
+                    {
+                      "$type": "ShowReminder",
+                      "id": 800000001,
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ShowReminder",
+                      "id": 800000008,
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "GV_AvatarAbility_HoldOnUI_Index04",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "TriggerVehicleOff",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "chargeTime": 0.5,
+          "OnReleaseUncharged": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "GV_AvatarAbility_HoldOnUI_Index04",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Vehicle_Natsaurus_Common_Drowned_KillSelf",
+      "modifiers": {
+        "UNIQUE_Vehicle_Natsaurus_Common_Drowned_KillSelf": {
+          "onAdded": [
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "configIdArray": [
+                45003011,
+                45003012,
+                45003021,
+                45003031,
+                45003041,
+                45003051,
+                45003053,
+                45003061,
+                45004010,
+                45004020,
+                45004030,
+                45003042,
+                45003052,
+                45003014,
+                45004101,
+                45004102,
+                45004103,
+                45004104,
+                45004105,
+                45004106,
+                45003111,
+                45003121,
+                45003131,
+                45003151,
+                45003161
+              ],
+              "MCDLDNLKINL": "DieDrawn",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Swim"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "UNIQUE_Vehicle_Natsaurus_Common_Drowned_KillSelf",
+          "value": -1,
+          "isCheckOnAttach": true
+        }
+      ]
+    }
+  }
+]

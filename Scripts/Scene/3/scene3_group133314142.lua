@@ -17,7 +17,8 @@ local challengeOptionID = 188
 local holeConfigID = {474001, 474002, 474003, 474005}
 local checkOptionID = 916
 
-local arrayID = {331000020, 331000021}
+local arrayID = {331000020
+, 331000021}
 
 local randomVez = {min = 3, max = 5}
 

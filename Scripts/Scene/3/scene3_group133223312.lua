@@ -109,7 +109,7 @@ function action_EVENT_QUEST_START_312002(context, evt)
 	ScriptLib.SetGroupVariableValue(context, "Notified", 0)
 	
 	-- 触发镜头注目，注目位置为坐标（-6277.375，213.4355，-2993.29），持续时间为3秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-6277.375, y=213.4355, z=-2993.29}
+		local pos = {x=-6277.375, y=213.435, z=-2993.290}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 3, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
@@ -128,7 +128,7 @@ end
 -- 触发操作
 function action_EVENT_QUEST_FINISH_312003(context, evt)
 	-- 触发镜头注目，注目位置为坐标（-6285.767，212，-2998.999），持续时间为3秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-6285.767, y=212, z=-2998.999}
+		local pos = {x=-6285.767, y=212.000, z=-2998.999}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 3, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 1,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

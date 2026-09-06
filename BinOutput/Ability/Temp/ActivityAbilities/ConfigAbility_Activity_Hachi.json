@@ -1,0 +1,75 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "IsInHachiSneak",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "AllPlayerAvatars",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "PlayerDieHandle",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Activity_Hachi_TeamAbility",
+      "modifiers": {
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "IsInHachiSneak": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "PlayerDieHandle": {
+          "onKill": [
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "luaCallType": "CurChallengeGroup",
+              "funcName": "SLC_PlayerDie_DuringQuest",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "valueSteps": [
+            -0.5,
+            0.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Blank"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_CAN_CLEAR_THREAT"
+        }
+      ]
+    }
+  }
+]

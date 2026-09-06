@@ -1,0 +1,414 @@
+[
+  {
+    "Default": {
+      "abilityName": "Animal_Beaver_SwitchToDive",
+      "modifiers": {
+        "Avatar_Monitor": {
+          "thinkInterval": 3,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ApplyCollisionMixin",
+              "actorIceSubHurtDelta": -1,
+              "MMKAJFKBIIE": [
+                "MoveCollider"
+              ]
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "SetPoseBool",
+              "value": true,
+              "boolID": "AvatarClose",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "topLimit": 1,
+                "shapeName": "CircleR5H5HC",
+                "campTargetType": "AllExceptSelf",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Avatar",
+                    "Vehicle",
+                    "CurveMoveGadget"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetPoseBool",
+                  "value": true,
+                  "boolID": "AvatarClose",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "CanNotBeHit": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "EnableHitBoxByName",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "hitBoxNames": [
+                    "HitBox"
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "onRemoved": [
+                {
+                  "$type": "EnableHitBoxByName",
+                  "setEnable": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "hitBoxNames": [
+                    "HitBox"
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnWater_VFX": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Animal_Beaver_OnWater",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "StartDither_Delay": {
+          "stacking": "Unique",
+          "thinkInterval": 2.5,
+          "duration": 4.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "TriggerSetRenderersEnable",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "renderNames": [
+                "Body"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Disappear",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "StartDither",
+              "CJKPCCEKEGA": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "duHPRation": 2.5,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "UnderWater_BeHit_Monitor": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ApplyCollisionMixin",
+              "actorIceSubHurtDelta": -1,
+              "MMKAJFKBIIE": [
+                "MoveCollider"
+              ]
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHitEnBreak",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByNot",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHasModifier",
+                      "modifierName": "CanNotBeHit"
+                    }
+                  ]
+                }
+              ],
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "triggerID": "EscapeTrigger",
+                  "mpTriggerOnRemote": true,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "TurnDirectionToPos",
+                  "maxAngle": -1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "toPos": {
+                    "$type": "ConfigBornByTarget",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "$type": "BDODHIJDMCE",
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true
+                  },
+                  "GLPJJCIDOFA": -1,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetPoseBool",
+                  "value": true,
+                  "boolID": "Escape",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "StartDither_Delay",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "RemoveModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UnderWater_BeHit_Monitor",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Wave_VFX": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_FauneAbyssale_Seal_Larva_Bubble",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "OnWater",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "OnWaterBackstroke",
+            "OnWaterRelax",
+            "OnWaterPlay",
+            "OnWaterBackstrokeAS"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "OnWater_VFX",
+          "value": -1
+        },
+        {
+          "$type": "SpacialSteerAttackMixin",
+          "CAIABIOOIDD": -10,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "GKIDEIHLIIG": 10,
+          "angularSpeed": 160,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1,
+          "MMOIKBAADLE": [
+            "Happy02"
+          ]
+        },
+        {
+          "$type": "SpacialSteerAttackMixin",
+          "CAIABIOOIDD": -10,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "GKIDEIHLIIG": 10,
+          "angularSpeed": 120,
+          "startNormalizedTime": 0.8270000219345093,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1,
+          "MMOIKBAADLE": [
+            "Happy01"
+          ]
+        },
+        {
+          "$type": "SpacialSteerAttackMixin",
+          "CAIABIOOIDD": -10,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "GKIDEIHLIIG": 10,
+          "angularSpeed": 120,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1,
+          "MMOIKBAADLE": [
+            "TurnPose"
+          ]
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            9001
+          ],
+          "modifierName": "Avatar_Monitor"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            2,
+            4,
+            5,
+            9003,
+            201,
+            202,
+            210,
+            99
+          ],
+          "modifierName": "UnderWater_BeHit_Monitor"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            9003
+          ],
+          "modifierName": "CanNotBeHit"
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Swim_Loop",
+            "FastSwim",
+            "TurnPose",
+            "BeHit",
+            "Happy01"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Wave_VFX",
+          "value": -1
+        }
+      ]
+    }
+  }
+]

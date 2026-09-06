@@ -1,0 +1,2866 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "LifeChange_Announce",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "__unk_Q2982101340": [
+        "_CurHP",
+        "_CurHP_Temp",
+        "_CurHP_Check"
+      ],
+      "abilitySpecials": {
+        "HPDelta": 0,
+        "HPDelta_Check": 0
+      },
+      "abilityName": "Monster_DragonClaw_WQ_StateControl",
+      "modifiers": {
+        "FreeTag": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MONSTER_DragonClaw_WQ_FreeTag",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MONSTER_DragonClaw_WQ_FreeTag",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "LifeChange_Announce": {
+          "onAdded": [
+            {
+              "$type": "GetFightProperty",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "fightProp": "FIGHT_PROP_CUR_HP",
+              "globalValueKey": "_CurHP",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByEventMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "IsAttack",
+                      "target": "Target",
+                      "value": 1
+                    }
+                  ],
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "failActions": [
+                    {
+                      "$type": "SetGlobalValue",
+                      "key": "IsAttack",
+                      "value": 1,
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "canBeHandledOnRecover": true
+                    },
+                    {
+                      "$type": "DamageByAttackValue",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "attackInfo": {
+                        "HBOOKFMCODC": {
+                          "BPIJOAMNKIH": {
+                            "GGOHGMFHHEC": true,
+                            "value": 1
+                          },
+                          "onHitEffectName": "default"
+                        },
+                        "hitPattern": {
+                          "hitImpulseType": "LV0",
+                          "BPIJOAMNKIH": {
+                            "GGOHGMFHHEC": true,
+                            "value": 1
+                          },
+                          "onHitEffectName": "default",
+                          "muteHitText": true
+                        },
+                        "INKGMIHAPMA": {
+                          "NDIBGPPKGJP": "Shake"
+                        },
+                        "cameraShake": {
+                          "shakeDistance": 20,
+                          "extension": {
+                            "rangeAttenuation": 0.5,
+                            "baseOnCamera": true,
+                            "baseCycle": 0.11999999731779099,
+                            "cycleDamping": 0.11999999731779099
+                          }
+                        },
+                        "attenuationGroup": "default",
+                        "attackProperty": {
+                          "elementDurability": 100,
+                          "EKBLGIOPKKA": true,
+                          "enBreak": 30,
+                          "elementRank": 1,
+                          "attackType": "Default",
+                          "HJHPJLGAHHP": true,
+                          "strikeType": "Blunt",
+                          "JHLDBJEFNBP": true,
+                          "damageExtra": "HPDelta"
+                        }
+                      },
+                      "otherTargets": {
+                        "$type": "FODOKCBNJJH"
+                      },
+                      "born": {
+                        "APKLAIJMEIL": {
+                          "HHNLJKNBKPP": 180
+                        },
+                        "value": 10,
+                        "direction": {
+                          "maxAngle": 180
+                        },
+                        "onGroundRaycastUpDist": 2
+                      },
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "onEvent": "HP"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "onHittingOther": [
+            {
+              "$type": "GetFightProperty",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "fightProp": "FIGHT_PROP_CUR_HP",
+              "globalValueKey": "_CurHP_Temp",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetOverrideMapValue",
+              "value": [
+                "_CurHP",
+                "_CurHP_Temp",
+                "SUB"
+              ],
+              "overrideMapKey": "HPDelta",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "GetFightProperty",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "fightProp": "FIGHT_PROP_CUR_HP",
+              "globalValueKey": "_CurHP",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Monster_DragonClaw_WQ_StateControl",
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "state": "Limbo"
+        },
+        "MonsterAffix_DragonStatueClawMix_Stage1Tag": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_DragonStatueClawMix_Stage1Tag",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "GetFightProperty",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "fightProp": "FIGHT_PROP_CUR_HP",
+          "globalValueKey": "_CurHP_Check",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetOverrideMapValue",
+          "value": [
+            "_CurHP",
+            "_CurHP_Check",
+            "SUB"
+          ],
+          "overrideMapKey": "HPDelta_Check",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetOverrideMapValue",
+              "logic": "Equal",
+              "targetKey": "HPDelta_Check",
+              "targetAbilityName": "Monster_DragonClaw_WQ_StateControl"
+            }
+          ],
+          "target": "Target",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "failActions": [
+            {
+              "$type": "DamageByAttackValue",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackInfo": {
+                "HBOOKFMCODC": {
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "onHitEffectName": "default"
+                },
+                "hitPattern": {
+                  "hitImpulseType": "LV0",
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "onHitEffectName": "default",
+                  "muteHitText": true
+                },
+                "INKGMIHAPMA": {
+                  "NDIBGPPKGJP": "Shake"
+                },
+                "cameraShake": {
+                  "shakeDistance": 20,
+                  "extension": {
+                    "rangeAttenuation": 0.5,
+                    "baseOnCamera": true,
+                    "baseCycle": 0.11999999731779099,
+                    "cycleDamping": 0.11999999731779099
+                  }
+                },
+                "attenuationGroup": "default",
+                "attackProperty": {
+                  "elementDurability": 100,
+                  "EKBLGIOPKKA": true,
+                  "enBreak": 30,
+                  "elementRank": 1,
+                  "attackType": "Default",
+                  "HJHPJLGAHHP": true,
+                  "strikeType": "Blunt",
+                  "JHLDBJEFNBP": true,
+                  "damageExtra": "HPDelta"
+                }
+              },
+              "otherTargets": {
+                "$type": "FODOKCBNJJH"
+              },
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "IsAttack",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Standby"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "FreeTag",
+          "value": -1
+        },
+        {
+          "$type": "OverrideMassCapMixin",
+          "actorIceSubHurtDelta": -1,
+          "mass": 100000
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            101
+          ],
+          "modifierName": "MonsterAffix_DragonStatueClawMix_Stage1Tag"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalPos",
+          "key": "_InitialPos",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true
+          },
+          "setTarget": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "CreateGadget",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "z": 10
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true
+          },
+          "campID": 4001,
+          "KLGHKKGGHEA": {
+            "CBLLACNAMON": true,
+            "DBOLJFPPFGI": 0.5,
+            "JOCOGLBCMEJ": 0.5,
+            "LKEBJHCDOHB": true
+          },
+          "value": true,
+          "gadgetID": 42409067,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        }
+      ],
+      "abilityName": "Monster_DragonClaw_WQ_PositionControl",
+      "modifiers": {
+        "AiReset": {
+          "onAdded": [
+            {
+              "$type": "SetAiCommandThreatTarget",
+              "enable": true,
+              "target": "CurLocalAvatar",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Skill_DirectionReset": {
+          "onAdded": [
+            {
+              "$type": "SetAiCommandThreatTarget",
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "sortType": "Nearest",
+                "topLimit": 1,
+                "shapeName": "CircleR16H16",
+                "campTargetType": "All",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_DragonStatueClawMix_InitialDirGadget",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "RigidBodyFreezeMixin",
+          "actorIceSubHurtDelta": -1,
+          "value": true
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "ComboAttack1_Cannon_AS",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "ComboAttack2_Cannon_AS",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "LeftArmcannon_AS",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "RightArmcannon_AS",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "Weak_AS",
+              "normalizeEnd": 1
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Skill_DirectionReset",
+          "value": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Standby"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "AiReset",
+          "value": -1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "ComboAttack1_Cannon_AS"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "ComboAttack2_Cannon_AS"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "LeftArmcannon_AS"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "RightArmcannon_AS"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "Weak_AS"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "DragonStatueClawMix_InitialDirGadget",
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_DragonStatueClawMix_InitialDirGadget",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_DragonClaw_WQ_SkillListener",
+      "modifiers": {
+        "Alert": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "Alert",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Comboattack1": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "ComboAttack1",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Comboattack2": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "ComboAttack2",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FireBreathe": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "FireBreathe",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "LeftArmcannon": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "LeftArmcannon",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OpenFire": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "OpenFire",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Prison": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "Prison",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RightArmcannon": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "RightArmcannon",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            100,
+            110,
+            200,
+            210,
+            220,
+            230,
+            240,
+            250,
+            260,
+            270
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "otherTargets": {
+            "$type": "FODOKCBNJJH"
+          },
+          "modifierNameSteps": [
+            "Alert",
+            "Blank",
+            "Comboattack1",
+            "Comboattack2",
+            "FireBreathe",
+            "OpenFire",
+            "Prison",
+            "LeftArmcannon",
+            "RightArmcannon"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_MONSTER_DragonStatue_SkillID",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_DragonClaw_WQ_L_ScanHelper",
+      "modifiers": {
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "BlinkPoint_Set": {
+          "onAdded": [
+            {
+              "$type": "CopyGlobalPos",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "srcTarget": "Caster",
+              "srcKey": "_BlinkPoint_Pos",
+              "dstKey": "_BlinkPoint_Pos",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetTargetToTargetKey",
+              "target": "Caster",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "targetKey": "ReactTarget",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "WQ_BlinkType",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "BornAlert_L": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "PrisonLoop",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ReplaceEventPatternMixin",
+              "actorIceSubHurtDelta": -1,
+              "newPatterns": [
+                "Monster_DragonClaw_WQ_L_Alert"
+              ],
+              "oldPatterns": [
+                "Monster_DragonStatueClawMix_Empty"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ComboAttack2_State": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "ReactState"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_LeftHand_ReactState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                2.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "Shield02_Eff"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_LeftHand_ReactState"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                1.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "ShieldGadget"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_LeftHand_ReactState"
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enable": true,
+              "otherTargets": {
+                "$type": "FODOKCBNJJH",
+                "FJBNBOOHNBG": 1
+              },
+              "modifierNameSteps": [
+                "Blank",
+                "ReactState1"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_PositionReady",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorInt",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR100H80",
+                "campTargetType": "All",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Drillhead_Normal_WQ_Tag",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "intID": "ReactState"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "HitCheckWindow": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_HitTimes_Temp",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": 14.609999656677246,
+                  "y": 6.5
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "onGround": true
+              },
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_ComboAttack2React_L_ShieldHit",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ShowReminder",
+              "id": 1002040239,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_DragonStatueClawMix_Stage1Tag",
+                  "target": "Caster",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onBeingHit": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_HitTimes_Temp",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_HitTimes_Temp",
+                  "target": "Target",
+                  "value": 5,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_LeftHand_ReactState",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetAnimatorInt",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true,
+                  "intID": "ReactState"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_LeftHand_ReactState",
+                  "target": "Target",
+                  "value": 1,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetAnimatorInt",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "otherTargets": {
+                    "$type": "SelectTargetsByShape",
+                    "shapeName": "CircleR100H80",
+                    "campTargetType": "All",
+                    "sizeRatio": 1,
+                    "NLNIBNNOOCK": {
+                      "APKLAIJMEIL": {
+                        "HHNLJKNBKPP": 180
+                      },
+                      "value": 10,
+                      "direction": {
+                        "maxAngle": 180
+                      },
+                      "onGroundRaycastUpDist": 2
+                    }
+                  },
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_Drillhead_Normal_WQ_Tag",
+                      "target": "Target",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true,
+                  "intID": "ReactState"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAnimatorInt",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "otherTargets": {
+                    "$type": "SelectTargetsByShape",
+                    "shapeName": "CircleR100H80",
+                    "campTargetType": "All",
+                    "sizeRatio": 1,
+                    "NLNIBNNOOCK": {
+                      "APKLAIJMEIL": {
+                        "HHNLJKNBKPP": 180
+                      },
+                      "value": 10,
+                      "direction": {
+                        "maxAngle": 180
+                      },
+                      "onGroundRaycastUpDist": 2
+                    }
+                  },
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_Drillhead_Normal_WQ_Tag",
+                      "target": "Target",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true,
+                  "intID": "ReactState"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_DragonClaw_WQ_Arm_Eff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "ArmTop_L"
+              },
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Claw_Arm",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "ArmTop_L",
+              "doOffStage": false,
+              "attachPoint": "ArmTop_L",
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Claw_Arm",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "ArmTop_M"
+              },
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Claw_Arm",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "ArmTop_M",
+              "doOffStage": false,
+              "attachPoint": "ArmTop_M",
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Claw_Arm",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "ArmTop_R"
+              },
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Claw_Arm",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "ArmTop_R",
+              "doOffStage": false,
+              "attachPoint": "ArmTop_R",
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Claw_Arm",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_DragonClaw_WQ_L_ScanWindow": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "ReactState"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_LeftHand_ReactState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalPos",
+              "key": "_BlinkPoint_Pos",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": 14.609999656677246,
+                  "y": 6.5
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "setTarget": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR100H80",
+                "campTargetType": "All",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "modifierName": "BlinkPoint_Set",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Drillhead_Normal_WQ_Tag",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "SubTagScanEntityMixin",
+              "actorIceSubHurtDelta": -1,
+              "tag": "Common_BossFight"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "YZTD_T_Pressed",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ReactState1": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_LeftHand_ReactState",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "ReactState"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Shield02_Eff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": 14.609999656677246,
+                  "y": 6.5
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "onGround": true
+              },
+              "effectPattern": "Eff_Monster_Natsaurus_Drillhead_Normal_WQ_Shield02_Mirror",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "CreateGadget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": 14.609999656677246,
+                  "y": 6.5
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "onGround": true
+              },
+              "campID": 3001,
+              "KLGHKKGGHEA": {
+                "CBLLACNAMON": true,
+                "DBOLJFPPFGI": 0.5,
+                "JOCOGLBCMEJ": 0.5,
+                "LKEBJHCDOHB": true
+              },
+              "value": true,
+              "gadgetID": 42409066,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ShieldGadget": {
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "target": "Caster",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": 14.609999656677246,
+                  "y": 6.5
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "onGround": true
+              },
+              "campID": 4001,
+              "KLGHKKGGHEA": {
+                "CBLLACNAMON": true,
+                "DBOLJFPPFGI": 0.5,
+                "JOCOGLBCMEJ": 0.5,
+                "LKEBJHCDOHB": true
+              },
+              "value": true,
+              "gadgetID": 42409064,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "BornAlert_L"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_DragonStatueClawMix_Stage1Tag"
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "otherTargets": {
+            "$type": "FODOKCBNJJH"
+          },
+          "modifierNameSteps": [
+            "Monster_DragonClaw_WQ_L_ScanWindow"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_MONSTER_ScanWindow_LeftHand",
+          "PNELLOCFHCP": true
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "ComboAttack2React_Loop"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "HitCheckWindow",
+          "value": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "ComboAttack2Normal",
+            "ComboAttack2React_BS",
+            "ComboAttack2React_Loop",
+            "ComboAttack2React_AS",
+            "ComboAttack2Break"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "ComboAttack2_State",
+          "value": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "ComboAttack1Normal",
+              "normalizeStart": 0.1340000033378601,
+              "normalizeEnd": 0.40700000524520874
+            },
+            {
+              "stateID": "ComboAttack2Normal",
+              "normalizeStart": 0.5299999713897705,
+              "normalizeEnd": 0.800000011920929
+            },
+            {
+              "stateID": "ComboAttack2React_BS",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "ComboAttack2React_Loop",
+              "normalizeEnd": 6
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Monster_DragonClaw_WQ_Arm_Eff",
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_DragonClaw_WQ_R_ScanHelper",
+      "modifiers": {
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "BlinkPoint_Set": {
+          "onAdded": [
+            {
+              "$type": "CopyGlobalPos",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "srcTarget": "Caster",
+              "srcKey": "_BlinkPoint_Pos",
+              "dstKey": "_BlinkPoint_Pos",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetTargetToTargetKey",
+              "target": "Caster",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "targetKey": "ReactTarget",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "WQ_BlinkType",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "BornAlert_R": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "PrisonLoop",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ReplaceEventPatternMixin",
+              "actorIceSubHurtDelta": -1,
+              "newPatterns": [
+                "Monster_DragonClaw_WQ_R_Alert"
+              ],
+              "oldPatterns": [
+                "Monster_DragonStatueClawMix_Empty"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ComboAttack1_State": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "ReactState"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_RightHand_ReactState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                2.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "Shield02_Eff"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_RightHand_ReactState"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                1.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "ShieldGadget"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_RightHand_ReactState"
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enable": true,
+              "otherTargets": {
+                "$type": "FODOKCBNJJH",
+                "FJBNBOOHNBG": 1
+              },
+              "modifierNameSteps": [
+                "Blank",
+                "ReactState1"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_PositionReady",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorInt",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR100H80",
+                "campTargetType": "All",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Drillhead_Normal_WQ_Tag",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "intID": "ReactState"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "HitCheckWindow": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_HitTimes_Temp",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": 15.609999656677246,
+                  "y": -7.170000076293945
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "onGround": true
+              },
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_ComboAttack1React_R_ShieldHit",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ShowReminder",
+              "id": 1002040239,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_DragonStatueClawMix_Stage1Tag",
+                  "target": "Caster",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onBeingHit": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_HitTimes_Temp",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_HitTimes_Temp",
+                  "target": "Target",
+                  "value": 5,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_RightHand_ReactState",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetAnimatorInt",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true,
+                  "intID": "ReactState"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_RightHand_ReactState",
+                  "target": "Target",
+                  "value": 1,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetAnimatorInt",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "otherTargets": {
+                    "$type": "SelectTargetsByShape",
+                    "shapeName": "CircleR100H80",
+                    "campTargetType": "All",
+                    "sizeRatio": 1,
+                    "NLNIBNNOOCK": {
+                      "APKLAIJMEIL": {
+                        "HHNLJKNBKPP": 180
+                      },
+                      "value": 10,
+                      "direction": {
+                        "maxAngle": 180
+                      },
+                      "onGroundRaycastUpDist": 2
+                    }
+                  },
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_Drillhead_Normal_WQ_Tag",
+                      "target": "Target",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true,
+                  "intID": "ReactState"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAnimatorInt",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "otherTargets": {
+                    "$type": "SelectTargetsByShape",
+                    "shapeName": "CircleR100H80",
+                    "campTargetType": "All",
+                    "sizeRatio": 1,
+                    "NLNIBNNOOCK": {
+                      "APKLAIJMEIL": {
+                        "HHNLJKNBKPP": 180
+                      },
+                      "value": 10,
+                      "direction": {
+                        "maxAngle": 180
+                      },
+                      "onGroundRaycastUpDist": 2
+                    }
+                  },
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_Drillhead_Normal_WQ_Tag",
+                      "target": "Target",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true,
+                  "intID": "ReactState"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_DragonClaw_WQ_Arm_Eff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "ArmTop_L"
+              },
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Claw_Arm",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "ArmTop_L",
+              "doOffStage": false,
+              "attachPoint": "ArmTop_L",
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Claw_Arm",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "ArmTop_M"
+              },
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Claw_Arm",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "ArmTop_M",
+              "doOffStage": false,
+              "attachPoint": "ArmTop_M",
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Claw_Arm",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "ArmTop_R"
+              },
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Claw_Arm",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "ArmTop_R",
+              "doOffStage": false,
+              "attachPoint": "ArmTop_R",
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Claw_Arm",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_DragonClaw_WQ_R_ScanWindow": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "ReactState"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_RightHand_ReactState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalPos",
+              "key": "_BlinkPoint_Pos",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": 15.609999656677246,
+                  "y": -7.170000076293945
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "setTarget": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR100H80",
+                "campTargetType": "All",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "modifierName": "BlinkPoint_Set",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Drillhead_Normal_WQ_Tag",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "SubTagScanEntityMixin",
+              "actorIceSubHurtDelta": -1,
+              "tag": "Common_BossFight"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "YZTD_T_Pressed",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ReactState1": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_RightHand_ReactState",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "ReactState"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Shield02_Eff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": 15.609999656677246,
+                  "y": -7.170000076293945
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "onGround": true
+              },
+              "effectPattern": "Eff_Monster_Natsaurus_Drillhead_Normal_WQ_Shield02",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "CreateGadget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": 15.609999656677246,
+                  "y": -7.170000076293945
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "onGround": true
+              },
+              "campID": 3001,
+              "KLGHKKGGHEA": {
+                "CBLLACNAMON": true,
+                "DBOLJFPPFGI": 0.5,
+                "JOCOGLBCMEJ": 0.5,
+                "LKEBJHCDOHB": true
+              },
+              "value": true,
+              "gadgetID": 42409066,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ShieldGadget": {
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "target": "Caster",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": 15.609999656677246,
+                  "y": -7.170000076293945
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "onGround": true
+              },
+              "campID": 4001,
+              "KLGHKKGGHEA": {
+                "CBLLACNAMON": true,
+                "DBOLJFPPFGI": 0.5,
+                "JOCOGLBCMEJ": 0.5,
+                "LKEBJHCDOHB": true
+              },
+              "value": true,
+              "gadgetID": 42409064,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "BornAlert_R"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_DragonStatueClawMix_Stage1Tag"
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "otherTargets": {
+            "$type": "FODOKCBNJJH"
+          },
+          "modifierNameSteps": [
+            "Monster_DragonClaw_WQ_R_ScanWindow"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_MONSTER_ScanWindow_RightHand",
+          "PNELLOCFHCP": true
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "ComboAttack1React_Loop"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "HitCheckWindow",
+          "value": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "ComboAttack1Normal",
+            "ComboAttack1React_BS",
+            "ComboAttack1React_Loop",
+            "ComboAttack1React_AS",
+            "ComboAttack1Break"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "ComboAttack1_State",
+          "value": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "ComboAttack2Normal",
+              "normalizeStart": 0.1340000033378601,
+              "normalizeEnd": 0.40700000524520874
+            },
+            {
+              "stateID": "ComboAttack1Normal",
+              "normalizeStart": 0.5299999713897705,
+              "normalizeEnd": 0.800000011920929
+            },
+            {
+              "stateID": "ComboAttack1React_BS",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "ComboAttack1React_Loop",
+              "normalizeEnd": 5
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Monster_DragonClaw_WQ_Arm_Eff",
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_DragonClaw_WQ_Armcannon",
+      "modifiers": {
+        "CannonEnd": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "CannonEnd",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "CannonEnd",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget",
+              "useCorrectDir": true,
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true,
+            "attachPointTargetType": "Self",
+            "attachPointName": "CannonPort"
+          },
+          "trackTarget": "CurLocalAvatar",
+          "value": true,
+          "bulletID": 42409061,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 270,
+          "steerStateIDs": [
+            "ComboAttack1_Cannon_BS"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 270,
+          "steerStateIDs": [
+            "ComboAttack1_Cannon_Loop"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 99
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 270,
+          "steerStateIDs": [
+            "ComboAttack2_Cannon_BS"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 270,
+          "steerStateIDs": [
+            "ComboAttack2_Cannon_Loop"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 99
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 270,
+          "steerStateIDs": [
+            "LeftArmcannon_BS"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 270,
+          "steerStateIDs": [
+            "LeftArmcannon_Loop"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 99
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 270,
+          "steerStateIDs": [
+            "RightArmcannon_BS"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "AAPNADMFCNO": true,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 270,
+          "steerStateIDs": [
+            "RightArmcannon_Loop"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 99
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "DragonStatueClawMix_Armcannon_Bullet_Eff",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "DragonStatueClawMix_Armcannon_Bullet",
+      "modifiers": {
+        "DragonStatueClawMix_Armcannon_Bullet_Eff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Armcannon_Bullet",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_DragonStatueClawMix_Armcannon_BulletTrail",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true,
+            "alongGround": true,
+            "onGround": true
+          },
+          "effectPattern": "Eff_Monster_DragonStatueClawMix_Armcannon_Burst",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV2",
+                "hitHaltTimeScale": 0.05000000074505806,
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "none",
+                "retreatType": "ByHitDirection"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "elementType": "Fire",
+                "elementDurability": 25,
+                "enBreak": 15,
+                "elementRank": 1,
+                "attackType": "Range",
+                "damagePercentage": 0.30000001192092896
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 5,
+              "massiveAttackRatio": 1
+            }
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_MONSTER_Drillhead_Normal_WQ_ShieldTag",
+              "target": "CurLocalAvatar",
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_DragonClaw_WQ_L_Prison_Laser",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "target": "SelfAttackActiveTarget",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true,
+            "attachPointTargetType": "Self",
+            "attachPointName": "CannonPort"
+          },
+          "trackTarget": "SelfAttackTarget",
+          "value": true,
+          "bulletID": 42409063,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_DragonClaw_WQ_R_Prison_Laser",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "target": "SelfAttackActiveTarget",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true,
+            "attachPointTargetType": "Self",
+            "attachPointName": "CannonPort"
+          },
+          "trackTarget": "SelfAttackTarget",
+          "value": true,
+          "bulletID": 42409063,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "DragonStatueClawMix_Prison_Laser",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_DragonStatueClawMix_Prision_Laser_Explosion",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV2",
+                "hitHaltTimeScale": 0.05000000074505806,
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "none",
+                "retreatType": "ByHitDirection"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "elementType": "Fire",
+                "elementDurability": 25,
+                "enBreak": 15,
+                "elementRank": 1,
+                "attackType": "Range",
+                "damagePercentage": 0.30000001192092896
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 0.5,
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  }
+]

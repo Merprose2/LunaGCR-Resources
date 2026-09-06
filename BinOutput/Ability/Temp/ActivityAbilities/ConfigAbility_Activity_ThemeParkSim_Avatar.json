@@ -1,0 +1,1346 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_ThemeParkSim_Throw_ChangePlayMode_Team",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_ThemeParkSim_Throw_Add_Skill",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_ThemeParkSim_Throw_Switch_Skill",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "PlaymodeChange",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Activity_ThemeParkSim_Throw",
+      "modifiers": {
+        "Activity_ThemeParkSim_Throw_Hold_Driver_Once": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "Channel_Loop"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Charge_FX",
+              "value": -1
+            },
+            {
+              "$type": "ButtonHoldChargeMixin",
+              "actorIceSubHurtDelta": -1,
+              "OnBeginSecondCharged": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "triggerID": "StartChannelTrigger",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "skillID": 20375,
+              "OnReleaseCharged": [
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "Shoot_Short",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "JLIGNEBOAHM": [
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "Shoot_Once",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_Common_Channel_IsTrigger",
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_ABILITY_Common_Channel_IsTrigger",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "secondChargeTime": 0.15000000596046448,
+              "onCancelCharged": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "triggerID": "EndChannelTrigger",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "OnBeginCharged": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_ABILITY_Common_Channel_IsTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "chargeStateIDs": [
+                "Channel_Loop"
+              ]
+            },
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "Channel_BS",
+                "Channel_Loop"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Focus",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Charge_FX": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Activity_Pitch_Pot_Aim_Line",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ClearFollowPet02": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Focus": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Activity_Pitch_Pot_Charging",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AvatarEnterFocus",
+              "vcamFov": 40,
+              "cameraFollowUpper": {
+                "x": 0.5,
+                "y": 0.6000000238418579,
+                "z": -2.5
+              },
+              "dragButtonName": "Skill1",
+              "cameraFollowMinDegree": -35,
+              "assistance": {
+                "other": {
+                  "useGyro": true
+                }
+              },
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "ELIECGGIHFH": {
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "PHKMLJFMNIH": -1,
+                "canBeHandledOnRecover": true
+              },
+              "FDDPEAMAADJ": -60,
+              "FKFAKILENIA": -1,
+              "GEIIPGCGHPJ": {
+                "BPFLPMNCDJC": -1,
+                "IHKBILOKGBD": -1,
+                "KEGFEEAJFFN": -1
+              },
+              "GFNHGHHFIPG": -1,
+              "HOEGDDBJEJO": -1,
+              "cameraFollowLower": {
+                "x": 0.800000011920929,
+                "y": 1.899999976158142,
+                "z": -4.5
+              },
+              "KMBEGJMJEDP": {
+                "GDBEBFCAKNL": 1,
+                "GGDNOMPMKKE": 1,
+                "JOOKDFOEKIA": -1,
+                "OAMODBPBKLD": -1
+              },
+              "cameraFastFocusMode": true,
+              "OPMJOMPBHPM": true,
+              "cameraFollowMaxDegree": 40,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "LockMotionFlagExitChannel",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Common_IsChannelState",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "AvatarExitFocus",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "keepRotation": true,
+              "PHKMLJFMNIH": 4.800000190734863,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "LockMotionFlagExitChannel",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Common_IsChannelState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "PlaymodeChange": {
+          "thinkInterval": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Activity_ThemeParkSim_Throw_ChangePlayMode_Team",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "Power_Buff_Self": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "Channel_BS",
+                "Channel_Loop"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Shoot_Conti_Delay",
+              "value": -1,
+              "isCheckOnAttach": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Shoot_Conti": {
+          "stacking": "Unique",
+          "thinkInterval": 0.33000001311302185,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "_ABILITY_ThemeParkSim_Throw_Pos",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "WeaponR"
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalDir",
+              "key": "_ABILITY_ThemeParkSim_Throw_Dir",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "born": {
+                "$type": "CEJIEPKNPBN",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "CHHJODLLMHA",
+                  "useCorrectDir": true,
+                  "maxAngle": 180,
+                  "angleOffset": {
+                    "x": 5,
+                    "y": -40
+                  }
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "target": "Target",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "directionKey": "_ABILITY_ThemeParkSim_Throw_Dir",
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_ABILITY_ThemeParkSim_Throw_Pos"
+              },
+              "trackTarget": "SelfAttackTarget",
+              "bulletID": 42000003,
+              "value": true,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "Shoot_Conti_Delay": {
+          "thinkInterval": 0.30000001192092896,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Shoot_Conti",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "Shoot_Once": {
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "cdRatio": 1,
+              "costStaminaRatio": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "skillID": 20375,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Activity_Pitch_Pot_Shoot",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalPos",
+              "key": "_ABILITY_ThemeParkSim_Throw_Pos",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "WeaponR"
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalDir",
+              "key": "_ABILITY_ThemeParkSim_Throw_Dir",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "born": {
+                "$type": "CEJIEPKNPBN",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "CHHJODLLMHA",
+                  "useCorrectDir": true,
+                  "maxAngle": 180,
+                  "angleOffset": {
+                    "x": 5,
+                    "y": -40
+                  }
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "target": "Target",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "directionKey": "_ABILITY_ThemeParkSim_Throw_Dir",
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_ABILITY_ThemeParkSim_Throw_Pos"
+              },
+              "trackTarget": "SelfAttackTarget",
+              "bulletID": 42000014,
+              "value": true,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "stacking": "Multiple",
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "triggerID": "EndChannelTrigger",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Shoot_Short": {
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "cdRatio": 1,
+              "costStaminaRatio": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "skillID": 20375,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        1043
+                      ],
+                      "target": "Target"
+                    },
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        1044
+                      ],
+                      "target": "Target"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Activity_Pitch_Pot_Shoot_Short",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        1041
+                      ],
+                      "target": "Target"
+                    },
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        1042
+                      ],
+                      "target": "Target"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Activity_Pitch_Pot_Shoot_Short_MaleLady",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    1045
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "effectPattern": "Eff_Activity_Pitch_Pot_Shoot_Short_Loli",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 1.2000000476837158,
+                  "z": 0.5
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "ConfigDirectionByAttachPoint",
+                  "maxAngle": 180,
+                  "attachPointTargetType": "Self",
+                  "attachPointName": "FocusAnchor"
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "trackTarget": "SelfAttackTarget",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        1043
+                      ],
+                      "target": "Target"
+                    },
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        1044
+                      ],
+                      "target": "Target"
+                    }
+                  ]
+                }
+              ],
+              "bulletID": 42000014,
+              "value": true,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            },
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 1.399999976158142,
+                  "z": 0.5
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "ConfigDirectionByAttachPoint",
+                  "maxAngle": 180,
+                  "attachPointTargetType": "Self",
+                  "attachPointName": "FocusAnchor"
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "trackTarget": "SelfAttackTarget",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        1041
+                      ],
+                      "target": "Target"
+                    },
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        1042
+                      ],
+                      "target": "Target"
+                    }
+                  ]
+                }
+              ],
+              "bulletID": 42000014,
+              "value": true,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            },
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.8500000238418579,
+                  "z": 0.5
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "ConfigDirectionByAttachPoint",
+                  "maxAngle": 180,
+                  "attachPointTargetType": "Self",
+                  "attachPointName": "FocusAnchor"
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "trackTarget": "SelfAttackTarget",
+              "predicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    1045
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "bulletID": 42000014,
+              "value": true,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Trigger_OnExit": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "Shoot_Short",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Common_Channel_IsTrigger",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Common_Channel_IsTrigger",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ThemeParkSim_Throw_Add_Skill": {
+          "onAdded": [
+            {
+              "$type": "RemoveAvatarSkillInfo",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "skillID": 20375,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "HideTeamEnergyBtnMixin",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddAvatarSkillInfo",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "skillID": 20375,
+              "IOEKFKNMBMH": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ThemeParkSim_Throw_ChangePlayMode_Team": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "ChangePlayMode",
+                  "muteRemoteAction": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "enable": true,
+                  "toPlayMode": "PitchPot",
+                  "authorityOnly": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "onRemoved": [
+                {
+                  "$type": "ChangePlayMode",
+                  "muteRemoteAction": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "enable": true,
+                  "FPFLACICBBN": "PitchPot",
+                  "authorityOnly": true,
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ThemeParkSim_Throw_Switch_Skill": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Activity_ThemeParkSim_Throw_Hold_Driver_Once",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "actorIceSubHurtDelta": -1,
+              "skillID": 20375,
+              "priority": "Playmode"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "FollowAttachPointEffectMixin",
+          "actorIceSubHurtDelta": -1,
+          "attachPriority": "QuestBlank",
+          "modifierName": "ClearFollowPet02"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "CopyGlobalValue",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "srcTarget": "OriginOwner",
+          "srcKey": "_ABILITY_ThemeParkSim_Buff_Avatar_Mark",
+          "dstKey": "_ABILITY_ThemeParkSim_Buff_Bullet_Mark",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Bullet_Eff",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "Mark_Bullet_Triggered",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "_Ratio_Jar_Score",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "_Explode_Hit",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "Explode_Call": 0,
+        "Ratio_Update_Gallery": 1
+      },
+      "abilityName": "Activity_ThemeParkSim_Throw_Bullet",
+      "modifiers": {
+        "Bullet_Eff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_ThemeParkSim_Buff_Bullet_Mark",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "effectPattern": "Eff_Monster_Hili_None_PebbleBullet",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_ThemeParkSim_Buff_Bullet_Mark",
+                  "value": 1
+                }
+              ],
+              "effectPattern": "Eff_Monster_Hili_None_PebbleBullet",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Bullet_Killself_Handler": {
+          "duration": 0.20000000298023224,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "Jar Bullet Triggered",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Pot_Call_From_Avatar": {
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "[JarDestory]:PlayerSLC",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ServerLuaCall",
+              "param2": "_Explode_Call",
+              "target": "Applier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "CurGalleryControlGroup",
+              "param1": "_Ratio_Update_Gallery",
+              "paramNum": 2,
+              "funcName": "SLC_Submit_Score_Ratio",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleRefresh",
+          "duration": 0.20000000298023224,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Ambor_Dummy_ThrowGround",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireAISoundEvent",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "All",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV1",
+                "hitHaltTimeScale": 0.009999999776482582,
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "none",
+                "muteHitText": true
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "elementRank": 1,
+                "attackType": "Default",
+                "strikeType": "Blunt"
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 3,
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "actorIceSubHurtDelta": -1,
+          "actions": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "Mark_Bullet_Triggered",
+                  "compareType": "MoreThan"
+                }
+              ],
+              "effectPattern": "Eff_Arrow_Hit_Monster",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Bullet_Killself_Handler",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "Mark_Bullet_Triggered",
+                  "compareType": "MoreThan"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "globalValueKey": "Mark_Bullet_Triggered"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Caster",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "AttachToTeam",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Activity_ThemeParkSim_BanSkill",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Activity_ThemeParkSim_BanSkill",
+      "modifiers": {
+        "AttachToTeam": {
+          "thinkInterval": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Activity_ThemeParkSim_BanSkill",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "ClearFollowPet02": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ThemeParkSim_BanSkill": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "ChangePlayMode",
+                  "muteRemoteAction": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "enable": true,
+                  "toPlayMode": "Bartender",
+                  "authorityOnly": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "onRemoved": [
+                {
+                  "$type": "ChangePlayMode",
+                  "muteRemoteAction": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "enable": true,
+                  "FPFLACICBBN": "Bartender",
+                  "authorityOnly": true,
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "FollowAttachPointEffectMixin",
+          "actorIceSubHurtDelta": -1,
+          "attachPriority": "QuestBlank",
+          "modifierName": "ClearFollowPet02"
+        }
+      ]
+    }
+  }
+]

@@ -290,7 +290,7 @@ function action_EVENT_SELECT_OPTION_761004(context, evt)
 	ScriptLib.SetChallengeEventMark(context, 2010, ChallengeEventMarkType.FLIGHT_GATHER_POINT)
 	
 	-- 触发镜头注目，注目位置为坐标（77，260，377），持续时间为3秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=77, y=260, z=377}
+		local pos = {x=77.000, y=260.000, z=377.000}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, duration = 3, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0 }) then
 					return -1
 				end 

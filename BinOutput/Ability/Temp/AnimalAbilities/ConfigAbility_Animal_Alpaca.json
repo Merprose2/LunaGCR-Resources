@@ -1,0 +1,385 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "TriggerSetRenderersEnableV2",
+          "setEnable": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "renderNames": [
+            "SkillObj_Alpaca_Accessory_01_Model"
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "EnablePushColliderName",
+          "setEnable": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "pushColliderNames": [
+            "PushCollider_Bag"
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "AlpacaBag",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Monster_Alpaca_Accessory_Type1",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "TriggerSetRenderersEnableV2",
+          "setEnable": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "renderNames": [
+            "SkillObj_Alpaca_Accessory_02_Model"
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "AlpacaBag",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Monster_Alpaca_Accessory_Type2",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Alpaca_None_Steer",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 360,
+          "steerStateIDs": [
+            "Alert"
+          ],
+          "startNormalizedTime": 0.009999999776482582,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.18000000715255737
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Alpaca_None_ChewControl",
+      "modifiers": {
+        "ChewControl": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "ChewControl",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "ChewControl",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            2
+          ],
+          "modifierName": "ChewControl"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Alpaca_None_Alert",
+      "modifiers": {
+        "DistanceChecker": {
+          "thinkInterval": 0.014999999664723873,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 2,
+                  "logic": "LesserOrEqual"
+                }
+              ],
+              "target": "SelfAttackTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "TargetNear",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "value": true,
+                  "boolID": "TargetNear",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "DistanceChecker1": {
+          "thinkInterval": 0.014999999664723873,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 4,
+                  "logic": "LesserOrEqual"
+                }
+              ],
+              "target": "SelfAttackTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "TargetNear",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "value": true,
+                  "boolID": "TargetNear",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Alert",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "DistanceChecker1",
+          "normalizeStart": 0.4000000059604645,
+          "normalizeEnd": 0.6000000238418579,
+          "value": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "AlertBack",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "DistanceChecker",
+          "normalizeStart": 0.30000001192092896,
+          "normalizeEnd": 0.4000000059604645,
+          "value": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "AlertBackO",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "DistanceChecker",
+          "normalizeStart": 0.30000001192092896,
+          "normalizeEnd": 0.4000000059604645,
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Alpaca_None_Flee",
+      "modifiers": {
+        "DisappearTimer": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "Disappear",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetCanDieImmediately",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "IHNFPMODKPE": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "StartDither",
+              "CJKPCCEKEGA": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "duHPRation": 3,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "HideUIBillBoard",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "hide": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Disappear",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "ELJJHIPAFKC": true,
+              "KBKCMPMOKGM": true,
+              "duHPRation": 1.5,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FleeMode_Monitor": {
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "FleeNow"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": 1,
+              "canBeHandledOnRecover": true,
+              "intID": "FleeNow"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            1,
+            2,
+            4
+          ],
+          "modifierName": "FleeMode_Monitor"
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Disappear"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "DisappearTimer",
+          "value": -1
+        }
+      ]
+    }
+  }
+]

@@ -14,8 +14,11 @@ local defs = {
 
 -- DEFS_MISCS
 defs.final_point = defs.point_sum - 1
-defs.decal_final_point = 4
-defs.back_point = 8
+
+defs.decal_final_point = 4
+
+
+defs.back_point = 8
 
 --================================================================
 -- 
@@ -153,7 +156,7 @@ function action_EVENT_VARIABLE_CHANGE_128002(context, evt)
 	end
 	
 	-- 触发镜头注目，注目位置为坐标（-6336，259，-2536），持续时间为6秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-6336, y=259, z=-2536}
+		local pos = {x=-6336.000, y=259.000, z=-2536.000}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 6, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,

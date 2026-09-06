@@ -1,0 +1,630 @@
+[
+  {
+    "Default": {
+      "abilityName": "Monster_Apep_Underling_SeedOfArjuna_Default",
+      "modifiers": {
+        "CoolDown": {
+          "duration": 8,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_HASTARGET",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FindingTarget": {
+          "thinkInterval": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_HASTARGET_TempCount",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "MFOAIIOJOHH",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MONSTER_Apep_Underling_SeedOfKarna_Tag",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR50",
+                "campTargetType": "SelfCamp",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "key": "_HASTARGET_TempCount",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_HASTARGET",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_HASTARGET_TempCount",
+                  "target": "Target",
+                  "value": 1,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "HasTarget": {
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "value": true,
+              "boolID": "HasTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "HasTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5,
+            2.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "FindingTarget",
+            "HasTarget",
+            "CoolDown"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_HASTARGET"
+        },
+        {
+          "$type": "RigidBodyFreezeMixin",
+          "actorIceSubHurtDelta": -1,
+          "value": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Monster_Apep_Underling_SeedOfArjuna_CoreEffect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_Apep_Underling_SeedOfArjuna_Chose",
+      "modifiers": {
+        "EnhanceTarget_Killed": {
+          "onAdded": [
+            {
+              "$type": "LoseHP",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "amountByCasterMaxHPRatio": 0.4000000059604645,
+              "enableInvincible": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Apep_Underling_SeedOfArjuna_SelfHit",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "Supprot_ShakeTrigger",
+              "mpTriggerOnRemote": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Apep_Underling_SeedOfArjuna_ChosenOne": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MONSTER_Apep_Underling_SeedOfArjuna_ChosenOne",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Caster",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "EnhanceTarget_Killed",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MONSTER_Apep_Underling_SeedOfArjuna_ChosenOne",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Apep_Underling_SeedOfArjuna_CoreEffect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Apep_Underling_SeedOfArjuna_Core",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Apep_Underling_SeedOfArjuna_SelfEnhance": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Apep_Underling_SeedOfArjuna_SelfEnhance",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ChangeLockTypeMixin",
+              "DHBLMAABPFN": -1,
+              "overrideRange": -1,
+              "actorIceSubHurtDelta": -1,
+              "lockType": "Gear_Lv3",
+              "MPNEFIAAKHC": -1
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_SELFENHANCE_Ready",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElecSubHurtDelta": 99,
+            "Actor_EndureDelta": 0.009999999776482582,
+            "Actor_FireSubHurtDelta": 99,
+            "Actor_GrassSubHurtDelta": 99,
+            "Actor_IceSubHurtDelta": 99,
+            "Actor_PhysicalSubHurtDelta": 99,
+            "Actor_RockSubHurtDelta": 99,
+            "Actor_WaterSubHurtDelta": 99,
+            "Actor_WindSubHurtDelta": 99
+          }
+        },
+        "Monster_Apep_Underling_SeedOfArjuna_SelfEnhance_CountDown": {
+          "thinkInterval": 1.5,
+          "duration": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_SELFENHANCE_Ready",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "Monster_Apep_Underling_SeedOfArjuna_SupportAttack_SelfEffect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Apep_Underling_SeedOfArjuna_SupportAttack_BS",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Monster_Apep_Underling_SeedOfArjuna_SelfEnhance_CountDown",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                1.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "Monster_Apep_Underling_SeedOfArjuna_SelfEnhance"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_SELFENHANCE_Ready"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SkillEnd": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "SupportEnd",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "LoseHP",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "amountByCasterMaxHPRatio": 0.4000000059604645,
+              "enableInvincible": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_HASTARGET",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "State_Check": {
+          "thinkInterval": 0.20000000298023224,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_CHECKED",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MONSTER_Apep_Underling_SeedOfArjuna_ChosenOne",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR50",
+                "campTargetType": "SelfCamp",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_CHECKED",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "Applier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "SkillEnd",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_CHECKED",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetAnimatorBool",
+          "boolID": "SupportEnd",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "SelectTargetsByShape",
+            "sortType": "Nearest",
+            "topLimit": 3,
+            "shapeName": "CircleR50",
+            "campTargetType": "Alliance",
+            "sizeRatio": 1,
+            "NLNIBNNOOCK": {
+              "APKLAIJMEIL": {
+                "HHNLJKNBKPP": 180
+              },
+              "value": 10,
+              "direction": {
+                "maxAngle": 180
+              },
+              "onGroundRaycastUpDist": 2
+            }
+          },
+          "modifierName": "Monster_Apep_Underling_SeedOfArjuna_ChosenOne",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_MONSTER_Apep_Underling_SeedOfKarna_Tag",
+              "target": "Target",
+              "value": 1
+            },
+            {
+              "$type": "MFOAIIOJOHH",
+              "target": "Target"
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "SupportAttack_BS",
+            "SupportAttack_Loop"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Monster_Apep_Underling_SeedOfArjuna_SupportAttack_SelfEffect",
+          "value": -1
+        },
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "AJAPIFCKFHP": [
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "sortType": "Nearest",
+                "shapeName": "CircleR50",
+                "campTargetType": "Alliance",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "modifierName": "Monster_Apep_Underling_SeedOfArjuna_ChosenOne",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "BGFDEAEDGLB",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "LineEnd",
+              "effectPattern": "Eff_Monster_Apep_Underling_SeedOfArjuna_SupportAttack_Line",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stateIDs": [
+            "SupportAttack_BS",
+            "SupportAttack_Loop"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "value": -1
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "SupportAttack_Loop"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "State_Check",
+          "value": -1
+        }
+      ]
+    }
+  }
+]

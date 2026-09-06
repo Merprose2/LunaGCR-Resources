@@ -1,0 +1,434 @@
+[
+  {
+    "Default": {
+      "abilityName": "Eremite_Simitar_AnimatorSteer",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackTraceMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 55,
+          "steerStateIDs": [
+            "Slash01",
+            "Loop_Slash01"
+          ],
+          "startNormalizedTime": 0.08699999749660492,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.3370000123977661
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 300,
+          "steerStateIDs": [
+            "Slash01_AB"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackTraceMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 55,
+          "steerStateIDs": [
+            "Slash02",
+            "Loop_Slash02"
+          ],
+          "startNormalizedTime": 0.10199999809265137,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.3610000014305115
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 300,
+          "steerStateIDs": [
+            "Slash02_AB"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 600,
+          "steerStateIDs": [
+            "JumpBack"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.14100000262260437
+        },
+        {
+          "$type": "SteerAttackTraceMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 45,
+          "steerStateIDs": [
+            "Feint_Loop"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 99
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 300,
+          "steerStateIDs": [
+            "Feint_BS"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 300,
+          "steerStateIDs": [
+            "Taunt"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 270,
+          "steerStateIDs": [
+            "Alert"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 320,
+          "steerStateIDs": [
+            "Crossleg_Alert"
+          ],
+          "startNormalizedTime": 0.13699999451637268,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.800000011920929
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Eremite_Simitar_Slash_Dist_Calc",
+      "onAbilityStart": [
+        {
+          "$type": "SetAnimatorTrigger",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "triggerID": "JumpBackTrigger",
+          "predicates": [
+            {
+              "$type": "ByTargetPositionToSelfPosition",
+              "target": "SelfAttackTarget",
+              "value": 4,
+              "logic": "Lesser"
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Simitar_Feint_Monitor",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Eremite_Simitar_Feint_Manager",
+      "modifiers": {
+        "Simitar_Feint_Monitor": {
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Avatar",
+                    "Monster",
+                    "Partner"
+                  ]
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "target": "Target",
+                  "attackTags": [
+                    "Simitar_Feint_Detection"
+                  ]
+                }
+              ],
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "triggerID": "FeintHitTrigger",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetSelfAttackTarget",
+                  "target": "Target",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetAnimatorTrigger",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "triggerID": "FeintEndTrigger",
+          "predicates": [
+            {
+              "$type": "ByTargetPositionToSelfPosition",
+              "target": "SelfAttackTarget",
+              "value": 11.5
+            }
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetAnimatorTrigger",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "triggerID": "FeintHitTrigger",
+          "predicates": [
+            {
+              "$type": "ByTargetPositionToSelfPosition",
+              "target": "SelfAttackTarget",
+              "value": 2.299999952316284,
+              "logic": "Lesser"
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Eremite_Simitar_SpecialTaunt",
+      "modifiers": {
+        "Achievement_82129_Unlocker": {
+          "onAdded": [
+            {
+              "$type": "DoWatcherSystemAction",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "watcherId": 82129,
+              "authorityOnly": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpecialTaunt_Monitor": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Bullet"
+                  ]
+                }
+              ],
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "TargetOwner",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Achievement_82129_Unlocker",
+                  "predicates": [
+                    {
+                      "$type": "ByEntityTypes",
+                      "target": "Target",
+                      "value": -1,
+                      "entityTypes": [
+                        "Avatar"
+                      ]
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "DamageByAttackValue",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "attackInfo": {
+                    "HBOOKFMCODC": {
+                      "BPIJOAMNKIH": {
+                        "GGOHGMFHHEC": true,
+                        "value": 1
+                      },
+                      "onHitEffectName": "default"
+                    },
+                    "hitPattern": {
+                      "hitImpulseType": "LV5",
+                      "BPIJOAMNKIH": {
+                        "GGOHGMFHHEC": true,
+                        "value": 1
+                      },
+                      "onHitEffectName": "default"
+                    },
+                    "INKGMIHAPMA": {
+                      "NDIBGPPKGJP": "Shake"
+                    },
+                    "cameraShake": {
+                      "shakeDistance": 20,
+                      "extension": {
+                        "rangeAttenuation": 0.5,
+                        "baseOnCamera": true,
+                        "baseCycle": 0.11999999731779099,
+                        "cycleDamping": 0.11999999731779099
+                      }
+                    },
+                    "attenuationGroup": "default",
+                    "KMBFALFAJCI": true,
+                    "attackProperty": {
+                      "elementDurability": 100,
+                      "enBreak": 200,
+                      "elementRank": 1,
+                      "attackType": "Default",
+                      "JHLDBJEFNBP": true
+                    }
+                  },
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Taunt01",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SpecialTaunt_Monitor",
+          "normalizeStart": 0.10999999940395355,
+          "normalizeEnd": 0.8899999856948853,
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetAnimatorBool",
+          "value": true,
+          "boolID": "DisableTaunt",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "enable": true,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Affix_Eremite_Simitar_NeverTaunt",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  }
+]

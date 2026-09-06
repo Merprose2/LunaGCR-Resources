@@ -14,8 +14,10 @@ local defs = {
 
 -- DEFS_MISCS
 defs.final_point = defs.point_sum - 1
-defs.decal_final_point = 4
-defs.back_point = 4
+
+defs.decal_final_point = 4
+
+defs.back_point = 4
 
 --================================================================
 -- 

@@ -1,0 +1,1139 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "SpeedModeModifier",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_MaxSpeed",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "__unk_Q2982101340": [
+        "GV_SpeedMode_VehicleArcLight",
+        "GV_CurveSpeed",
+        "GV_MaxSpeed",
+        "GV_TriggerCompareLogic",
+        "SGV_DefineMaxSpeed",
+        "SGV_DefineMinSpeed",
+        "SGV_DefineSpeedUpRatio",
+        "SGV_DefineSpeedLowRatio",
+        "SGV_ContextData",
+        "SGV_ContextData_1",
+        "SGV_ContextData_2",
+        "GV_ColorChangingParkour_TeamColor",
+        "GV_HoldItemColor",
+        "GV_AttachArcLightColor"
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Team_6_1_ChameleonController_GameLogic_SpeedController",
+      "modifiers": {
+        "JumpSpeed": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "JumpSpeedToVehicle",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_CurveSpeed",
+                  "target": "Team",
+                  "value": "SGV_ContextData_1",
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "[DD] => JumpSpeed onAdded",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_CurveSpeed",
+                  "target": "Team",
+                  "value": "SGV_ContextData_1",
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleRefresh",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "JumpSpeedToVehicle": {
+          "stacking": "MultipleRefresh",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OverrideCurveSpeedMixin",
+              "AMGFHPIKHDB": "SGV_ContextData_1",
+              "AMHOFDLHIFE": 0.10000000149011612,
+              "actorIceSubHurtDelta": -1,
+              "JKKIFHJPKGJ": 0.10000000149011612
+            }
+          ],
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpeedDownArcLight": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "SpeedDownArcLightToVehicle",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "[DD] => SpeedDownArcLight onAdded",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleRefresh",
+          "thinkInterval": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_SpeedDownArcLightToVehicleInstance",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_CurveSpeed",
+                  "target": "Team",
+                  "value": [
+                    "SGV_DefineMinSpeed",
+                    0.5,
+                    "MUL"
+                  ],
+                  "compareType": "MoreThan"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "SpeedDownArcLightToVehicle": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorFloat",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "ColorArcSpeed",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "muteRemoteAction": true,
+              "pattern": "v6_1_ColorChangingParkour_Run",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Wrong",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "Model_Red",
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_ColorChangingParkour_TeamColor",
+                  "target": "Team",
+                  "value": 1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Wrong",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "Model_Green",
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_ColorChangingParkour_TeamColor",
+                  "target": "Team",
+                  "value": -1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Wrong",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleRefresh",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OverrideCurveSpeedMixin",
+              "AMGFHPIKHDB": "SGV_DefineMinSpeed",
+              "AMHOFDLHIFE": 1,
+              "actorIceSubHurtDelta": -1,
+              "JKKIFHJPKGJ": 0.20000000298023224
+            }
+          ],
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpeedDownItem": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "SpeedDownItemToVehicle",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "[DD] => SpeedDownItem onAdded",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "CurGalleryControlGroup",
+              "funcName": "SLC_EventTrackSpeedDown",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleRefresh",
+          "duration": 0.4000000059604645,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_SpeedMode_VehicleArcLight",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_CurveSpeedStateEnd",
+              "target": "Team",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpeedDownItemToVehicle": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Wrong",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "Model_Red",
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_ColorChangingParkour_TeamColor",
+                  "target": "Team",
+                  "value": 1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Wrong",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "Model_Green",
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_ColorChangingParkour_TeamColor",
+                  "target": "Team",
+                  "value": -1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Wrong",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleRefresh",
+          "duration": 0.4000000059604645,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OverrideCurveSpeedMixin",
+              "AMGFHPIKHDB": "SGV_DefineMinSpeed",
+              "AMHOFDLHIFE": 0.20000000298023224,
+              "actorIceSubHurtDelta": -1,
+              "JKKIFHJPKGJ": 0.5
+            }
+          ],
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpeedModeModifier": {
+          "thinkInterval": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                1.5,
+                2.5,
+                3.5,
+                4.5,
+                5.5,
+                6.5,
+                7.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "SpeedUpArcLight",
+                "SpeedDownArcLight",
+                "JumpSpeed",
+                "TempCurveStartSpeed",
+                "SpeedUpArcLight",
+                "SpeedUpItem",
+                "SpeedDownItem"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_SpeedMode_VehicleArcLight"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_SpeedMode_VehicleArcLight => %GV_SpeedMode_VehicleArcLight",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_SpeedMode_VehicleArcLight"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_CurveSpeed => %GV_CurveSpeed",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_CurveSpeed"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_MaxSpeed => %GV_MaxSpeed",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_MaxSpeed"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_ColorChangingParkour_TeamColor => %GV_ColorChangingParkour_TeamColor",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_ColorChangingParkour_TeamColor"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_HoldItemColor => %GV_HoldItemColor",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_HoldItemColor"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_AttachArcLightColor => %GV_AttachArcLightColor",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_AttachArcLightColor"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_CurveColorState => %GV_CurveColorState",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_CurveColorState"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_ItemColorState => %GV_ItemColorState",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_ItemColorState"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_CurveSpeedStateEnd => %GV_CurveSpeedStateEnd",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_CurveSpeedStateEnd"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_InDoubleJumpState => %GV_InDoubleJumpState",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_InDoubleJumpState"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_IsInTempCurve => %GV_IsInTempCurve",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_IsInTempCurve"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_AvatarIn_ArcLight_Common => %GV_AvatarIn_ArcLight_Common",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_AvatarIn_ArcLight_Common"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_AvatarJumpStateArcLight_Common => %GV_AvatarJumpStateArcLight_Common",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_AvatarJumpStateArcLight_Common"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_AllowJumpInput => %GV_AllowJumpInput",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_AllowJumpInput"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_TriggerJumpInput => %GV_TriggerJumpInput",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_TriggerJumpInput"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_ChangeColorDoorInput => %GV_ChangeColorDoorInput",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_ChangeColorDoorInput"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_Vehicle_ColorChangingParkour_CurveMovePauseActionActive => %GV_Vehicle_ColorChangingParkour_CurveMovePauseActionActive",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_Vehicle_ColorChangingParkour_CurveMovePauseActionActive"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_ColorChangingParkour_CurveMovePause => %GV_ColorChangingParkour_CurveMovePause",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_ColorChangingParkour_CurveMovePause"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_LastJumpIsTempCurve => %GV_LastJumpIsTempCurve",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_LastJumpIsTempCurve"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "[LL] => GV_LevelCurveDetectorTimer => %GV_LevelCurveDetectorTimer",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_LevelCurveDetectorTimer"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Vehicle_ColorChangingParkour_CurveMovePauseActionActive",
+              "target": "Team",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "SpeedUpArcLight": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "SpeedUpArcLightToVehicle",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "[DD] => SpeedUpArcLight onAdded",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleRefresh",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpeedUpArcLightToVehicle": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorFloat",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "ColorArcSpeed",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAudioV2",
+              "muteRemoteAction": true,
+              "pattern": "v6_1_ColorChangingParkour_Spirit",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_ColorChangingParkour_TeamColor",
+                  "target": "Team",
+                  "value": -1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Green",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "Model_Green",
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_ColorChangingParkour_TeamColor",
+                  "target": "Team",
+                  "value": -1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Green",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_ColorChangingParkour_TeamColor",
+                  "target": "Team",
+                  "value": 1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Red",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "Model_Red",
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_ColorChangingParkour_TeamColor",
+                  "target": "Team",
+                  "value": 1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Red",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleRefresh",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OverrideCurveSpeedMixin",
+              "AMGFHPIKHDB": "SGV_DefineMaxSpeed",
+              "AMHOFDLHIFE": 3,
+              "actorIceSubHurtDelta": -1,
+              "JKKIFHJPKGJ": 0.20000000298023224
+            }
+          ],
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpeedUpItem": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "SpeedUpItemToVehicleLimit",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "[DD] => SpeedUpItem onAdded",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "CurGalleryControlGroup",
+              "funcName": "SLC_EventTrackSpeedUp",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleRefresh",
+          "duration": 0.800000011920929,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_SpeedMode_VehicleArcLight",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_CurveSpeedStateEnd",
+              "target": "Team",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpeedUpItemToVehicleLimit": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_MaxSpeed",
+              "target": "Team",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_ColorChangingParkour_TeamColor",
+                  "target": "Team",
+                  "value": -1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Green",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "Model_Green",
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_ColorChangingParkour_TeamColor",
+                  "target": "Team",
+                  "value": -1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Green",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_ColorChangingParkour_TeamColor",
+                  "target": "Team",
+                  "value": 1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Red",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "Model_Red",
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_ColorChangingParkour_TeamColor",
+                  "target": "Team",
+                  "value": 1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_ColorChangingDoll_Red",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleRefresh",
+          "duration": 0.800000011920929,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OverrideCurveSpeedMixin",
+              "AMGFHPIKHDB": [
+                "GV_CurveSpeed",
+                "SGV_ContextData_2",
+                "ADD",
+                2,
+                "ADD"
+              ],
+              "AMHOFDLHIFE": 0.10000000149011612,
+              "actorIceSubHurtDelta": -1,
+              "JKKIFHJPKGJ": 0.10000000149011612
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_MaxSpeed",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TempCurveStartSpeed": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "Vehicle",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "TempCurveStartSpeedToVehicle",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "[DD] => TempCurveStartSpeed onAdded",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleRefresh",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TempCurveStartSpeedToVehicle": {
+          "stacking": "MultipleRefresh",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OverrideCurveSpeedMixin",
+              "AMGFHPIKHDB": "SGV_ContextData",
+              "AMHOFDLHIFE": 0.10000000149011612,
+              "actorIceSubHurtDelta": -1,
+              "JKKIFHJPKGJ": 0.5
+            }
+          ],
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_SpeedDownArcLightToVehicleInstance": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OverrideCurveSpeedMixin",
+              "AMGFHPIKHDB": "SGV_DefineMinSpeed",
+              "AMHOFDLHIFE": 0.10000000149011612,
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  }
+]

@@ -292,7 +292,7 @@ function action_EVENT_ENTER_REGION_81011(context, evt)
 	    ScriptLib.AddExtraGroupSuite(context, 133003081, 3)
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=2300.56,y=270.3999,z=-1564.735}
+	local pos = {x=2300.560,y=270.400,z=-1564.735}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 1110439, pos, 50) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -331,7 +331,7 @@ function action_EVENT_ENTER_REGION_81012(context, evt)
 	    ScriptLib.AddExtraGroupSuite(context, 133003081, 4)
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=2323.592,y=292.7801,z=-1598.561}
+	local pos = {x=2323.592,y=292.780,z=-1598.561}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 1110440, pos, 50) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -358,7 +358,7 @@ function action_EVENT_ENTER_REGION_81013(context, evt)
 	    ScriptLib.AddExtraGroupSuite(context, 133003081, 5)
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=2360.443,y=300.9228,z=-1573.783}
+	local pos = {x=2360.443,y=300.923,z=-1573.783}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 1110441, pos, 50) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1

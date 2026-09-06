@@ -96,8 +96,8 @@ suites = {
 
 -- 触发操作
 function action_EVENT_QUEST_FINISH_136001(context, evt)
-	-- 触发镜头注目，注目位置为坐标{x=462.9963, y=156.2501, z=2339.657}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=462.9963, y=156.2501, z=2339.657}
+	-- 触发镜头注目，注目位置为坐标{x = 462.996, y = 156.250, z=2339.657}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
+		local pos = {x=462.996, y=156.250, z=2339.657}
 	  local pos_follow = {x=0, y=0, z=0}
 	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 1,
 	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = true, is_change_play_mode = false,

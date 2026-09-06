@@ -1,0 +1,4625 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_GoalMachine_Update",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_GoalMachine_SafeZoneState",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_GoalMachine_SafeZoneRange",
+          "value": 20,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_GoalMachine_AvatarAliveNum",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Manager",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "__unk_Q2982101340": [
+        "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param1",
+        "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param2",
+        "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param3",
+        "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param4",
+        "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param5",
+        "GV_GoalMachine_Update",
+        "GV_GoalMachine_SafeZoneState",
+        "GV_GoalMachine_SafeZoneRange",
+        "GV_GoalMachine_GetAvatarEnergy",
+        "GV_GoalMachine_AvatarAliveNum",
+        "Kill_Target_0",
+        "Kill_Target_1"
+      ],
+      "abilitySpecials": {
+        "Avatar_Cur_Energy": 0,
+        "DamageSystemValue": 0,
+        "GoalMachin_Difficulty": 1,
+        "HPHealValueBosses": 0.20000000298023224,
+        "HPHealValueMinions": 0.10000000149011612,
+        "HPLoseInterval": 1
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_CooperateChallengeV2_GoalMachine_Manager",
+      "modifiers": {
+        "BossLevel": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "ResetTeamGV",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_AvatarEnergyParnish": {
+          "onAdded": [
+            {
+              "$type": "GetFightProperty",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "fightProp": "FIGHT_PROP_CUR_FIRE_ENERGY",
+              "globalValueKey": "GV_GoalMachine_GetAvatarEnergy",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "overrideMapKey": "Avatar_Cur_Energy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "globalValueKey": "GV_GoalMachine_GetAvatarEnergy",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ReviveElemEnergy",
+              "value": [
+                0,
+                "Avatar_Cur_Energy",
+                "SUB"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Multiple",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_CircleBlocker": {
+          "onAdded": [
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "CurGalleryControlGroup",
+              "paramNum": 1,
+              "funcName": "SLC_CooperateChallenge_CircleAvatarDie",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_CircleDetector": {
+          "stacking": "Unique",
+          "thinkInterval": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "CopyGlobalValue",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "DBPHPMIHBCO",
+                "sortType": "Nearest",
+                "topLimit": 1,
+                "tag": "COPC_SAFEZONE"
+              },
+              "srcTarget": "Other",
+              "srcKey": "GV_CooperateChallengeV2_SafeRange",
+              "dstKey": "GV_GoalMachine_SafeZoneRange",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": "GV_GoalMachine_SafeZoneRange",
+                  "logic": "LesserOrEqual"
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "DBPHPMIHBCO",
+                "sortType": "Nearest",
+                "topLimit": 1,
+                "tag": "COPC_SAFEZONE"
+              },
+              "failActions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "GV_GoalMachine_SafeZoneState",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "GV_GoalMachine_SafeZoneState",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_CircleKillUpdater": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByKillingMixin",
+              "onKill": [
+                {
+                  "$type": "SetTargetToTargetKey",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "targetKey": "Kill_Target",
+                  "predicates": [
+                    {
+                      "$type": "ByEntityTypes",
+                      "target": "Target",
+                      "value": -1,
+                      "entityTypes": [
+                        "Monster"
+                      ]
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GoalMachine_SafeZoneState",
+                      "target": "Team",
+                      "value": 1
+                    }
+                  ],
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "otherTargets": {
+                    "$type": "GENFIIMMOOJ",
+                    "targetKey": "Kill_Target",
+                    "NHIIICIJKPD": "Team"
+                  },
+                  "successActions": [
+                    {
+                      "$type": "ServerLuaCall",
+                      "param2": "Kill_Target_1",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "luaCallType": "CurGalleryControlGroup",
+                      "param1": "Kill_Target_0",
+                      "paramNum": 2,
+                      "funcName": "SLC_CooperateChallenge_SpecificKillNotify",
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "detectWindow": 0.5
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_CircleSpeaker": {
+          "onAdded": [
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "CurGalleryControlGroup",
+              "param1": 1,
+              "paramNum": 1,
+              "funcName": "SLC_CooperateChallenge_CircleAvatarDie",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_SafeCircleAvatar": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "CooperateChallengeV2_SafeCircleDebuff",
+                "CooperateChallengeV2_SafeCircleBooster"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_GoalMachine_SafeZoneState",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_SafeCircleBooster": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AddHurtDelta": 0.5
+          }
+        },
+        "CooperateChallengeV2_SafeCircleDebuff": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "CooperateChallenge_DebuffScreen",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "thinkInterval": "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param1",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "CurLocalAvatar",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackInfo": {
+                "HBOOKFMCODC": {
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "onHitEffectName": "default"
+                },
+                "hitPattern": {
+                  "hitImpulseType": "LV0",
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "retreatType": "ByHitDirection"
+                },
+                "INKGMIHAPMA": {
+                  "NDIBGPPKGJP": "Shake"
+                },
+                "cameraShake": {
+                  "shakeDistance": 20,
+                  "extension": {
+                    "rangeAttenuation": 0.5,
+                    "baseOnCamera": true,
+                    "baseCycle": 0.11999999731779099,
+                    "cycleDamping": 0.11999999731779099
+                  }
+                },
+                "attenuationGroup": "default",
+                "attackProperty": {
+                  "EKBLGIOPKKA": true,
+                  "enBreak": 30,
+                  "elementRank": 1,
+                  "attackType": "Default",
+                  "HJHPJLGAHHP": true,
+                  "strikeType": "None",
+                  "damageExtra": [
+                    "DamageSystemValue",
+                    "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param4",
+                    "MUL"
+                  ]
+                }
+              },
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "target": "CurLocalAvatar",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Stages_Damage_None",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AddHurtDelta": [
+              0,
+              "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param2",
+              "SUB"
+            ]
+          }
+        },
+        "CooperateChallengeV2_ShrinkCircleBooster": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "DBPHPMIHBCO",
+                "sortType": "Nearest",
+                "topLimit": 1,
+                "tag": "COPC_SAFEZONE"
+              },
+              "modifierName": "UNIQUE_CooperateChallenge_KillerCircle",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "DBPHPMIHBCO",
+                "sortType": "Nearest",
+                "topLimit": 1,
+                "tag": "COPC_SAFEZONE"
+              },
+              "modifierName": "UNIQUE_CooperateChallenge_KillerCircle",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_ShrinkCircleDebuff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_ThunderStorm_Gathering",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "CooperateChallenge_DebuffScreen",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "thinkInterval": "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param1",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "CurLocalAvatar",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackInfo": {
+                "HBOOKFMCODC": {
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "onHitEffectName": "default"
+                },
+                "hitPattern": {
+                  "hitImpulseType": "LV0",
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "retreatType": "ByHitDirection"
+                },
+                "INKGMIHAPMA": {
+                  "NDIBGPPKGJP": "Shake"
+                },
+                "cameraShake": {
+                  "shakeDistance": 20,
+                  "extension": {
+                    "rangeAttenuation": 0.5,
+                    "baseOnCamera": true,
+                    "baseCycle": 0.11999999731779099,
+                    "cycleDamping": 0.11999999731779099
+                  }
+                },
+                "attenuationGroup": "default",
+                "attackProperty": {
+                  "elementType": "Electric",
+                  "elementDurability": 25,
+                  "EKBLGIOPKKA": true,
+                  "enBreak": 30,
+                  "elementRank": 1,
+                  "attackType": "Default",
+                  "HJHPJLGAHHP": true,
+                  "strikeType": "None",
+                  "damageExtra": [
+                    "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param2",
+                    "DamageSystemValue",
+                    "MUL"
+                  ]
+                }
+              },
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "target": "CurLocalAvatar",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_ThunderStorm_Blast",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_Survival_AvatarBoost": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "CooperateChallengeV2_Survival_DamageBoost",
+              "predicates": [
+                {
+                  "$type": "ByTargetHPRatio",
+                  "HPRatio": 0.5
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToPredicateMixin",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "CooperateChallengeV2_Survival_DamageBoost",
+              "predicates": [
+                {
+                  "$type": "ByTargetHPRatio",
+                  "HPRatio": 0.5
+                }
+              ],
+              "onEvent": "HP"
+            },
+            {
+              "$type": "AttachModifierToPredicateMixin",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "CooperateChallengeV2_Survival_DamageBoost_Remove",
+              "predicates": [
+                {
+                  "$type": "ByTargetHPRatio",
+                  "logic": "LesserOrEqual",
+                  "HPRatio": 0.5
+                }
+              ],
+              "onEvent": "HP"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_Survival_DamageBoost": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AddHurtDelta": "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param3"
+          }
+        },
+        "CooperateChallengeV2_Survival_DamageBoost_Remove": {
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "CooperateChallengeV2_Survival_DamageBoost",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_Survival_HealthLose": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Common_Corruption_LoseHP",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "thinkInterval": "HPLoseInterval",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "LoseHP",
+              "musicSubStates": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "amountByTargetMaxHPRatio": [
+                "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param1",
+                "HPLoseInterval",
+                "MUL"
+              ],
+              "enableInvincible": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_Wayobs_AvatarBoost": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "CooperateChallengeV2_Wayobs_DamageBoost"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_Wayobs_DamageBoost": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AddHurtDelta": "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param3"
+          }
+        },
+        "CooperateChallenge_BoostScreen": {
+          "onAdded": [
+            {
+              "$type": "CameraScreenEffect",
+              "enable": true,
+              "muteRemoteAction": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "effectName": "Eff_UI_AcrobaticsBattle_Screen_01",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "CameraScreenEffect",
+              "muteRemoteAction": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "effectName": "Eff_UI_AcrobaticsBattle_Screen_01",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallenge_DebuffScreen": {
+          "onAdded": [
+            {
+              "$type": "CameraScreenEffect",
+              "enable": true,
+              "muteRemoteAction": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "effectName": "Eff_UI_ScreenEffect_CooperateChallengeV2",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "CameraScreenEffect",
+              "muteRemoteAction": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "effectName": "Eff_UI_ScreenEffect_CooperateChallengeV2",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallenge_ElementBurstUpdater": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OnAvatarUseSkillMixin",
+              "actorIceSubHurtDelta": -1,
+              "onTriggerUltimateSkill": [
+                {
+                  "$type": "AddGlobalValueV2",
+                  "key": "GV_GoalMachine_Update",
+                  "target": "Team",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "clearSkillIdDelay": 0.20000000298023224
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallenge_FallowBoost": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "actorIceSubHurtDelta": -1,
+              "damagePercentageRatio": 0.5,
+              "attackTags": [
+                "Elemental_Burst"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallenge_FallowDebuff": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ChargeEfficiencyDelta": -5
+          }
+        },
+        "CooperateChallenge_HealthLoseScreen": {
+          "onAdded": [
+            {
+              "$type": "CameraScreenEffect",
+              "enable": true,
+              "muteRemoteAction": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "effectName": "Eff_UI_ScreenEffect_CooperateChallengeV2_Bloodloss",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "CameraScreenEffect",
+              "muteRemoteAction": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "effectName": "Eff_UI_ScreenEffect_CooperateChallengeV2_Bloodloss",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallenge_PlentyBoost": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "actorIceSubHurtDelta": -1,
+              "damagePercentageRatio": 0.5,
+              "attackTags": [
+                "Elemental_Burst"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallenge_ShrinkCircle_MonsterAttack": {
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackInfo": {
+                "HBOOKFMCODC": {
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "onHitEffectName": "default"
+                },
+                "hitPattern": {
+                  "hitImpulseType": "LV0",
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "retreatType": "ByHitDirection"
+                },
+                "INKGMIHAPMA": {
+                  "NDIBGPPKGJP": "Shake"
+                },
+                "cameraShake": {
+                  "shakeDistance": 20,
+                  "extension": {
+                    "rangeAttenuation": 0.5,
+                    "baseOnCamera": true,
+                    "baseCycle": 0.11999999731779099,
+                    "cycleDamping": 0.11999999731779099
+                  }
+                },
+                "attenuationGroup": "default",
+                "attackProperty": {
+                  "elementType": "Electric",
+                  "elementDurability": 25,
+                  "EKBLGIOPKKA": true,
+                  "enBreak": 30,
+                  "elementRank": 1,
+                  "attackType": "Default",
+                  "HJHPJLGAHHP": true,
+                  "strikeType": "None",
+                  "damageExtra": [
+                    "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param3",
+                    "DamageSystemValue",
+                    "MUL"
+                  ]
+                }
+              },
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "effectPattern": "Eff_SceneObj_ThunderStorm_Blast",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Multiple",
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "DamageBooster": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "CooperateChallengeV2_Survival_AvatarBoost"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "EliteMonster": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "EmptyBooster": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "CooperateChallenge_HealthLoseScreen",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param5",
+                      "target": "Team",
+                      "value": 1
+                    }
+                  ],
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "failActions": [
+                    {
+                      "$type": "SetOverrideMapValue",
+                      "value": "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param4",
+                      "overrideMapKey": "HPHealValueBosses",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "canBeHandledOnRecover": true
+                    },
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "CurLocalAvatar",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "modifierName": "UNIQUE_CooperateChallengeV2_HealUp_Bosses",
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "SetOverrideMapValue",
+                      "value": "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param4",
+                      "overrideMapKey": "HPHealValueMinions",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "canBeHandledOnRecover": true
+                    },
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "CurLocalAvatar",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "modifierName": "UNIQUE_CooperateChallengeV2_HealUp_Minions",
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_GoalMachine_Update"
+            },
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "CooperateChallengeV2_Survival_HealthLose"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "EmptyChoice": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "EnergyTide": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "TideCirle",
+                "InfinitePlenty"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_GoalMachine_Avatar"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5,
+                2.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "EmptyChoice",
+                "PlentyPeriod",
+                "FallowPeriod"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param1"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FallingAttack": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "ResetTeamGV",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "EmptyChoice",
+                "RocketJump"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_GoalMachine_Avatar"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FallowPeriod": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "CooperateChallenge_DebuffScreen",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "CooperateChallenge_FallowBoost"
+            },
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "CooperateChallenge_FallowDebuff"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FloorFall": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "InfinitePlenty": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "CooperateChallenge_PlentyBoost"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Leadership": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "ResetTeamGV",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Manager": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5,
+                2.5,
+                3.5,
+                4.5,
+                5.5,
+                6.5,
+                7.5,
+                8.5,
+                9.5,
+                10.5,
+                11.5,
+                12.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "BossLevel",
+                "FallingAttack",
+                "Twins",
+                "Leadership",
+                "NestGuardian",
+                "Wayobs",
+                "SafeCircle",
+                "ShrinkCircle",
+                "FloorFall",
+                "EnergyTide",
+                "Survival",
+                "EliteMonster",
+                "RewardMonster"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_GoalMachine_GoalType"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GoalMachine_Update",
+                      "compareType": "MoreThan"
+                    }
+                  ],
+                  "funcName": "SLC_CooperateChallenge_MonsterNotify",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "gvInTalk": true,
+              "globalValueKey": "GV_GoalMachine_Update"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "NestGuardian": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "ResetTeamGV",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "PlentyPeriod": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "CooperateChallenge_BoostScreen",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ResetTeamGV": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_GoalMachine_Update",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_GoalMachine_SafeZoneState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_GoalMachine_SafeZoneRange",
+              "value": 20,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_GoalMachine_AvatarAliveNum",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetSystemValueToOverrideMap",
+              "key": "DamageSystemValue",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "type": "ElementLevelCo",
+              "value": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RewardMonster": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RocketJump": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurLocalAvatar",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_FallingAttack_RockectJump",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "thinkInterval": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_FallingAttack_RockectJump",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurLocalAvatar",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_FallingAttack_RockectJump",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "SafeCircle": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "ResetTeamGV",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5,
+                2.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "EmptyChoice",
+                "SafeCircleUpdate",
+                "SafeCircleFinish"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_GoalMachine_Avatar"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "CooperateChallengeV2_CircleBlocker",
+                "CooperateChallengeV2_CircleSpeaker"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_GoalMachine_AvatarAliveNum"
+            },
+            {
+              "$type": "MultiAvatarCountsMixin",
+              "actionList": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "GV_GoalMachine_AvatarAliveNum",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "aliveAvatarCount": 1
+            },
+            {
+              "$type": "MultiAvatarCountsMixin",
+              "actionList": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "GV_GoalMachine_AvatarAliveNum",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SafeCircleFinish": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "CooperateChallengeV2_Survival_DamageBoost"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SafeCircleUpdate": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "CooperateChallengeV2_CircleDetector",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "CooperateChallengeV2_SafeCircleAvatar"
+            },
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "CooperateChallengeV2_CircleKillUpdater"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ShrinkCircle": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "ResetTeamGV",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5,
+                2.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "EmptyChoice",
+                "ShrinkCircleUpdate",
+                "ShrinkCircleFinish"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_GoalMachine_Avatar"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "CooperateChallengeV2_CircleBlocker",
+                "CooperateChallengeV2_CircleSpeaker"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_GoalMachine_AvatarAliveNum"
+            },
+            {
+              "$type": "MultiAvatarCountsMixin",
+              "actionList": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "GV_GoalMachine_AvatarAliveNum",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "aliveAvatarCount": 1
+            },
+            {
+              "$type": "MultiAvatarCountsMixin",
+              "actionList": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "GV_GoalMachine_AvatarAliveNum",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ShrinkCircleFinish": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "CooperateChallengeV2_ShrinkCircleBooster",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ShrinkCircleUpdate": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "CooperateChallengeV2_CircleDetector",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "CooperateChallengeV2_ShrinkCircleDebuff",
+                "EmptyChoice"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_GoalMachine_SafeZoneState"
+            },
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "CooperateChallengeV2_CircleKillUpdater"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Survival": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "EmptyBooster",
+                "DamageBooster"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_GoalMachine_Avatar"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TideCirle": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "CooperateChallenge_ElementBurstUpdater"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Twins": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "ResetTeamGV",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_CooperateChallengeV2_HealUp_Bosses": {
+          "onAdded": [
+            {
+              "$type": "HealHP",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "amountByTargetMaxHPRatio": [
+                "HPHealValueBosses",
+                "HPLoseInterval",
+                "MUL"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": "HPLoseInterval",
+          "duration": "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param2",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "HealHP",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "amountByTargetMaxHPRatio": [
+                "HPHealValueBosses",
+                "HPLoseInterval",
+                "MUL"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_CooperateChallengeV2_HealUp_Minions": {
+          "onAdded": [
+            {
+              "$type": "HealHP",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "amountByTargetMaxHPRatio": [
+                "HPHealValueMinions",
+                "HPLoseInterval",
+                "MUL"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": "HPLoseInterval",
+          "duration": "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param2",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "HealHP",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "amountByTargetMaxHPRatio": [
+                "HPHealValueMinions",
+                "HPLoseInterval",
+                "MUL"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_CooperateChallenge_KillerCircle": {
+          "stacking": "Unique",
+          "thinkInterval": "SGV_V5_7_CooperateChallenge_GoalMachine_Goal_Param1",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR50",
+                "campTargetType": "AllExceptSelf",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "modifierName": "CooperateChallenge_ShrinkCircle_MonsterAttack",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_FallingAttack_RockectJump": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": true,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_ScenObj_BlowingStone_01_Buff",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "actorIceSubHurtDelta": -1,
+              "damagePercentageRatio": 1,
+              "attackTags": [
+                "FallingAttack"
+              ]
+            },
+            {
+              "$type": "RocketJumpMixin",
+              "BOBAPIHOIIG": true,
+              "extention": {
+                "xzMultiplier": 2.299999952316284,
+                "yMultiplier": 3.5999999046325684
+              },
+              "actorIceSubHurtDelta": -1,
+              "type": "GearSpring"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "Wayobs": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "ResetTeamGV",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "EmptyChoice",
+                "CooperateChallengeV2_Wayobs_AvatarBoost"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_GoalMachine_Avatar"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onRemoved": [
+        {
+          "$type": "ClearLocalGadgets",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "COPCV2_Trigger",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Manager_ThemeBuff",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "CoinOwnerUID": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_CooperateChallengeV2_ThemeBuff_Manager",
+      "modifiers": {
+        "Burning_Listener": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "target": "Target",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_CooperateChallenge_ThemeBuffUpdate",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "Burning"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "NGEMAJNHAEJ": true,
+              "range": 50
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "onHittingOther": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByHasAbilityState",
+                  "target": "Target",
+                  "abilityState": "ElementBurning"
+                },
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Grass"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Fire"
+                    }
+                  ]
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "successActions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "target": "Target",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_CooperateChallenge_ThemeBuffUpdate",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ]
+        },
+        "COPCV2_Trigger": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "LocalTeamTriggerMixin",
+              "CNOKKMALIAP": [
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_CooperateChallengeV2_BuffBall",
+                      "target": "Other",
+                      "value": 1
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_Activity_TeamRaids_V2_NormalAttack_Count",
+                      "target": "Team"
+                    }
+                  ],
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "failActions": [
+                    {
+                      "$type": "DebugLog",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "content": "判断不过不让吃BUFF球",
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "DebugLog",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "content": "吃到BUFF球了",
+                      "canBeHandledOnRecover": true
+                    },
+                    {
+                      "$type": "ServerLuaCall",
+                      "target": "Target",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": true,
+                      "luaCallType": "CurGalleryControlGroup",
+                      "funcName": "SLC_CooperateChallenge_ThemeBuffNotify",
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "IHIMIAKHJFH": {
+                "GGIHLEMLIGN": "Character",
+                "shapeName": "SphereR1",
+                "triggerCD": 0.5,
+                "triggerType": "TriggerAlways"
+              },
+              "triggerName": "COPCV2_Trigger",
+              "OFDNNHAMJIP": "RootNode"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Empty_Listener": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Explode_Listener": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "target": "Target",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_CooperateChallenge_ThemeBuffUpdate",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "Explode"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "NGEMAJNHAEJ": true,
+              "range": 50
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Freeze_Listener": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "target": "Target",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_CooperateChallenge_ThemeBuffUpdate",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "Freeze"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "NGEMAJNHAEJ": true,
+              "range": 50
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Manager_ThemeBuff": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "ThemeBuff_AvatarListener"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Melt_Listener": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "target": "Target",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_CooperateChallenge_ThemeBuffUpdate",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "Melt"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "NGEMAJNHAEJ": true,
+              "range": 50
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Shock_Listener": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "target": "Target",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_CooperateChallenge_ThemeBuffUpdate",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "Shock"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "NGEMAJNHAEJ": true,
+              "range": 50
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Stream_Listener": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "target": "Target",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_CooperateChallenge_ThemeBuffUpdate",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "Stream"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "NGEMAJNHAEJ": true,
+              "range": 50
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ThemeBuff_AvatarListener": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5,
+                2.5,
+                3.5,
+                4.5,
+                5.5,
+                6.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "Empty_Listener",
+                "Freeze_Listener",
+                "Melt_Listener",
+                "Shock_Listener",
+                "Stream_Listener",
+                "Burning_Listener",
+                "Explode_Listener"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_ThemeBuff_BuffType",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onRemoved": [
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "COPCV2_Trigger",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "CooperateChallengeV2_WatcherManager",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "CooperateChallengeV2_ExhibitionManager",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "__unk_Q2982101340": [
+        "Monster_Kill_0",
+        "Monster_Kill_1"
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_CooperateChallengeV2_Global_Listener",
+      "modifiers": {
+        "Burning_Watcher": {
+          "stacking": "Unique",
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Other",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByHitDamage",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Fire"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Grass"
+                    }
+                  ]
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "successActions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "SpecificGroup",
+                  "CallParamList": [
+                    248051053
+                  ],
+                  "funcName": "SLC_Player_OnThemeHit",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Player_OnThemeHit_Watcher!!SLC发送",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_EmptyWatcher": {
+          "stacking": "Multiple",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_ExhibitionManager": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OnAvatarUseSkillMixin",
+              "actorIceSubHurtDelta": -1,
+              "onTriggerUltimateSkill": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Exhibition_OnElementalBurst_Watcher!!SLC发送",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "SpecificGroup",
+                  "CallParamList": [
+                    248051053
+                  ],
+                  "funcName": "SLC_Exhibition_OnElementalBurst",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "clearSkillIdDelay": 0.20000000298023224,
+              "onTriggerSkill": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Exhibition_OnElementalSkill_Watcher!!SLC发送",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "SpecificGroup",
+                  "CallParamList": [
+                    248051053
+                  ],
+                  "funcName": "SLC_Exhibition_OnElementalSkill",
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            },
+            {
+              "$type": "DoActionByKillingMixin",
+              "onKill": [
+                {
+                  "$type": "SetTargetToTargetKey",
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "targetKey": "Monster_Kill",
+                  "predicates": [
+                    {
+                      "$type": "ByEntityTypes",
+                      "target": "Target",
+                      "value": -1,
+                      "entityTypes": [
+                        "Monster"
+                      ]
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "param2": "Monster_Kill_1",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "luaCallType": "SpecificGroup",
+                  "param1": "Monster_Kill_0",
+                  "paramNum": 2,
+                  "CallParamList": [
+                    248051053
+                  ],
+                  "funcName": "SLC_CooperateChallenge_SpecificKillNotify",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "detectWindow": 0.5
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallengeV2_WatcherManager": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "CooperateChallengeV2_EmptyWatcher",
+                "Player_OnBeingHit_Watcher"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_LevelAffix_Listener01",
+              "PNELLOCFHCP": true
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "CooperateChallengeV2_EmptyWatcher",
+                "Player_OnKill_Watcher"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_LevelAffix_Listener02",
+              "PNELLOCFHCP": true
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "CooperateChallengeV2_EmptyWatcher",
+                "Player_OnHeal_Watcher"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_LevelAffix_Listener03",
+              "PNELLOCFHCP": true
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "CooperateChallengeV2_EmptyWatcher",
+                "Player_OnThemeReactionHittingOther_Watcher"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_LevelAffix_Listener04",
+              "PNELLOCFHCP": true
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "CooperateChallengeV2_EmptyWatcher",
+                "Player_OnThemeReaction_Watcher"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_LevelAffix_Listener05",
+              "PNELLOCFHCP": true
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "CooperateChallengeV2_EmptyWatcher",
+                "Player_OnFallingHittingOther_Watcher"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_LevelAffix_Listener06",
+              "PNELLOCFHCP": true
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "CooperateChallengeV2_EmptyWatcher",
+                "Player_OnElementalBurst_Watcher"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_LevelAffix_Listener07",
+              "PNELLOCFHCP": true
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "CooperateChallengeV2_EmptyWatcher",
+                "Player_OnElementalSkill_Watcher"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_LevelAffix_Listener08",
+              "PNELLOCFHCP": true
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "CooperateChallengeV2_EmptyWatcher",
+                "Player_OnLevelGoalFinish_Watcher"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_LevelAffix_Listener09",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Explode_Watcher": {
+          "stacking": "Unique",
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Other",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByHitDamage",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Fire"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Electric"
+                    }
+                  ]
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "successActions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "SpecificGroup",
+                  "CallParamList": [
+                    248051053
+                  ],
+                  "funcName": "SLC_Player_OnThemeHit",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Player_OnThemeHit_Watcher!!SLC发送",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Freeze_Watcher": {
+          "stacking": "Unique",
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Other",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByHitDamage",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Water"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Ice"
+                    }
+                  ]
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "successActions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "SpecificGroup",
+                  "CallParamList": [
+                    248051053
+                  ],
+                  "funcName": "SLC_Player_OnThemeHit",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Player_OnThemeHit_Watcher!!SLC发送",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Melt_Watcher": {
+          "stacking": "Unique",
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Other",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByHitDamage",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Fire"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Ice"
+                    }
+                  ]
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "successActions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "SpecificGroup",
+                  "CallParamList": [
+                    248051053
+                  ],
+                  "funcName": "SLC_Player_OnThemeHit",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Player_OnThemeHit_Watcher!!SLC发送",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Player_OnBeingHit_Watcher": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onBeingHit": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "Player_OnBeingHit_Watcher!!",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "luaCallType": "SpecificGroup",
+              "CallParamList": [
+                248051053
+              ],
+              "funcName": "SLC_Player_OnBeingHit",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Player_OnElementalBurst_Watcher": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OnAvatarUseSkillMixin",
+              "actorIceSubHurtDelta": -1,
+              "onTriggerUltimateSkill": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Player_OnElementalBurst_Watcher!!SLC发送",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "SpecificGroup",
+                  "CallParamList": [
+                    248051053
+                  ],
+                  "funcName": "SLC_Player_OnElementalBurst",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "clearSkillIdDelay": 0.20000000298023224
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Player_OnElementalSkill_Watcher": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OnAvatarUseSkillMixin",
+              "actorIceSubHurtDelta": -1,
+              "clearSkillIdDelay": 0.20000000298023224,
+              "onTriggerSkill": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Player_OnElementalSkill_Watcher!!SLC发送",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "SpecificGroup",
+                  "CallParamList": [
+                    248051053
+                  ],
+                  "funcName": "SLC_Player_OnElementalSkill",
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Player_OnFallingHittingOther_Watcher": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "onHittingOther": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByAnd",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByEntityTypes",
+                      "target": "Other",
+                      "value": -1,
+                      "entityTypes": [
+                        "Monster"
+                      ]
+                    },
+                    {
+                      "$type": "ByAttackTags",
+                      "target": "Target",
+                      "attackTags": [
+                        "FallingAttack"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "successActions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "SpecificGroup",
+                  "CallParamList": [
+                    248051053
+                  ],
+                  "funcName": "SLC_Player_OnFallingHit",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Player_OnFallingHittingOther_Watcher!!SLC发送",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ]
+        },
+        "Player_OnHeal_Watcher": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "onBeingHealed": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Other",
+                  "value": -1,
+                  "entityTypes": [
+                    "Avatar"
+                  ]
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Player_OnHeal_Watcher 治疗的是角色",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetType",
+                      "target": "Other",
+                      "isTarget": true
+                    }
+                  ],
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "failActions": [
+                    {
+                      "$type": "DebugLog",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "content": "Player_OnHeal_Watcher没有治疗自己 视为治疗队友",
+                      "canBeHandledOnRecover": true
+                    },
+                    {
+                      "$type": "DebugLog",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "content": "Player_OnHeal_Watcher!!SLC发送",
+                      "canBeHandledOnRecover": true
+                    },
+                    {
+                      "$type": "ServerLuaCall",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": true,
+                      "luaCallType": "SpecificGroup",
+                      "CallParamList": [
+                        248051053
+                      ],
+                      "funcName": "SLC_Player_OnHeal",
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ]
+        },
+        "Player_OnKill_Watcher": {
+          "onKill": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "Player_OnKill_Watcher!!SLC发送",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "luaCallType": "SpecificGroup",
+              "CallParamList": [
+                248051053
+              ],
+              "funcName": "SLC_Player_OnKill",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Player_OnLevelGoalFinish_Watcher": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Player_OnThemeReactionHittingOther_Watcher": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                1.5,
+                2.5,
+                3.5,
+                4.5,
+                5.5,
+                6.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "Freeze_Watcher",
+                "Melt_Watcher",
+                "Shock_Watcher",
+                "Stream_Watcher",
+                "Burning_Watcher",
+                "Explode_Watcher"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_V5_7_CooperateChallenge_ThemeBuff_BuffType",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Player_OnThemeReaction_Watcher": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Shock_Watcher": {
+          "stacking": "Unique",
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Other",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByHitDamage",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Water"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Electric"
+                    }
+                  ]
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "successActions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "SpecificGroup",
+                  "CallParamList": [
+                    248051053
+                  ],
+                  "funcName": "SLC_Player_OnThemeHit",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Player_OnThemeHit_Watcher!!SLC发送",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Stream_Watcher": {
+          "stacking": "Unique",
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Other",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByHitDamage",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Water"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Fire"
+                    }
+                  ]
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "successActions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "SpecificGroup",
+                  "CallParamList": [
+                    248051053
+                  ],
+                  "funcName": "SLC_Player_OnThemeHit",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Player_OnThemeHit_Watcher!!SLC发送",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Floor",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_ServerIndex",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_SlimeBallV2_Trap",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "__unk_Q2982101340": [
+        "GV_ServerIndex",
+        "SGV_CooperateChallenge_FloorFall",
+        "SGV_CooperateChallenge_FloorRecoverTime"
+      ],
+      "abilityName": "SceneObj_Activity_Common_Property_Ani_Prop_CooperateChallengeV2_FallingFloor_01",
+      "modifiers": {
+        "ColliderDelay": {
+          "stacking": "Unique",
+          "duration": 3,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true,
+              "transformNames": [
+                "Collider"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Fall": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.10000000149011612
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "effectPattern": "Eff_Monster_Shaman_Floor_Fall_Alert_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "WaitforRecover",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "ColliderDelay",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true,
+              "transformNames": [
+                "Floor"
+              ]
+            }
+          ],
+          "stacking": "Unique",
+          "onReconnect": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true,
+              "transformNames": [
+                "Floor"
+              ]
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Floor": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToGadgetStateMixin",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Recover"
+            },
+            {
+              "$type": "AttachToGadgetStateMixin",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Fall",
+              "gadgetState": 201
+            },
+            {
+              "$type": "ServerUpdateGlobalValueMixin",
+              "key": "GV_ServerIndex",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Recover": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "RecoverDelay",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "setEnable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true,
+              "transformNames": [
+                "Collider"
+              ]
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RecoverDelay": {
+          "stacking": "Unique",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "setEnable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true,
+              "transformNames": [
+                "Floor"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "WaitforRecover": {
+          "stacking": "Unique",
+          "duration": "SGV_CooperateChallenge_FloorRecoverTime",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": -2.75
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "effectPattern": "Eff_Monster_Shaman_Floor_Fall_Reset_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "CurGalleryControlGroup",
+              "param1": "GV_ServerIndex",
+              "paramNum": 1,
+              "funcName": "SLC_BlockRecoverNotify",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ChangeGadgetState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "__unk_Q2982101340": [
+        "SGV_CooperateChallenge_Mamolu_SkillType"
+      ],
+      "abilitySpecials": {
+        "SkillDuration_01": 9,
+        "SkillDuration_02": 5,
+        "SubHurtDelta": -0.30000001192092896,
+        "SubHurtDuration": 5
+      },
+      "abilityName": "SceneObj_Activity_Common_Property_Ani_Prop_CooperateChallengeV2_MamoluMamolu_01",
+      "modifiers": {
+        "ActiveSkill": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_CooperateChallenge_Mamolu_SkillType"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Skill02",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Skill01",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CooperateChallenge_SubHurtDebuff": {
+          "stacking": "Unique",
+          "duration": "SubHurtDuration",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElecSubHurtDelta": "SubHurtDelta",
+            "Actor_FireSubHurtDelta": "SubHurtDelta",
+            "Actor_GrassSubHurtDelta": "SubHurtDelta",
+            "Actor_IceSubHurtDelta": "SubHurtDelta",
+            "Actor_PhysicalSubHurtDelta": "SubHurtDelta",
+            "Actor_RockSubHurtDelta": "SubHurtDelta",
+            "Actor_WaterSubHurtDelta": "SubHurtDelta",
+            "Actor_WindSubHurtDelta": "SubHurtDelta"
+          }
+        },
+        "MamoluSkill": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToGadgetStateMixin",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "ActiveSkill",
+              "gadgetState": 201
+            },
+            {
+              "$type": "AttachToGadgetStateMixin",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Blank"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Skill01": {
+          "stacking": "Unique",
+          "thinkInterval": "SkillDuration_01",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR30H15",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "modifierName": "CooperateChallenge_SubHurtDebuff",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "Skill02": {
+          "stacking": "Unique",
+          "thinkInterval": "SkillDuration_02",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "attackTag": "Activity_CooperateChallenge_TrueDamageImpulse",
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "hitImpulseType": "LV6",
+                    "hitHaltTimeScale": 0.05000000074505806,
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "enBreak": 50,
+                    "elementRank": 1,
+                    "attackType": "Default",
+                    "strikeType": "Blunt",
+                    "damagePercentage": 1
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "ignoreMassive": true,
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "radius": 30,
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "tag": "COPC_SAFEZONE"
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_CooperateChallengeV2_SafeRange",
+          "value": 15,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "SafeZone",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "__unk_Q2982101340": [
+        "GV_CooperateChallengeV2_SafeRange"
+      ],
+      "onKill": [
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "SafeZone",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_Activity_Common_Property_Ani_Prop_CooperateChallengeV2_SafeZone_01",
+      "modifiers": {
+        "EffectTrigger_InitialStage1": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "InitialStage1",
+              "effectPattern": "Eff_SceneObj_ThunderStorm_SafeArea",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "EffectTrigger_InitialStage2": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "InitialStage2",
+              "effectPattern": "Eff_SceneObj_ThunderStorm_SafeArea",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "EffectTrigger_ToStage2": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "ToStage2",
+              "effectPattern": "Eff_SceneObj_ThunderStorm_SafeArea",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "EffectTrigger_ToStage3": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "ToStage3",
+              "effectPattern": "Eff_SceneObj_ThunderStorm_SafeArea",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SafeZone": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_ThunderStorm_SafeArea",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SafeZone_End": {
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "SafeZone",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SafeZone_Stage1_Init": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "EffectTrigger_InitialStage1",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_CooperateChallengeV2_SafeRange",
+              "value": 15,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SafeZone_Stage2": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "EffectTrigger_ToStage2",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "EffectTrigger_InitialStage1",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 0.10000000149011612,
+          "duration": 5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_CooperateChallengeV2_SafeRange",
+              "value": 10,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "key": "GV_CooperateChallengeV2_SafeRange",
+              "useLimitRange": true,
+              "value": -0.10000000149011612,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "minValue": 10,
+              "canBeHandledOnRecover": true,
+              "maxValue": 15
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "SafeZone_Stage2_Init": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "EffectTrigger_InitialStage2",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_CooperateChallengeV2_SafeRange",
+              "value": 10,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SafeZone_Stage3": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "EffectTrigger_ToStage3",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "EffectTrigger_ToStage2",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "EffectTrigger_InitialStage1",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 0.10000000149011612,
+          "duration": 5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_CooperateChallengeV2_SafeRange",
+              "value": 5,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "key": "GV_CooperateChallengeV2_SafeRange",
+              "useLimitRange": true,
+              "value": -0.10000000149011612,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "minValue": 5,
+              "canBeHandledOnRecover": true,
+              "maxValue": 10
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SafeZone_Stage1_Init",
+          "gadgetState": 201
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SafeZone_Stage2_Init",
+          "gadgetState": 202
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SafeZone_Stage2",
+          "gadgetState": 901
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SafeZone_Stage3",
+          "gadgetState": 902
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SafeZone_End"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "tag": "COPC_SAFEZONE"
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_CooperateChallengeV2_SafeRange",
+          "value": 7.5,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "__unk_Q2982101340": [
+        "GV_CooperateChallengeV2_SafeRange"
+      ],
+      "onKill": [
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "EffectTrigger_InitialStage1",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_Activity_Common_Property_Ani_Prop_CooperateChallengeV2_SafeZone_02",
+      "modifiers": {
+        "EffectTrigger_InitialStage1": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1.5,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_CoChallenge_SafeZone_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SafeZone_End": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SafeZone_Stage1_Init": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "EffectTrigger_InitialStage1",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SafeZone_Stage1_Init",
+          "gadgetState": 201
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SafeZone_End"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "BuffBall",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_CooperateChallengeV2_BuffBall",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "BuffBallDuration": 10
+      },
+      "abilityName": "SceneObj_Area_Common_Property_Ani_Prop_CooperateChallengeV2_ThemeBuff_01",
+      "modifiers": {
+        "Active": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Activity_TeamRaids_V2_NormalAttack_Pickable",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "BuffBall": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Lifespan",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToGadgetStateMixin",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Inactive",
+              "gadgetState": 201
+            },
+            {
+              "$type": "AttachToGadgetStateMixin",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Active"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Inactive": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Suicide",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Lifespan": {
+          "stacking": "Unique",
+          "duration": "BuffBallDuration",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Suicide",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Suicide": {
+          "onAdded": [
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "configIdArray": [
+                73056005
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": 0.20000000298023224,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "BallLaucher",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_CooperateChallengeV2_ThemeBuffLauchNum",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "__unk_Q2982101340": [
+        "X_OFFSET",
+        "Z_OFFSET"
+      ],
+      "abilitySpecials": {
+        "BuffSummonRange": 10
+      },
+      "abilityName": "SceneObj_Area_Common_Property_Ani_Prop_CooperateChallengeV2_ThemeBuff_02",
+      "modifiers": {
+        "BallLaucher": {
+          "onAdded": [
+            {
+              "$type": "ChangeTag",
+              "isAdd": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "tag": "COPC_BUFFLAUCHER"
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "GV_CooperateChallengeV2_ThemeBuffLauchNum",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "LauchBuffBall",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "SGV_CooperateChallengeV2_BuffLaucher"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "LauchBuffBall": {
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "SceneObj_Area_Common_Property_Ani_Prop_CooperateChallengeV2_ThemeBuff_02",
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddGlobalValueV2",
+              "key": "GV_CooperateChallengeV2_ThemeBuffLauchNum",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Multiple",
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "LaucherRepeater",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_CooperateChallengeV2_ThemeBuffLauchNum",
+                  "value": 3,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "LaucherRepeater": {
+          "stacking": "Multiple",
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "LauchBuffBall",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "X_OFFSET",
+          "useLimitRange": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "minValue": [
+            0,
+            "BuffSummonRange",
+            "SUB"
+          ],
+          "randomInRange": true,
+          "canBeHandledOnRecover": true,
+          "maxValue": "BuffSummonRange"
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "Z_OFFSET",
+          "useLimitRange": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "minValue": [
+            0,
+            "BuffSummonRange",
+            "SUB"
+          ],
+          "randomInRange": true,
+          "canBeHandledOnRecover": true,
+          "maxValue": "BuffSummonRange"
+        },
+        {
+          "$type": "CreateGadget",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "campTargetType": "All",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "offset": {
+              "z": "Z_OFFSET",
+              "y": "X_OFFSET"
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true
+          },
+          "campID": 5001,
+          "KLGHKKGGHEA": {
+            "CBLLACNAMON": true,
+            "DBOLJFPPFGI": 0.5,
+            "JOCOGLBCMEJ": 0.5,
+            "LKEBJHCDOHB": true
+          },
+          "gadgetID": 73056005,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  }
+]

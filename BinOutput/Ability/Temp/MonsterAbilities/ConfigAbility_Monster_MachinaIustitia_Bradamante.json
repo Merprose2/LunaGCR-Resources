@@ -1,0 +1,3340 @@
+[
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Pose",
+      "modifiers": {
+        "Bradamante_NeedRepair_Delay": {
+          "duration": 4,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MACHINAIUSTITIA_NEEDREPAIR_",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Bradamante_Ousia_EventPatternHandler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ReplaceEventPatternMixin",
+              "actorIceSubHurtDelta": -1,
+              "newPatterns": [
+                "Monster_MachinaIustitia_Bradamante_Recover_Ousia"
+              ],
+              "oldPatterns": [
+                "Monster_MachinaIustitia_Bradamante_Recover_Pneuma"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Bradamante_SelfRepair_Delay": {
+          "duration": 25,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetAISkillCDAvailableNow",
+              "skillIDs": [
+                192
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MACHINAIUSTITIA_CHARGED_",
+                  "target": "Target",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MACHINAIUSTITIA_SELFRECOVER_",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 701,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 801,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 901,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 902,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 903,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 1,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 11,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 21,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 1001,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Pose_Init_Normal": {
+          "onAdded": [
+            {
+              "$type": "HFLNNDAIHHG",
+              "key": "arkheGradeKey",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "InitialPneumaOusia"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Pose_Init_Ousia": {
+          "onAdded": [
+            {
+              "$type": "HFLNNDAIHHG",
+              "key": "arkheGradeKey",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "InitialPneumaOusia"
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Bradamante_Ousia_EventPatternHandler",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Pose_Init_Pneuma": {
+          "onAdded": [
+            {
+              "$type": "HFLNNDAIHHG",
+              "key": "arkheGradeKey",
+              "value": -2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "InitialPneumaOusia"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Pose_Normal": {
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "StateTag"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "EnergyTag1"
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Bradamante_NeedRepair_Delay",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Bradamante_SelfRepair_Delay",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Pose_Ousia_1": {
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": 1,
+              "canBeHandledOnRecover": true,
+              "intID": "StateTag"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "EnergyTag1"
+            },
+            {
+              "$type": "ResetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "HitSpecialTrigger",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MACHINAIUSTITIA_NEEDREPAIR_",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Bradamante_SelfRepair_Delay",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Pose_Ousia_2": {
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": 1,
+              "canBeHandledOnRecover": true,
+              "intID": "StateTag"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "EnergyTag1"
+            },
+            {
+              "$type": "ResetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "HitSpecialTrigger",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MACHINAIUSTITIA_NEEDREPAIR_",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Bradamante_SelfRepair_Delay",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Pose_Pneuma_1": {
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": -1,
+              "canBeHandledOnRecover": true,
+              "intID": "StateTag"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "EnergyTag1"
+            },
+            {
+              "$type": "ResetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "HitSpecialTrigger",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MACHINAIUSTITIA_NEEDREPAIR_",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Bradamante_SelfRepair_Delay",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Pose_Pneuma_2": {
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": -1,
+              "canBeHandledOnRecover": true,
+              "intID": "StateTag"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": -2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "EnergyTag1"
+            },
+            {
+              "$type": "ResetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "HitSpecialTrigger",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MACHINAIUSTITIA_NEEDREPAIR_",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Bradamante_SelfRepair_Delay",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -1.5,
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Pose_Init_Pneuma",
+            "Pose_Init_Normal",
+            "Pose_Init_Ousia"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_MACHINAIUSTITIA_STATIC_STATE_"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -2.5,
+            -1.5,
+            -0.5,
+            0.5,
+            1.5,
+            2.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Pose_Pneuma_2",
+            "Pose_Pneuma_1",
+            "Pose_Normal",
+            "Pose_Ousia_1",
+            "Pose_Ousia_2"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "arkheGradeKey"
+        },
+        {
+          "$type": "DoActionBySelfArkheReactionMixin",
+          "actorIceSubHurtDelta": -1,
+          "actionQueue": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "HitSpecialTrigger",
+              "predicates": [
+                {
+                  "$type": "ByEntityIsAlive"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "arkheGradeKey",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "NoSensing",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_MACHINAIUSTITIA_NEEDREPAIR_",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_MACHINAIUSTITIA_CHARGED_",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_MACHINAIUSTITIA_SELFRECOVER_",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_MachinaIustitia_Bradamante_RepairPose",
+      "modifiers": {
+        "Pose_NoRepair": {
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "RepairTag",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Pose_ReadyRepair": {
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "value": true,
+              "boolID": "RepairTag",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MACHINAIUSTITIA_NEEDREPAIR_",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Pose_NoRepair",
+            "Pose_ReadyRepair"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_MACHINAIUSTITIA_CHARGED_"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Recover_Pneuma",
+      "onAbilityStart": [
+        {
+          "$type": "HFLNNDAIHHG",
+          "key": "arkheGradeKey",
+          "value": -2,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_MACHINAIUSTITIA_CHARGED_",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_MACHINAIUSTITIA_SELFRECOVER_",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_RecoverEffect_Pneuma",
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_MachinaIustitia_Charge_Effect_Pneuma",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Recover_Effect_Extra",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_MACHINAIUSTITIA_CHARGED_",
+              "target": "Target",
+              "compareType": "NoneOrEqual"
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_MACHINAIUSTITIA_STATIC_STATE_",
+              "target": "Target",
+              "value": -1,
+              "compareType": "LessAndEqual"
+            }
+          ],
+          "effectPattern": "Eff_Monster_MachinaIustitia_Recover_Pneuma",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_MACHINAIUSTITIA_CHARGED_",
+              "target": "Target",
+              "compareType": "NoneOrEqual"
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_MACHINAIUSTITIA_STATIC_STATE_",
+              "target": "Target",
+              "value": 1,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "effectPattern": "Eff_Monster_MachinaIustitia_Recover_Ousia",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Recover_Ousia",
+      "onAbilityStart": [
+        {
+          "$type": "HFLNNDAIHHG",
+          "key": "arkheGradeKey",
+          "value": 2,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_MACHINAIUSTITIA_CHARGED_",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_MACHINAIUSTITIA_SELFRECOVER_",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_RecoverEffect_Ousia",
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_MachinaIustitia_Charge_Effect_Ousia",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_ResetState",
+      "modifiers": {
+        "MachinaIustitia_Bradamante_ReturnToBorn": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "HFLNNDAIHHG",
+              "key": "arkheGradeKey",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MACHINAIUSTITIA_STATIC_STATE_",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "HFLNNDAIHHG",
+              "key": "arkheGradeKey",
+              "value": -2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MACHINAIUSTITIA_STATIC_STATE_",
+                  "target": "Target",
+                  "value": -1,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "HFLNNDAIHHG",
+              "key": "arkheGradeKey",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MACHINAIUSTITIA_STATIC_STATE_",
+                  "target": "Target",
+                  "value": 1,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MACHINAIUSTITIA_NEEDREPAIR_",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            701,
+            801,
+            901,
+            902,
+            903
+          ],
+          "modifierName": "MachinaIustitia_Bradamante_ReturnToBorn"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onKill": [
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "MachinaIustitia_Bradamante_CoilEffect01_Pneuma",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "MachinaIustitia_Bradamante_CoilEffect01_Ousia",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "MachinaIustitia_Bradamante_CoilEffect02_Pneuma",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "MachinaIustitia_Bradamante_CoilEffect02_Ousia",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_MachinaIustitia_Bradamante_CoilEffect",
+      "modifiers": {
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "MachinaIustitia_Bradamante_CoilEffect01_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                -2.5,
+                -0.5,
+                0.5,
+                2.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "MachinaIustitia_Bradamante_CoilEffect01_Pneuma",
+                "Blank",
+                "MachinaIustitia_Bradamante_CoilEffect01_Ousia"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "arkheGradeKey"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "MachinaIustitia_Bradamante_CoilEffect01_Ousia": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1.5,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "CoilAttachPoint01"
+              },
+              "effectPattern": "Eff_Monster_MachinaIustitia_Coil01_Ousia",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "MachinaIustitia_Bradamante_CoilEffect01_Pneuma": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1.5,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "CoilAttachPoint01"
+              },
+              "effectPattern": "Eff_Monster_MachinaIustitia_Coil01_Pneuma",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "MachinaIustitia_Bradamante_CoilEffect02_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                -2.5,
+                -0.5,
+                0.5,
+                2.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "MachinaIustitia_Bradamante_CoilEffect02_Pneuma",
+                "Blank",
+                "MachinaIustitia_Bradamante_CoilEffect02_Ousia"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "arkheGradeKey"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "MachinaIustitia_Bradamante_CoilEffect02_Ousia": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1.5,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "CoilAttachPoint02"
+              },
+              "effectPattern": "Eff_Monster_MachinaIustitia_Coil02_Ousia",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "MachinaIustitia_Bradamante_CoilEffect02_Pneuma": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1.5,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "CoilAttachPoint02"
+              },
+              "effectPattern": "Eff_Monster_MachinaIustitia_Coil02_Pneuma",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "MachinaIustitia_Bradamante_CoilEffect01_Handler",
+            "MachinaIustitia_Bradamante_CoilEffect02_Handler"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_MACHINAIUSTITIA_COIL_STATE_"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Attack01",
+      "modifiers": {
+        "Attack01SkillShader": {
+          "onAdded": [
+            {
+              "$type": "ResetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "Attack01Stop",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "SkillShader"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "SkillShader"
+            },
+            {
+              "$type": "ResetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "Attack01Stop",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Bradamante_BulletShoot_End_SpecialState": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "Attack01Stop",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Bradamante_RushAtk_RushMove_Handler",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Bradamante_RushAtk_RushMove_Handler": {
+          "onAdded": [
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "value": true,
+              "bulletID": 42406044,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToAbilityStateMixin",
+              "actorIceSubHurtDelta": -1,
+              "abilityStates": [
+                "ElementFrozen",
+                "ElementPetrifaction"
+              ],
+              "modifierName": "Bradamante_BulletShoot_End_SpecialState"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 42406044
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack01",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Bradamante_RushAtk_RushMove_Handler",
+          "normalizeStart": 0.42500001192092896,
+          "normalizeEnd": 0.6949999928474426,
+          "value": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack01_Loop1",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Bradamante_RushAtk_RushMove_Handler",
+          "normalizeStart": 0.42500001192092896,
+          "normalizeEnd": 0.6949999928474426,
+          "value": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack01_Loop2",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Bradamante_RushAtk_RushMove_Handler",
+          "normalizeStart": 0.42500001192092896,
+          "normalizeEnd": 0.6949999928474426,
+          "value": -1
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Attack01",
+            "Attack01_Loop1",
+            "Attack01_Loop2"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Attack01SkillShader",
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "FollowBullet_Effect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "FollowBullet_Effect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "MachinaIustitia_Bradamante_RushAtk_FollowBullet",
+      "modifiers": {
+        "FollowBullet_Effect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_MachinaIustitia_Bradamante01_Attack01_Circle",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "attenuationTag": "Bradamante_Attack01",
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV3",
+                "hitHaltTimeScale": 0.05000000074505806,
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default",
+                "retreatType": "ByHitDirection"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "Bradamante_Attack01",
+              "attackProperty": {
+                "elementType": "Water",
+                "elementDurability": 25,
+                "enBreak": 50,
+                "elementRank": 1,
+                "attackType": "Melee",
+                "strikeType": "Slash",
+                "damagePercentage": 0.6000000238418579
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 1,
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_RushMove",
+      "modifiers": {
+        "Attack02_RushMove": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 3,
+                  "logic": "GreaterOrEqual"
+                }
+              ],
+              "target": "SelfAttackTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "FixedMonsterRushMove",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "toPos": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "z": 2.5
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true,
+                    "onGround": true
+                  },
+                  "GKOFKDIFIMA": -1,
+                  "animatorStateIDs": [
+                    "Attack02"
+                  ],
+                  "PGLJIHAEIAD": -1,
+                  "canBeHandledOnRecover": true,
+                  "timeRange": 0.11999999731779099
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Attack04_RushMove": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 3,
+                  "logic": "GreaterOrEqual"
+                }
+              ],
+              "target": "SelfAttackTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "FixedMonsterRushMove",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "toPos": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "z": 3
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true,
+                    "onGround": true
+                  },
+                  "GKOFKDIFIMA": -1,
+                  "animatorStateIDs": [
+                    "Attack04"
+                  ],
+                  "PGLJIHAEIAD": -1,
+                  "canBeHandledOnRecover": true,
+                  "timeRange": 0.09000000357627869
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack02",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Attack02_RushMove",
+          "normalizeStart": 0.2199999988079071,
+          "normalizeEnd": 1,
+          "value": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack04",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Attack04_RushMove",
+          "normalizeStart": 0.28999999165534973,
+          "normalizeEnd": 1,
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Attack02_Hit3_Side2",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 1.399999976158142,
+              "z": 1.5199999809265137,
+              "y": 2.690000057220459
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "$type": "ConfigDirectionByDefault",
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true
+          },
+          "bulletID": 42406059,
+          "value": true,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Attack02_Hit3_Side3",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 1.559999942779541,
+              "z": 0.7699999809265137,
+              "y": -1.6299999952316284
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "$type": "ConfigDirectionByDefault",
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true
+          },
+          "bulletID": 42406060,
+          "value": true,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Attack02_Hit3",
+      "modifiers": {
+        "Attack02SkillShader": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "SkillShader"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "SkillShader"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 1.1299999952316284,
+              "z": 1.6200000047683716,
+              "y": 0.27000001072883606
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "$type": "ConfigDirectionByDefault",
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true
+          },
+          "bulletID": 42406045,
+          "value": true,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Attack02"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Attack02SkillShader",
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Bullet_Effect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Attack02_Hit3Bullet",
+      "modifiers": {
+        "Bullet_Effect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_MachinaIustitia_Bradamante01_Attack02_LegKnife",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 1.7999999523162842,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "attenuationTag": "Bradamante_Attack02",
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV4",
+                "hitHaltTimeScale": 0.05000000074505806,
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "Bradamante_Attack02",
+              "attackProperty": {
+                "elementType": "Water",
+                "elementDurability": 25,
+                "enBreak": 200,
+                "elementRank": 1,
+                "attackType": "Default",
+                "strikeType": "Slash",
+                "damagePercentage": 0.3499999940395355
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackBox",
+              "size": {
+                "x": 0.5,
+                "z": 2.299999952316284,
+                "y": 2.299999952316284
+              },
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerAlways",
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Bullet_Effect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Attack02_Hit3Bullet2",
+      "modifiers": {
+        "Bullet_Effect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_MachinaIustitia_Bradamante01_Attack02_LegKnife_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 1.7999999523162842,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "attenuationTag": "Bradamante_Attack02",
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV4",
+                "hitHaltTimeScale": 0.05000000074505806,
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "Bradamante_Attack02",
+              "attackProperty": {
+                "elementType": "Water",
+                "elementDurability": 25,
+                "enBreak": 200,
+                "elementRank": 1,
+                "attackType": "Default",
+                "strikeType": "Slash",
+                "damagePercentage": 0.3499999940395355
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackBox",
+              "size": {
+                "x": 0.5,
+                "z": 2.299999952316284,
+                "y": 2.299999952316284
+              },
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerAlways",
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Bullet_Effect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Attack02_Hit3Bullet3",
+      "modifiers": {
+        "Bullet_Effect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_MachinaIustitia_Bradamante01_Attack02_LegKnife_02",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 1.7999999523162842,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "attenuationTag": "Bradamante_Attack02",
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV4",
+                "hitHaltTimeScale": 0.05000000074505806,
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "Bradamante_Attack02",
+              "attackProperty": {
+                "elementType": "Water",
+                "elementDurability": 25,
+                "enBreak": 200,
+                "elementRank": 1,
+                "attackType": "Default",
+                "strikeType": "Slash",
+                "damagePercentage": 0.3499999940395355
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackBox",
+              "size": {
+                "x": 0.5,
+                "z": 2.299999952316284,
+                "y": 2.299999952316284
+              },
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerAlways",
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Attack03",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "z": 2.5
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true
+          },
+          "trackTarget": "SelfAttackTarget",
+          "bulletID": 42406048,
+          "value": true,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Monster_Bradamante_Attack03_Bullet_Damage",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Attack03_BulletHit",
+      "modifiers": {
+        "Monster_Bradamante_Attack03_Bullet_Damage": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "effectPattern": "Eff_Monster_MachinaIustitia_Bradamante01_Attack03_Hit",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "attenuationTag": "Bradamante_Attack03",
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "hitImpulseType": "LV5",
+                    "hitHaltTimeScale": 0.009999999776482582,
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default",
+                    "retreatType": "ByHitDirection"
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "canBeModifiedBy": "OriginOwner",
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "Bradamante_Attack03",
+                  "attackProperty": {
+                    "elementType": "Electric",
+                    "elementDurability": 25,
+                    "enBreak": 100,
+                    "elementRank": 1,
+                    "attackType": "Default",
+                    "strikeType": "Slash",
+                    "damagePercentage": 1
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "fanAngle": 360,
+                  "height": 1.7999999523162842,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "radius": 2,
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 0.20000000298023224,
+          "duration": 0.699999988079071,
+          "elementDurability": 100,
+          "onThinkIntervalIsFixedUpdate": true,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "effectPattern": "Eff_Monster_MachinaIustitia_Bradamante01_Attack03_Hit",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "attenuationTag": "Bradamante_Attack03",
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "hitImpulseType": "LV5",
+                    "hitHaltTimeScale": 0.009999999776482582,
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default",
+                    "retreatType": "ByHitDirection"
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "canBeModifiedBy": "OriginOwner",
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "Bradamante_Attack03",
+                  "attackProperty": {
+                    "elementType": "Electric",
+                    "elementDurability": 25,
+                    "enBreak": 100,
+                    "elementRank": 1,
+                    "attackType": "Default",
+                    "strikeType": "Slash",
+                    "damagePercentage": 1
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "fanAngle": 360,
+                  "height": 1.7999999523162842,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "radius": 2,
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "Monster_MachinaIustitia_Bradamante_SummonBullet",
+      "modifiers": {
+        "Bullet_LengthShifter": {
+          "onAdded": [
+            {
+              "$type": "TryFindBlinkPointByBorn",
+              "hitSceneType": "BlinkHitSceneTestByThreeSegments",
+              "DKKAFIDPHMD": true,
+              "limitY": 0.5,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": -3,
+                  "y": 3
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "onGround": true
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "CreateGadget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "CAGGGLCIFFN",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "onGround": true
+              },
+              "campID": 4001,
+              "KLGHKKGGHEA": {
+                "CBLLACNAMON": true,
+                "DBOLJFPPFGI": 0.5,
+                "JOCOGLBCMEJ": 0.5,
+                "LKEBJHCDOHB": true
+              },
+              "value": true,
+              "gadgetID": 42406058,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetSelfAttackTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByChildren",
+                "topLimit": 1,
+                "configID": 42406058,
+                "entityTypePriority": [
+                  "Gadget"
+                ]
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerBullet",
+              "target": "SelfAttackTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "trackTarget": "SelfAttackTarget",
+              "value": true,
+              "bulletID": 42406057,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            },
+            {
+              "$type": "ResetAIAttackTarget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Bullet_LengthShifter",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Summon",
+      "modifiers": {
+        "KillSummoner": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "ELJJHIPAFKC": true,
+              "otherTargets": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 24061109
+              },
+              "HIBDOLDJAKP": true,
+              "KBKCMPMOKGM": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "ELJJHIPAFKC": true,
+              "otherTargets": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 24061110
+              },
+              "HIBDOLDJAKP": true,
+              "KBKCMPMOKGM": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "ELJJHIPAFKC": true,
+              "otherTargets": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 24066109
+              },
+              "HIBDOLDJAKP": true,
+              "KBKCMPMOKGM": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "ELJJHIPAFKC": true,
+              "otherTargets": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 24066110
+              },
+              "HIBDOLDJAKP": true,
+              "KBKCMPMOKGM": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Summon_LengthShifter": {
+          "onAdded": [
+            {
+              "$type": "TryFindBlinkPointByBorn",
+              "hitSceneType": "BlinkHitSceneTestByThreeSegments",
+              "DKKAFIDPHMD": true,
+              "limitY": 0.5,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": -3,
+                  "y": 3
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "onGround": true
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Summon",
+              "AKMNMNKJHFP": true,
+              "sightGroupWithOwner": true,
+              "CKEDDBOLAJE": true,
+              "DFDDJPCLJPJ": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "IILDDEANKCL": "SelfAttackTarget",
+              "JHMJHBBABKJ": true,
+              "born": {
+                "$type": "CAGGGLCIFFN",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "onGround": true
+              },
+              "KBKCMPMOKGM": true,
+              "monsterId": 24061109,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MACHINAIUSTITIA_STATIC_STATE_",
+                  "value": -1
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MACHINAIUSTITIA_COIL_STATE_"
+                }
+              ],
+              "summonTag": 24061109,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Summon",
+              "AKMNMNKJHFP": true,
+              "sightGroupWithOwner": true,
+              "CKEDDBOLAJE": true,
+              "DFDDJPCLJPJ": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "IILDDEANKCL": "SelfAttackTarget",
+              "JHMJHBBABKJ": true,
+              "born": {
+                "$type": "CAGGGLCIFFN",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "onGround": true
+              },
+              "KBKCMPMOKGM": true,
+              "monsterId": 24061110,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MACHINAIUSTITIA_STATIC_STATE_",
+                  "value": -1
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MACHINAIUSTITIA_COIL_STATE_",
+                  "value": 1
+                }
+              ],
+              "summonTag": 24061110,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Summon",
+              "AKMNMNKJHFP": true,
+              "sightGroupWithOwner": true,
+              "CKEDDBOLAJE": true,
+              "DFDDJPCLJPJ": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "IILDDEANKCL": "SelfAttackTarget",
+              "JHMJHBBABKJ": true,
+              "born": {
+                "$type": "CAGGGLCIFFN",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "onGround": true
+              },
+              "KBKCMPMOKGM": true,
+              "monsterId": 24066109,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MACHINAIUSTITIA_STATIC_STATE_",
+                  "value": 1
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MACHINAIUSTITIA_COIL_STATE_"
+                }
+              ],
+              "summonTag": 24066109,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Summon",
+              "AKMNMNKJHFP": true,
+              "sightGroupWithOwner": true,
+              "CKEDDBOLAJE": true,
+              "DFDDJPCLJPJ": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "IILDDEANKCL": "SelfAttackTarget",
+              "JHMJHBBABKJ": true,
+              "born": {
+                "$type": "CAGGGLCIFFN",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "onGround": true
+              },
+              "KBKCMPMOKGM": true,
+              "monsterId": 24066110,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MACHINAIUSTITIA_STATIC_STATE_",
+                  "value": 1
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MACHINAIUSTITIA_COIL_STATE_",
+                  "value": 1
+                }
+              ],
+              "summonTag": 24066110,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Summon_LengthShifter",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAIAlertnessMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "KillSummoner",
+          "alertness": [
+            1,
+            2
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Steer",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 240,
+          "steerStateIDs": [
+            "Alert1"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.3199999928474426
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 240,
+          "steerStateIDs": [
+            "Alert1"
+          ],
+          "startNormalizedTime": 0.3799999952316284,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.6100000143051147
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 540,
+          "steerStateIDs": [
+            "Alert2"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.03999999910593033
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 540,
+          "steerStateIDs": [
+            "Alert2"
+          ],
+          "startNormalizedTime": 0.44999998807907104,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.4699999988079071
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "Attack01"
+          ],
+          "startNormalizedTime": 0.03999999910593033,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.07999999821186066
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "Attack01_Loop1"
+          ],
+          "startNormalizedTime": 0.03999999910593033,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.07999999821186066
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "Attack01_Loop2"
+          ],
+          "startNormalizedTime": 0.03999999910593033,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.07999999821186066
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 240,
+          "steerStateIDs": [
+            "Attack01"
+          ],
+          "startNormalizedTime": 0.1599999964237213,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.44999998807907104
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 240,
+          "steerStateIDs": [
+            "Attack01_Loop1"
+          ],
+          "startNormalizedTime": 0.1599999964237213,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.44999998807907104
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 240,
+          "steerStateIDs": [
+            "Attack01_Loop2"
+          ],
+          "startNormalizedTime": 0.1599999964237213,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.44999998807907104
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "Attack01"
+          ],
+          "startNormalizedTime": 0.6700000166893005,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.8600000143051147
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "Attack01_Loop1"
+          ],
+          "startNormalizedTime": 0.6700000166893005,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.8600000143051147
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "Attack01_Loop2"
+          ],
+          "startNormalizedTime": 0.6700000166893005,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.8600000143051147
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 60,
+          "steerStateIDs": [
+            "Attack01"
+          ],
+          "startNormalizedTime": 0.8199999928474426,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.9300000071525574
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 60,
+          "steerStateIDs": [
+            "Attack01_Loop1"
+          ],
+          "startNormalizedTime": 0.8199999928474426,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.9300000071525574
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 60,
+          "steerStateIDs": [
+            "Attack01_Loop2"
+          ],
+          "startNormalizedTime": 0.8199999928474426,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.9300000071525574
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 180,
+          "steerStateIDs": [
+            "Attack02"
+          ],
+          "startNormalizedTime": 0.07000000029802322,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.4000000059604645
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 180,
+          "steerStateIDs": [
+            "Attack02"
+          ],
+          "startNormalizedTime": 0.5299999713897705,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.800000011920929
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 180,
+          "steerStateIDs": [
+            "Attack03"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.5320000052452087
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 180,
+          "steerStateIDs": [
+            "Attack03_Loop1"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.5320000052452087
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 180,
+          "steerStateIDs": [
+            "Attack03_Loop2"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.5320000052452087
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "Attack03"
+          ],
+          "startNormalizedTime": 0.8899999856948853,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.949999988079071
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "Attack03_Loop1"
+          ],
+          "startNormalizedTime": 0.8899999856948853,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.949999988079071
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "Attack03_Loop2"
+          ],
+          "startNormalizedTime": 0.8899999856948853,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.949999988079071
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "Attack04"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.10000000149011612
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 180,
+          "steerStateIDs": [
+            "Attack04"
+          ],
+          "startNormalizedTime": 0.20999999344348907,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.27000001072883606
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 240,
+          "steerStateIDs": [
+            "Attack04"
+          ],
+          "startNormalizedTime": 0.3700000047683716,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.47999998927116394
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 360,
+          "steerStateIDs": [
+            "Attack04"
+          ],
+          "startNormalizedTime": 0.5600000023841858,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.6000000238418579
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 360,
+          "steerStateIDs": [
+            "Dash02"
+          ],
+          "startNormalizedTime": 0.30000001192092896,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.5
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "Dash02"
+          ],
+          "startNormalizedTime": 0.8199999928474426,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.949999988079071
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 360,
+          "steerStateIDs": [
+            "Dash04"
+          ],
+          "startNormalizedTime": 0.30000001192092896,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.5
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "Dash04"
+          ],
+          "startNormalizedTime": 0.8199999928474426,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.949999988079071
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "Attack06"
+          ],
+          "startNormalizedTime": 0.10000000149011612,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.30000001192092896
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "Attack07"
+          ],
+          "startNormalizedTime": 0.10000000149011612,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.1599999964237213
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "Attack07"
+          ],
+          "startNormalizedTime": 0.30000001192092896,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.4300000071525574
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 240,
+          "steerStateIDs": [
+            "Summon"
+          ],
+          "startNormalizedTime": 0.07999999821186066,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.20000000298023224
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "UseSkillEliteSet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "skillEliteSetID": 2,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetAnimatorBool",
+          "value": true,
+          "boolID": "Elite",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Monster_MachinaIustitia_Bradamante_Elite",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  }
+]

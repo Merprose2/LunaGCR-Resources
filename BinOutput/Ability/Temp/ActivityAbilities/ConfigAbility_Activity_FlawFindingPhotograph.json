@@ -1,0 +1,517 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "GV_Listener",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "GV_StrangeFound",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "SceneObj_Photoshoot_FindStrange",
+      "modifiers": {
+        "GV_Listener": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "PhotoTaken"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_StrangeFound",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "PhotoTaken": {
+          "onAdded": [
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_FindStrange",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "SceneObj_LevelCurveEntrance",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "onFieldEnter": [
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "target": "Target",
+              "value": -1,
+              "entityTypes": [
+                "Avatar"
+              ]
+            }
+          ],
+          "target": "Target",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "successActions": [
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_StartCurve",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "TickCurveState",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "GV_IsInCurve",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "DynamicAbility_SetCurveEntranceData",
+      "modifiers": {
+        "DenyLockOn": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "DenyLockOn"
+        },
+        "SetCurveEntranceData_Rot": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "SpawnCameraStateMixin",
+              "AFDENKPAECI": {
+                "$type": "PPNIODHBMIC",
+                "DGDGMKBNIKL": 100,
+                "EAABOPNFALF": 0.009999999776482582,
+                "EMKMEBGKJKF": true,
+                "FNIDPIDGHAF": 0.75,
+                "FPBINHDGKBM": 0.07000000029802322,
+                "IDMHDDKAHPE": true,
+                "fov": 55,
+                "MKFEHNLPGNF": 1,
+                "PMMAHBBFEPE": 0.5
+              },
+              "DGPDJMGNEHP": {
+                "blendType": 2,
+                "BJFFNFAIGBM": 2,
+                "duHPRation": 2,
+                "NAOIPIIJHAJ": 21
+              },
+              "actorIceSubHurtDelta": -1,
+              "HHDAFCDMDLO": {
+                "duHPRation": 1
+              },
+              "sceneID": -1
+            },
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "DenyLockOn"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TickCurveState": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "LevelCurveMoveGVMixin",
+              "isTeam": true,
+              "speed": "GV_CurveSpeed",
+              "actorIceSubHurtDelta": -1,
+              "KANDAGINNDK": "GV_IsInCurve",
+              "MPDDBCKMOAP": "GV_IsInTempCurve"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "SetCurveEntranceData_Rot"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "GV_IsInCurve",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Opeartor_Recover",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_Area_Common_Property_Ani_Prop_PaintingRepair_02",
+      "modifiers": {
+        "Opeartor_Hide": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Opeartor_Recover": {
+          "onReconnect": [
+            {
+              "$type": "ChangeGadgetState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Opeartor_Show": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_CameraActiveOperator_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "HideUIBillBoard",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_CameraActiveOperator_01_Disappear",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "HideUIBillBoard",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "hide": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UIPage_Close": {
+          "onAdded": [
+            {
+              "$type": "ChangeGadgetState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UIPage_Open": {
+          "onAdded": [
+            {
+              "$type": "ChangeGadgetState",
+              "value": 201,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Opeartor_Show"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Opeartor_Hide",
+          "gadgetState": 201
+        },
+        {
+          "$type": "UIInteractMixin",
+          "actionList": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UIPage_Open",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "uiMessageId": "OpenPage"
+        },
+        {
+          "$type": "UIInteractMixin",
+          "actionList": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UIPage_Close",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "uiMessageId": "ClosePage"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "SceneObj_Area_Common_Property_Ani_Prop_FlawFinding_Static",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_Area_Common_Property_Ani_Prop_FlawFinding_Ability",
+      "modifiers": {
+        "SceneObj_Area_Common_Property_Ani_Prop_FlawFinding_Static": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_CameraActiveOperator_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "WidgetMpSupportMixin",
+          "succActions": [
+            {
+              "$type": "PushInterActionByConfigPath",
+              "cfgPath": "UI/open_activity_FlawPhotograph_1",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_Level",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "PushInterActionByConfigPath",
+              "cfgPath": "UI/open_activity_FlawPhotograph_2",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_Level",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "PushInterActionByConfigPath",
+              "cfgPath": "UI/open_activity_FlawPhotograph_3",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_Level",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "actorIceSubHurtDelta": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "SceneObj_Area_Common_Property_Photoshoot_FindStrange",
+      "onAbilityStart": [
+        {
+          "$type": "ShowReminder",
+          "id": 404462,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  }
+]

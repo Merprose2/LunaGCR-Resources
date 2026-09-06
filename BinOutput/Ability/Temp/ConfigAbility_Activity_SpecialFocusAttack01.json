@@ -1,0 +1,1877 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Avatar_Load_OverrideAnimation",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "AVATAR_Activity_SpecialFocusAttack01Energy",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Activity_SpecialFocusAttack01_Trigger",
+      "modifiers": {
+        "Active_T_Skill_Active": {
+          "onAdded": [
+            {
+              "$type": "TriggerThinkInterval",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 10,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ActivitySkillMixin",
+              "actorIceSubHurtDelta": -1,
+              "priority": "Auto",
+              "PEONHILPDLC": 20115
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "ShowReminder",
+              "id": 1002450033,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "Active_T_Skill_AvatarBuff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Avatar_SpecialFocusAttack01_Buff",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Avatar_SpecialFocusAttack01_Buff_2",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Active_T_Skill_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "Active_T_Skill_Active",
+                "Active_T_Skill_Return"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "AVATAR_Activity_TSkill_Mark"
+            },
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Active_T_Skill_AvatarBuff"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Active_T_Skill_Return": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ActivitySkillMixin",
+              "actorIceSubHurtDelta": -1,
+              "priority": "Auto",
+              "PEONHILPDLC": 20123
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ActivitySkill_View_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                1.5,
+                100.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "Active_T_Skill_Handler"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "AVATAR_Activity_SpecialFocusAttack01Energy"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Activity_SpecialFocusAttack01_SkillActive": {
+          "onAdded": [
+            {
+              "$type": "AttachUIEffect",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "effectPattern": "Eff_UI_Btn_SpecialFocusAttackReminder01",
+              "effectSlot": "NormalAttack",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Activity_SpecialFocusAttack01_SkillDeactive": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ForbidSkillByIDMixin",
+              "actorIceSubHurtDelta": -1,
+              "skillID": 20368
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Avatar_Load_OverrideAnimation": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ApplyOverrideAnimeGroupMixin",
+              "ABJKAKOLJBL": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "Avatar_SpecialFocusAttack01_AddSkillInfo",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AttachModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "Team_Charge_Energy_Handler",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AttachModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "ActivitySkill_View_Handler",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "AVATAR_Activity_TSkill_Mark",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByHasFeatureTag",
+                      "featureTagIDs": [
+                        10106
+                      ],
+                      "target": "Target"
+                    }
+                  ],
+                  "target": "Caster",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "failActions": [
+                    {
+                      "$type": "Predicated",
+                      "targetPredicates": [
+                        {
+                          "$type": "ByHasFeatureTag",
+                          "featureTagIDs": [
+                            1011,
+                            1043
+                          ],
+                          "target": "Target"
+                        }
+                      ],
+                      "target": "Caster",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": true,
+                      "failActions": [
+                        {
+                          "$type": "AttachModifier",
+                          "actorIceSubHurtDelta": -1,
+                          "doOffStage": true,
+                          "modifierName": "Avatar_SpecialFocusAttack01_Focus_PlayerGirl_Handler",
+                          "canBeHandledOnRecover": true
+                        }
+                      ],
+                      "successActions": [
+                        {
+                          "$type": "AttachModifier",
+                          "actorIceSubHurtDelta": -1,
+                          "doOffStage": true,
+                          "modifierName": "Avatar_SpecialFocusAttack01_Focus_PlayerBoy_Handler",
+                          "canBeHandledOnRecover": true
+                        }
+                      ],
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "AttachModifier",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": true,
+                      "modifierName": "Avatar_SpecialFocusAttack01_Focus_Mavuika_Handler",
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "PDEAHNCFDKF": "SpecialFocusAttack01"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Avatar_SpecialFocusAttack01_AddSkillInfo": {
+          "onAdded": [
+            {
+              "$type": "RemoveAvatarSkillInfo",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "skillID": 20368,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "AddAvatarSkillInfo",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "skillID": 20368,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Avatar_SpecialFocusAttack01_Focus": {
+          "onAdded": [
+            {
+              "$type": "ShowReminder",
+              "id": 1002450034,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Avatar_SpecialFocusAttack01_Focus_Extra",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    10106
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetSelfAttackTarget",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "otherTargets": {
+                    "$type": "DBPHPMIHBCO",
+                    "tag": "Is_TheAbyssXiuhcoatl_Echo"
+                  },
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AvatarEnterFocus",
+                  "vcamFov": 45,
+                  "cameraFollowUpper": {
+                    "x": 0.5,
+                    "y": 0.10000000149011612,
+                    "z": -1.5
+                  },
+                  "dragButtonName": "Skill1",
+                  "cameraFollowMinDegree": -60,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "ELIECGGIHFH": {
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "PHKMLJFMNIH": -1,
+                    "canBeHandledOnRecover": true
+                  },
+                  "FDDPEAMAADJ": -60,
+                  "FKFAKILENIA": -1,
+                  "GEIIPGCGHPJ": {
+                    "BPFLPMNCDJC": -1,
+                    "IHKBILOKGBD": -1,
+                    "KEGFEEAJFFN": -1
+                  },
+                  "GFNHGHHFIPG": -1,
+                  "HOEGDDBJEJO": -1,
+                  "IILDDEANKCL": true,
+                  "cameraFollowLower": {
+                    "x": 0.5,
+                    "y": 0.10000000149011612,
+                    "z": -1.5
+                  },
+                  "KMBEGJMJEDP": {
+                    "GDBEBFCAKNL": 1,
+                    "GGDNOMPMKKE": 1,
+                    "JOOKDFOEKIA": -1,
+                    "OAMODBPBKLD": -1
+                  },
+                  "OPMJOMPBHPM": true,
+                  "cameraFollowMaxDegree": 60,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetSelfAttackTarget",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "otherTargets": {
+                    "$type": "DBPHPMIHBCO",
+                    "tag": "Is_TheAbyssXiuhcoatl_Echo"
+                  },
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AvatarEnterFocus",
+                  "vcamFov": 45,
+                  "cameraFollowUpper": {
+                    "x": 0.8999999761581421,
+                    "y": 0.30000001192092896,
+                    "z": -2.0999999046325684
+                  },
+                  "dragButtonName": "Skill1",
+                  "cameraFollowMinDegree": -60,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "ELIECGGIHFH": {
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "PHKMLJFMNIH": -1,
+                    "canBeHandledOnRecover": true
+                  },
+                  "FDDPEAMAADJ": -60,
+                  "FKFAKILENIA": -1,
+                  "GEIIPGCGHPJ": {
+                    "BPFLPMNCDJC": -1,
+                    "IHKBILOKGBD": -1,
+                    "KEGFEEAJFFN": -1
+                  },
+                  "GFNHGHHFIPG": -1,
+                  "HOEGDDBJEJO": -1,
+                  "IILDDEANKCL": true,
+                  "cameraFollowLower": {
+                    "x": 0.8999999761581421,
+                    "y": 0.30000001192092896,
+                    "z": -2.0999999046325684
+                  },
+                  "KMBEGJMJEDP": {
+                    "GDBEBFCAKNL": 1,
+                    "GGDNOMPMKKE": 1,
+                    "JOOKDFOEKIA": -1,
+                    "OAMODBPBKLD": -1
+                  },
+                  "OPMJOMPBHPM": true,
+                  "cameraFollowMaxDegree": 60,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "SpecialFocusAttack01_Loop",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "AvatarExitFocus",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "keepRotation": true,
+              "PHKMLJFMNIH": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "SpecialFocusAttack01_Loop",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Avatar_SpecialFocusAttack01_Focus_Mavuika_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToMultiNormalizedTimeMixin",
+              "normalizedStateIDList": [
+                {
+                  "stateID": "SpecialFocusAttack01_Loop",
+                  "normalizeEnd": 1
+                },
+                {
+                  "stateID": "SpecialFocusAttack01_Attack",
+                  "normalizeEnd": 0.8199999928474426
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Avatar_SpecialFocusAttack01_Focus",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Avatar_SpecialFocusAttack01_Focus_PlayerBoy_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToMultiNormalizedTimeMixin",
+              "normalizedStateIDList": [
+                {
+                  "stateID": "SpecialFocusAttack01_Loop",
+                  "normalizeEnd": 1
+                },
+                {
+                  "stateID": "SpecialFocusAttack01_Attack",
+                  "normalizeEnd": 0.6549999713897705
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Avatar_SpecialFocusAttack01_Focus",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Avatar_SpecialFocusAttack01_Focus_PlayerGirl_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToMultiNormalizedTimeMixin",
+              "normalizedStateIDList": [
+                {
+                  "stateID": "SpecialFocusAttack01_Loop",
+                  "normalizeEnd": 1
+                },
+                {
+                  "stateID": "SpecialFocusAttack01_Attack",
+                  "normalizeEnd": 0.6549999713897705
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "Avatar_SpecialFocusAttack01_Focus",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Team_Charge_Energy_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ServerUpdateGlobalValueMixin",
+              "key": "AVATAR_Activity_SpecialFocusAttack01Energy",
+              "useLimitRange": true,
+              "actorIceSubHurtDelta": -1,
+              "maxValue": 100
+            },
+            {
+              "$type": "StageReadyMixin",
+              "actorIceSubHurtDelta": -1,
+              "onStageReady": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "AVATAR_Activity_SpecialFocusAttack01Energy",
+                  "target": "Team",
+                  "value": 100,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SGV_SpecialFocusAttack_EnergyMark",
+                      "target": "Team",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Avatar_SpecialFocusAttack01_Focus_Extra": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "AVATAR_Activity_TSkill_Mark",
+              "target": "Team",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerThinkInterval",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 0.20000000298023224,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "actorIceSubHurtDelta": -1,
+              "skillID": 20368,
+              "priority": "Playmode"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "Activity_SpecialFocusAttack01_SkillDeactive",
+                "Activity_SpecialFocusAttack01_SkillActive"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_ABILITY_Activity_SpecialFocusAttack01_SkillActiveMark"
+            },
+            {
+              "$type": "DisableMotionBlurMixin",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "ChangePlayMode",
+                  "muteRemoteAction": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "enable": true,
+                  "toPlayMode": "SpecialFocusAttack",
+                  "authorityOnly": true,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "CameraScreenEffect",
+                  "enable": true,
+                  "muteRemoteAction": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "effectName": "Eff_Avatar_SpecialFocusAttack01_FrontSight",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "onRemoved": [
+                {
+                  "$type": "ChangePlayMode",
+                  "muteRemoteAction": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "enable": true,
+                  "FPFLACICBBN": "SpecialFocusAttack",
+                  "authorityOnly": true,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "CameraScreenEffect",
+                  "muteRemoteAction": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "enable": true,
+                  "effectName": "Eff_Avatar_SpecialFocusAttack01_FrontSight",
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "AVATAR_Activity_TSkill_Mark",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_Activity_SpecialFocusAttack01_SkillActiveMark_Pre",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "LBDONPJKPNA",
+                  "target": "Target",
+                  "value": 20,
+                  "logic": "LesserOrEqual",
+                  "attachPointName": "Bone_Neck01_M"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "topLimit": 1,
+                "shapeName": "CircleR300",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "MONSTER_Activity_SpecialFocusAttack01_LockMark",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_ABILITY_Activity_SpecialFocusAttack01_SkillActiveMark_Pre",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Activity_SpecialFocusAttack01_SkillActiveMark_Pre",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_ABILITY_Activity_SpecialFocusAttack01_SkillActiveMark",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendCameraScreenEffectTrigger",
+                  "muteRemoteAction": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "SkillReady",
+                  "effectName": "Eff_Avatar_SpecialFocusAttack01_FrontSight",
+                  "type": "Bool",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_ABILITY_Activity_SpecialFocusAttack01_SkillActiveMark",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SendCameraScreenEffectTrigger",
+                  "muteRemoteAction": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "SkillReady",
+                  "effectName": "Eff_Avatar_SpecialFocusAttack01_FrontSight",
+                  "value": 1,
+                  "type": "Bool",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "FODKMMKKJFM",
+              "target": "Target",
+              "IFKACJEBAKF": [
+                "SpecialFocusAttack01_Loop"
+              ],
+              "KKGICJMCBGN": true
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "failActions": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "SpecialFocusAttack01_Enter",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "SpecialFocusAttack01_Exit",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_Activity_SpecialFocusAttack01_AttackVoiceCount",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByHasFeatureTag",
+              "featureTagIDs": [
+                10106
+              ],
+              "target": "Target"
+            }
+          ],
+          "target": "Caster",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "failActions": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    1011,
+                    1043
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "target": "Caster",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Avatar_SpecialFocusAttack01_Attack_PlayerGirl_Handler",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Avatar_SpecialFocusAttack01_Attack_PlayerBoy_Handler",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Avatar_SpecialFocusAttack01_Attack_Mavuika_Handler",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "CriticalHurt": 0,
+        "CurDefense": 0,
+        "FireSubHurt": 0,
+        "MaxHP": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "Activity_SpecialFocusAttack01_Attack",
+      "modifiers": {
+        "Avatar_SpecialFocusAttack01_Attack_Mavuika_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToMultiNormalizedTimeMixin",
+              "normalizedStateIDList": [
+                {
+                  "stateID": "SpecialFocusAttack01_Attack",
+                  "normalizeStart": 0.8500000238418579,
+                  "normalizeEnd": 1
+                },
+                {
+                  "stateID": "SpecialFocusAttack01_AS",
+                  "normalizeEnd": 0.30000001192092896
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "SpecialFocusAttack01_Attack",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Avatar_SpecialFocusAttack01_Attack_PlayerBoy_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToMultiNormalizedTimeMixin",
+              "normalizedStateIDList": [
+                {
+                  "stateID": "SpecialFocusAttack01_Attack",
+                  "normalizeStart": 0.6600000262260437,
+                  "normalizeEnd": 1
+                },
+                {
+                  "stateID": "SpecialFocusAttack01_AS",
+                  "normalizeEnd": 0.30000001192092896
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "SpecialFocusAttack01_Attack",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Avatar_SpecialFocusAttack01_Attack_PlayerGirl_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToMultiNormalizedTimeMixin",
+              "normalizedStateIDList": [
+                {
+                  "stateID": "SpecialFocusAttack01_Attack",
+                  "normalizeStart": 0.7099999785423279,
+                  "normalizeEnd": 1
+                },
+                {
+                  "stateID": "SpecialFocusAttack01_AS",
+                  "normalizeEnd": 0.30000001192092896
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "SpecialFocusAttack01_Attack",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Avatar_SpecialFocusAttack01_CameraShot_Exit": {
+          "onAdded": [
+            {
+              "$type": "AttachAbilityStateResistance",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "durationRatio": 1,
+              "resistanceListID": 11002,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "Invincible"
+        },
+        "SpecialFocusAttack01_Attack": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    10106
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "target": "Caster",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "FireEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "effectPattern": "Eff_Avatar_SpecialFocusAttack01_Blade",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FireEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "effectPattern": "Eff_Avatar_SpecialFocusAttack01_Blade_2",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ActCameraRadialBlur",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "cameraRadialBlur": {
+                "blurTime": 0.20000000298023224,
+                "fadeTime": 0.20000000298023224,
+                "power": 0.6000000238418579
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "topLimit": 1,
+                "shapeName": "CircleR300",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "modifierName": "SpecialFocusAttack01_Attack_BeHit",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "MONSTER_Activity_SpecialFocusAttack01_LockMark",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpecialFocusAttack01_AttackVoice": {
+          "onAdded": [
+            {
+              "$type": "ShowReminder",
+              "id": 1002450021,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Activity_SpecialFocusAttack01_AttackVoiceCount",
+                  "target": "Team"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ShowReminder",
+              "id": 1002450023,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Activity_SpecialFocusAttack01_AttackVoiceCount",
+                  "target": "Team",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ShowReminder",
+              "id": 1002450025,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Activity_SpecialFocusAttack01_AttackVoiceCount",
+                  "target": "Team",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_ABILITY_Activity_SpecialFocusAttack01_AttackVoiceCount",
+              "useLimitRange": true,
+              "target": "Team",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 3
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpecialFocusAttack01_Attack_BeHit": {
+          "onAdded": [
+            {
+              "$type": "GetFightProperty",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "fightProp": "FIGHT_PROP_CUR_DEFENSE",
+              "globalValueKey": "_ABILITY_Activity_SpecialFocusAttack01_TargetDefense",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "GetFightProperty",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "fightProp": "FIGHT_PROP_MAX_HP",
+              "globalValueKey": "_ABILITY_Activity_SpecialFocusAttack01_TargetMaxHP",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "GetFightProperty",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "fightProp": "FIGHT_PROP_FIRE_SUB_HURT",
+              "globalValueKey": "_ABILITY_Activity_SpecialFocusAttack01_TargetFireSubHurt",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "GetFightProperty",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "fightProp": "FIGHT_PROP_CRITICAL_HURT",
+              "globalValueKey": "_ABILITY_Activity_SpecialFocusAttack01_TargetCriticalHurt",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "overrideMapKey": "CurDefense",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "globalValueKey": "_ABILITY_Activity_SpecialFocusAttack01_TargetDefense",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "overrideMapKey": "MaxHP",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "globalValueKey": "_ABILITY_Activity_SpecialFocusAttack01_TargetMaxHP",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "overrideMapKey": "FireSubHurt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "globalValueKey": "_ABILITY_Activity_SpecialFocusAttack01_TargetFireSubHurt",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "overrideMapKey": "CriticalHurt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "globalValueKey": "_ABILITY_Activity_SpecialFocusAttack01_TargetCriticalHurt",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Avatar_SpecialFocusAttack01_Hit",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "SpecialFocusAttack01_Attack_PostEffect_Delay",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "SpecialFocusAttack01_Attack_Behit_PropertyControl",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpecialFocusAttack01_Attack_Behit_PropertyControl": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_CriticalHurtDelta": [
+              0,
+              "CriticalHurt",
+              "SUB"
+            ],
+            "Actor_DefenceDelta": [
+              0,
+              "CurDefense",
+              "SUB"
+            ],
+            "Actor_FireSubHurtDelta": [
+              0,
+              "FireSubHurt",
+              "SUB"
+            ]
+          }
+        },
+        "SpecialFocusAttack01_Attack_PostEffect": {
+          "thinkInterval": 0.05999999865889549,
+          "duration": 0.05999999865889549,
+          "elementDurability": 100,
+          "onThinkIntervalIsFixedUpdate": true,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "TriggerPostProcessEffectMixin",
+              "actorIceSubHurtDelta": -1,
+              "duHPRation": 0.05999999865889549,
+              "postEffectAssetName": "PostEffect_Avatar_PlayerBoy_SpecialFocusAttack01_Hit_ScreenEffect"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "SpecialFocusAttack01_Attack_PostEffect",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "SpecialFocusAttack01_Attack_PostEffect_Delay": {
+          "duration": 0.8299999833106995,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MONSTER_THEABYSSXIUHCOATL_ECHO_BEHIT_",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackInfo": {
+                "attackTag": "SpecialFocusAttack",
+                "HBOOKFMCODC": {
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "onHitEffectName": "default"
+                },
+                "hitPattern": {
+                  "hitImpulseType": "LV2",
+                  "hitHaltTimeScale": 0.009999999776482582,
+                  "BPIJOAMNKIH": {
+                    "GGOHGMFHHEC": true,
+                    "value": 1
+                  },
+                  "onHitEffectName": "none"
+                },
+                "INKGMIHAPMA": {
+                  "NDIBGPPKGJP": "Shake"
+                },
+                "cameraShake": {
+                  "shakeDistance": 20,
+                  "extension": {
+                    "rangeAttenuation": 0.5,
+                    "baseOnCamera": true,
+                    "baseCycle": 0.11999999731779099,
+                    "cycleDamping": 0.11999999731779099
+                  }
+                },
+                "attenuationGroup": "default",
+                "attackProperty": {
+                  "elementType": "Fire",
+                  "bonusCritical": 1,
+                  "enBreak": 50,
+                  "elementRank": 1,
+                  "attackType": "Range",
+                  "damageExtra": [
+                    "MaxHP",
+                    0.18000000715255737,
+                    "MUL"
+                  ]
+                }
+              },
+              "attacker": "Self",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Bone_Neck01_M"
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "SpecialFocusAttack01_Attack_PostEffect",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpecialFocusAttack01_WeaponFX": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    10106
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "AttachEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "effectPattern": "Eff_Avatar_SpecialFocusAttack01_Weapon",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToMultiNormalizedTimeMixin",
+              "normalizedStateIDList": [
+                {
+                  "stateID": "SpecialFocusAttack01_Loop",
+                  "normalizeEnd": 1
+                },
+                {
+                  "stateID": "SpecialFocusAttack01_Attack",
+                  "normalizeEnd": 0.8199999928474426
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "SpecialFocusAttack01_WeaponFX_Mavuika",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpecialFocusAttack01_WeaponFX_AS": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    10106
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "AS",
+                  "effectPattern": "Eff_Avatar_SpecialFocusAttack01_Weapon",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "AS",
+                  "effectPattern": "Eff_Avatar_SpecialFocusAttack01_Weapon_2",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpecialFocusAttack01_WeaponFX_Attack": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    10106
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Explose",
+                  "effectPattern": "Eff_Avatar_SpecialFocusAttack01_Weapon",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "parameter": "Explose",
+                  "effectPattern": "Eff_Avatar_SpecialFocusAttack01_Weapon_2",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SpecialFocusAttack01_WeaponFX_Mavuika": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    10106
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "AttachEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "effectPattern": "Eff_Avatar_SpecialFocusAttack01_Weapon_2",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AttachEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "effectPattern": "Eff_Avatar_Lady_Claymore_Mavuika_HairFx_Weak",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetAnimatorBool",
+                  "value": true,
+                  "boolID": "PRIVATE_HairWeak",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasFeatureTag",
+                  "featureTagIDs": [
+                    10106
+                  ],
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "successActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "PRIVATE_HairWeak",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "DebugLog",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "content": "!!!!!Activity_SpecialFocusAttack01_Attack!!!!!",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "AVATAR_Activity_SpecialFocusAttack01Energy",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "RemoveUniqueModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Avatar_SpecialFocusAttack01_Focus_Extra",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "ButtonHoldChargeMixin",
+          "actorIceSubHurtDelta": -1,
+          "skillID": 20368,
+          "OnReleaseCharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "SpecialFocusAttack01_Attack",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "secondChargeTime": 999999,
+          "chargeTime": 5,
+          "OnReleaseUncharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "SpecialFocusAttack01_Attack",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "chargeStateIDs": [
+            "SpecialFocusAttack01_Loop"
+          ]
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "SpecialFocusAttack01_Attack",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "SpecialFocusAttack01_AS",
+              "normalizeEnd": 1
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Avatar_SpecialFocusAttack01_CameraShot_Exit",
+          "value": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "SpecialFocusAttack01_Loop",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "SpecialFocusAttack01_Attack",
+              "normalizeEnd": 1
+            },
+            {
+              "stateID": "SpecialFocusAttack01_AS",
+              "normalizeEnd": 1
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SpecialFocusAttack01_WeaponFX",
+          "value": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "SpecialFocusAttack01_Attack",
+              "normalizeEnd": 1
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SpecialFocusAttack01_WeaponFX_Attack",
+          "value": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "SpecialFocusAttack01_Attack",
+              "normalizeStart": 0.20000000298023224,
+              "normalizeEnd": 1
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SpecialFocusAttack01_AttackVoice",
+          "value": -1
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "SpecialFocusAttack01_AS",
+              "normalizeEnd": 1
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SpecialFocusAttack01_WeaponFX_AS",
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "MONSTER_Activity_SpecialFocusAttack01_LockMark",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Activity_SpecialFocusAttack01_MonsterMark",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  }
+]

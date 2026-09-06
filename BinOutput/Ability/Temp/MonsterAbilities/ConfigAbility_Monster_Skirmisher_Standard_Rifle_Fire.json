@@ -1,0 +1,3981 @@
+[
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Rifle_Fire_JumpBack",
+      "onAbilityStart": [
+        {
+          "$type": "FixedMonsterRushMove",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "toPos": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "z": -6
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "GKOFKDIFIMA": -1,
+          "animatorStateIDs": [
+            "DodgeOnce",
+            "DodgeTwice_1"
+          ],
+          "maxRange": 6,
+          "PGLJIHAEIAD": -1,
+          "canBeHandledOnRecover": true,
+          "timeRange": 0.25
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "key": "_MONSTER_SKIRMISHER_RIFLE_FIRE_IMPROVENUM",
+          "useLimitRange": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "maxValue": 10
+        }
+      ],
+      "abilityName": "Monster_Skirmisher_Rifle_Fire_ForceImprove_Pose",
+      "modifiers": {
+        "Monster_Skirmisher_Rifle_Fire_BatteryMode": {
+          "onAdded": [
+            {
+              "$type": "SetAISkillGCD",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetAISkillGCD",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": 2,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Skirmisher_Rifle_Fire_BatteryModeOff": {
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "BatteryMode",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Skirmisher_Rifle_Fire_BatteryModeOn": {
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "value": true,
+              "boolID": "BatteryMode",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Skirmisher_Rifle_Fire_TickHP": {
+          "thinkInterval": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetHPRatio",
+                  "target": "Target",
+                  "logic": "LesserOrEqual",
+                  "HPRatio": 0.5
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MONSTER_SKIRMISHER_RIFLE_FIRE_IMPROVENUM",
+                  "target": "Target"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetPoseBool",
+                  "boolID": "ForceImprove",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetPoseBool",
+                  "value": true,
+                  "boolID": "ForceImprove",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            101
+          ],
+          "modifierName": "Monster_Skirmisher_Rifle_Fire_TickHP"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Monster_Skirmisher_Rifle_Fire_BatteryModeOff",
+            "Monster_Skirmisher_Rifle_Fire_BatteryModeOn"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_MONSTER_SKIRMISHER_ROCKWALL_BROADCAST"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            104,
+            202,
+            105
+          ],
+          "modifierName": "Monster_Skirmisher_Rifle_Fire_BatteryMode"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_NormalEffect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_EyeEffect",
+      "modifiers": {
+        "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_NormalEffect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_EyeNormal",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_NormalEffect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Rifle_Fire_PreCombatRecover",
+      "modifiers": {
+        "Monster_Skirmisher_Rifle_Fire_BeHitChangePose": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnEquipOwnerAndEquipsReadyMixin",
+              "actorIceSubHurtDelta": -1,
+              "actionQueue": [
+                {
+                  "$type": "TriggerHideWeapon",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "enable": true,
+                  "PIHLOKJAPKO": [
+                    "equip01"
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "TriggerHideWeapon",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "enable": true,
+                  "PIHLOKJAPKO": [
+                    "equip02"
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Search",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Threat",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Attention",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Afraid",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Practice",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Threat",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Think",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Agree",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Talk",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerHideWeapon",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "visible": true,
+              "PIHLOKJAPKO": [
+                "equip01"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerHideWeapon",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "visible": true,
+              "PIHLOKJAPKO": [
+                "equip02"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01"
+                ]
+              },
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Weapon_Disappear",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip02"
+                ]
+              },
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Weapon_Disappear",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Search",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Threat",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Attention",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Afraid",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Practice",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Threat",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Think",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Agree",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Talk",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "TriggerHideWeapon",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "visible": true,
+          "PIHLOKJAPKO": [
+            "equip01"
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "TriggerHideWeapon",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "visible": true,
+          "PIHLOKJAPKO": [
+            "equip02"
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "partNames": [
+              "equip01"
+            ]
+          },
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Weapon_Disappear",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "partNames": [
+              "equip02"
+            ]
+          },
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Weapon_Disappear",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            9001,
+            9002,
+            9003,
+            9011,
+            9012,
+            9013,
+            9014
+          ],
+          "modifierName": "Monster_Skirmisher_Rifle_Fire_BeHitChangePose"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_WeaponEffect",
+      "modifiers": {
+        "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Weapon_PowerUp": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_WeaponPowerUp",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "PowerUp",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Weapon_PowerUp",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_ReturnToBorn",
+      "modifiers": {
+        "Monster_Skirmisher_Standard_Rifle_Fire_ReturnToBorn_Invincible": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_ReturnToBorn_RemoveImproveDelay",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ReTriggerAISkillInitialCD",
+              "skillIDs": [
+                401,
+                403
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAISkillCDAvailableNow",
+              "skillIDs": [
+                401,
+                403
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "Invincible"
+        },
+        "Monster_Skirmisher_Standard_Rifle_Fire_ReturnToBorn_RemoveImproveDelay": {
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Element",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Element_Special",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_MONSTER_SKIRMISHER_RIFLE_FIRE_IMPROVENUM",
+              "useLimitRange": true,
+              "value": -11,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 10
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "actorIceSubHurtDelta": -1,
+          "poseIDs": [
+            901,
+            902,
+            903
+          ],
+          "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_ReturnToBorn_Invincible"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_Improve",
+      "modifiers": {
+        "Monster_Skirmisher_Rifle_Fire_AtkTag": {
+          "onAttackLanded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Monster_Skirmisher_Rifle_Fire_FireTag",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Skirmisher_Rifle_Fire_EnterWeak": {
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Skirmisher_Rifle_Fire_FireTag": {
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_SKIRMISHER_ELEMENT_FIRE_",
+              "useLimitRange": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            }
+          ],
+          "elementType": "Fire",
+          "duration": 8,
+          "elementDurability": 50,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_SKIRMISHER_ELEMENT_FIRE_",
+              "useLimitRange": true,
+              "target": "Target",
+              "value": -5,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Skirmisher_Standard_Rifle_Fire_ChangePose": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "InWeak",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "value": true,
+              "boolID": "ImprovedState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "WeakState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Element",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_Improve": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "attachPointName": "EyeEffect"
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_EyeNormalToImprove",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "attachPointName": "EyeEffect"
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Staff_Rock_EyeImprove",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "attachPointName": "EyeEffect"
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_EyeImproveToNormal",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Element": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Monster_Skirmisher_Rifle_Fire_AtkTag",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "ForceImprove",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_MONSTER_SKIRMISHER_RIFLE_FIRE_IMPROVENUM",
+              "useLimitRange": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 10
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_NormalEffect",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_Improve",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_WeaponEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 50004048
+              },
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementType": "Fire",
+          "onKill": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_Improve",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_Improve_Special",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01"
+                ]
+              },
+              "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Weapon_PowerUp",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "PowerUp",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01"
+                ]
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 200,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "ModifyElementDecrateMixin",
+              "actorIceSubHurtDelta": -1,
+              "group": "Monster_SingleElement_Method_Fire"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_MONSTER_SKIRMISHER_WEAK_",
+              "useLimitRange": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 201,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 202,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "InWeak",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 201,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 202,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "WeakStart",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 201,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 202,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "value": true,
+              "boolID": "WeakState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 201,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 202,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "ImprovedState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "PowerUp",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01"
+                ]
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_Improve",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_Improve_Special",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_EyeEffect",
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01"
+                ]
+              },
+              "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Weapon_PowerUp",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElecSubHurtDelta": 1,
+            "Actor_EndureDelta": 0,
+            "Actor_FireSubHurtDelta": 1,
+            "Actor_GrassSubHurtDelta": 1,
+            "Actor_IceSubHurtDelta": 1,
+            "Actor_PhysicalSubHurtDelta": 1,
+            "Actor_RockSubHurtDelta": 1,
+            "Actor_WaterSubHurtDelta": 1,
+            "Actor_WindSubHurtDelta": 1,
+            "Entity_WeightRatio": 5
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Improve",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_ChangePose",
+          "normalizeStart": 0.49000000953674316,
+          "normalizeEnd": 1,
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_ExitWeak",
+      "modifiers": {
+        "Empty": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Skirmisher_Standard_Rifle_Fire_ExitWeakDelay": {
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_MONSTER_SKIRMISHER_RECOVER",
+              "useLimitRange": true,
+              "value": -2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_ExitWeakDelay",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 10,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MONSTER_SKIRMISHER_RECOVER",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "ReTriggerAISkillInitialCD",
+                  "skillIDs": [
+                    401,
+                    403
+                  ],
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAISkillCDAvailableNow",
+                  "skillIDs": [
+                    401,
+                    403
+                  ],
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Skirmisher_RecoverFromWeak",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_MONSTER_SKIRMISHER_RECOVER",
+              "useLimitRange": true,
+              "value": -2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_EndureDelta": 0
+          }
+        },
+        "Monster_Skirmisher_Standard_Rifle_Fire_ExitWeakModiferTimer": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_ExitWeakDelay",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Skirmisher_RecoverFromWeak": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "InWeak",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "WeakState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "value": true,
+              "boolID": "AfterFirstImprove",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_MONSTER_SKIRMISHER_WEAK_",
+              "useLimitRange": true,
+              "value": -2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            }
+          ],
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Weak_BS",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_ExitWeakModiferTimer",
+          "normalizeEnd": 1,
+          "value": -1
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Empty",
+            "Skirmisher_RecoverFromWeak"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_MONSTER_SKIRMISHER_RECOVER"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_Steer",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "attackDistance": 2,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "Turn"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "attackDistance": 2,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 300,
+          "steerStateIDs": [
+            "RangeAtk"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.550000011920929
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "attackDistance": 2,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 300,
+          "steerStateIDs": [
+            "ImprovedRangeAtk"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.4399999976158142
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "attackDistance": 2,
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 150,
+          "steerStateIDs": [
+            "DodgeState"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.2800000011920929
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Male_Standard_Rifle_Fire_TriggerBullet",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "SelectTargetsByChildren",
+            "configID": 50004048
+          },
+          "lifeByOwnerIsAlive": true,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget",
+              "maxAngle": 20,
+              "maxAngleType": "Vertical"
+            },
+            "onGroundRaycastUpDist": 2,
+            "attachPointName": "Head"
+          },
+          "trackTarget": "SelfAttackTarget",
+          "bulletID": 42301008,
+          "value": true,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 1.850000023841858,
+              "z": 1.399999976158142
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_NormalShoot_Launch",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_NoramalShoot_ChargeEffect",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "SelectTargetsByChildren",
+            "configID": 50004048
+          },
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "attachPointName": "Head"
+          },
+          "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_NormalShoot_Charge",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Male_Standard_Rifle_Fire_TriggerPowerBullet",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "SelectTargetsByChildren",
+            "configID": 50004048
+          },
+          "lifeByOwnerIsAlive": true,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget",
+              "maxAngle": 20,
+              "maxAngleType": "Vertical"
+            },
+            "onGroundRaycastUpDist": 2,
+            "attachPointName": "Head"
+          },
+          "trackTarget": "SelfAttackTarget",
+          "bulletID": 42301009,
+          "value": true,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 1.6799999475479126,
+              "z": 1.399999976158142
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_ImproveShoot_Launch",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_ImproveShoot_ChargeEffect",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "SelectTargetsByChildren",
+            "configID": 50004048
+          },
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "attachPointName": "Head"
+          },
+          "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_ImproveShoot_Charge",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Male_Standard_Rifle_Fire_TriggerBurstBullet",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "SelectTargetsByChildren",
+            "configID": 50004048
+          },
+          "lifeByOwnerIsAlive": true,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget",
+              "maxAngle": 20,
+              "maxAngleType": "Vertical"
+            },
+            "onGroundRaycastUpDist": 2,
+            "attachPointName": "Head"
+          },
+          "trackTarget": "SelfAttackTarget",
+          "bulletID": 42301009,
+          "value": true,
+          "canBeHandledOnRecover": true,
+          "lifeByOwnerV2": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 1.850000023841858,
+              "z": 1.399999976158142
+            },
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_BurstShoot_Launch",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_BurstShoot_ChargeEffect",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "SelectTargetsByChildren",
+            "configID": 50004048
+          },
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "attachPointName": "Head"
+          },
+          "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_BurstShoot_Charge",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Skirmisher_Rifle_Fire_NormalBulletEffect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Skirmisher_Rifle_Fire_NormalBullet_Explode",
+      "modifiers": {
+        "Skirmisher_Rifle_Fire_NormalBulletEffect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_NormalShoot_Bullet",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_NormalShoot_BulletTrail",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Skirmisher_Rifle_Fire_NormalBulletEffect",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_NormalShoot_BulletHit",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV2",
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "none"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "elementDurability": 100,
+                "enBreak": 100,
+                "elementRank": 1,
+                "attackType": "Range",
+                "strikeType": "Blunt",
+                "damagePercentage": 0.6660000085830688
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 1,
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Skirmisher_Rifle_Fire_ImproveBulletEffect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Skirmisher_Rifle_Fire_ImproveBullet_Explode",
+      "modifiers": {
+        "Skirmisher_Rifle_Fire_ImproveBulletEffect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_ImproveShoot_Bullet",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_ImproveShoot_BulletTrail",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Skirmisher_Rifle_Fire_ImproveBulletEffect",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_ImproveShoot_BulletHit",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV2",
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "none"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "elementType": "Fire",
+                "elementDurability": 50,
+                "enBreak": 100,
+                "elementRank": 1,
+                "attackType": "Range",
+                "strikeType": "Blunt",
+                "damagePercentage": 0.6660000085830688
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 1,
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Skirmisher_Rifle_Fire_BurstBulletEffect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Skirmisher_Rifle_Fire_BurstBullet_Explode",
+      "modifiers": {
+        "Skirmisher_Rifle_Fire_BurstBulletEffect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_BurstShoot_Bullet",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_BurstShoot_BulletTrail",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Skirmisher_Rifle_Fire_BurstBulletEffect",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_BurstShoot_BulletExplode",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "attackTag": "Improve_FireShoot",
+              "attenuationTag": "Improve_FireShoot",
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV2",
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "none"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "Skirmisher_Fat_SprayGun_Ice",
+              "attackProperty": {
+                "elementType": "Fire",
+                "elementDurability": 50,
+                "enBreak": 100,
+                "elementRank": 1,
+                "attackType": "Range",
+                "strikeType": "Blunt",
+                "damagePercentage": 1
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 1,
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_StruggleHideWeapon",
+      "modifiers": {
+        "Monster_Skirmisher_Standard_Rifle_Fire_StruggleHideWeapon": {
+          "onAdded": [
+            {
+              "$type": "TriggerHideWeapon",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "PIHLOKJAPKO": [
+                "equip01"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "TriggerHideWeapon",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "visible": true,
+              "PIHLOKJAPKO": [
+                "equip01"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Struggle",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_StruggleHideWeapon",
+          "normalizeEnd": 1,
+          "value": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "SwimDie",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_StruggleHideWeapon",
+          "normalizeEnd": 1,
+          "value": -1
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "SwimDie_AS",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_StruggleHideWeapon",
+          "normalizeEnd": 1,
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_WeaponSpecialState",
+      "modifiers": {
+        "Monster_Skirmisher_Standard_Rifle_Fire_WeaponBeFrozen": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "ElementFreeze"
+        },
+        "Monster_Skirmisher_Standard_Rifle_Fire_WeaponBePetrifaction": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "ElementPetrifaction"
+        },
+        "Monster_Skirmisher_Standard_Rifle_Fire_WeaponFrozen": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01"
+                ]
+              },
+              "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_WeaponBeFrozen",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Skirmisher_Standard_Rifle_Fire_WeaponPetrifaction": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01"
+                ]
+              },
+              "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_WeaponBePetrifaction",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAbilityStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "abilityStates": [
+            "ElementFreeze"
+          ],
+          "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_WeaponFrozen"
+        },
+        {
+          "$type": "AttachToAbilityStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "abilityStates": [
+            "ElementPetrifaction"
+          ],
+          "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_WeaponPetrifaction"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_Die",
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Element",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "RemoveUniqueModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Element_Special",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onKill": [
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_MONSTER_Skirmisher_Elec_ALIVE",
+              "value": 1
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_MONSTER_Skirmisher_Ice_ALIVE",
+              "value": 1
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR50",
+                "campTargetType": "Alliance",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "modifierName": "TheFinalCountdown",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_MONSTER_Skirmisher_IamGreatHammerElec",
+                      "target": "Target",
+                      "value": 1
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_MONSTER_Skirmisher_IamSprayGunIce",
+                      "target": "Target",
+                      "value": 1
+                    }
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_Skirmisher_Male_Standard_Rifle_Fire_Achievement",
+      "modifiers": {
+        "Achievement_82222_Timer": {
+          "duration": 10,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "KillLeft2InLimitedTime_Fail",
+              "useLimitRange": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TheFinalCountdown": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "KillLeft2InLimitedTime_Start",
+              "useLimitRange": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            }
+          ],
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Achievement_82222_Timer"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "KillLeft2InLimitedTime_Start"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Skirmisher_Male_Standard_Rifle_Fire_WaitingforDeath",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_MONSTER_Skirmisher_Elec_ALIVE",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_MONSTER_Skirmisher_Fire_ALIVE",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_MONSTER_Skirmisher_Ice_ALIVE",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "KillLeft2InLimitedTime_Fail",
+          "useLimitRange": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "maxValue": 1
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_MONSTER_Skirmisher_IamRifleFire",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "tag": "Identification_Skirmisher_Nyx_Rifle_Fire"
+        }
+      ],
+      "abilityName": "Monster_Skirmisher_Male_Standard_Rifle_Fire_Deathrattle",
+      "modifiers": {
+        "Skirmisher_Fire_DeathNotification": {
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_MONSTER_Skirmisher_Fire_ALIVE",
+              "useLimitRange": true,
+              "value": -5,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MONSTER_Skirmisher_Fire_ALIVE",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Skirmisher_Male_Standard_Rifle_Fire_FirstBlood": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MONSTER_Skirmisher_Fire_FirstBlood",
+              "useLimitRange": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Skirmisher_Male_Standard_Rifle_Fire_WaitingforDeath": {
+          "onKill": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR50",
+                "campTargetType": "Alliance",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "modifierName": "Skirmisher_Fire_DeathNotification",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "PredicatedBySelectTarget",
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "IPGCOPKAFFH": {
+                "$type": "MEINAOLKNBJ",
+                "KMOMNIEAJOK": {
+                  "$type": "DBPHPMIHBCO",
+                  "tag": "Identification_Skirmisher_Nyx_GreatHammer_Electric"
+                },
+                "MFMHOMKOLEF": {
+                  "$type": "DBPHPMIHBCO",
+                  "tag": "Identification_Skirmisher_Nyx_SprayGun_Ice"
+                }
+              },
+              "LAPMNDNLBLI": [
+                {
+                  "$type": "DoWatcherSystemAction",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "watcherId": 82222,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "KillLeft2InLimitedTime_Fail",
+                      "compareType": "NoneOrEqual"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_MONSTER_Skirmisher_IsInAbyss",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "MKJCLAFINBM": true,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "DoWatcherSystemAction",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "watcherId": 82220,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_MONSTER_Skirmisher_IsInAbyss",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "MKJCLAFINBM": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MONSTER_Skirmisher_Ice_ALIVE",
+                  "value": 1
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MONSTER_Skirmisher_Elec_ALIVE",
+                  "value": 1
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "otherTargets": {
+                    "$type": "SelectTargetsByShape",
+                    "shapeName": "CircleR50",
+                    "campTargetType": "Alliance",
+                    "sizeRatio": 1,
+                    "NLNIBNNOOCK": {
+                      "APKLAIJMEIL": {
+                        "HHNLJKNBKPP": 180
+                      },
+                      "value": 10,
+                      "direction": {
+                        "maxAngle": 180
+                      },
+                      "onGroundRaycastUpDist": 2
+                    }
+                  },
+                  "modifierName": "Skirmisher_Male_Standard_Rifle_Fire_FirstBlood",
+                  "predicates": [
+                    {
+                      "$type": "ByAny",
+                      "target": "Target",
+                      "predicates": [
+                        {
+                          "$type": "ByTargetGlobalValue",
+                          "key": "_MONSTER_Skirmisher_IamSprayGunIce",
+                          "target": "Target",
+                          "value": 1
+                        },
+                        {
+                          "$type": "ByTargetGlobalValue",
+                          "key": "_MONSTER_Skirmisher_IamGreatHammerElec",
+                          "target": "Target",
+                          "value": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "CreateGadget",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "KLGHKKGGHEA": {
+                "CBLLACNAMON": true,
+                "DBOLJFPPFGI": 0.5,
+                "JOCOGLBCMEJ": 0.5,
+                "LKEBJHCDOHB": true
+              },
+              "gadgetID": 42301012,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Skirmisher_Male_Standard_Rifle_Fire_BulletToIceSprayGun_Ice",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Skirmisher_Male_Standard_Rifle_Fire_BulletToGreatHammer_Elec",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornBySelfOwner",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true
+          },
+          "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_02_Death",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Skirmisher_Male_Standard_Rifle_Fire_AtkUpMyTeammates",
+      "modifiers": {
+        "Skirmisher_Male_Standard_Rifle_Fire_BulletToGreatHammer_Elec": {
+          "stacking": "Unique",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "topLimit": 1,
+                "shapeName": "CircleR30",
+                "campTargetType": "Alliance",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "born": {
+                "$type": "ConfigBornBySelfOwner",
+                "offset": {
+                  "x": 1.7000000476837158,
+                  "z": -0.800000011920929
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "ConfigDirectionByWorld",
+                  "maxAngle": 180,
+                  "angleOffset": {
+                    "x": 0.10000000149011612
+                  }
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "trackTarget": "Other",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MONSTER_Skirmisher_IamGreatHammerElec",
+                  "target": "Target",
+                  "value": 1
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "bulletID": 42301013,
+              "value": true,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Skirmisher_Male_Standard_Rifle_Fire_BulletToIceSprayGun_Ice": {
+          "stacking": "Unique",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "topLimit": 1,
+                "shapeName": "CircleR30",
+                "campTargetType": "Alliance",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "born": {
+                "$type": "ConfigBornBySelfOwner",
+                "offset": {
+                  "x": 1.2999999523162842,
+                  "z": -0.800000011920929
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "ConfigDirectionByWorld",
+                  "maxAngle": 180,
+                  "angleOffset": {
+                    "x": 0.10000000149011612
+                  }
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "trackTarget": "Other",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MONSTER_Skirmisher_IamSprayGunIce",
+                  "target": "Target",
+                  "value": 1
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "bulletID": 42301013,
+              "value": true,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Skirmisher_Rifle_Fire_EnergyBallEffect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Skirmisher_Rifle_Fire_FireEnergyBall_Explode",
+      "modifiers": {
+        "Skirmisher_Rifle_Fire_EnergyBallEffect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_02_Die_FireBallLoop",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": 5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AddGlobalValue",
+          "key": "_MONSTER_Skirmisher_Fire_FireEnergyBall",
+          "useLimitRange": true,
+          "target": "Target",
+          "value": -5,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_MONSTER_Skirmisher_Fire_FireEnergyBall",
+              "target": "Target",
+              "value": 1
+            }
+          ],
+          "canBeHandledOnRecover": true,
+          "maxValue": 1
+        },
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Skirmisher_Rifle_Fire_EnergyBallEffect",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_02_Die_FireBallAS",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Skirmisher_Male_Standard_Rifle_Fire_Reimprove",
+      "modifiers": {
+        "Goto_SprayGun_Ice_DeathPoint": {
+          "onAdded": [
+            {
+              "$type": "SetCommandPos",
+              "key": "_MONSTER_Skirmisher_SprayGun_Ice_DeathPoint",
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 6,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetCommandPos",
+              "key": "_MONSTER_Skirmisher_SprayGun_Ice_DeathPoint",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Skirmisher_Rifle_Fire_AtkTag": {
+          "onAttackLanded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Monster_Skirmisher_Rifle_Fire_FireTag",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Skirmisher_Rifle_Fire_FireTag": {
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_SKIRMISHER_ELEMENT_FIRE_",
+              "useLimitRange": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            }
+          ],
+          "elementType": "Fire",
+          "duration": 8,
+          "elementDurability": 50,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_SKIRMISHER_ELEMENT_FIRE_",
+              "useLimitRange": true,
+              "target": "Target",
+              "value": -5,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Monster_Skirmisher_Standard_Rifle_Fire_Recharge": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "InWeak",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "value": true,
+              "boolID": "ImprovedState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "WeakState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Element_Special",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Skirmisher_Male_Standard_Rifle_Fire_ExForceImprove": {
+          "stacking": "Unique",
+          "duration": 1.5499999523162842,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Skirmisher_Male_Standard_Rifle_Fire_SheildRecover",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Skirmisher_Male_Standard_Rifle_Fire_GoToIceDeathPoint": {
+          "onAdded": [
+            {
+              "$type": "RefreshUICombatBarLayout",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Goto_SprayGun_Ice_DeathPoint",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Skirmisher_Male_Standard_Rifle_Fire_SheildRecover": {
+          "onAdded": [
+            {
+              "$type": "AddElementDurability",
+              "elementType": "Fire",
+              "useLimitRange": true,
+              "value": 200,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Element",
+              "predicates": [
+                {
+                  "$type": "ByHasModifier",
+                  "target": "Target",
+                  "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Element"
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "maxValue": 200
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "predicates": [
+                {
+                  "$type": "ByHasModifier",
+                  "target": "Target",
+                  "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Element"
+                }
+              ],
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_PowerUp",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Monster_Skirmisher_Standard_Rifle_Fire_Recharge",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHasModifier",
+                      "target": "Target",
+                      "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Element"
+                    }
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RefreshUICombatBarLayout",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_Improve_Special": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "EyeEffect"
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_EyeNormalToImprove",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "EyeEffect"
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Staff_Rock_EyeImprove",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "EyeEffect"
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_EyeImproveToNormal",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Element_Special": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Monster_Skirmisher_Rifle_Fire_AtkTag",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "ForceImprove",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "_MONSTER_SKIRMISHER_RIFLE_FIRE_IMPROVENUM",
+              "useLimitRange": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 10
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_NormalEffect",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_Improve_Special",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Skirmisher_Male_Standard_Rifle_Fire_PowerUp",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_WeaponEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 50004048
+              },
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementType": "Fire",
+          "onKill": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_Improve",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_Improve_Special",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01"
+                ]
+              },
+              "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Weapon_PowerUp",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "PowerUp",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01"
+                ]
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 200,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "actorIceSubHurtDelta": -1
+            },
+            {
+              "$type": "ModifyElementDecrateMixin",
+              "actorIceSubHurtDelta": -1,
+              "group": "Monster_SingleElement_Method_Fire"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "_MONSTER_SKIRMISHER_WEAK_",
+              "useLimitRange": true,
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 201,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 202,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "value": true,
+              "boolID": "InWeak",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 201,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 202,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "WeakStart",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 201,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 202,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "value": true,
+              "boolID": "WeakState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 201,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "target": "Target",
+                      "value": 202,
+                      "parameter": "PoseID",
+                      "logic": "Equal"
+                    }
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "ImprovedState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "PowerUp",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01"
+                ]
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_Improve",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Monster_Skirmisher_Rifle_Fire_Eye_Improve_Special",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Monster_Skirmisher_Standard_Rifle_Fire_EyeEffect",
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "partNames": [
+                  "equip01"
+                ]
+              },
+              "modifierName": "UNIQUE_Monster_Skirmisher_Standard_Rifle_Fire_Weapon_PowerUp",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElecSubHurtDelta": 1,
+            "Actor_EndureDelta": 0,
+            "Actor_FireSubHurtDelta": 1,
+            "Actor_GrassSubHurtDelta": 1,
+            "Actor_IceSubHurtDelta": 1,
+            "Actor_PhysicalSubHurtDelta": 1,
+            "Actor_RockSubHurtDelta": 1,
+            "Actor_WaterSubHurtDelta": 1,
+            "Actor_WindSubHurtDelta": 1,
+            "Entity_WeightRatio": 5
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5
+          ],
+          "defaultGlobalValueOnCreate": 1,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Skirmisher_Male_Standard_Rifle_Fire_SheildRecover"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_MONSTER_Skirmisher_Elec_ShieldRecover"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5
+          ],
+          "defaultGlobalValueOnCreate": 1,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Skirmisher_Male_Standard_Rifle_Fire_GoToIceDeathPoint"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_MONSTER_Skirmisher_Ice_ALIVE"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "Monster_Skirmisher_Nyx_Alert_Control",
+      "modifiers": {
+        "Skirmisher_Nyx_ExitBattle": {
+          "thinkInterval": 5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Skirmisher_Nyx_ExitBattle_SLC",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "RefreshUICombatBarLayout",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "Skirmisher_Nyx_ExitBattle_SLC": {
+          "onAdded": [
+            {
+              "$type": "StartDither",
+              "CJKPCCEKEGA": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "duHPRation": 2.299999952316284,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_MONSTER_Skirmisher_Fire_FirstBlood",
+              "useLimitRange": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "KillLeft2InLimitedTime_Fail",
+              "useLimitRange": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            }
+          ],
+          "duration": 1.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_Reset_Battle",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAIAlertnessMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Skirmisher_Nyx_ExitBattle",
+          "alertness": [
+            2
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,2385 @@
+[
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_TestAbility",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilitySpecials": {
+        "DamageUpRatio": 0,
+        "DamageUpRatioLV2": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_UltimateSkillDamageUp",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_UltimateSkillDamageUp_LV1": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "actorIceSubHurtDelta": -1,
+              "damagePercentageRatio": "DamageUpRatio",
+              "attackTags": [
+                "Elemental_Burst"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_UltimateSkillDamageUp_LV2": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "actorIceSubHurtDelta": -1,
+              "damagePercentageRatio": "DamageUpRatioLV2",
+              "attackTags": [
+                "Elemental_Burst"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "UNIQUE_Activity_ArenaChallenge_UltimateSkillDamageUp_LV1",
+            "UNIQUE_Activity_ArenaChallenge_UltimateSkillDamageUp_LV2"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_CHANGE_STAGE",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilitySpecials": {
+        "EnergyValue": 0,
+        "ReviveInterval": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_ReviveEnergy",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_ReviveEnergy": {
+          "stacking": "Unique",
+          "thinkInterval": "ReviveInterval",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "ReviveElemEnergy",
+              "target": "AllPlayerAvatars",
+              "value": "EnergyValue",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "UNIQUE_Activity_ArenaChallenge_ReviveEnergy"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_CHANGE_STAGE",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_ArenaChallenge_TriggerUltimateSkill",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_TriggerUltimateSkill",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_TriggerUltimateSkill": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OnAvatarUseSkillMixin",
+              "actorIceSubHurtDelta": -1,
+              "onTriggerUltimateSkill": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_State_Condition_Complete",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "clearSkillIdDelay": 0.20000000298023224
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_ArenaChallenge_Steam_Melt_DamageUp",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "MeltDamageUp": 0,
+        "SteamDamageUp": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_Steam_Melt_DamageUp",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_Steam_Melt_DamageUp": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElemReactMeltDelta": "MeltDamageUp",
+            "Actor_ElemReactSteamDelta": "SteamDamageUp"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "key": "ImpactDamageSystemValue",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "type": "ElementLevelCo",
+          "value": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "GenerateCDTime": 0,
+        "GeneratePurpleState": 0,
+        "ImpactDamageSystemValue": 0,
+        "PurpleDamageValue": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_Purple_After_Steam_Melt",
+      "modifiers": {
+        "Activity_ArenaChallenge_Purple_After_Steam_Melt_GeneratePurple_Delay": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_EnergyDisk_ElementalBurst_Wave_R40",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "target": "Caster",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "hitImpulseType": "LV2",
+                    "hitHaltTimeScale": 0.019999999552965164,
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "canBeModifiedBy": "OriginOwner",
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "EKBLGIOPKKA": true,
+                    "elementRank": 1,
+                    "attackType": "Melee",
+                    "HJHPJLGAHHP": true,
+                    "strikeType": "None",
+                    "JHLDBJEFNBP": true,
+                    "damageExtra": [
+                      "PurpleDamageValue",
+                      "ImpactDamageSystemValue",
+                      "MUL"
+                    ]
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "radius": 4,
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.05000000074505806,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_Purple_After_Steam_Melt": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GeneratePurpleState",
+                      "target": "Team",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Target",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": true,
+                      "modifierName": "Activity_ArenaChallenge_Purple_After_Steam_Melt_GeneratePurple_Delay",
+                      "canBeHandledOnRecover": true
+                    },
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Team",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": true,
+                      "modifierName": "UNIQUE_Activity_ArenaChallenge_Purple_After_Steam_Melt_CD",
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "Stream",
+                "Melt"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "range": 40
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_Purple_After_Steam_Melt_CD": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "GeneratePurpleState",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": "GenerateCDTime",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "GeneratePurpleState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "UNIQUE_Activity_ArenaChallenge_Purple_After_Steam_Melt"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_CHANGE_STAGE",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_ArenaChallenge_TriggerReact_Steam_Melt",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "Steam_Melt_CD": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_TriggerReact_Steam_Melt",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_TriggerReact_Steam_Melt": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "Steam_Melt_CDState",
+                      "target": "Team",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "funcName": "SLC_State_Condition_Complete",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Activity_ArenaChallenge_TriggerReact_Steam_Melt_CD",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "Stream",
+                "Melt"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "range": 40
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_TriggerReact_Steam_Melt_CD": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "Steam_Melt_CDState",
+              "target": "Team",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": "Steam_Melt_CD",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "Steam_Melt_CDState",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_ArenaChallenge_ElectricReact_EnermyDefenceDown_Decision_ElectricReact",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "DefecnceDownRatio": 0,
+        "DefecnceDownRatio_LV2": 0,
+        "DefenceDownDuration": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_ElectricReact_EnermyDefenceDown",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_ElectricReact_EnermyDefenceDown_Action_DefenceDown_LV1": {
+          "stacking": "MultipleAllRefresh",
+          "duration": "DefenceDownDuration",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "stackingOption": {
+            "HJKNBILJBKK": true,
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_DefenceRatio": [
+              0,
+              1,
+              "DefecnceDownRatio",
+              "MUL",
+              "SUB"
+            ]
+          },
+          "state": "DefenseDown"
+        },
+        "UNIQUE_Activity_ArenaChallenge_ElectricReact_EnermyDefenceDown_Action_DefenceDown_LV2": {
+          "onAdded": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Activity_ArenaChallenge_ElectricReact_EnermyDefenceDown_Action_DefenceDown_LV1",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleAllRefresh",
+          "duration": "DefenceDownDuration",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "stackingOption": {
+            "HJKNBILJBKK": true,
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_DefenceRatio": [
+              0,
+              1,
+              "DefecnceDownRatio_LV2",
+              "MUL",
+              "SUB"
+            ]
+          },
+          "state": "DefenseDown"
+        },
+        "UNIQUE_Activity_ArenaChallenge_ElectricReact_EnermyDefenceDown_Decision_ElectricReact": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "Predicated",
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SGV_CHANGE_STAGE",
+                      "target": "Team",
+                      "value": 1
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Other",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": true,
+                      "modifierName": "UNIQUE_Activity_ArenaChallenge_ElectricReact_EnermyDefenceDown_Action_DefenceDown_LV2",
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "Predicated",
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SGV_CHANGE_STAGE",
+                      "target": "Team",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Other",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": true,
+                      "modifierName": "UNIQUE_Activity_ArenaChallenge_ElectricReact_EnermyDefenceDown_Action_DefenceDown_LV1",
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "Superconductor",
+                "Shock",
+                "Explode",
+                "SwirlElectric"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "range": 40
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilitySpecials": {
+        "EnergyBall_CD": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_ElectricReact_GenerateEnergyBall",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_ElectricReact_GenerateEnergyBall": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "GenerateElemBall",
+                  "target": "CurLocalAvatar",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "configID": 2024,
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "z": -0.5
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "bornRandom": {
+                      "$type": "BornRandomFromCenter",
+                      "maxRandomRange": 2,
+                      "minRandomRange": 1
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "baseEnergy": 6,
+                  "ratio": 1,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "EnergyBall_CDState",
+                      "target": "Team",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "FireEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "EnergyBall_CDState",
+                      "target": "Team",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "effectPattern": "Eff_Weapon_ExtraElementBall",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Activity_ArenaChallenge_ElectricReact_GenerateEnergyBall_CD",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "Superconductor",
+                "Electric",
+                "Explode",
+                "SwirlElectric"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "range": 40
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_ElectricReact_GenerateEnergyBall_CD": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "EnergyBall_CDState",
+              "target": "Team",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": "EnergyBall_CD",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "EnergyBall_CDState",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "UNIQUE_Activity_ArenaChallenge_ElectricReact_GenerateEnergyBall"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_CHANGE_STAGE",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_ArenaChallenge_TriggerReact_Electric",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "ElectricReact_CD": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_TriggerReact_Electric",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_TriggerReact_Electric": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "ElectricReact_CDState",
+                      "target": "Team",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "funcName": "SLC_State_Condition_Complete",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Activity_ArenaChallenge_TriggerReact_Electric_CD",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "Superconductor",
+                "Explode",
+                "Electric",
+                "SwirlElectric"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "range": 40
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_TriggerReact_Electric_CD": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "ElectricReact_CDState",
+              "target": "Team",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": "ElectricReact_CD",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "ElectricReact_CDState",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "IsTriggerSwirlReact",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetOverrideMapValue",
+          "overrideMapKey": "DamageUpState",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "DamageUpDuration": 0,
+        "DamageUpRatio": 0,
+        "DamageUpRatio_LV2": 0,
+        "DamageUpState": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_SwirlReact_DamageUp",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_DamageUp_LV1": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "ignoreEventInfo": true,
+              "actorIceSubHurtDelta": -1,
+              "damagePercentageRatio": [
+                "DamageUpRatio",
+                "DamageUpState",
+                "MUL"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_DamageUp_LV2": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "ignoreEventInfo": true,
+              "actorIceSubHurtDelta": -1,
+              "damagePercentageRatio": [
+                "DamageUpRatio_LV2",
+                "DamageUpState",
+                "MUL"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_Timer": {
+          "onAdded": [
+            {
+              "$type": "SetOverrideMapValue",
+              "value": 1,
+              "overrideMapKey": "DamageUpState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAbility",
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "ActivityAbility_ArenaChallenge_SwirlReact_DamageUp",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": "DamageUpDuration",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetOverrideMapValue",
+              "overrideMapKey": "DamageUpState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAbility",
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "ActivityAbility_ArenaChallenge_SwirlReact_DamageUp",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_Timer_Handler": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_Timer",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "IsTriggerSwirlReact",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Decision_SwirlReact": {
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "abilityName": "ActivityAbility_ArenaChallenge_SwirlReact_DamageUp",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "IsTriggerSwirlReact",
+                  "target": "Team",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "SwirlFire",
+                "SwirlIce",
+                "SwirlWater",
+                "SwirlElectric"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "range": 40
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "onRemoved": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "target": "CurTeamAvatars",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_DamageUp_LV2",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "RemoveUniqueModifier",
+          "target": "CurTeamAvatars",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_DamageUp_LV1",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "SGV_CHANGE_STAGE",
+              "target": "Team",
+              "value": 1
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "CurTeamAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_DamageUp_LV2",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "CurTeamAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_DamageUp_LV1",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "CurTeamAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_DamageUp_LV2",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "Predicated",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "SGV_CHANGE_STAGE",
+              "target": "Team",
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "CurTeamAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_DamageUp_LV2",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "CurTeamAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_DamageUp_LV1",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "CurTeamAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_DamageUp_LV1",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "LocalAvatarsMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Decision_SwirlReact"
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "UNIQUE_Activity_ArenaChallenge_SwirlReact_DamageUp_Action_Timer_Handler"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "IsTriggerSwirlReact",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilitySpecials": {
+        "EnergyBall_CD": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_SwirlReact_GenerateEnergyBall",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_SwirlReact_GenerateEnergyBall": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "GenerateElemBall",
+                  "target": "CurLocalAvatar",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "configID": 2024,
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "z": -0.5
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "bornRandom": {
+                      "$type": "BornRandomFromCenter",
+                      "maxRandomRange": 2,
+                      "minRandomRange": 1
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "baseEnergy": 6,
+                  "ratio": 1,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "EnergyBall_CDState",
+                      "target": "Team",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "FireEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "EnergyBall_CDState",
+                      "target": "Team",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "effectPattern": "Eff_Weapon_ExtraElementBall",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Activity_ArenaChallenge_SwirlReact_GenerateEnergyBall_CD",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "SwirlFire",
+                "SwirlElectric",
+                "SwirlWater",
+                "SwirlIce"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "range": 40
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_SwirlReact_GenerateEnergyBall_CD": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "EnergyBall_CDState",
+              "target": "Team",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": "EnergyBall_CD",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "EnergyBall_CDState",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "UNIQUE_Activity_ArenaChallenge_SwirlReact_GenerateEnergyBall"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_CHANGE_STAGE",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_ArenaChallenge_TriggerReact_Swirl",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "SwirlReact_CD": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_TriggerReact_Swirl",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_TriggerReact_Swirl": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SwirlReact_CDState",
+                      "target": "Team",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "funcName": "SLC_State_Condition_Complete",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Activity_ArenaChallenge_TriggerReact_SwirlReact_CD",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "SwirlElectric",
+                "SwirlFire",
+                "SwirlIce",
+                "SwirlWater"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "range": 40
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_TriggerReact_SwirlReact_CD": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "SwirlReact_CDState",
+              "target": "Team",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": "SwirlReact_CD",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "SwirlReact_CDState",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilitySpecials": {
+        "ClaymoreDamageUpRatio": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_Claymore_DamageUp",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_Claymore_DamageUp": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "ignoreEventInfo": true,
+              "actorIceSubHurtDelta": -1,
+              "damagePercentageRatio": "ClaymoreDamageUpRatio"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToPredicateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "UNIQUE_Activity_ArenaChallenge_Claymore_DamageUp",
+          "predicates": [
+            {
+              "$type": "ByAvatarWeaponType",
+              "weaponTypes": [
+                "WEAPON_CLAYMORE"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilitySpecials": {
+        "AtkSpeedUpRatio": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_Claymore_AtkSpeedUp",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_Claymore_AtkSpeedUp": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Animator_AttackSpeedRatio": "AtkSpeedUpRatio"
+          }
+        },
+        "UNIQUE_Activity_ArenaChallenge_Claymore_AtkSpeedUp_Decision_WeaponType": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToPredicateMixin",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Activity_ArenaChallenge_Claymore_AtkSpeedUp",
+              "predicates": [
+                {
+                  "$type": "ByAvatarWeaponType",
+                  "weaponTypes": [
+                    "WEAPON_CLAYMORE"
+                  ]
+                }
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "UNIQUE_Activity_ArenaChallenge_Claymore_AtkSpeedUp_Decision_WeaponType"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_CHANGE_STAGE",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilitySpecials": {
+        "Claymore_AtkLand_CD": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_Claymore_AtkLand",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_Claymore_AtkLand": {
+          "stacking": "Unique",
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHitDamage",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "Claymore_AtkLand_CDState",
+                  "target": "Team",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "successActions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_State_Condition_Complete",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Activity_ArenaChallenge_Claymore_AtkLand_CD",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_Claymore_AtkLand_CD": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "Claymore_AtkLand_CDState",
+              "target": "Team",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": "Claymore_AtkLand_CD",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "Claymore_AtkLand_CDState",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToPredicateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "UNIQUE_Activity_ArenaChallenge_Claymore_AtkLand",
+          "predicates": [
+            {
+              "$type": "ByAvatarWeaponType",
+              "weaponTypes": [
+                "WEAPON_CLAYMORE"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilitySpecials": {
+        "NormalAtkDamageUpRatio": 0,
+        "NormalAtkDamageUpRatio_LV2": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_NormalAtkDamageUp",
+      "modifiers": {
+        "UNIQUE_ActivityAbility_ArenaChallenge_NormalAtkDamageUp_LV1": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "actorIceSubHurtDelta": -1,
+              "damagePercentageRatio": "NormalAtkDamageUpRatio",
+              "attackTags": [
+                "NormalAttack_01",
+                "NormalAttack_02",
+                "NormalAttack_03",
+                "NormalAttack_04",
+                "NormalAttack_05",
+                "NormalAttack_06"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_ActivityAbility_ArenaChallenge_NormalAtkDamageUp_LV2": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "actorIceSubHurtDelta": -1,
+              "damagePercentageRatio": "NormalAtkDamageUpRatio_LV2",
+              "attackTags": [
+                "NormalAttack_01",
+                "NormalAttack_02",
+                "NormalAttack_03",
+                "NormalAttack_04",
+                "NormalAttack_05",
+                "NormalAttack_06"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "UNIQUE_ActivityAbility_ArenaChallenge_NormalAtkDamageUp_LV1",
+            "UNIQUE_ActivityAbility_ArenaChallenge_NormalAtkDamageUp_LV2"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_CHANGE_STAGE",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilitySpecials": {
+        "ReviveEnergyAmount": 0,
+        "ReviveEnergyCD": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_NormalAttackLand_ReviveEnergy",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_NormalAttackLand_ReviveEnergy": {
+          "stacking": "Unique",
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "NormalAttack_01",
+                    "NormalAttack_02",
+                    "NormalAttack_03",
+                    "NormalAttack_04",
+                    "NormalAttack_05",
+                    "NormalAttack_06"
+                  ]
+                },
+                {
+                  "$type": "ByHitDamage",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "ReviveEnergyCDState",
+                  "target": "Team",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "ReviveElemEnergy",
+                  "target": "AllPlayerAvatars",
+                  "value": "ReviveEnergyAmount",
+                  "predicatesForeach": [
+                    {
+                      "$type": "ByTargetType",
+                      "targetType": "Caster",
+                      "target": "Target"
+                    }
+                  ],
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Activity_ArenaChallenge_NormalAttackLand_ReviveEnergy_CD",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_NormalAttackLand_ReviveEnergy_CD": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "ReviveEnergyCDState",
+              "target": "Team",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": "ReviveEnergyCD",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "ReviveEnergyCDState",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "UNIQUE_Activity_ArenaChallenge_NormalAttackLand_ReviveEnergy"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_CHANGE_STAGE",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_ActivityAbility_ArenaChallenge_NormalAtkDamageLand",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "NormalAttackLand_CD": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_NormalAtkDamageLand",
+      "modifiers": {
+        "UNIQUE_ActivityAbility_ArenaChallenge_NormalAtkDamageLand": {
+          "stacking": "Unique",
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "NormalAttack_01",
+                    "NormalAttack_02",
+                    "NormalAttack_03",
+                    "NormalAttack_04",
+                    "NormalAttack_05",
+                    "NormalAttack_06"
+                  ]
+                },
+                {
+                  "$type": "ByHitDamage",
+                  "target": "Target"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "NormalAttackLand_CDState",
+                  "target": "Team",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "target": "Other",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_State_Condition_Complete",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Activity_ArenaChallenge_NormalAttackLand_CD",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_NormalAttackLand_CD": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "NormalAttackLand_CDState",
+              "target": "Team",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": "NormalAttackLand_CD",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "NormalAttackLand_CDState",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_ArenaChallenge_HitFrozenTarget_DamageUp",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "DamageUpRate_Frozen": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_HitFrozenTarget_DamageUp",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_HitFrozenTarget_DamageUp": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "ignoreEventInfo": true,
+              "actorIceSubHurtDelta": -1,
+              "damagePercentageRatio": "DamageUpRate_Frozen",
+              "predicates": [
+                {
+                  "$type": "ByHasAbilityState",
+                  "target": "Target",
+                  "abilityState": "ElementFrozen"
+                }
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilitySpecials": {
+        "FrozenDefenceDownRate": 0,
+        "FrozenDuration": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_FrozenReact_DefenceDown",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_FrozenReact_DefenceDown": {
+          "stacking": "Unique",
+          "duration": "FrozenDuration",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_DefenceRatio": [
+              0,
+              1,
+              "FrozenDefenceDownRate",
+              "MUL",
+              "SUB"
+            ]
+          },
+          "state": "DefenseDown"
+        },
+        "UNIQUE_Activity_ArenaChallenge_FrozenReact_DefenceDown_Decision_FrozenReact": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Activity_ArenaChallenge_FrozenReact_DefenceDown",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "Freeze"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "range": 40
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "UNIQUE_Activity_ArenaChallenge_FrozenReact_DefenceDown_Decision_FrozenReact"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_CHANGE_STAGE",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Activity_ArenaChallenge_TriggerReact_Freeze",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "Freeze_CD": 0
+      },
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_ArenaChallenge_TriggerReact_Freeze",
+      "modifiers": {
+        "UNIQUE_Activity_ArenaChallenge_TriggerReact_Freeze": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "Freeze_CDState",
+                      "target": "Team",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "funcName": "SLC_State_Condition_Complete",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_Activity_ArenaChallenge_TriggerReact_Freeze_CD",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "reactionTypes": [
+                "Freeze"
+              ],
+              "entityTypes": [
+                "Monster"
+              ],
+              "range": 40
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Activity_ArenaChallenge_TriggerReact_Freeze_CD": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "Freeze_CDState",
+              "target": "Team",
+              "value": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": "Freeze_CD",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "Freeze_CDState",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  }
+]

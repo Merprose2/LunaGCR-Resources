@@ -1,0 +1,2186 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "LeyLineChallenge_BreakHero_Modifier",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_LeyLineChallenge_BreakHero",
+      "modifiers": {
+        "LeyLineChallenge_BreakHero_Modifier": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "LeyLineChallenge_Skill_Forbiden_Started",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "LeyLineChallenge_PrepareStagePlayerReady",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_LeyLineChallenge_Skill_Forbidden",
+      "modifiers": {
+        "LeyLineChallenge_Skill_Forbiden_Started": {
+          "onAdded": [
+            {
+              "$type": "HealHP",
+              "value": 1,
+              "target": "AllPlayerAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "amountByTargetMaxHPRatio": 1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ClearLocalGadgets",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ChangePlayMode",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "enable": true,
+              "toPlayMode": "ForbidenSkillAndAttack",
+              "authorityOnly": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "LeyLineChallenge_Skill_Forbiden_Widget"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "LeyLineChallenge_Skill_Forbiden_Widget": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "WidgetDisableMixin",
+              "actorIceSubHurtDelta": -1,
+              "GMPGCOJICLI": true,
+              "ICHIPOOLHCA": true
+            },
+            {
+              "$type": "HideActionSlotMixin",
+              "actorIceSubHurtDelta": -1,
+              "slotType": "SlotQuickUse"
+            },
+            {
+              "$type": "StageReadyMixin",
+              "actorIceSubHurtDelta": -1,
+              "onStageReady": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "LeyLineChallenge_PrepareStagePlayerReady",
+                      "target": "Team"
+                    }
+                  ],
+                  "funcName": "SLC_LeyLineChallenge_PrepareStagePlayerReady",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "LeyLineChallenge_PrepareStagePlayerReady",
+                  "target": "Team",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "LeyLineChallenge_MonsterLevelHigh",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "LeyLineChallenge_Set_Team",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "LeyLineChallenge_BattleStagePlayerReady",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "ActivityAbility_LeyLineChallenge_Stage_Ready",
+      "modifiers": {
+        "LeyLineChallenge_Avatar_Ready": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "StageReadyMixin",
+              "actorIceSubHurtDelta": -1,
+              "onStageReady": [
+                {
+                  "$type": "ServerLuaCall",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "LeyLineChallenge_BattleStagePlayerReady",
+                      "target": "Team"
+                    }
+                  ],
+                  "funcName": "SLC_LeyLineChallenge_BattleStagePlayerReady",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "LeyLineChallenge_BattleStagePlayerReady",
+                  "target": "Team",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            },
+            {
+              "$type": "WidgetDisableMixin",
+              "actorIceSubHurtDelta": -1,
+              "GMPGCOJICLI": true,
+              "ICHIPOOLHCA": true
+            },
+            {
+              "$type": "HideActionSlotMixin",
+              "actorIceSubHurtDelta": -1,
+              "slotType": "SlotQuickUse"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "LeyLineChallenge_Set_Team": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "LeyLineChallenge_Avatar_Ready"
+            },
+            {
+              "$type": "ServerUpdateGlobalValueMixin",
+              "key": "LeyLineChallenge_MonsterLevelHigh",
+              "useLimitRange": true,
+              "actorIceSubHurtDelta": -1,
+              "maxValue": 1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "KeyIdle",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_Level_Nt_Property_Ani_Prop_LeyLineChallengeKey_01",
+      "modifiers": {
+        "KeyIdle": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "GadgetState"
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_LeyLineChallengeKey_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "EnableGadgetIntee",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "EnableGadgetIntee",
+                  "enable": true,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "SGV_LeyLineChallengeKey_HostChange"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Flower_Idle",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_Level_Nt_Property_Ani_Prop_LeyLineChallengeFlower_01",
+      "modifiers": {
+        "Flower_Born": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_LeyLineChallengeFlower_Appear",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "actorIceSubHurtDelta": -1,
+              "LPMBCOFEEFM": -1,
+              "value": 1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Flower_Die": {
+          "onAdded": [
+            {
+              "$type": "EnableGadgetIntee",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_LeyLineChallengeFlower_Die",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 0.699999988079071,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "actorIceSubHurtDelta": -1,
+              "value": 1,
+              "LPMBCOFEEFM": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "configIdArray": [
+                73051003
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "Flower_Idle": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_LeyLineChallengeFlower_Loop",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Flower_Open": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_LeyLineChallengeFlower_Receive",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": 102,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "gadgetState"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "actorIceSubHurtDelta": -1,
+              "value": 1,
+              "LPMBCOFEEFM": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Flower_Born"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Flower_Open",
+          "gadgetState": 102
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Flower_Die",
+          "gadgetState": 901
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "LeyLineChallengeEnter_billboardControl",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_Level_Nt_Property_Ani_Prop_LeyLineChallengeEnter_01",
+      "modifiers": {
+        "Active": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "value": 201,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "GadgetState"
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_LeyLineChallengeDoorNew_01_Idle02",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "actorIceSubHurtDelta": -1,
+              "value": 1,
+              "LPMBCOFEEFM": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Create": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "GadgetState"
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_LeyLineChallengeDoorNew_01_Idle01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "actorIceSubHurtDelta": -1,
+              "value": 1,
+              "LPMBCOFEEFM": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "LeyLineChallengeEnter_billboardControl": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "BillboardV2Mixin",
+              "actorIceSubHurtDelta": -1,
+              "FMEEEHPMHDB": {
+                "DGBLGBHELLG": {
+                  "GPJBCHKCIJO": true,
+                  "KOKGCKKGGDN": {
+                    "OGBIDMEDGGD": 4
+                  },
+                  "LJEDMJFCHMK": 1
+                },
+                "IBKFOAEFCHJ": {
+                  "value": 1
+                },
+                "INJHBCKFHJP": {
+                  "showDistance": 40,
+                  "FCNBOCKFDBG": true,
+                  "worldOffset": {
+                    "y": 2.5
+                  },
+                  "attachPointName": "BillboardAttach"
+                },
+                "IPFABCFDBGG": {
+                  "CHBMKLMPFNC": {
+                    "showDistance": 20,
+                    "GPJBCHKCIJO": true,
+                    "OGBIDMEDGGD": 4
+                  }
+                },
+                "JEJAGCKKJAA": {
+                  "CPLHKIEMGAD": 20,
+                  "GPJBCHKCIJO": true,
+                  "iconPath": "ART/UI/Atlas/InteeIcon/UI_NPCTopIcon_Activity_LeyLineChallenge"
+                },
+                "KNNCEDMKCOK": {
+                  "prefabName": "FirmamentCarBoard",
+                  "value": 1
+                },
+                "LGBAPCGFFAK": {
+                  "ECBEEKENBCN": 20,
+                  "GPJBCHKCIJO": true
+                },
+                "OKLHEEKHNEJ": {
+                  "KHJOCFJEPJB": [
+                    {
+                      "CKJFCOKFLCM": true,
+                      "actions": [
+                        {
+                          "$type": "INNDIPOEGMC"
+                        }
+                      ],
+                      "conditions": [
+                        {
+                          "$type": "NADLNGCINNA",
+                          "LFMMBCAGMCP": 73051004
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SuperActive": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "value": 202,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "GadgetState"
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_LeyLineChallengeDoorNew_01_Idle03",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "actorIceSubHurtDelta": -1,
+              "LPMBCOFEEFM": -1,
+              "value": 1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Create"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Active",
+          "gadgetState": 201
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SuperActive",
+          "gadgetState": 202
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "LeyLineChallengeExit",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_Level_Nt_Property_Ani_Prop_LeyLineChallengeExit_01",
+      "modifiers": {
+        "LeyLineChallengeExit": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Dungeon_Exit",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Artifact_FullEnhance",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "CommonPropertyUpRatio": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Artifact_FullEnhance",
+      "modifiers": {
+        "UNIQUE_AutoChess_Artifact_FullEnhance": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AttackRatio": "CommonPropertyUpRatio",
+            "Actor_DefenceRatio": "CommonPropertyUpRatio",
+            "Actor_MaxHPRatio": "CommonPropertyUpRatio"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Artifact_BlockEnhance",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "CommonPropertyUpRatio": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Artifact_BlockEnhance",
+      "modifiers": {
+        "UNIQUE_AutoChess_Artifact_BlockEnhance": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AddHurtDelta": "CommonPropertyUpRatio"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Artifact_WholeEnhance",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "AC_Artifact_WholeEnhance_LoseHP": 0,
+        "CommonPropertyUpDelta": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Artifact_WholeEnhance",
+      "modifiers": {
+        "UNIQUE_AutoChess_Artifact_WholeEnhance": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AttackRatio": "CommonPropertyUpDelta",
+            "Actor_DefenceRatio": "CommonPropertyUpDelta",
+            "Actor_MaxHPRatio": "CommonPropertyUpDelta"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "overrideMapKey": "SGV_AC_Artifact_DamageEnhance_Coin",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "globalValueKey": "SGV_AC_Artifact_DamageEnhance_Coin",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Artifact_CoinDamageEnhance",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "CommonPropertyUpDelta": 0,
+        "SGV_AC_Artifact_DamageEnhance_Coin": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Artifact_CoinDamageEnhance",
+      "modifiers": {
+        "UNIQUE_AutoChess_Artifact_CoinDamageEnhance": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AddHurtDelta": [
+              "CommonPropertyUpDelta",
+              "SGV_AC_Artifact_DamageEnhance_Coin",
+              "MUL"
+            ]
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Artifact_SingleEquipmentEnhence",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "AttackUpRatio": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Artifact_SingleEquipmentEnhence",
+      "modifiers": {
+        "UNIQUE_AutoChess_Artifact_SingleEquipmentEnhence": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AddHurtDelta": "AttackUpRatio"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "overrideMapKey": "SGV_AC_Artifact_DamageEnhance_Species",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "globalValueKey": "SGV_AC_Artifact_DamageEnhance_Species",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Artifact_SpeciesDamageEnhance",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "CommonPropertyUpDelta": 0,
+        "SGV_AC_Artifact_DamageEnhance_Species": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Artifact_SpeciesDamageEnhance",
+      "modifiers": {
+        "UNIQUE_AutoChess_Artifact_SpeciesDamageEnhance": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AddHurtDelta": [
+              "CommonPropertyUpDelta",
+              "SGV_AC_Artifact_DamageEnhance_Species",
+              "MUL"
+            ]
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Event_AlchemyFireEnhance",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "CommonPropertyDownDelta": 0,
+        "CommonPropertyUpDelta": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Event_AlchemyFireEnhance",
+      "modifiers": {
+        "UNIQUE_AutoChess_Event_AlchemyFireEnhance": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElecAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_FireAddHurtDelta": "CommonPropertyUpDelta",
+            "Actor_GrassAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_IceAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_RockAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_WaterAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_WindAddHurtDelta": "CommonPropertyDownDelta"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Event_AlchemyWaterEnhance",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "CommonPropertyDownDelta": 0,
+        "CommonPropertyUpDelta": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Event_AlchemyWaterEnhance",
+      "modifiers": {
+        "UNIQUE_AutoChess_Event_AlchemyWaterEnhance": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElecAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_FireAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_GrassAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_IceAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_RockAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_WaterAddHurtDelta": "CommonPropertyUpDelta",
+            "Actor_WindAddHurtDelta": "CommonPropertyDownDelta"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Event_AlchemyIceEnhance",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "CommonPropertyDownDelta": 0,
+        "CommonPropertyUpDelta": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Event_AlchemyIceEnhance",
+      "modifiers": {
+        "UNIQUE_AutoChess_Event_AlchemyIceEnhance": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_ElecAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_FireAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_GrassAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_IceAddHurtDelta": "CommonPropertyUpDelta",
+            "Actor_RockAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_WaterAddHurtDelta": "CommonPropertyDownDelta",
+            "Actor_WindAddHurtDelta": "CommonPropertyDownDelta"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Event_FoodEnhance",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "CommonPropertyUpRatio": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Event_FoodEnhance",
+      "modifiers": {
+        "UNIQUE_AutoChess_Event_FoodEnhance": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AttackRatio": "CommonPropertyUpRatio"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Event_FoodNerf",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "CommonPropertyDownRatio": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Event_FoodNerf",
+      "modifiers": {
+        "UNIQUE_AutoChess_Event_FoodNerf": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_MaxHPRatio": [
+              0,
+              "CommonPropertyDownRatio",
+              "SUB"
+            ]
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Event_MushroomEnhance",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "AttackUpDelta": 0,
+        "DefenceUpDelta": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Event_MushroomEnhance",
+      "modifiers": {
+        "UNIQUE_AutoChess_Event_MushroomEnhance": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AttackDelta": "AttackUpDelta",
+            "Actor_DefenceDelta": "DefenceUpDelta"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Event_MushroomNerf",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "AttackUpRatio": 0,
+        "DefenceDownRatio": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Event_MushroomNerf",
+      "modifiers": {
+        "UNIQUE_AutoChess_Event_MushroomNerf": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AttackRatio": "AttackUpRatio",
+            "Actor_DefenceRatio": "DefenceDownRatio"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Event_CurseSword",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "AttackUpDelta": 0,
+        "AttackUpRatio": 0,
+        "MaxHPDownRatio": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Event_CurseSword",
+      "modifiers": {
+        "UNIQUE_AutoChess_Event_CurseSword": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AttackDelta": "AttackUpDelta",
+            "Actor_AttackRatio": "AttackUpRatio",
+            "Actor_MaxHPRatio": "MaxHPDownRatio"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Event_BenBen",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "AttackUpRatio": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Event_BenBen",
+      "modifiers": {
+        "UNIQUE_AutoChess_Event_BenBen": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AttackRatio": "AttackUpRatio"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Event_Battery",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "MaxHPUpRatio": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Event_Battery",
+      "modifiers": {
+        "UNIQUE_AutoChess_Event_Battery": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_MaxHPRatio": "MaxHPUpRatio"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_AutoChess_Event_BenBen_Battery",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "CommonPropertyUpRatio": 0
+      },
+      "abilityName": "MonsterAffix_AutoChess_Event_BenBen_Battery",
+      "modifiers": {
+        "UNIQUE_AutoChess_Event_BenBen_Battery": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "reApplyModifierOnStateChange": true,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AttackRatio": "CommonPropertyUpRatio",
+            "Actor_DefenceRatio": "CommonPropertyUpRatio",
+            "Actor_MaxHPRatio": "CommonPropertyUpRatio"
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "ABCProtectedGoods",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_Level_Nt_Property_Ani_Prop_ABCProtectedGoods_01",
+      "modifiers": {
+        "ABCProtectedGoods": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_IS_ABCProtectedGoods",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_ABCProtectedGoods_01_Disappear",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerTaunt",
+              "tauntLevel": "Monster_TauntLevel_MAX",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR20",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "target": "Target",
+                  "value": -1,
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "careValue": 1000,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "ABCWitheringNode",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_Level_Nt_Property_Ani_Prop_ABCWitheringNode_01",
+      "modifiers": {
+        "ABCWitheringNode": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "AttachPoint"
+              },
+              "effectPattern": "Eff_SceneObj_ABCWitheringNode_01_Idle",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "IsOpen"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "AttachPoint"
+              },
+              "effectPattern": "Eff_SceneObj_ABCWitheringNode_01_Disappear",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "AttachPoint"
+              },
+              "effectPattern": "Eff_SceneObj_ABCWitheringNode_01_Hit",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "LoseHP",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "amountByTargetMaxHPRatio": 0.05000000074505806,
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR15H20",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1,
+                "NLNIBNNOOCK": {
+                  "APKLAIJMEIL": {
+                    "HHNLJKNBKPP": 180
+                  },
+                  "value": 10,
+                  "direction": {
+                    "maxAngle": 180
+                  },
+                  "onGroundRaycastUpDist": 2
+                }
+              },
+              "enableInvincible": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "AttachPoint"
+              },
+              "effectPattern": "Eff_SceneObj_ABCWitheringNode_01_Ring",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "SceneObj_Area_Fd_Property_Ani_Prop_FactoryBoxingMachine_02_Ability",
+      "modifiers": {
+        "ChargedState": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_FactoryBoxingMachine_01_Unqualify",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "actorIceSubHurtDelta": -1,
+              "LPMBCOFEEFM": -1,
+              "value": 1,
+              "MGLMGICCHHK": "Default"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "Attack",
+              "mpTriggerOnRemote": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ChangeGadgetState",
+              "value": 202,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByHitDamage",
+                  "target": "Target",
+                  "IFMLIBAGOJB": true,
+                  "damage": 100
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FinishState": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_FactoryBoxingMachine_01_Qualify_Follow",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_FactoryBoxingMachine_01_Complete",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "actorIceSubHurtDelta": -1,
+              "LPMBCOFEEFM": -1,
+              "value": 1,
+              "MGLMGICCHHK": "Default"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "Attack",
+              "mpTriggerOnRemote": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "QuestState": {
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "setEnable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "transformNames": [
+                "Charged"
+              ]
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "actorIceSubHurtDelta": -1,
+              "LPMBCOFEEFM": -1,
+              "value": 1,
+              "MGLMGICCHHK": "Default"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "Attack",
+              "mpTriggerOnRemote": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UnchargedState": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "actorIceSubHurtDelta": -1,
+              "value": 1,
+              "LPMBCOFEEFM": -1,
+              "MGLMGICCHHK": "Default"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "Attack",
+              "mpTriggerOnRemote": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "UnchargedState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "ChargedState",
+          "gadgetState": 201
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "FinishState",
+          "gadgetState": 202
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "QuestState",
+          "gadgetState": 903
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "AttachClear",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "CurTeamAvatars",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "GhostToEnemy",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "CurTeamAvatars",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "GhostToAllied",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "CurTeamAvatars",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "HideAvatars",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "CurTeamAvatars",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "LockHP",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "CurTeamAvatars",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "DenyLock",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "V5_7_AutoChess_AvatarDisable",
+      "modifiers": {
+        "AttachClear": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "FollowAttachPointEffectMixin",
+              "actorIceSubHurtDelta": -1,
+              "attachPriority": "QuestBlank",
+              "modifierName": "ClearFollowPet"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ClearFollowPet": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "DenyLock": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "DenyLockOn"
+        },
+        "GhostToAllied": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "IsGhostToAllied"
+        },
+        "GhostToEnemy": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "IsGhostToEnemy"
+        },
+        "HideAvatars": {
+          "onAdded": [
+            {
+              "$type": "TriggerSetVisible",
+              "target": "CurTeamAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerSetPassThrough",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "passThrough": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "enable": true,
+              "pushColliderNames": [
+                "PushColliderExtra"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "EntityInVisibleMixin",
+              "AAHPKGHIPPG": {
+                "EAEPMBENPPN": true
+              },
+              "actorIceSubHurtDelta": -1,
+              "ENMNDHGFGDM": {
+                "EAEPMBENPPN": true
+              },
+              "disableAudio": true,
+              "reason": "Gallary",
+              "LMCPBHECDEI": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetPassThrough",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerSetVisible",
+              "target": "CurTeamAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "visible": true,
+              "enable": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "setEnable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "pushColliderNames": [
+                "PushColliderExtra"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Animator_MoveSpeedRatio": -1,
+            "Animator_OverallSpeedRatioMultiplied": 0
+          }
+        },
+        "LockHP": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "LockHP"
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  }
+]

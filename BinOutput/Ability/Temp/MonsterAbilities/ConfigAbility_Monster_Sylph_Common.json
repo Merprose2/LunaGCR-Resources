@@ -1,0 +1,322 @@
+[
+  {
+    "Default": {
+      "abilityName": "Monster_Sylph_Deathrattle_PlayOnce",
+      "modifiers": {
+        "DeathTag_Change": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "intID": "NoMoreDeath"
+            }
+          ],
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "DeathTag_Change",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "_SYLPH_SPECIAL_STATE_",
+          "useLimitRange": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "randomInRange": true,
+          "canBeHandledOnRecover": true,
+          "maxValue": 1
+        },
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "overrideMapKey": "Override_Sylph_RandomAction",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "globalValueKey": "_SYLPH_SPECIAL_STATE_",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "Override_Sylph_RandomAction": 0
+      },
+      "abilityName": "Monster_Sylph_SpecialState",
+      "modifiers": {
+        "SpecialState": {
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "RandomAction",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetPoseBool",
+              "value": true,
+              "boolID": "RandomAction",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_SYLPH_SPECIAL_STATE_",
+              "useLimitRange": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "randomInRange": true,
+              "canBeHandledOnRecover": true,
+              "maxValue": 1
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "overrideMapKey": "Override_Sylph_RandomAction",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "globalValueKey": "_SYLPH_SPECIAL_STATE_",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "value": "Override_Sylph_RandomAction",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "RandomAction",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "SpecialState"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "SpecialState",
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Sylph_Activated_FaceChange",
+      "modifiers": {
+        "UNIQUE_Sylph_Face": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AJPMNGGNDAB",
+              "BPGLLBKGKHJ": [
+                "Activated"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "NCIMPDFGHPO": [
+                "Default"
+              ]
+            },
+            {
+              "$type": "AJPMNGGNDAB",
+              "BPGLLBKGKHJ": [
+                "Activated"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "NCIMPDFGHPO": [
+                "Blink"
+              ]
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Sylph_Face",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Sylph_FlyHit",
+      "modifiers": {
+        "FlyHit_Start": {
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "value": true,
+              "boolID": "DropLandTag",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "DropLandTag",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "HitThrow",
+            "HitThrowDrop"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "FlyHit_Start",
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Sylph_AlertnessTag",
+      "modifiers": {
+        "AlertnessTag": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_SYLPH_ALERTNESS_TAG_",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_SYLPH_ALERTNESS_TAG_",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAIAlertnessMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "AlertnessTag",
+          "alertness": [
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_MonsterAffix_Property_HpDown_Sylph",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "MonsterAffix_Property_HpDown_Sylph",
+      "modifiers": {
+        "UNIQUE_MonsterAffix_Property_HpDown_Sylph": {
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_MaxHPRatio": -0.8999999761581421
+          }
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  }
+]

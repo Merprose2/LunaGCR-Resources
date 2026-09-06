@@ -1,0 +1,2600 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "tag": "ChallengeBoss"
+        }
+      ],
+      "abilitySpecials": {
+        "attack_weaken": 0,
+        "hp_adjust_0": 0,
+        "hp_adjust_1": 0,
+        "hp_adjust_2": 0,
+        "hp_adjust_3": 0
+      },
+      "abilityName": "Monster_BossEvent_CommonProcess",
+      "modifiers": {
+        "AssistCount_0": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_MaxHPRatio": "hp_adjust_0"
+          }
+        },
+        "AssistCount_1": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_MaxHPRatio": "hp_adjust_1"
+          }
+        },
+        "AssistCount_2": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_MaxHPRatio": "hp_adjust_2"
+          }
+        },
+        "AssistCount_3": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_MaxHPRatio": "hp_adjust_3"
+          }
+        },
+        "AssistCount_4": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "AssistOption_1_Cancel": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "AssistOption_1_Selected": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AttackRatio": "attack_weaken"
+          }
+        },
+        "DenyLockOn_State": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "DenyLockOn"
+        },
+        "Ghost_State": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "IsGhostToEnemy"
+        },
+        "Invincible_State": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Ghost_State",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "DenyLockOn_State",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "Invincible"
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5,
+            2.5,
+            3.5,
+            4.5
+          ],
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "AssistCount_0",
+            "AssistCount_1",
+            "AssistCount_2",
+            "AssistCount_3",
+            "AssistCount_4"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_EffigyChallenge_V5_AssistOptionSelectedCount",
+          "PNELLOCFHCP": true
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.10000000149011612,
+            0.5,
+            1.5
+          ],
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "AssistOption_1_Cancel",
+            "AssistOption_1_Selected"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_EffigyChallenge_V5_AssistOptionSelected_1",
+          "PNELLOCFHCP": true
+        },
+        {
+          "$type": "AttachToAIAlertnessMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Invincible_State",
+          "alertness": [
+            0,
+            1
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "key": "GV_EffigyChallenge_V5_Boss_DisableButtonT",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_RopeBoundLogic",
+      "modifiers": {
+        "Dummy_Bullet_Timer": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_BossEvent_BidingRope_BS",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetLockingV3Config",
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "specialCameraName": "StunFocus",
+              "value": 1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.30000001192092896,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_REGISVINE_STAGE",
+                      "value": 2
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_REGISVINE_STAGE",
+                      "value": 4
+                    }
+                  ]
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "ServerMonsterLog",
+                  "paramList": [
+                    1,
+                    2,
+                    0
+                  ],
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "triggerID": "RopeBound",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "AllTeams",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Energy_Amend",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Energy_Amend": {
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "GV_EffigyChallenge_V5_Energy",
+              "useLimitRange": true,
+              "value": 1000,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 2000
+            }
+          ],
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RopeBound_Ready": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RopeBound_Start": {
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Monster_Regisvine_Fire_BossEvent_RopeBoundLogic",
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RopeBound_State": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "setSelfAsEffectPluginTarget": true,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_BossEvent_BidingRope_Loop",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "setEnable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "pushColliderNames": [
+                "PushCollider_RopeBound"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_BossEvent_BidingRope_AS",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "pushColliderNames": [
+                "PushCollider_RopeBound"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Dummy_Bullet_Timer",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "RopeBound_Ready",
+            "RopeBound_Start"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_EffigyChallenge_V5_AssistSkillUsed",
+          "PNELLOCFHCP": true
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "RopeBound_BS",
+            "RopeBound_Loop"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "RopeBound_State",
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_AttackSteer",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 25,
+          "steerStateIDs": [
+            "Standby"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 99
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 240,
+          "steerStateIDs": [
+            "Alert"
+          ],
+          "startNormalizedTime": 0.28999999165534973,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 240,
+          "steerStateIDs": [
+            "LavaBlast_BS"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 40,
+          "steerStateIDs": [
+            "LavaBlast_Loop"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.5
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 270,
+          "steerStateIDs": [
+            "LavaBlast_Attack"
+          ],
+          "startNormalizedTime": 0.4300000071525574,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.7400000095367432
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 120,
+          "steerStateIDs": [
+            "FlameLazer_Attack01"
+          ],
+          "startNormalizedTime": 0.6000000238418579,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 180,
+          "steerStateIDs": [
+            "FlameLazer_Attack02"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.08100000023841858
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 90,
+          "steerStateIDs": [
+            "RapidFire_BS",
+            "RapidFire_Attack"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 3
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 210,
+          "steerStateIDs": [
+            "HeadAttack"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.25
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 50,
+          "steerStateIDs": [
+            "HeadAttack"
+          ],
+          "startNormalizedTime": 0.25,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.3199999928474426
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 160,
+          "steerStateIDs": [
+            "HeadCombo_Attack"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.3199999928474426
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 180,
+          "steerStateIDs": [
+            "HeadAttack"
+          ],
+          "startNormalizedTime": 0.6700000166893005,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 150,
+          "steerStateIDs": [
+            "HeadCombo_Release"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 1
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 150,
+          "steerStateIDs": [
+            "MeleeCombo"
+          ],
+          "startNormalizedTime": 0.20399999618530273,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.26100000739097595
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 160,
+          "steerStateIDs": [
+            "HeadCombo_Final"
+          ],
+          "startNormalizedTime": 0.38999998569488525,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.44999998807907104
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 160,
+          "steerStateIDs": [
+            "MeleeCombo"
+          ],
+          "startNormalizedTime": 0.38999998569488525,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.44999998807907104
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 240,
+          "steerStateIDs": [
+            "RangedAttack"
+          ],
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.20999999344348907
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "actorIceSubHurtDelta": -1,
+          "EMBOAOPDDKP": 180,
+          "value": -1,
+          "angularSpeed": 55,
+          "steerStateIDs": [
+            "RangedAttack"
+          ],
+          "startNormalizedTime": 0.20999999344348907,
+          "IBMKLKNGDEA": true,
+          "endNormalizedTime": 0.8500000238418579
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilitySpecials": {
+        "core_element_durability_max": 0,
+        "element_transform_threshold": 150,
+        "root_element_durability_max": 0
+      },
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_HeadCoreGadget",
+      "modifiers": {
+        "HeadCore": {
+          "onAdded": [
+            {
+              "$type": "SetFollowMove",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "attachPoint": "Core",
+              "GFAMIKABCMA": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "setEnable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "hitBoxNames": [
+                "HitBox_Core"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "hitBoxNames": [
+                "HitBox_Fruit"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "HideUIBillBoard",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementType": "Fire",
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "HeadCore",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "onReconnect": [
+            {
+              "$type": "SetFollowMove",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attachPoint": "Core",
+              "GFAMIKABCMA": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": "core_element_durability_max",
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "actorIceSubHurtDelta": -1,
+              "onShieldBroken": [
+                {
+                  "$type": "ServerMonsterLog",
+                  "paramList": [
+                    1,
+                    0,
+                    1
+                  ],
+                  "target": "Owner",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "FireEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "effectPattern": "Eff_Monster_Regisvine_Fire_Fruit_Break",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "TriggerAbility",
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "abilityName": "Monster_Regisvine_Fire_BossEvent_StageControl",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "useMutiPlayerFixData": true,
+              "barElementType": "Fire"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Water"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Electric"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Ice"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Wind"
+                    }
+                  ]
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "FireEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "$type": "ConfigBornByHitPoint",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "$type": "BDODHIJDMCE",
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "effectPattern": "Eff_Monster_Regisvine_Fire_BlazeSeed_Hit_Ineffective",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FireEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "$type": "ConfigBornByHitPoint",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "effectPattern": "Eff_Monster_Regisvine_Fire_Hit_Weakness",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "target": "Owner",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "CoreWeaknessBeHit",
+              "mpTriggerOnRemote": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "PMLIDDMKBGL": true
+        },
+        "HideCore": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "isGhost",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "hitBoxNames": [
+                "HitBox_Core",
+                "HitBox_Fruit"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "HideUIBillBoard",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "hide": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_EffigyChallenge_V5_AssistOptionSelected_4",
+                  "target": "Owner",
+                  "value": 1
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetOverrideMapValue",
+                  "value": 900,
+                  "overrideMapKey": "core_element_durability_max",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetOverrideMapValue",
+                  "value": 100,
+                  "overrideMapKey": "root_element_durability_max",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetOverrideMapValue",
+                  "value": 650,
+                  "overrideMapKey": "core_element_durability_max",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetOverrideMapValue",
+                  "value": 50,
+                  "overrideMapKey": "root_element_durability_max",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "target": "Owner",
+              "overrideMapKey": "core_element_durability_max",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ForCharMaster_Yelan",
+                  "target": "Owner",
+                  "value": 1
+                }
+              ],
+              "globalValueKey": "_Core_DurTemp",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "target": "Owner",
+              "overrideMapKey": "root_element_durability_max",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ForCharMaster_Yelan",
+                  "target": "Owner",
+                  "value": 1
+                }
+              ],
+              "globalValueKey": "_Root_DurTemp",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "DenyLockOn"
+        },
+        "RootCore": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "Owner",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_Fruit_Normal",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetFollowMove",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "attachPoint": "Fruit_CorePos",
+              "GFAMIKABCMA": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "hitBoxNames": [
+                "HitBox_Core"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "setEnable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "hitBoxNames": [
+                "HitBox_Fruit"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "HideUIBillBoard",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementType": "Fire",
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "RootCore",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "onReconnect": [
+            {
+              "$type": "SetFollowMove",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attachPoint": "Fruit_CorePos",
+              "GFAMIKABCMA": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": "root_element_durability_max",
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "actorIceSubHurtDelta": -1,
+              "onShieldBroken": [
+                {
+                  "$type": "ServerMonsterLog",
+                  "paramList": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "target": "Owner",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "FireEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "effectPattern": "Eff_Monster_Regisvine_Fire_Fruit_Break",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "TriggerAbility",
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "abilityName": "Monster_Regisvine_Fire_BossEvent_ShieldBreak",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "useMutiPlayerFixData": true,
+              "barElementType": "Fire"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Water"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Electric"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Ice"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "target": "Target",
+                      "element": "Wind"
+                    }
+                  ]
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "FireEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "$type": "ConfigBornByHitPoint",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "$type": "BDODHIJDMCE",
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "effectPattern": "Eff_Monster_Regisvine_Fire_BlazeSeed_Hit_Ineffective",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FireEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "$type": "ConfigBornByHitPoint",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "effectPattern": "Eff_Monster_Regisvine_Fire_Hit_Weakness",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "target": "Owner",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "FruitWeaknessBeHit",
+              "mpTriggerOnRemote": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "PMLIDDMKBGL": true
+        },
+        "isGhost": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "state": "IsGhostToEnemy"
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.10000000149011612,
+            0.5,
+            1.5,
+            2.5,
+            3.5,
+            5.5
+          ],
+          "removeModifierByAttach": true,
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Owner",
+          "modifierNameSteps": [
+            "HideCore",
+            "HeadCore",
+            "HideCore",
+            "RootCore",
+            "HideCore"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_REGISVINE_STAGE",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_RapidFire",
+      "modifiers": {
+        "BulletEmitter": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "BulletSourceL"
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_RapidFire_02",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "BulletSourceR"
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_RapidFire_02",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "ConfigDirectionByAttackTarget",
+                  "maxAngle": 20,
+                  "randomAngleHor": 2.5,
+                  "MMDMEINCOMO": 2.5
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "BulletSourceL"
+              },
+              "trackTarget": "SelfAttackTarget",
+              "bulletID": 42602051,
+              "value": true,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            },
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "ConfigDirectionByAttackTarget",
+                  "maxAngle": 20,
+                  "randomAngleHor": 2.5,
+                  "MMDMEINCOMO": 2.5
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "BulletSourceR"
+              },
+              "trackTarget": "SelfAttackTarget",
+              "bulletID": 42602051,
+              "value": true,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "thinkInterval": 0.33000001311302185,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "BulletSourceL"
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_RapidFire_02",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "BulletSourceR"
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_RapidFire_02",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "ConfigDirectionByAttackTarget",
+                  "maxAngle": 60,
+                  "randomAngleHor": 2.5,
+                  "MMDMEINCOMO": 2.5
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "BulletSourceL"
+              },
+              "trackTarget": "SelfAttackTarget",
+              "bulletID": 42602051,
+              "value": true,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            },
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "ConfigDirectionByAttackTarget",
+                  "maxAngle": 60,
+                  "randomAngleHor": 2.5,
+                  "MMDMEINCOMO": 2.5
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "BulletSourceR"
+              },
+              "trackTarget": "SelfAttackTarget",
+              "bulletID": 42602051,
+              "value": true,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "RapidFire_Attack"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "BulletEmitter",
+          "value": -1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Bullet_VFX",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_RapidFire_BulletLogic",
+      "modifiers": {
+        "Bullet_VFX": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_FireBullet_Trail",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementType": "Fire",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Regisvine_Fire_FireBullet_Explode",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV3",
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "elementType": "Fire",
+                "elementDurability": 25,
+                "enBreak": 25,
+                "elementRank": 1,
+                "attackType": "Range",
+                "strikeType": "Blunt",
+                "damagePercentage": 0.20000000298023224
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 0.75,
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Bullet_VFX",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_LavaBlast_BulletLogic",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Regisvine_Fire_BossEvent_LavaBlast_Attack",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ActCameraShake",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "cameraShake": {
+            "shakeDistance": 50,
+            "extension": {
+              "rangeAttenuation": 0.4000000059604645,
+              "baseOnCamera": true,
+              "baseCycle": 0.10000000149011612
+            },
+            "shakeTime": 0.10000000149011612,
+            "shakeRange": 1.2000000476837158
+          },
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "attenuationTag": "LavaBlast",
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV6",
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default",
+                "retreatType": "ByAttackerForward"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "Owner",
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "SeaHorse_Primo_HitProtection_Multi",
+              "attackProperty": {
+                "elementType": "Fire",
+                "elementDurability": 25,
+                "enBreak": 200,
+                "elementRank": 1,
+                "attackType": "Range",
+                "strikeType": "Blunt",
+                "damagePercentage": 1
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 5.25,
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_SurroundingFire_Gadget",
+      "modifiers": {
+        "Destroy": {
+          "onAdded": [
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "GadgetLogic": {
+          "thinkInterval": 0.6000000238418579,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Pos0"
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "hitImpulseY": 620
+                    }
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "OJKMIPPGDCE": "Owner",
+                  "attackProperty": {
+                    "elementType": "Fire",
+                    "elementDurability": 25,
+                    "enBreak": 201,
+                    "elementRank": 1,
+                    "attackType": "Range",
+                    "damagePercentage": 0.6000000238418579
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "size": {
+                    "x": 2.240000009536743,
+                    "z": 14.510000228881836,
+                    "y": 2.055999994277954
+                  },
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true,
+                    "attachPointName": "Pos0"
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Pos1"
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "hitImpulseY": 620
+                    }
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "OJKMIPPGDCE": "Owner",
+                  "attackProperty": {
+                    "elementType": "Fire",
+                    "elementDurability": 25,
+                    "enBreak": 201,
+                    "elementRank": 1,
+                    "attackType": "Range",
+                    "damagePercentage": 0.6000000238418579
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "size": {
+                    "x": 2.240000009536743,
+                    "z": 14.510000228881836,
+                    "y": 2.055999994277954
+                  },
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true,
+                    "attachPointName": "Pos1"
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Pos2"
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "hitImpulseY": 620
+                    }
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "OJKMIPPGDCE": "Owner",
+                  "attackProperty": {
+                    "elementType": "Fire",
+                    "elementDurability": 25,
+                    "enBreak": 201,
+                    "elementRank": 1,
+                    "attackType": "Range",
+                    "damagePercentage": 0.6000000238418579
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "size": {
+                    "x": 2.240000009536743,
+                    "z": 14.510000228881836,
+                    "y": 2.055999994277954
+                  },
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true,
+                    "attachPointName": "Pos2"
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Pos3"
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "hitImpulseY": 620
+                    }
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "OJKMIPPGDCE": "Owner",
+                  "attackProperty": {
+                    "elementType": "Fire",
+                    "elementDurability": 25,
+                    "enBreak": 201,
+                    "elementRank": 1,
+                    "attackType": "Range",
+                    "damagePercentage": 0.6000000238418579
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "size": {
+                    "x": 2.240000009536743,
+                    "z": 14.510000228881836,
+                    "y": 2.055999994277954
+                  },
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true,
+                    "attachPointName": "Pos3"
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Pos4"
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "hitImpulseY": 620
+                    }
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "OJKMIPPGDCE": "Owner",
+                  "attackProperty": {
+                    "elementType": "Fire",
+                    "elementDurability": 25,
+                    "enBreak": 201,
+                    "elementRank": 1,
+                    "attackType": "Range",
+                    "damagePercentage": 0.6000000238418579
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "size": {
+                    "x": 2.240000009536743,
+                    "z": 14.510000228881836,
+                    "y": 2.055999994277954
+                  },
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true,
+                    "attachPointName": "Pos4"
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Pos5"
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "hitImpulseY": 620
+                    }
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "OJKMIPPGDCE": "Owner",
+                  "attackProperty": {
+                    "elementType": "Fire",
+                    "elementDurability": 25,
+                    "enBreak": 201,
+                    "elementRank": 1,
+                    "attackType": "Range",
+                    "damagePercentage": 0.6000000238418579
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "size": {
+                    "x": 2.240000009536743,
+                    "z": 14.510000228881836,
+                    "y": 2.055999994277954
+                  },
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true,
+                    "attachPointName": "Pos5"
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Pos6"
+              },
+              "effectPattern": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "attackEvent": {
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "hitImpulseY": 620
+                    }
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "OJKMIPPGDCE": "Owner",
+                  "attackProperty": {
+                    "elementType": "Fire",
+                    "elementDurability": 25,
+                    "enBreak": 201,
+                    "elementRank": 1,
+                    "attackType": "Range",
+                    "damagePercentage": 0.6000000238418579
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "size": {
+                    "x": 2.240000009536743,
+                    "z": 14.510000228881836,
+                    "y": 2.055999994277954
+                  },
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true,
+                    "attachPointName": "Pos6"
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Owner",
+          "modifierNameSteps": [
+            "GadgetLogic",
+            "Destroy"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_FIRE_STORM_DESTROY",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  }
+]

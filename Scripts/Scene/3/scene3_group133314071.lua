@@ -15,7 +15,8 @@ local defs = {
         [71001] = {cell = 71001, lines = {}, nodes = {}},
         [71002] = {cell = 71002, lines = {}, nodes = {}},
         [71003] = {cell = 71003, lines = {}, nodes = {}}
-    },
+    }
+,
 
     -- 指定初始激活的电池id，未指定则默认初始未激活
     activeCells = {71001},

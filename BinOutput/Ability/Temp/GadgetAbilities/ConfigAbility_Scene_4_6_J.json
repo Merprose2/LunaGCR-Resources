@@ -1,0 +1,5776 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_Cannon_State",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_Cannon_Timer_Trigger",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Whale_Cannon_Avatar_Controller",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "PanelControl_Team",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Ability_Whale_Cannon_Avatar",
+      "modifiers": {
+        "AvatarInShoot": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_WhaleHookSkill_Step",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "DBPHPMIHBCO",
+                "tag": "Whale_Wander"
+              },
+              "modifierName": "UNIQUE_TriggerWhaleStop_InCannon",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_RemusMagicdragon_Whale_Cannon_Enter_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "BanWhaleTeleport",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 3,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "EntityInVisibleMixin",
+              "AAHPKGHIPPG": {
+                "EAEPMBENPPN": true
+              },
+              "actorIceSubHurtDelta": -1,
+              "disableAudio": true,
+              "reason": "Mixin",
+              "LMCPBHECDEI": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "DBPHPMIHBCO",
+                "tag": "Whale_Wander"
+              },
+              "modifierName": "UNIQUE_TriggerWhaleStop_InCannon",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "BanWhaleTeleport": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Ban_Whale_Teleport",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Ban_Whale_Teleport",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "BlankState": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CheckPaimonArea": {
+          "thinkInterval": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "MFPDKKOGIOD",
+                  "target": "Target",
+                  "OHNOLLBGNIJ": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "GV_Cannon_State",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "PanelControl_Team": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "NotifyUI",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "message": "ExitRemusMagicDragon",
+              "uiContextName": "InLevelMainPage",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Cannon_State",
+              "target": "CurLocalAvatar",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "#Whale_Cannon# n3",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_TriggerWhaleStop_InCannon": {
+          "onAdded": [
+            {
+              "$type": "AddGlobalValueV2",
+              "key": "GV_StopTrigger",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.05999999865889549,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Whale_Cannon_Final_Stop": {
+          "onAdded": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Camera_Blur_Cannon_QTE",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "#Whale_Cannon# Final_Stop",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Ability_Avatar_Whale_Cannon_QTE_Fail",
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Whale_Cannon_Prepare": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_WhaleHookSkill_Step",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "Whale_Log Cannon_Prepare",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "NotifyUI",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "message": "ExitRemusMagicDragon",
+              "uiContextName": "InLevelMainPage",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "#Whale_Cannon# n4",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Cannon_State",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Whale_Cannon_QTE": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "QTE_Cannon_QTE_Succ",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "GV_BoostCount",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_QTE_Perfect_Time",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "NotifyUI",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "message": "BeginRemusMagicDragonQTE",
+              "uiContextName": "InLevelMainPage",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Camera_Blur_Cannon_QTE",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "duration": 2.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "QTE_Cannon_QTE_Succ"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "GV_Cannon_State",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "NotifyUI",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "message": "ExitRemusMagicDragon",
+                  "uiContextName": "InLevelMainPage",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "#Whale_Cannon# n6",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Whale_Cannon_Refresh_QTE_Timer": {
+          "stacking": "Unique",
+          "duration": 3,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_BoostCount",
+                  "target": "Target",
+                  "value": 4,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "#Whale_Cannon# qte startFinal",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Whale_Cannon_Final_Stop",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_BoostCount",
+                  "target": "Target",
+                  "value": 4,
+                  "compareType": "LessAndEqual"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_Cannon_State",
+                  "target": "Target",
+                  "value": 2
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "#Whale_Cannon# qte start",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Whale_Cannon_QTE",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Whale_Cannon_ShootPlayer": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_BoostCount",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Whale_Cannon_Refresh_QTE_Timer",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TurnDirection",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "LGECMJNAKDG": "OnlyCamera",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DoActionsLocal",
+              "actionList": [
+                {
+                  "$type": "AttachEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "predicates": [
+                    {
+                      "$type": "ByNot",
+                      "target": "Target",
+                      "predicates": [
+                        {
+                          "$type": "ByIsLocalAvatar",
+                          "target": "Target"
+                        }
+                      ]
+                    }
+                  ],
+                  "effectPattern": "Eff_RemusMagicdragon_Moving_Remote_01",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "value": true,
+              "bulletID": 70330821,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            },
+            {
+              "$type": "SetGlobalPos",
+              "key": "_ABILITY_Whale_Cannon_Target_Pos",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "z": 100
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "setTarget": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveVelocityForce",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "forces": [
+                "RushMoveType",
+                "InertiaType",
+                "FixedRushMoveType",
+                "RiseType",
+                "AirflowAccType",
+                "AirflowType",
+                "SpeedupType"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "Ability_Avatar_Whale_Cannon_QTE_Succ",
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Cannon_State",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "thinkInterval": 0.30000001192092896,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "KNAIFIGMBFN",
+              "CCDPPFKPHOK": 1,
+              "CCHGNHHLMKP": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "WhaleCannonStop > CarpJumpSecondMoveMixin",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "GV_Cannon_State",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "RemoveUniqueModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Whale_Cannon_ShootPlayer",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "HMENLBHFIBH": true,
+              "MFDLIJHLDKP": 2,
+              "sceneID": 1
+            },
+            {
+              "$type": "SpawnCameraStateMixin",
+              "AFDENKPAECI": {
+                "$type": "LOJKEADJKJI",
+                "EKLJPNFLCBO": 46001,
+                "fovMin": 45,
+                "fovMax": 90,
+                "JGNKGKONPNM": 45,
+                "KFIBIAPGMMA": 1,
+                "KPBNNGBJLMP": "CameraForward",
+                "NFMCBONAMOF": "CameraLook"
+              },
+              "DGPDJMGNEHP": {
+                "blendType": 2,
+                "BJFFNFAIGBM": 1,
+                "DAGICMOAFJP": 2,
+                "NAOIPIIJHAJ": 4
+              },
+              "actorIceSubHurtDelta": -1,
+              "HHDAFCDMDLO": {
+                "duHPRation": 1
+              },
+              "sceneID": -1
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "AttachModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_Whale_Cannon_Refresh_QTE_Timer",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_Cannon_Timer_Trigger",
+                      "target": "Target",
+                      "compareType": "MoreThan"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_Cannon_Timer_Trigger"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Cannon_Timer_Trigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_BoostCount",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_Camera_Blur_Cannon_QTE",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Cannon_State",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "NotifyUI",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "message": "ExitRemusMagicDragon",
+              "uiContextName": "InLevelMainPage",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "#Whale_Cannon# n5",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ClearGlobalPos",
+              "key": "_ABILITY_Whale_Cannon_Target_Pos",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "setTarget": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "KillGadget",
+              "gadgetInfo": {
+                "sortType": "Reversed",
+                "configID": 70330821
+              },
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_RemusMagicdragon_Whale_Cannon_Exit_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "#Whale_Cannon# remove bullet",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveVelocityForce",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "forces": [
+                "RushMoveType",
+                "InertiaType",
+                "FixedRushMoveType",
+                "RiseType",
+                "AirflowAccType",
+                "AirflowType",
+                "SpeedupType"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Cannon_State",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "CBHEIAINBAI",
+                  "target": "Caster",
+                  "PKFBOEPNANB": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "Whale_Cannon_Avatar_Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueAndTalkStateMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5,
+                2.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "Blank",
+                "UNIQUE_Whale_Cannon_Prepare",
+                "UNIQUE_Whale_Cannon_ShootPlayer"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_Cannon_State"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -1,
+                0.5,
+                2.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "BlankState",
+                "AvatarInShoot"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_Cannon_State"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -1,
+                0.5,
+                2.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "BlankState",
+                "CheckPaimonArea"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_Cannon_State"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "UIInteractMixin",
+          "actionList": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "#Whale_Cannon# open page",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Cannon_State",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByHostOrGuest",
+                  "target": "Target",
+                  "isHost": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "uiMessageId": "RemusMagicDragon_Start_Aim"
+        },
+        {
+          "$type": "UIInteractMixin",
+          "actionList": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "#Whale_Cannon# close page",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Cannon_State",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "uiMessageId": "RemusMagicDragon_Exit_Aim"
+        },
+        {
+          "$type": "StageReadyMixin",
+          "actorIceSubHurtDelta": -1,
+          "onStageReady": [
+            {
+              "$type": "NotifyUI",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "message": "ExitRemusMagicDragon",
+              "uiContextName": "InLevelMainPage",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "#Whale_Cannon# n1",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Cannon_State",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ]
+        }
+      ],
+      "onAvatarOut": [
+        {
+          "$type": "NotifyUI",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "message": "ExitRemusMagicDragon",
+          "uiContextName": "InLevelMainPage",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "DebugLog",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "content": "#Whale_Cannon# n2",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_Cannon_State",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "Ability_Avatar_Whale_Cannon_Shoot_Start",
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_Cannon_State",
+          "value": 2,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "Ability_Avatar_Whale_Cannon_QTE_Succ",
+      "modifiers": {
+        "CameraBlur_WhaleCannon": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Camera_Blur_Cannon_QTE": {
+          "onAdded": [
+            {
+              "$type": "TriggerAudio",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "operation": {
+                "$type": "ConfigAudioEventOp",
+                "operation": {
+                  "text": "Play_Vfx_RemusMagicdragon_Moving_CameraPostProcess_01"
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CameraBlurMixin",
+              "actorIceSubHurtDelta": -1,
+              "cameraRadialBlur": {
+                "fadeTime": 1,
+                "power": 0.6499999761581421
+              }
+            },
+            {
+              "$type": "TriggerPostProcessEffectMixin",
+              "actorIceSubHurtDelta": -1,
+              "postEffectAssetName": "PostEffect_RemusMagicdragon_Moving"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerAudio",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "operation": {
+                "$type": "ConfigAudioEventOp",
+                "operation": {
+                  "text": "Stop_Vfx_RemusMagicdragon_Moving_CameraPostProcess_01"
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "QTE_Cannon_QTE_Succ",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "DoWatcherSystemAction",
+          "target": "CurLocalAvatar",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "watcherId": 81473,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AddVelocityForce",
+          "DLEBEPBMEMO": 3,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "velocity": 12,
+          "HDPIKNLINNC": true,
+          "JBJFDCOBKBA": 2,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "$type": "CHHJODLLMHA",
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2,
+            "useRotation": true
+          },
+          "forceType": "SpeedupType",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_Camera_Blur_Cannon_QTE",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AddGlobalValueV2",
+          "key": "GV_Cannon_Timer_Trigger",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "$type": "CEJIEPKNPBN",
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_RemusMagicdragon_QteFeedback_Local_01",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "DoActionsLocal",
+          "actionList": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByIsLocalAvatar",
+                      "target": "Target"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_RemusMagicdragon_QteFeedback_Remote_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "enable": true,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "Ability_Avatar_Whale_Cannon_QTE_Fail",
+      "onAbilityStart": [
+        {
+          "$type": "DebugLog",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "content": "#Whale_Cannon# QTE_Fail",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "QTE_Cannon_QTE_Succ",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_Cannon_State",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "NotifyUI",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "message": "ExitRemusMagicDragon",
+          "uiContextName": "InLevelMainPage",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "DebugLog",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "content": "#Whale_Cannon# n7",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_Ban_Whale_Teleport",
+          "target": "Team",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "RemoveAvatarSkillInfo",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "skillID": 20076,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "AddHookSkill",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_WhaleHookSkill_Step",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "UNIQUE_WhaleHookSkill_RecoverHandler",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "recordFishSkill": 0
+      },
+      "onKill": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "_WhaleHook_Init",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Ability_Whale_Hook_Avatar",
+      "modifiers": {
+        "AddHookSkill": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "actorIceSubHurtDelta": -1,
+              "skillID": 20076,
+              "skillIndex": -1,
+              "priority": "Playmode",
+              "MPIKIJDMPDB": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "AddQuitHookSkill": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "actorIceSubHurtDelta": -1,
+              "skillID": 20346,
+              "skillIndex": 3,
+              "priority": "Playmode",
+              "useInAir": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "BanWhaleTeleport_Hook": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Ban_Whale_Teleport",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Ban_Whale_Teleport",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "EnterFirstPerson": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "ZoomToFirstPerson",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ChangePlayMode",
+              "muteRemoteAction": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "toPlayMode": "GotoRemusDash",
+              "authorityOnly": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ExitFirstPerson": {
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "ChangePlayMode",
+              "muteRemoteAction": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "FPFLACICBBN": "GotoRemusDash",
+              "authorityOnly": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "ZoomToFirstPerson",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "GrapplingHook_ArrivedRushMove": {
+          "onAdded": [
+            {
+              "$type": "RemoveVelocityForce",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "forces": [
+                "InertiaType",
+                "GrapplingHookMoveType"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "CustomSkill02_End_Drop",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_WhaleHookSkill_Step",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.20000000298023224,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "GrapplingHook_SkillCharge": {
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "AVATAR_WhaleHookSkill",
+              "useLimitRange": true,
+              "value": 100,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true,
+              "maxValue": 100
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "HookControl": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CheckSubTagScanEntityMixin",
+              "onEnterArea": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Ability_Whale_Hook_Avatar > onExitArea",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "InWhaleHookArea",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "onExitArea": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Ability_Whale_Hook_Avatar > onEnterArea",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "InWhaleHookArea",
+                  "target": "Team",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "onSelectStart": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Ability_Whale_Hook_Avatar > onSelectStart",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_WhaleHookSkill_ExtraTeamAbility",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "IMEDGAOLLEM": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Ability_Whale_Hook_Avatar > onSelectEnd",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "RemoveUniqueModifier",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "UNIQUE_WhaleHookSkill_ExtraTeamAbility",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "tag": "WorldPlay_4_6",
+              "activateSkillKey": "AVATAR_WhaleHookSkill"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RushMoveOnGround": {
+          "onAdded": [
+            {
+              "$type": "FixedAvatarFlashMove",
+              "DLICJLJHHEO": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "toPos": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.20000000298023224
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "animatorStateIDs": [
+                "ActivitySkill_CustomSkill02"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.05999999865889549,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "RemoveVelocityForce",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "forces": [
+                "RushMoveType",
+                "InertiaType"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AddGlobalValue",
+              "key": "Avatar_HookVisible",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_WhaleHookSkill_Step",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_WhaleHookSkill_Step",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_EndureDelta": 0
+          }
+        },
+        "UNIQUE_TriggerWhaleStop": {
+          "onAdded": [
+            {
+              "$type": "AddGlobalValueV2",
+              "key": "GV_StopTrigger",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.05999999865889549,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_WhaleHookSkill_ExtraTeamAbility": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ActivitySkillMixin",
+              "actorIceSubHurtDelta": -1,
+              "priority": "Activity",
+              "PEONHILPDLC": 20072
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_WhaleHookSkill_GrassCoreEffect": {
+          "onAdded": [
+            {
+              "$type": "DoActionsLocal",
+              "actionList": [
+                {
+                  "$type": "AttachEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "scale": 1,
+                  "doOffStage": false,
+                  "born": {
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2
+                  },
+                  "predicates": [
+                    {
+                      "$type": "ByNot",
+                      "target": "Target",
+                      "predicates": [
+                        {
+                          "$type": "ByIsLocalAvatar",
+                          "target": "Target"
+                        }
+                      ]
+                    }
+                  ],
+                  "effectPattern": "Eff_RemusMagicdragon_Moving_Remote_01",
+                  "effectTempleteID": -1,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "BanWhaleTeleport_Hook",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetVelocityIgnoreAirGY",
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_RemusMagicdragon_Whale_Cannon_Enter_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerBullet",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "value": true,
+              "bulletID": 70330821,
+              "canBeHandledOnRecover": true,
+              "lifeByOwnerV2": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DisableUIMixin",
+              "actorIceSubHurtDelta": -1,
+              "JMEMEMDGEKC": [
+                "InteePanel"
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "CustomSkill02_End_Drop",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "KillGadget",
+              "gadgetInfo": {
+                "sortType": "Reversed",
+                "configID": 70330821
+              },
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetVelocityIgnoreAirGY",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveVelocityForce",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "forces": [
+                "RushMoveType",
+                "InertiaType"
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_RemusMagicdragon_Whale_Cannon_Exit_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "GrapplingHook_SkillCharge",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_AddGravityScale": -2
+          }
+        },
+        "UNIQUE_WhaleHookSkill_HookHideHandler": {
+          "onAdded": [
+            {
+              "$type": "TriggerSetVisible",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "TriggerSetVisible",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "Avatar_HookVisible",
+                      "target": "Target",
+                      "value": 1,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "Avatar_HookVisible"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "Avatar_HookVisible",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerSetVisible",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "visible": true,
+              "enable": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_WhaleHookSkill_PreSkill": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "RushMoveOnGround",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_WhaleStreamingOptimization",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_EndureDelta": 0
+          }
+        },
+        "UNIQUE_WhaleHookSkill_RecoverHandler": {
+          "onReconnect": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_WhaleHookSkill_Step",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_WhaleHookSkill_SkillHandler": {
+          "thinkInterval": 0.20000000298023224,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ActivitySkill_CustomSkill02"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_WhaleHookSkill_SkillHandlerIntern",
+              "value": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_WhaleHookSkill_Step",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_Cannon_State",
+                  "compareType": "MoreThan"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_WhaleHookSkill_SkillHandler",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_WhaleHookSkill_Step"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_WhaleHookSkill_SkillHandlerIntern": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_WhaleHookSkill_Step",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                1.5,
+                3.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "UNIQUE_WhaleHookSkill_PreSkill",
+                "UNIQUE_WhaleHookSkill_ThrowHook"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_ABILITY_WhaleHookSkill_Step"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                2.5,
+                4.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "UNIQUE_WhaleHookSkill_SkillStart"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_ABILITY_WhaleHookSkill_Step"
+            },
+            {
+              "$type": "OIGOIHKGOKJ",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_WhaleHookSkill_Step",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_WhaleHookSkill_Step",
+                  "target": "Target",
+                  "value": 3,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_WhaleHookSkill_SkillStart": {
+          "onAdded": [
+            {
+              "$type": "OBADJEIFDKE",
+              "speed": 10,
+              "DMAHANNMCAH": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "toPos": {
+                "$type": "ConfigBornByGlobalValue",
+                "offset": {
+                  "x": -0.5
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "ConfigDirectionByGlobalValue",
+                  "maxAngle": 180,
+                  "directionKey": "_WhaleHook_TargetDir"
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_WhaleHook_TargetPos"
+              },
+              "animatorStateIDs": [
+                "ActivitySkill_CustomSkill02",
+                "Fly",
+                "Standby",
+                "Run"
+              ],
+              "JLBCKKLJKEF": 20,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_WhaleHookSkill_Step",
+                  "target": "Target",
+                  "value": 3
+                }
+              ],
+              "NFHNGOHFHHB": 10,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_WhaleHook_Cam_Eff_Delay",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAudio",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "operation": {
+                "$type": "ConfigAudioEventOp",
+                "operation": {
+                  "text": "Play_Unique_Whale_Cannon_ShootPlayer"
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ODFMGEHOIHN",
+              "actorIceSubHurtDelta": -1,
+              "FHBNHCOPLNM": 1,
+              "JOENEEBFPPJ": 0.5,
+              "LNAEPNKNKBG": [
+                {
+                  "$type": "SetGlobalValue",
+                  "key": "_ABILITY_WhaleHookSkill_Step",
+                  "value": 4,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_WhaleHookSkill_Step",
+                      "target": "Target",
+                      "value": 3
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "GrapplingHook_ArrivedRushMove",
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerAudio",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "operation": {
+                "$type": "ConfigAudioEventOp",
+                "operation": {
+                  "text": "Stop_Unique_Whale_Cannon_ShootPlayer"
+                }
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_WhaleHook_Cam_Eff_Delay",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_WhaleHook_Cam_Eff",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_WhaleHookSkill_ThrowHook": {
+          "duration": 1.100000023841858,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "GrapplingHookMoveStayInPlaceMixin",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_WhaleHookSkill_Step",
+              "value": 3,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_WhaleHookSkill_Step",
+                  "target": "Target",
+                  "value": 2
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true,
+          "properties": {
+            "Actor_EndureDelta": 0
+          }
+        },
+        "UNIQUE_WhaleHook_Cam_Eff": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "TriggerPostProcessEffectMixin",
+              "actorIceSubHurtDelta": -1,
+              "postEffectAssetName": "PostEffect_RemusMagicdragon_Moving"
+            },
+            {
+              "$type": "CameraBlurMixin",
+              "actorIceSubHurtDelta": -1,
+              "cameraRadialBlur": {
+                "fadeTime": 0.30000001192092896,
+                "power": 0.6499999761581421
+              }
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_WhaleHook_Cam_Eff_Delay": {
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_WhaleHook_Cam_Eff",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_WhaleStreamingOptimization": {
+          "duration": 10,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "StreamingModifierMixin",
+              "actorIceSubHurtDelta": -1,
+              "EECKABMKHFJ": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "ZoomToFirstPerson": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "AddQuitHookSkill",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_WhaleHookSkill_HookHideHandler",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_WhaleHookSkill_HookHideHandler",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "SpawnCameraStateMixin",
+              "AFDENKPAECI": {
+                "$type": "LOJKEADJKJI",
+                "EKLJPNFLCBO": 46000,
+                "fovMin": 30,
+                "fovMax": 100,
+                "JGNKGKONPNM": 30,
+                "KPBNNGBJLMP": "PivotToTarget",
+                "NALICOGEKCL": "TAimPoint",
+                "NFMCBONAMOF": "CameraLook"
+              },
+              "DGPDJMGNEHP": {
+                "blendType": 2,
+                "BJFFNFAIGBM": 1,
+                "DAGICMOAFJP": 2,
+                "duHPRation": 1,
+                "NAOIPIIJHAJ": 4
+              },
+              "isOnStageFalseSwitchValue": {
+                "__unk_Q16140806": "_TempTarget"
+              },
+              "actorIceSubHurtDelta": -1,
+              "HHDAFCDMDLO": {
+                "duHPRation": 1
+              },
+              "target": "TempTarget",
+              "sceneID": 1
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "_ABILITY_WhiteBox_Dive",
+              "value": "recordFishSkill",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "_ABILITY_WhiteBox_Dive_Team",
+              "target": "Team",
+              "value": "recordFishSkill",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "WhaleHook_Init": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "key": "_ABILITY_WhaleHookSkill_Step",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "triggerID": "CustomSkill02_End_Drop",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveVelocityForce",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "forces": [
+                "RushMoveType",
+                "InertiaType",
+                "FixedRushMoveType",
+                "SpeedupType",
+                "GrapplingHookMoveType"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleRefresh",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onRemoved": [
+        {
+          "$type": "AddAvatarSkillInfo",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "skillID": 20076,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ChangePlayMode",
+          "muteRemoteAction": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "FPFLACICBBN": "GotoRemusDash",
+          "authorityOnly": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "modifierName": "ZoomToFirstPerson",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "SetExtraAbilityState",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ClearGlobalPos",
+          "key": "_WhaleHook_TargetPos",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "setTarget": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "GV_Cannon_State"
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "IKKPJCBJHAP",
+            "topLimit": 1,
+            "tag": "WorldPlay_4_6"
+          },
+          "successActions": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "TD:WhaleHook AbilityStart!!!",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "Whale_Log hook AbilityStart!!!",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetTargetToTargetKey",
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "targetKey": "_TempTarget",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetCollisionPointToGlobalPos",
+              "key": "_WhaleHook_TargetPos",
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "GIIKFCBIECE": 250,
+              "IFAGEOOENNG": "BulletTrigger",
+              "LANEADNAMOA": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 2,
+                  "z": 0.25
+                },
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "ConfigDirectionByLookAtEntity",
+                  "maxAngle": 180,
+                  "namedTransform": "TAimPoint"
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "OPPDLDMKALF": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalDir",
+              "key": "_WhaleHook_TargetDir",
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "$type": "ConfigDirectionByLookAtEntity",
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TurnDirectionToPos",
+              "maxAngle": -1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "toPos": {
+                "$type": "ConfigBornByGlobalValue",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "positionKey": "_WhaleHook_TargetPos"
+              },
+              "GLPJJCIDOFA": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_WhaleHookSkill_SkillHandler",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "overrideMapKey": "recordFishSkill",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "globalValueKey": "_ABILITY_WhiteBox_Dive",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EntityDoSkill",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "skillID": 20076,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "Target",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "UNIQUE_TriggerWhaleStop",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ServerLuaCall",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "SpecificGroup",
+              "CallParamList": [
+                511020035
+              ],
+              "funcName": "SLC_TriggerWhaleStop",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "enable": true,
+          "globalValueTarget": "Team",
+          "modifierNameSteps": [
+            "Blank",
+            "HookControl"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_ABILITY_Diving_InDive_Mark",
+          "PNELLOCFHCP": true
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            3.9000000953674316
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Blank",
+            "UNIQUE_WhaleHookSkill_GrassCoreEffect"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_ABILITY_WhaleHookSkill_Step"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            3.9000000953674316
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "ExitFirstPerson",
+            "EnterFirstPerson"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "_ABILITY_WhaleHookSkill_Step"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "RemoveAvatarSkillInfo",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "skillID": 20346,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "Ability_Whale_Hook_Quit_Avatar",
+      "onRemoved": [
+        {
+          "$type": "AddAvatarSkillInfo",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "skillID": 20346,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "DebugLog",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "content": "#WhaleHookQuit#",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValue",
+          "key": "_ABILITY_WhaleHookSkill_Step",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "key": "ElementLevelCo",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "type": "ElementLevelCo",
+          "value": -1,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilitySpecials": {
+        "ElementLevelCo": 0,
+        "Impact_Damage": 50
+      },
+      "isDynamicAbility": true,
+      "abilityName": "Ability_Team_DragonTheatre_4_6",
+      "modifiers": {
+        "Avatar_DragonTheatre_Impact": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": true,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Stages_SwirlDoField_DoAttack_02",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "targetType": "Enemy",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "attackEvent": {
+                "attackInfo": {
+                  "HBOOKFMCODC": {
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "hitPattern": {
+                    "hitImpulseType": "LV2",
+                    "hitHaltTimeScale": 0.019999999552965164,
+                    "BPIJOAMNKIH": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    },
+                    "onHitEffectName": "default"
+                  },
+                  "INKGMIHAPMA": {
+                    "NDIBGPPKGJP": "Shake"
+                  },
+                  "cameraShake": {
+                    "shakeDistance": 20,
+                    "extension": {
+                      "rangeAttenuation": 0.5,
+                      "baseOnCamera": true,
+                      "baseCycle": 0.11999999731779099,
+                      "cycleDamping": 0.11999999731779099
+                    }
+                  },
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "EKBLGIOPKKA": true,
+                    "enBreak": 25,
+                    "elementRank": 1,
+                    "attackType": "Melee",
+                    "HJHPJLGAHHP": true,
+                    "strikeType": "None",
+                    "JHLDBJEFNBP": true,
+                    "damageExtra": [
+                      "Impact_Damage",
+                      "ElementLevelCo",
+                      "MUL"
+                    ]
+                  }
+                },
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "APKLAIJMEIL": {
+                      "HHNLJKNBKPP": 180
+                    },
+                    "value": 10,
+                    "direction": {
+                      "maxAngle": 180
+                    },
+                    "onGroundRaycastUpDist": 2,
+                    "useRotation": true
+                  },
+                  "MPNIJNGFBIH": {
+                    "INOCAOHPEBB": {
+                      "GGOHGMFHHEC": true,
+                      "value": 1
+                    }
+                  },
+                  "triggerType": "TriggerNoRepeat",
+                  "radius": 10,
+                  "massiveAttackRatio": 1
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ImpactState": {
+          "thinkInterval": 2,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "Avatar_DragonTheatre_Impact",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "valueSteps": [
+            -1,
+            0.5,
+            1.5
+          ],
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Blank",
+            "ImpactState"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_DragonTheatre_Buff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "tag": "IS_LMS_WHALE_SCAN_TARGET"
+        }
+      ],
+      "abilityName": "SceneObj_Whale_Scan_Col_GoldenHall",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "tag": "IS_LMS_WHALE_SCAN_TARGET"
+        }
+      ],
+      "abilityName": "SceneObj_Whale_Scan_Col_GoldenHall_Repair",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "tag": "IS_LMS_WHALE_SCAN_TARGET"
+        }
+      ],
+      "abilityName": "SceneObj_Whale_Scan_Col_Mural_Entry",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "tag": "IS_LMS_WHALE_SCAN_TARGET"
+        }
+      ],
+      "abilityName": "SceneObj_Whale_Scan_Col_Mural",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "Ability_Team_FlashBack_CamEffect_4_6",
+      "modifiers": {
+        "CamBlur_FlashBack": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CameraBlurMixin",
+              "actorIceSubHurtDelta": -1,
+              "cameraRadialBlur": {
+                "fadeTime": 1,
+                "power": 0.6499999761581421
+              }
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "CamBlur_FlashBack"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "Ability_Team_FirstPerson_4_6",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "FirstPerson": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ActivitySkill_CommonMove"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "InMove",
+              "value": -1
+            },
+            {
+              "$type": "SpawnCameraStateMixin",
+              "AFDENKPAECI": {
+                "$type": "LOJKEADJKJI",
+                "BKKBOKOBELI": 50,
+                "CMJBOELEJPF": -50,
+                "EKDCFEFJCBE": 35,
+                "EKLJPNFLCBO": -1,
+                "fovMin": 50,
+                "FKDPCACCNIF": 0.5,
+                "fovMax": 50,
+                "INPCDFNCPDE": 1.7000000476837158,
+                "JGNKGKONPNM": 50,
+                "KFIBIAPGMMA": 1,
+                "LLMLMENGFIP": -55,
+                "NFMCBONAMOF": "MoveCollider",
+                "PCPGEFKCBCK": true
+              },
+              "DGPDJMGNEHP": {
+                "blendType": 2,
+                "BJFFNFAIGBM": 1,
+                "DAGICMOAFJP": 2
+              },
+              "actorIceSubHurtDelta": -1,
+              "HHDAFCDMDLO": {
+                "duHPRation": 1
+              },
+              "sceneID": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "InMove": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CameraShakeMixin",
+              "ACAPGGAFIGF": [
+                {
+                  "CINEFPAENNG": 1,
+                  "JAJNLIIENME": {
+                    "x": 0.14000000059604645,
+                    "y": 0.17499999701976776
+                  },
+                  "JEGCIPNMLNP": {
+                    "x": 0.5,
+                    "y": 0.699999988079071
+                  },
+                  "duHPRation": 5,
+                  "MIFKDCGJGPE": 1
+                },
+                {
+                  "CINEFPAENNG": 1,
+                  "JAJNLIIENME": {
+                    "x": 0.5,
+                    "y": 0.4000000059604645
+                  },
+                  "JEGCIPNMLNP": {
+                    "x": 0.5,
+                    "y": 0.6000000238418579
+                  },
+                  "duHPRation": 5,
+                  "MIFKDCGJGPE": 1
+                },
+                {
+                  "CINEFPAENNG": 1,
+                  "JAJNLIIENME": {
+                    "x": 0.800000011920929
+                  },
+                  "JEGCIPNMLNP": {
+                    "x": 1,
+                    "y": 0.5
+                  },
+                  "duHPRation": 5,
+                  "MIFKDCGJGPE": 1
+                }
+              ],
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "FirstPerson"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "FlashBack_Stage_46_01",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "LevelCurveMixin",
+          "BEDOJLFENKK": [
+            "SetGroupVariable"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "EDFJOMKHLFM": [
+            [
+              {
+                "$type": "DebugLog",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "content": "LevelCurveMixin > SetGroupVariable",
+                "canBeHandledOnRecover": true
+              },
+              {
+                "$type": "SetCurveProgressInfoToGlobalValue",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "PFCIBLHFIAL": "TEST_GV_",
+                "canBeHandledOnRecover": true
+              },
+              {
+                "$type": "SetGlobalValueToOverrideMap",
+                "overrideMapKey": "TEST_GV_0",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "globalValueKey": "TEST_GV_0",
+                "canBeHandledOnRecover": true
+              },
+              {
+                "$type": "SetGlobalValueToOverrideMap",
+                "overrideMapKey": "TEST_GV_1",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "globalValueKey": "TEST_GV_1",
+                "canBeHandledOnRecover": true
+              },
+              {
+                "$type": "ServerLuaCall",
+                "param2": "TEST_GV_1",
+                "actorIceSubHurtDelta": -1,
+                "doOffStage": false,
+                "luaCallType": "SpecificGroup",
+                "param1": "TEST_GV_0",
+                "paramNum": 2,
+                "CallParamList": [
+                  220210001
+                ],
+                "funcName": "SLC_FlashBack_SetVar",
+                "canBeHandledOnRecover": true
+              }
+            ]
+          ],
+          "HPFCGICMFMF": [
+            "TEST_GV_0",
+            "TEST_GV_1"
+          ]
+        },
+        {
+          "$type": "EntityInVisibleMixin",
+          "AAHPKGHIPPG": {
+            "EAEPMBENPPN": true
+          },
+          "actorIceSubHurtDelta": -1,
+          "disableAudio": true,
+          "reason": "Mixin",
+          "LMCPBHECDEI": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "tag": "Whale_Wander"
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "HookMark",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_StopTrigger",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Controller",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_StopMove",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_Visible",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_InTalk",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_IsLerpStop",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_StopSpeed",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_InstantStopTime",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_LerpStopTime",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_StartMoveSpeed",
+          "value": 8,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_StartMoveDur",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Ptahur_Devourer_02_Appear",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "TriggerSetRenderersEnableV2",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "renderNames": [
+            "Body"
+          ],
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "DelayAppear",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetAnimatorFloat",
+          "value": 1,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "floatID": "BlendSpeed",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "SGV_Default_Move",
+              "value": 1
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "EnableGadgetIntee",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_Monster_Ptahur_Devourer_02_Disappear",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetAnimatorTrigger",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "triggerID": "Disappear",
+          "mpTriggerOnRemote": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "RemoveModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "HookMark",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_Area_BigWhale_Interact",
+      "modifiers": {
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Controller": {
+          "onReconnect": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_InTalk",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "TriggerStopForAWhile",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_InTalk",
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_StopTrigger"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "TriggerStopForAWhile",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_InTalk",
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "SGV_Stop_Trigger"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "DelayAppear": {
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Visible",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "HookMark": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "SubTagScanEntityMixin",
+              "actorIceSubHurtDelta": -1,
+              "tag": "WorldPlay_4_6"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "MoveEffect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Palm01_L"
+              },
+              "effectPattern": "Eff_Monster_Ptahur_Devourer_02_CommonTrail",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "Palm01_L",
+              "doOffStage": false,
+              "attachPoint": "Palm01_L",
+              "effectPattern": "Eff_Monster_Ptahur_Devourer_02_CommonTrail",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Palm01_R"
+              },
+              "effectPattern": "Eff_Monster_Ptahur_Devourer_02_CommonTrail",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "Palm01_R",
+              "doOffStage": false,
+              "attachPoint": "Palm01_R",
+              "effectPattern": "Eff_Monster_Ptahur_Devourer_02_CommonTrail",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Toe01_L"
+              },
+              "effectPattern": "Eff_Monster_Ptahur_Devourer_02_CommonTrail",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "Toe01_L",
+              "doOffStage": false,
+              "attachPoint": "Toe01_L",
+              "effectPattern": "Eff_Monster_Ptahur_Devourer_02_CommonTrail",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Toe01_R"
+              },
+              "effectPattern": "Eff_Monster_Ptahur_Devourer_02_CommonTrail",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "actorIceSubHurtDelta": -1,
+              "followPath": "Toe01_R",
+              "doOffStage": false,
+              "attachPoint": "Toe01_R",
+              "effectPattern": "Eff_Monster_Ptahur_Devourer_02_CommonTrail",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "StopMoveControl": {
+          "onAdded": [
+            {
+              "$type": "SetAnimatorFloat",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "value": 1,
+              "floatID": "BlendSpeed",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "StopMove_Instant",
+                "StopMove_Lerp"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_IsLerpStop",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorFloat",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "floatID": "BlendSpeed",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_Default_Move",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "StopMove_Instant": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OverrideCurveSpeedMixin",
+              "AMHOFDLHIFE": 1,
+              "actorIceSubHurtDelta": -1,
+              "JKKIFHJPKGJ": 1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "StopMove_Lerp": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OverrideCurveSpeedMixin",
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TalkStop": {
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "TriggerStopForAWhile",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_IsLerpStop",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_StopMove",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "TriggerStopForAWhile",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TriggerStopForAWhile": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_StopMove",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 15,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_StopMove",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_InTalk",
+                  "target": "Target"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Visible": {
+          "onAdded": [
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "setEnable": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "renderNames": [
+                "Body"
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onRemoved": [
+        {
+          "$type": "NotifyUI",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "message": "ExitRemusMagicDragon",
+          "uiContextName": "InLevelMainPage",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "DebugLog",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "content": "#Whale_Cannon# n8",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "InvisibleInTalkAndCSMixin",
+          "actorIceSubHurtDelta": -1,
+          "pushColliderNames": [
+            "PushCollider"
+          ],
+          "EMNIAOMNIEF": true
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Move"
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "MoveEffect",
+          "value": -1
+        },
+        {
+          "$type": "WidgetMpSupportMixin",
+          "succActions": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_InTalk",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "actorIceSubHurtDelta": -1
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "StopMoveControl"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "GV_StopMove",
+          "PNELLOCFHCP": true
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Blank",
+            "Visible"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "GV_Visible",
+          "PNELLOCFHCP": true
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            0.5,
+            1.5
+          ],
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "TalkStop"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "GV_InTalk",
+          "PNELLOCFHCP": true
+        },
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "actorIceSubHurtDelta": -1,
+          "actions": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_InTalk",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "globalValueKey": "SGV_Talk_Done_Trigger"
+        },
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "actorIceSubHurtDelta": -1,
+          "actions": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "triggerID": "AttackTrigger",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "globalValueKey": "SGV_Bullet_Trigger"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "Ability_Team_OceanCurveEventHandle_4_6",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OceanCurveEventHandler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "LevelCurveMixin",
+              "BEDOJLFENKK": [
+                "SetGroupVariable"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "EDFJOMKHLFM": [
+                [
+                  {
+                    "$type": "DebugLog",
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "content": "LevelCurveMixin > SetGroupVariable",
+                    "canBeHandledOnRecover": true
+                  },
+                  {
+                    "$type": "SetCurveProgressInfoToGlobalValue",
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "PFCIBLHFIAL": "TEST_GV_",
+                    "canBeHandledOnRecover": true
+                  },
+                  {
+                    "$type": "SetGlobalValueToOverrideMap",
+                    "overrideMapKey": "TEST_GV_0",
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "globalValueKey": "TEST_GV_0",
+                    "canBeHandledOnRecover": true
+                  },
+                  {
+                    "$type": "SetGlobalValueToOverrideMap",
+                    "overrideMapKey": "TEST_GV_1",
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "globalValueKey": "TEST_GV_1",
+                    "canBeHandledOnRecover": true
+                  },
+                  {
+                    "$type": "ServerLuaCall",
+                    "param2": "TEST_GV_1",
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "luaCallType": "SpecificGroup",
+                    "param1": "TEST_GV_0",
+                    "paramNum": 2,
+                    "CallParamList": [
+                      511010002
+                    ],
+                    "funcName": "SLC_SetGroupVar",
+                    "canBeHandledOnRecover": true
+                  }
+                ]
+              ],
+              "HPFCGICMFMF": [
+                "GV_Curve_Key_0"
+              ],
+              "tag": "OceanCurrent"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "OceanCurveEventHandler"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "Ability_Team_OceanCurveEventHandle_4_6_Scene3",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OceanCurveEventHandler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "LevelCurveMixin",
+              "BEDOJLFENKK": [
+                "SetGroupVariable"
+              ],
+              "actorIceSubHurtDelta": -1,
+              "EDFJOMKHLFM": [
+                [
+                  {
+                    "$type": "DebugLog",
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "content": "LevelCurveMixin > SetGroupVariable",
+                    "canBeHandledOnRecover": true
+                  },
+                  {
+                    "$type": "SetCurveProgressInfoToGlobalValue",
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "PFCIBLHFIAL": "TEST_GV_",
+                    "canBeHandledOnRecover": true
+                  },
+                  {
+                    "$type": "SetGlobalValueToOverrideMap",
+                    "overrideMapKey": "TEST_GV_0",
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "globalValueKey": "TEST_GV_0",
+                    "canBeHandledOnRecover": true
+                  },
+                  {
+                    "$type": "SetGlobalValueToOverrideMap",
+                    "overrideMapKey": "TEST_GV_1",
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "globalValueKey": "TEST_GV_1",
+                    "canBeHandledOnRecover": true
+                  },
+                  {
+                    "$type": "ServerLuaCall",
+                    "param2": "TEST_GV_1",
+                    "actorIceSubHurtDelta": -1,
+                    "doOffStage": false,
+                    "luaCallType": "SpecificGroup",
+                    "param1": "TEST_GV_0",
+                    "paramNum": 2,
+                    "CallParamList": [
+                      133405057
+                    ],
+                    "funcName": "SLC_SetGroupVar",
+                    "canBeHandledOnRecover": true
+                  }
+                ]
+              ],
+              "HPFCGICMFMF": [
+                "GV_Curve_Key_0"
+              ],
+              "tag": "OceanCurrent"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "OceanCurveEventHandler"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "SceneObj_LMS_Whale_Howl_Follow",
+      "modifiers": {
+        "Controller": {
+          "onAdded": [
+            {
+              "$type": "TriggerAudio",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "operation": {
+                "$type": "ConfigAudioEventOp",
+                "operation": {
+                  "text": "Play_Sfx_Monster_Ptahur_Devourer_02_Vo_Old_01"
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "SceneObj_DragonTheatre_Talk_Gadget_01",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onKill": [
+        {
+          "$type": "SendEffectTrigger",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "enable": true,
+          "parameter": "FadeOut",
+          "value": 1,
+          "effectPattern": "Eff_Stages_SceneObj_VABoids_DeepSeaIBlue_01",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_DeepSea_Fish_01",
+      "modifiers": {
+        "Controller": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Stages_SceneObj_VABoids_DeepSeaIBlue_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "SceneObj_Invisible_Water_Current_Entrance_35",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "onFieldEnter": [
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByNot",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "ADGJCFLPIPK",
+                  "target": "Target",
+                  "HKNHCBAPADC": "OCEAN_CURRENT"
+                }
+              ]
+            },
+            {
+              "$type": "ByNot",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "ByTargetGadgetState",
+                  "gadgetState": 201
+                }
+              ]
+            }
+          ],
+          "target": "Target",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "failActions": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "角色正在洋流中",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "ServerLuaCall",
+              "target": "TargetTeam",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_EnterOceanCurrent",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "SceneObj_Ani_Prop_RemusBookPickup_01",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "actorIceSubHurtDelta": -1,
+              "HIJJCMPHDLA": true,
+              "LPMBCOFEEFM": -1,
+              "value": 1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "PickedUp": {
+          "onAdded": [
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "actorIceSubHurtDelta": -1,
+              "value": 1,
+              "LPMBCOFEEFM": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "PickedUp",
+          "gadgetState": 202
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "Ability_Team_Camera_Check_4_6",
+      "modifiers": {
+        "ActivateTarget": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_IsActive",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "LookCheck": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CheckSubTagScanEntityMixin",
+              "actorIceSubHurtDelta": -1,
+              "onSelectStart": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Ability_Team_Camera_Check_4_6 > onSelectStart",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "ActivateTarget",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_IsActive",
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "IMEDGAOLLEM": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "Ability_Team_Camera_Check_4_6 > onSelectEnd",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "tag": "WorldPlay_4_6"
+            },
+            {
+              "$type": "CheckSubTagScanEntityMixin",
+              "actorIceSubHurtDelta": -1,
+              "onSelectStart": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "WorldPlay_CameraLookCheck_4_6_College > onSelectStart",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Other",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "ActivateTarget",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_IsActive",
+                      "target": "Target"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "IMEDGAOLLEM": [
+                {
+                  "$type": "DebugLog",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "content": "WorldPlay_CameraLookCheck_4_6_College > onSelectEnd",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "tag": "WorldPlay_4_6"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "LookCheck"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "GV_IsActive",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "tag": "CameraLookCheck_4_6"
+        }
+      ],
+      "abilityName": "SceneObj_CamLook_Check_4_6",
+      "modifiers": {
+        "Active": {
+          "onAdded": [
+            {
+              "$type": "ServerLuaTriggerEvent",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "luaCallType": "FromGroup",
+              "sourceName": "CamLookTrigger",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CollegeState": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "SubTagScanEntityMixin",
+              "actorIceSubHurtDelta": -1,
+              "tag": "WorldPlay_4_6",
+              "PALEDMNLIID": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "VillageState": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "SubTagScanEntityMixin",
+              "actorIceSubHurtDelta": -1,
+              "tag": "WorldPlay_4_6",
+              "PALEDMNLIID": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "VillageState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "CollegeState",
+          "gadgetState": 201
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Blank",
+            "Active"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "GV_IsActive",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onKill": [
+        {
+          "$type": "TriggerAttackEvent",
+          "targetType": "Enemy",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "attackEvent": {
+            "attackInfo": {
+              "attackTag": "WhaleCannonAttack",
+              "attenuationTag": "LaserAttack",
+              "HBOOKFMCODC": {
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "hitPattern": {
+                "hitImpulseType": "LV2",
+                "BPIJOAMNKIH": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                },
+                "onHitEffectName": "default"
+              },
+              "INKGMIHAPMA": {
+                "NDIBGPPKGJP": "Shake"
+              },
+              "canBeModifiedBy": "OriginOwner",
+              "cameraShake": {
+                "shakeDistance": 20,
+                "extension": {
+                  "rangeAttenuation": 0.5,
+                  "baseOnCamera": true,
+                  "baseCycle": 0.11999999731779099,
+                  "cycleDamping": 0.11999999731779099
+                }
+              },
+              "attenuationGroup": "Skirmisher_Fat_SprayGun_Ice",
+              "attackProperty": {
+                "elementDurability": 50,
+                "enBreak": 20,
+                "elementRank": 1,
+                "attackType": "Default",
+                "strikeType": "Blunt",
+                "damagePercentage": 1
+              }
+            },
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "MPNIJNGFBIH": {
+                "INOCAOHPEBB": {
+                  "GGOHGMFHHEC": true,
+                  "value": 1
+                }
+              },
+              "triggerType": "TriggerNoRepeat",
+              "radius": 0.5,
+              "massiveAttackRatio": 1
+            }
+          },
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_Whale_Cannon_Bullet",
+      "modifiers": {
+        "StopCannonMove": {
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "WhaleCannonStop > BulletHit",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "UNIQUE_Whale_Cannon_ShootPlayer",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "_ABILITY_WhaleHookSkill_Step",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "DebugLog",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "content": "SceneObj_Whale_Cannon_Bullet onAbilityStart",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ILMHBGFOAJN",
+              "target": "Target",
+              "configIdArray": [
+                70330487,
+                70291485,
+                70291489
+              ]
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "otherTargets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR6H10",
+            "campTargetType": "AllExceptSelf",
+            "sizeRatio": 1,
+            "NLNIBNNOOCK": {
+              "APKLAIJMEIL": {
+                "HHNLJKNBKPP": 180
+              },
+              "value": 10,
+              "direction": {
+                "maxAngle": 180
+              },
+              "onGroundRaycastUpDist": 2
+            }
+          },
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "target": "OriginOwner",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "StopCannonMove",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "onFieldEnter": [
+        {
+          "$type": "DebugLog",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "content": "SceneObj_Whale_Cannon_Bullet onFieldEnterIn",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ILMHBGFOAJN",
+              "target": "Target",
+              "configIdArray": [
+                70330487,
+                70291485,
+                70291489
+              ]
+            }
+          ],
+          "target": "Target",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "successActions": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "SceneObj_Whale_Cannon_Bullet onFieldEnterSucc",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "OriginOwner",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "StopCannonMove",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "SceneObj_Whale_Hook_Bullet",
+      "modifiers": {
+        "StopHookMove": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "_ABILITY_WhaleHookSkill_Step",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "WhaleCannonStop > BulletHit",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "target": "OriginOwner",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "StopHookMove",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "KillSelf",
+          "killSelfType": "Normal",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "onFieldEnter": [
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "target": "Target",
+              "value": -1,
+              "entityTypes": [
+                "Gadget",
+                "Field"
+              ]
+            }
+          ],
+          "target": "Target",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "successActions": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "SceneObj_Whale_Hook_Bullet onFieldEnter",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "OriginOwner",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "StopHookMove",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "KillSelf",
+              "killSelfType": "Normal",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Effect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_RemusChains_Main",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Disappear": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "FadeOut",
+              "value": 1,
+              "effectPattern": "Eff_Stages_SceneObj_Fd_PSHY_LightChains_01",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Effect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Stages_SceneObj_Fd_PSHY_LightChains_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Disappear",
+          "gadgetState": 202
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Effect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_RemusChains_01",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Disappear": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Fadeout_01",
+              "value": 1,
+              "effectPattern": "Eff_Stages_SceneObj_Fd_PSHY_BaishatanTrail_01",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Effect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Stages_SceneObj_Fd_PSHY_BaishatanTrail_01",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Disappear",
+          "gadgetState": 202
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Effect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_RemusChains_02",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Disappear": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Fadeout_02",
+              "value": 1,
+              "effectPattern": "Eff_Stages_SceneObj_Fd_PSHY_LightTrail_02",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Effect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Stages_SceneObj_Fd_PSHY_LightTrail_02",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Disappear",
+          "gadgetState": 202
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Effect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_RemusChains_03",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Disappear": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Fadeout_02",
+              "value": 1,
+              "effectPattern": "Eff_Stages_SceneObj_Fd_PSHY_LightTrail_03",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Effect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Stages_SceneObj_Fd_PSHY_LightTrail_03",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Disappear",
+          "gadgetState": 202
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Effect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_RemusChains_Sub_02",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Disappear": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Fadeout_01",
+              "value": 1,
+              "effectPattern": "Eff_Stages_SceneObj_Fd_PSHY_BaishatanTrail_02",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Effect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Stages_SceneObj_Fd_PSHY_BaishatanTrail_02",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Disappear",
+          "gadgetState": 202
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "Effect",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_RemusChains_Sub_03",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Disappear": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Fadeout_01",
+              "value": 1,
+              "effectPattern": "Eff_Stages_SceneObj_Fd_PSHY_BaishatanTrail_03",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Effect": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_Stages_SceneObj_Fd_PSHY_BaishatanTrail_03",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Disappear",
+          "gadgetState": 202
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "SceneObj_UnderSea_WaterGlideChampOrb_MovePlatform",
+      "modifiers": {
+        "GlideChampOrb_ReviveGlidingEnergy": {
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "key": "AVATAR_GLIDING_ENERGY",
+              "useLimitRange": true,
+              "target": "Team",
+              "value": 20,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "maxValue": 100
+            }
+          ],
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "onFieldEnter": [
+        {
+          "$type": "ApplyModifier",
+          "target": "Target",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "GlideChampOrb_ReviveGlidingEnergy",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "FireEffect",
+          "actorIceSubHurtDelta": -1,
+          "scale": 1,
+          "doOffStage": false,
+          "born": {
+            "APKLAIJMEIL": {
+              "HHNLJKNBKPP": 180
+            },
+            "value": 10,
+            "direction": {
+              "maxAngle": 180
+            },
+            "onGroundRaycastUpDist": 2
+          },
+          "effectPattern": "Eff_SceneObj_FontaineGlideChampOrb_01_Smash_Follow",
+          "effectTempleteID": -1,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "KillSelf",
+          "killSelfType": "Normal",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true,
+          "tag": "IS_LMS_WHALE_SCAN_TARGET"
+        }
+      ],
+      "abilityName": "SceneObj_Whale_Cannon_Scan_Route_Hint",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "Controller"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "StageState",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_Test_Caster_01",
+      "modifiers": {
+        "Controller": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Stage1": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackPlayerMixin",
+              "actorIceSubHurtDelta": -1,
+              "ONOLFOCMDHN": 1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Stage2": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackPlayerMixin",
+              "actorIceSubHurtDelta": -1,
+              "ONOLFOCMDHN": 2
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "Stage1",
+            "Stage2"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "BoatRaceV3_IsInVehicle"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "SceneObj_Test_Receiver_01",
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "TimeTrackEventReceiverMixin",
+          "actorIceSubHurtDelta": -1,
+          "actionQueue": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true
+              },
+              "effectPattern": "Eff_Monster_Oceanid_Frog_DeathWaterBallExplode",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "LFMDDKPIMBE": "EventReceiver"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "SceneObj_Test_Receiver_02",
+      "modifiers": {
+        "TestModifier0": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TestModifier1": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TestModifier2": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TestModifier3": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "BGAKIGABCLI",
+          "valueSteps": [
+            -1,
+            0.5,
+            1.5,
+            2.5,
+            3.5
+          ],
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "TestModifier0",
+            "TestModifier1",
+            "TestModifier2",
+            "TestModifier3"
+          ],
+          "LFMDDKPIMBE": "VariableReceiver",
+          "MHODLGFPAJP": true
+        }
+      ]
+    }
+  }
+]

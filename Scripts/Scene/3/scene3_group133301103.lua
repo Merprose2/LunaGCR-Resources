@@ -13,11 +13,14 @@ local DreamStonePlay = {
 local LevelTagState = {
     ["3.0_Mdg_dream"] ={
         ChangeTag = 57,
-        WeatherStateList = {},
+        WeatherStateList = {
+},
     },
     ["3.0_Mdg_real"] ={
         ChangeTag = 58,
-        WeatherStateList = {},    
+        WeatherStateList = {
+},
+    
     },
 }
 

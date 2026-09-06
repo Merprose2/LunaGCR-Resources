@@ -382,7 +382,7 @@ function action_EVENT_CHALLENGE_SUCCESS_51054(context, evt)
 	end
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=1765.99,y=195.4816,z=-1515.139}
+	local pos = {x=1765.990,y=195.482,z=-1515.139}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 70501091, pos, 50) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1
@@ -495,7 +495,7 @@ function action_EVENT_CHALLENGE_FAIL_51077(context, evt)
 	end
 	
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=1765.99,y=195.4816,z=-1515.139}
+	local pos = {x=1765.990,y=195.482,z=-1515.139}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 70501092, pos, 50) then
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_reminder_ui_bypos")
 		return -1

@@ -1,0 +1,3736 @@
+[
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "IS_REMUS_T_ACTIVE_COPY",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "CheckOpenState",
+          "predicates": [
+            {
+              "$type": "ByHostOrGuest",
+              "target": "Target",
+              "isHost": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "SceneAbility_4_6_RemusMusic",
+      "modifiers": {
+        "4_6_Music_Eff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_RemusMagic_Idle_Symbol",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "AvatarHaloHandler": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "_4_6_RemusMusic_Avatar_HasHoldEffect",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "_4_6_RemusMusic_Avatar_HasHoldEffect",
+              "target": "CurTeamAvatars",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "IS_REMUS_T_ACTIVE",
+              "target": "Team",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                0.5,
+                2.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "UNIQUE_RemusMusic_HoldEff"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_4_6_RemusMusic_Avatar_HasHoldEffect"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CheckForRemusMusicGadget": {
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "CheckOnceRemusMusicGadget",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 0.20000000298023224,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "CheckOnceRemusMusicGadget",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "CheckOnceRemusMusicGadget": {
+          "onAdded": [
+            {
+              "$type": "HHNMPIONIMG",
+              "key": "_ABILITY_RemusMusic_GadgetCount",
+              "srcOtherTargets": {
+                "$type": "DBPHPMIHBCO",
+                "tag": "WB46"
+              },
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "JGELKCDJAMN": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 10,
+                  "compareType": "XYZ",
+                  "logic": "LesserOrEqual",
+                  "NJICAELBCCB": "Top"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_RemusMusic_GadgetCount",
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetPositionToSelfPosition",
+                      "target": "Target",
+                      "value": 8,
+                      "compareType": "XYZ",
+                      "NJICAELBCCB": "Top"
+                    }
+                  ],
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "otherTargets": {
+                    "$type": "DBPHPMIHBCO",
+                    "sortType": "Nearest",
+                    "topLimit": 1,
+                    "tag": "WB46"
+                  },
+                  "failActions": [
+                    {
+                      "$type": "Predicated",
+                      "targetPredicates": [
+                        {
+                          "$type": "ByTargetPositionToSelfPosition",
+                          "target": "Target",
+                          "value": 6,
+                          "compareType": "XYZ",
+                          "logic": "LesserOrEqual",
+                          "NJICAELBCCB": "Top"
+                        }
+                      ],
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "otherTargets": {
+                        "$type": "DBPHPMIHBCO",
+                        "sortType": "Nearest",
+                        "topLimit": 1,
+                        "tag": "WB46"
+                      },
+                      "successActions": [
+                        {
+                          "$type": "SetGlobalValueV2",
+                          "key": "IS_REMUS_E_HIGH",
+                          "target": "Team",
+                          "value": 1,
+                          "actorIceSubHurtDelta": -1,
+                          "doOffStage": false,
+                          "canBeHandledOnRecover": true
+                        }
+                      ],
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "SetGlobalValueV2",
+                      "key": "IS_REMUS_E_HIGH",
+                      "target": "Team",
+                      "actorIceSubHurtDelta": -1,
+                      "doOffStage": false,
+                      "canBeHandledOnRecover": true
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "IS_REMUS_E_HIGH",
+                  "target": "Team",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Multiple",
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "CheckOpenState": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "IS_REMUS_E_ACTIVE",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToOpenStateMixin",
+              "actorIceSubHurtDelta": -1,
+              "FAFAEGDHAEI": [
+                "Blank"
+              ],
+              "NOOFAHKNMGB": [
+                "UNIQUE_TEAM_TBUTTON_MANAGER"
+              ],
+              "OFJCOLHGPOJ": "OPEN_STATE_SCENEREMUS_MUSICMECH"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "REMUS_EB_HIGH_TEAM": {
+          "onAdded": [
+            {
+              "$type": "AttachUIEffect",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "effectPattern": "Eff_UI_ActionBtn_Skill_Notice_08",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerAudio",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "operation": {
+                "$type": "ConfigAudioEventOp",
+                "operation": {
+                  "text": "Play_UI_Button_46_Click"
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "Refresh_ESkill_ForDivingStateChange": {
+          "onAdded": [
+            {
+              "$type": "CopyGlobalValue",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "srcKey": "IS_REMUS_T_ACTIVE",
+              "dstKey": "IS_REMUS_T_ACTIVE_COPY",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "IS_REMUS_T_ACTIVE",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "CopyGlobalValue",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "srcKey": "IS_REMUS_T_ACTIVE_COPY",
+              "dstKey": "IS_REMUS_T_ACTIVE",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ResetTButton": {
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "abilityName": "SceneAbility_4_6_RemusMusic",
+              "target": "Other",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "T_Button_ACTIVE": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OEGEKDLKONE",
+              "actorIceSubHurtDelta": -1,
+              "GOEOCLKDLOC": {
+                "DJODCPCBDNE": true,
+                "PHGMKDCPOJO": 20089
+              }
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "T_Button_Active": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "IS_REMUS_E_ACTIVE",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "IS_REMUS_T_HILIGHT",
+              "target": "Team",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ActivitySkillMixin",
+              "actorIceSubHurtDelta": -1,
+              "priority": "Auto",
+              "PEONHILPDLC": 20089
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "T_Button_Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "T_Button_Deactive": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "IS_REMUS_E_ACTIVE",
+              "target": "Team",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "IS_REMUS_T_HILIGHT",
+              "target": "Team",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "WidgetDisableMixin",
+              "actorIceSubHurtDelta": -1,
+              "GMPGCOJICLI": true,
+              "ICHIPOOLHCA": true
+            },
+            {
+              "$type": "ActivitySkillMixin",
+              "actorIceSubHurtDelta": -1,
+              "priority": "Auto",
+              "PEONHILPDLC": 20090
+            },
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "4_6_Music_Eff"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "T_Button_Default": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "T_Button_HIDE": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OEGEKDLKONE",
+              "actorIceSubHurtDelta": -1,
+              "GOEOCLKDLOC": {
+                "PHGMKDCPOJO": 20090
+              }
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "T_Button_HIGHLIGHT": {
+          "onAdded": [
+            {
+              "$type": "TriggerAudio",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "operation": {
+                "$type": "ConfigAudioEventOp",
+                "operation": {
+                  "text": "Play_UI_Button_46_Click"
+                }
+              },
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "OEGEKDLKONE",
+              "actorIceSubHurtDelta": -1,
+              "GOEOCLKDLOC": {
+                "BMPOOIHCINL": true,
+                "DJODCPCBDNE": true,
+                "OODOMJBBIEB": true,
+                "PHGMKDCPOJO": 20089
+              }
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "T_Button_NONE": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "IS_REMUS_E_ACTIVE",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "T_Button_ToActive": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "IS_REMUS_T_ACTIVE",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByIsCombat",
+                      "target": "Target"
+                    }
+                  ]
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_4_6_SwitchSkill": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "actorIceSubHurtDelta": -1,
+              "skillID": 20081,
+              "skillIndex": 1,
+              "IINDKNBKEFO": true,
+              "priority": "Playmode",
+              "LHOCMGEHNHI": 200
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_4_6_SwitchSkill_UW": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "actorIceSubHurtDelta": -1,
+              "skillID": 20086,
+              "skillIndex": 1,
+              "IINDKNBKEFO": true,
+              "priority": "Playmode",
+              "LHOCMGEHNHI": 200,
+              "MPIKIJDMPDB": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Avatar_ESkill_Switch": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "CheckForRemusMusicGadget",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "UNIQUE_4_6_SwitchSkill",
+                "UNIQUE_4_6_SwitchSkill_UW"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_ABILITY_Diving_InDive_Mark",
+              "PNELLOCFHCP": true
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                99.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "REMUS_EB_HIGH_TEAM"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "IS_REMUS_E_HIGH",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_RemusMusic_HoldEff": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2
+              },
+              "effectPattern": "Eff_SceneObj_RemusMagic_Atk_01_Loop",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_TEAM_TBUTTON_MANAGER": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "IS_REMUS_T_ACTIVE",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5,
+                2.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "T_Button_NONE",
+                "T_Button_Active",
+                "T_Button_Deactive"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "IS_REMUS_T_ACTIVE"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5,
+                2.5,
+                3.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "T_Button_Default",
+                "T_Button_HIDE",
+                "T_Button_ACTIVE",
+                "T_Button_HIGHLIGHT"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "IS_REMUS_T_HILIGHT"
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "globalValueTarget": "Team",
+              "modifierNameSteps": [
+                "UNIQUE_Team_ESkill_Handler"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "IS_REMUS_E_ACTIVE",
+              "PNELLOCFHCP": true
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5,
+                2.5,
+                3.5,
+                4.5,
+                5.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "T_Button_Blank",
+                "T_Button_ToActive",
+                "T_Button_ToActive",
+                "T_Button_ToActive",
+                "T_Button_ToActive",
+                "T_Button_ToActive"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_ABILITY_WhiteBox_Dive_Team"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "Refresh_ESkill_ForDivingStateChange",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "_ABILITY_Diving_InDive_Mark"
+            },
+            {
+              "$type": "AvatarCombatMixin",
+              "onExitCombat": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "IS_REMUS_T_ACTIVE",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "onEnterCombat": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "IS_REMUS_T_ACTIVE",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Team_ESkill_Handler": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "actorIceSubHurtDelta": -1,
+              "modifierName": "UNIQUE_Avatar_ESkill_Switch"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_Team_ESkill_Recover": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "IS_REMUS_E_ACTIVE",
+                  "target": "Team",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "IS_REMUS_E_ACTIVE"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "onRemoved": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "IS_REMUS_T_ACTIVE",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "IS_REMUS_E_ACTIVE",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByHasModifier",
+              "target": "Target",
+              "modifierName": "T_Button_Active"
+            }
+          ],
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "failActions": [
+            {
+              "$type": "SetExtraAbilityState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "IS_REMUS_T_ACTIVE",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "SetExtraAbilityState",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "KIJKGDMOAJG",
+                  "target": "Target",
+                  "skillIndex": 1,
+                  "priority": "Playmode",
+                  "LHOCMGEHNHI": 200
+                }
+              ],
+              "target": "CurLocalAvatar",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "failActions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "IS_REMUS_T_ACTIVE",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "ShowReminder",
+                  "id": 404434,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "IS_REMUS_T_ACTIVE",
+                  "target": "Team",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "AvatarHaloHandler"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "key": "_4_6_RemusMusic_Avatar_HasHoldEffect",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": true,
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "RemusMusic_AvatarManager",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "SceneAbility_4_6_RemusMusic_AvatarAbility",
+      "modifiers": {
+        "HoldEffect": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "NotifyAvatar_HoldEffect",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "LocalTeamTriggerMixin",
+              "CNOKKMALIAP": [
+                {
+                  "$type": "AttachModifier",
+                  "target": "Target",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_SetTargetMoving_Refresh",
+                  "predicates": [
+                    {
+                      "$type": "ByHasTag",
+                      "target": "Target",
+                      "tag": "WB46"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_Immune_Ability_4_6",
+                      "target": "Target",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "IHIMIAKHJFH": {
+                "GGIHLEMLIGN": "InterTarget",
+                "shapeName": "SphereR6",
+                "campTargetType": "AllExceptSelf",
+                "triggerCD": 0.05000000074505806,
+                "triggerType": "TriggerAlways"
+              },
+              "triggerName": "Scene46_AB_HoldEffect",
+              "OFDNNHAMJIP": "RootNode"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "HoldEffect_UnderWater": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "NotifyAvatar_HoldEffect",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "LocalTeamTriggerMixin",
+              "CNOKKMALIAP": [
+                {
+                  "$type": "AttachModifier",
+                  "target": "Target",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "UNIQUE_SetTargetMoving_Refresh",
+                  "predicates": [
+                    {
+                      "$type": "ByHasTag",
+                      "target": "Target",
+                      "tag": "WB46"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_Immune_Ability_4_6",
+                      "target": "Target",
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "IHIMIAKHJFH": {
+                "GGIHLEMLIGN": "InterTarget",
+                "shapeName": "SphereR8",
+                "campTargetType": "AllExceptSelf",
+                "triggerCD": 0.05000000074505806,
+                "triggerType": "TriggerAlways"
+              },
+              "triggerName": "Scene46_AB_HoldEffect",
+              "OFDNNHAMJIP": "RootNode"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "NotifyAvatar_CancelEffect": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "enable": true,
+              "parameter": "Die",
+              "effectPattern": "Eff_SceneObj_RemusMagic_Atk_01_Loop",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "duration": 1,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "_4_6_RemusMusic_Avatar_HasHoldEffect",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_4_6_RemusMusic_Avatar_HasHoldEffect",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "NotifyAvatar_HoldEffect": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "_4_6_RemusMusic_Avatar_HasHoldEffect",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "_4_6_RemusMusic_Avatar_HasHoldEffect",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "_4_6_RemusMusic_Avatar_HasHoldEffect",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByIsLocalAvatar"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "failActions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "_4_6_RemusMusic_Avatar_HasHoldEffect",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "NotifyAvatar_CancelEffect",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusic_AvatarManager": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "LNJCFPKNCED",
+              "defaultVocalBoneName": "_ABILITY_RemusMusic_DiveMark",
+              "actorIceSubHurtDelta": -1,
+              "exclusionRules": "_ABILITY_RemusMusic_isInFondanieWater"
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "actorIceSubHurtDelta": -1,
+              "enable": true,
+              "modifierNameSteps": [
+                "UNIQUE_RemusMusic_Avatar",
+                "UNIQUE_RemusMusic_UnderAvatar"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "_ABILITY_RemusMusic_DiveMark",
+              "PNELLOCFHCP": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SetTargetStill_Once": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "MusicHit"
+              },
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "InternalState_4_6",
+                      "target": "Target",
+                      "value": 1
+                    }
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_MUSICMECH_Tap",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_RemusMagic_Hit_01_Stop",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_GadToStill",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Multiple",
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_GadToStill",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TapEffect": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectPattern": "Eff_SceneObj_RemusMagic_Atk_01_Stop",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "DBPHPMIHBCO",
+                "tag": "WB46"
+              },
+              "modifierName": "SetTargetStill_Once",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_Immune_Ability_4_6",
+                  "target": "Target",
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 6,
+                  "compareType": "XYZ",
+                  "logic": "LesserOrEqual",
+                  "NJICAELBCCB": "Top"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Multiple",
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TapEffect_UnderWater": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectPattern": "Eff_SceneObj_RemusMagic_Atk_01_Stop",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "otherTargets": {
+                "$type": "DBPHPMIHBCO",
+                "tag": "WB46"
+              },
+              "modifierName": "SetTargetStill_Once",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_Immune_Ability_4_6",
+                  "target": "Target",
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "target": "Target",
+                  "value": 8,
+                  "compareType": "XYZ",
+                  "logic": "LesserOrEqual",
+                  "NJICAELBCCB": "Top"
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Multiple",
+          "duration": 0.10000000149011612,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_RemusMusic_Avatar": {
+          "onAdded": [
+            {
+              "$type": "RemoveAvatarSkillInfo",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "skillID": 20081,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "onReconnect": [
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "HoldEffect",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ButtonHoldChargeMixin",
+              "CEBHIKGMAED": true,
+              "actorIceSubHurtDelta": -1,
+              "skillID": 20081,
+              "OnReleaseCharged": [
+                {
+                  "$type": "RemoveModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "HoldEffect",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "secondChargeTime": 999999,
+              "onCancelCharged": [
+                {
+                  "$type": "RemoveModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "HoldEffect",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "OnBeginCharged": [
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "HoldEffect",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "chargeTime": 0.25,
+              "OnReleaseUncharged": [
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "TapEffect",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AvatarShareCDSkillStart",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "skillID": 20081,
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddAvatarSkillInfo",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "skillID": 20081,
+              "IOEKFKNMBMH": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "HoldEffect",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_RemusMusic_UnderAvatar": {
+          "onAdded": [
+            {
+              "$type": "RemoveAvatarSkillInfo",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "skillID": 20086,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "Unique",
+          "onReconnect": [
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "HoldEffect_UnderWater",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "ButtonHoldChargeMixin",
+              "CEBHIKGMAED": true,
+              "actorIceSubHurtDelta": -1,
+              "skillID": 20086,
+              "OnReleaseCharged": [
+                {
+                  "$type": "RemoveModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "HoldEffect_UnderWater",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "secondChargeTime": 999999,
+              "onCancelCharged": [
+                {
+                  "$type": "RemoveModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": true,
+                  "modifierName": "HoldEffect_UnderWater",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "OnBeginCharged": [
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "HoldEffect_UnderWater",
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "chargeTime": 0.25,
+              "OnReleaseUncharged": [
+                {
+                  "$type": "ApplyModifier",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "modifierName": "TapEffect_UnderWater",
+                  "canBeHandledOnRecover": true
+                },
+                {
+                  "$type": "AvatarShareCDSkillStart",
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "skillID": 20086,
+                  "canBeHandledOnRecover": true
+                }
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddAvatarSkillInfo",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "skillID": 20086,
+              "IOEKFKNMBMH": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": true,
+              "modifierName": "HoldEffect_UnderWater",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        },
+        "UNIQUE_SetTargetMoving_Refresh": {
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "MusicHit"
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_MUSICMECH_Hold",
+                  "target": "Target",
+                  "value": 1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_RemusMagic_Hit_01_Loop",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_GadToMove",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stacking": "MultipleRefreshNoRemove",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_GadToMove",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "stackingOption": {
+            "maxModifierNumForMultipleType": 1
+          },
+          "IAKPBCLBNKF": -1,
+          "isUnique": true,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "TypeController",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "RemusMusicGadget_Recover",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_World_4_6_OriStill_01",
+      "modifiers": {
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "HideIcon": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Disappear",
+              "value": 1,
+              "type": "Bool",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "IconController": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "HideIcon",
+                "ShowIcon"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_RemusMusic_ShowIcon"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnMove": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Int",
+              "value": 2,
+              "type": "Int",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "InternalState_4_6",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GadToMove"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_GadToMove"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnStandBy": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Int",
+              "value": 1,
+              "type": "Int",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "InternalState_4_6",
+                  "value": 3,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GadToMove",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_GadToMove"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_Recover": {
+          "onReconnect": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "InternalState_4_6",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "InternalState_4_6",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ShowIcon": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Disappear",
+              "type": "Bool",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TopIcon": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.25,
+                0.75
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "TopIconSizeDefault",
+                "TopIconSizeSmall"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SymbolScale"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TopIconSizeDefault": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "IconController",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Top"
+              },
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TopIconSizeSmall": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "IconController",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 0.5,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Top"
+              },
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TypeController": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "InternalState_4_6",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "minValue": 2,
+              "canBeHandledOnRecover": true,
+              "maxValue": 3
+            },
+            {
+              "$type": "ChangeTag",
+              "isAdd": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "tag": "WB46"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                1.5,
+                2.5,
+                3.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "Blank",
+                "OnStandBy",
+                "OnMove"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "InternalState_4_6"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "valueSteps": [
+            0.5,
+            3.5
+          ],
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "TopIcon"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "InternalState_4_6"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "RemusMusicGadget_Manager",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "RemusMusicGadget_Recover",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_World_4_6_OriStill_02",
+      "modifiers": {
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "HideIcon": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Disappear",
+              "value": 1,
+              "type": "Bool",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "IconController": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "HideIcon",
+                "ShowIcon"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_RemusMusic_ShowIcon"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnMove": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Int",
+              "value": 2,
+              "type": "Int",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "InternalState_4_6",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GadToMove"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_GadToMove"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnStandBy": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Int",
+              "value": 1,
+              "type": "Int",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "InternalState_4_6",
+                  "value": 3,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GadToMove",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_GadToMove"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_Manager": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                3.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "TopIcon"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "InternalState_4_6"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "RemusMusicGadget_Mute",
+                "RemusMusicGadget_TypeController"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_MUSICMECH_ACTIVE"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "RemusMusicGadget_Mute",
+                "RemusMusicGadget_TypeController"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_MUSICMECH_ACTIVE"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_Mute": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "InternalState_4_6",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ChangeTag",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "tag": "WB46"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_Recover": {
+          "onReconnect": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "InternalState_4_6",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "InternalState_4_6",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_TypeController": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "InternalState_4_6",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ChangeTag",
+              "isAdd": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "tag": "WB46"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                2.5,
+                3.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "Blank",
+                "OnStandBy",
+                "OnMove"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "InternalState_4_6"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ShowIcon": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Disappear",
+              "type": "Bool",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TopIcon": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.25,
+                0.75
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "TopIconSizeDefault",
+                "TopIconSizeSmall"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SymbolScale"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TopIconSizeDefault": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "IconController",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Top"
+              },
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TopIconSizeSmall": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "IconController",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 0.5,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Top"
+              },
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "TypeController",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "RemusMusicGadget_Recover",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_World_4_6_OriMove_01",
+      "modifiers": {
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnStandBy": {
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "content": "OnStandByEnter",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "InternalState_4_6",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GadToStill",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_GadToStill"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnStill": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "InternalState_4_6",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GadToMove",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_GadToMove"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_Recover": {
+          "onReconnect": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "InternalState_4_6",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "InternalState_4_6",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TypeController": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "InternalState_4_6",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "minValue": 1,
+              "canBeHandledOnRecover": true,
+              "maxValue": 2
+            },
+            {
+              "$type": "ChangeTag",
+              "isAdd": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "tag": "WB46"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5,
+                2.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "Blank",
+                "OnStill",
+                "OnStandBy"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "InternalState_4_6"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "RemusMusicGadget_Manager",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "RemusMusicGadget_Recover",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_World_4_6_OriMove_02",
+      "modifiers": {
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "HideIcon": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Disappear",
+              "value": 1,
+              "type": "Bool",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "IconController": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "HideIcon",
+                "ShowIcon"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_RemusMusic_ShowIcon"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnStandBy": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Int",
+              "value": 1,
+              "type": "Int",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "InternalState_4_6",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GadToStill",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_GadToStill"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnStill": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Int",
+              "value": 3,
+              "type": "Int",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "InternalState_4_6",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GadToMove",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_GadToMove"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_Manager": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                3.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "TopIcon"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "InternalState_4_6"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "RemusMusicGadget_Mute",
+                "RemusMusicGadget_TypeController"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_MUSICMECH_ACTIVE"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "RemusMusicGadget_Mute",
+                "RemusMusicGadget_TypeController"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_MUSICMECH_ACTIVE"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_Mute": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "InternalState_4_6",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ChangeTag",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "tag": "WB46"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_Recover": {
+          "onReconnect": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "InternalState_4_6",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "InternalState_4_6",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_TypeController": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "InternalState_4_6",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ChangeTag",
+              "isAdd": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "tag": "WB46"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5,
+                2.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "Blank",
+                "OnStill",
+                "OnStandBy"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "InternalState_4_6"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "ShowIcon": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Disappear",
+              "type": "Bool",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TopIcon": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.25,
+                0.75
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "TopIconSizeDefault",
+                "TopIconSizeSmall"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SymbolScale"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TopIconSizeDefault": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "IconController",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Top"
+              },
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Int",
+              "value": 3,
+              "type": "Int",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "InternalState_4_6",
+                  "value": 1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TopIconSizeSmall": {
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "modifierName": "IconController",
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 0.5,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Top"
+              },
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Int",
+              "value": 3,
+              "type": "Int",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "InternalState_4_6",
+                  "value": 1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "RemusMusicGadget_Manager",
+          "canBeHandledOnRecover": true
+        },
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "RemusMusicGadget_Recover",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "abilityName": "SceneObj_World_4_6_Mixer_02",
+      "modifiers": {
+        "Blank": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnMove": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Int",
+              "value": 2,
+              "type": "Int",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "InternalState_4_6",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GadToMove"
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_GadToMove"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "InternalState_4_6",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GadToStill",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_GadToStill"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnStandBy": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Int",
+              "value": 1,
+              "type": "Int",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "InternalState_4_6",
+                  "value": 3,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GadToMove",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_GadToMove"
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "InternalState_4_6",
+                  "value": 1,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GadToStill",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_GadToStill"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnStill": {
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "enable": true,
+              "parameter": "Int",
+              "value": 3,
+              "type": "Int",
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "actorIceSubHurtDelta": -1,
+              "actions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "InternalState_4_6",
+                  "value": 3,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_GadToMove",
+                      "value": 1
+                    }
+                  ],
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "globalValueKey": "GV_GadToMove"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_Manager": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                0.5,
+                3.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "TopIcon"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "InternalState_4_6"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "RemusMusicGadget_Mute",
+                "RemusMusicGadget_TypeController"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "SGV_MUSICMECH_ACTIVE"
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "RemusMusicGadget_Mute",
+                "RemusMusicGadget_TypeController"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "GV_MUSICMECH_ACTIVE"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_Mute": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "InternalState_4_6",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ChangeTag",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "tag": "WB46"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_Recover": {
+          "onReconnect": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "InternalState_4_6",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "InternalState_4_6",
+                  "value": 3
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "RemusMusicGadget_TypeController": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "InternalState_4_6",
+              "value": 2,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "ChangeTag",
+              "isAdd": true,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "tag": "WB46"
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5,
+                2.5,
+                3.5
+              ],
+              "enable": true,
+              "actorIceSubHurtDelta": -1,
+              "modifierNameSteps": [
+                "Blank",
+                "OnStill",
+                "OnStandBy",
+                "OnMove"
+              ],
+              "removeAppliedModifier": true,
+              "globalValueKey": "InternalState_4_6"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ChangeTag",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true,
+              "tag": "WB46"
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "TopIcon": {
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "actorIceSubHurtDelta": -1,
+              "scale": 1,
+              "doOffStage": false,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "APKLAIJMEIL": {
+                  "HHNLJKNBKPP": 180
+                },
+                "value": 10,
+                "direction": {
+                  "maxAngle": 180
+                },
+                "onGroundRaycastUpDist": 2,
+                "useRotation": true,
+                "attachPointName": "Top"
+              },
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "effectTempleteID": -1,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "parameter": "Int",
+              "value": 3,
+              "type": "Int",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "InternalState_4_6",
+                  "value": 1
+                }
+              ],
+              "effectPattern": "Eff_SceneObj_Remus_Symbol",
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      }
+    }
+  },
+  {
+    "Default": {
+      "abilityName": "SceneObj_World_4_6_BanControl_01",
+      "modifiers": {
+        "OnBan": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Immune_Ability_4_6",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "OnNormal": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "GV_Immune_Ability_4_6",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "enable": true,
+          "actorIceSubHurtDelta": -1,
+          "modifierNameSteps": [
+            "OnNormal",
+            "OnBan"
+          ],
+          "removeAppliedModifier": true,
+          "globalValueKey": "SGV_MUSICMECH_IS_BAN",
+          "PNELLOCFHCP": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "isDynamicAbility": true,
+      "abilityName": "SceneAbility_World_4_6_BanT_TeamAbility",
+      "modifiers": {
+        "OnBan": {
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "IS_REMUS_T_ACTIVE",
+              "target": "Team",
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "elementDurability": 100,
+          "minus_one": -1,
+          "modifierMixins": [
+            {
+              "$type": "HideActionSlotMixin",
+              "actorIceSubHurtDelta": -1,
+              "slotType": "SlotCharge"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "key": "IS_REMUS_T_ACTIVE",
+              "target": "Team",
+              "value": 1,
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "OnBan"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "actorIceSubHurtDelta": -1,
+          "doOffStage": false,
+          "modifierName": "SetTBHighLight",
+          "canBeHandledOnRecover": true
+        }
+      ],
+      "isDynamicAbility": true,
+      "abilityName": "SceneAbility_World_4_6_HightTSlot_TeamAbility",
+      "modifiers": {
+        "CheckIsHost": {
+          "elementDurability": 100,
+          "minus_one": -1,
+          "IAKPBCLBNKF": -1,
+          "isLimitedProperties": true
+        },
+        "SetTBHighLight": {
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasModifier",
+                  "target": "Target",
+                  "modifierName": "T_Button_Active"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "IS_REMUS_T_HILIGHT",
+                  "target": "Team",
+                  "value": 3,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "thinkInterval": 0.20000000298023224,
+          "elementDurability": 100,
+          "minus_one": -1,
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasModifier",
+                  "target": "Target",
+                  "modifierName": "T_Button_Active"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "IS_REMUS_T_HILIGHT",
+                  "target": "Team",
+                  "value": 2,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "IAKPBCLBNKF": -1,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasModifier",
+                  "target": "Target",
+                  "modifierName": "T_Button_Active"
+                }
+              ],
+              "actorIceSubHurtDelta": -1,
+              "doOffStage": false,
+              "successActions": [
+                {
+                  "$type": "SetGlobalValueV2",
+                  "key": "IS_REMUS_T_HILIGHT",
+                  "target": "Team",
+                  "value": 3,
+                  "actorIceSubHurtDelta": -1,
+                  "doOffStage": false,
+                  "canBeHandledOnRecover": true
+                }
+              ],
+              "canBeHandledOnRecover": true
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "LKLPDIMKLKI": {
+        "elementDurability": 100,
+        "minus_one": -1,
+        "IAKPBCLBNKF": -1,
+        "isLimitedProperties": true
+      },
+      "abilityMixins": [
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "actorIceSubHurtDelta": -1,
+          "modifierName": "CheckIsHost"
+        }
+      ]
+    }
+  }
+]

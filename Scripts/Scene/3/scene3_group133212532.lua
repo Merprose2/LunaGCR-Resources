@@ -13,7 +13,8 @@ local defs = {
         group_id = 133212532,
 
         --本挑战中，算作计数目标的鱼IDs 鱼ID在FishData表
-        target_fish_id = 1019
+        target_fish_id = 
+1019
 
 }
 

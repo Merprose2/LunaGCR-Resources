@@ -295,7 +295,7 @@ end
 -- 触发操作
 function action_EVENT_TIMER_EVENT_415009(context, evt)
 	-- 在指定位置对应半径范围播放reminder
-	local pos = {x=1080,y=285,z=-439}
+	local pos = {x=1080.000,y=285.000,z=-439.000}
 	if 0 ~= ScriptLib.ShowReminderRadius(context, 400010, pos, 50) then
 		return -1
 	end

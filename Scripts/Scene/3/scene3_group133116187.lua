@@ -1,0 +1,38 @@
+local base_info = {
+	group_id = 133116187
+}
+monsters = {
+	{ config_id = 187001, drop_id = 1000100, persistent = true, monster_id = 26190201, pos = { x = 1400.348, y = 338.799, z = 2291.465 }, rot = { x = 0, y = 303.124, z = 0 }, level = 1, drop_tag = "采集动物", area_id = 5, pose_id = 0 },
+}
+
+npcs = {
+}
+
+regions = {
+	
+}
+
+variables = {
+}
+
+triggers = {
+	
+}
+gadgets = {
+}
+init_config = {
+	suite = 1,
+	end_suite = 0,
+	rand_suite = false
+}
+suites = {
+	{
+		-- suite_id = 1,
+		-- description = ,
+		monsters = { 187001 },
+		gadgets = {  },
+		regions = { },
+		triggers = { },
+		rand_weight = 100
+	}
+}
