@@ -195,7 +195,7 @@ function condition_EVENT_GADGET_CREATE_5010(context, evt)
 	   return false
 	end
 	
-	if 5001 ~= evt.param1 or GadgetState.Default ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 5001 ~= evt.param1 or GadgetState.Default ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	

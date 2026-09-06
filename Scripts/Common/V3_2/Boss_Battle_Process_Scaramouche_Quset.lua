@@ -58,11 +58,13 @@ end
 ------ Server Lua Call Functions -----------
 
 function SLC_Scaramouche_All_Avatar_Die(context)
+	ScriptLib.PrintContextLog(context,"## 散兵BOSS战流程")
 	ScriptLib.AddQuestProgress(context, "302808")
 	return 0
 end
 
 function SLC_Scaramouche_All_Avatar_Die_Stage01(context)
+	ScriptLib.PrintContextLog(context,"## 散兵BOSS战流程01")
 	ScriptLib.PlayCutScene(context, 201520001, 0)
 	ScriptLib.InitTimeAxis(context,"PlayCutScene",{2},false)
 	return 0
@@ -114,10 +116,12 @@ end
 
 --boss一阶段死亡传到下面去
 function action_EVENT_ANY_MONSTER_DIE(context, evt)
+
 	if evt.param1==defs.phaseOneBoss then
 		ScriptLib.PlayCutScene(context, 201520001, 0)
 		ScriptLib.InitTimeAxis(context,"PlayCutScene",{2},false)
 		ScriptLib.SetGroupVariableValue(context, "bossCreated",1)
+		ScriptLib.AddQuestProgress(context, "302808")
 		return 0
 	end
 	if evt.param1==defs.phaseThreeBoss then

@@ -239,7 +239,7 @@ end
 
 -- 触发操作
 function action_EVENT_GADGET_STATE_CHANGE_12015(context, evt)
-	if ScriptLib.GetGadgetStateByConfigId(context, 0, 12003) == 201 and ScriptLib.GetGadgetStateByConfigId(context, 0, 12021) == 201 and ScriptLib.GetGroupVariableValue(context, "temp") == 3 then
+	if ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 12003) == 201 and ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 12021) == 201 and ScriptLib.GetGroupVariableValue(context, "temp") == 3 then
 		ScriptLib.SetGroupVariableValueByGroup(context, "plat", 7, 220140004)
 		
 		ScriptLib.SetGroupVariableValue(context, "temp", 4)

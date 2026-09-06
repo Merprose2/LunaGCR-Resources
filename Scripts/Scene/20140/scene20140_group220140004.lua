@@ -401,7 +401,7 @@ end
 
 -- 触发操作
 function action_EVENT_GADGET_STATE_CHANGE_4025(context, evt)
-	if ScriptLib.GetGadgetStateByConfigId(context, 0, 4005) == 201 and ScriptLib.GetGadgetStateByConfigId(context, 0, 4006) == 201 and ScriptLib.GetGroupVariableValue(context, "door") == 0 then
+	if ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 4005) == 201 and ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 4006) == 201 and ScriptLib.GetGroupVariableValue(context, "door") == 0 then
 		ScriptLib.SetGroupVariableValue(context, "door", 1)
 		
 		ScriptLib.ChangeToTargetLevelTag(context, 31)

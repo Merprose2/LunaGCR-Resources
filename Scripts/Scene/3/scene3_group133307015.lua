@@ -19,7 +19,9 @@ npcs = {
 
 -- 装置
 gadgets = {
-	{ config_id = 15001, gadget_id = 70290820, pos = { x = -1707.490, y = 21.000, z = 5676.035 }, rot = { x = 0.000, y = 240.000, z = 0.000 }, level = 32, persistent = true, vision_level = VisionLevelType.VISION_LEVEL_LITTLE_REMOTE, area_id = 32 }
+	{ config_id = 15001, gadget_id = 70290820, pos = { x = -1707.490, y = 21.000, z = 5676.035 }, rot = { x = 0.000, y = 240.000, z = 0.000 }, level = 32, persistent = true, vision_level = VisionLevelType.VISION_LEVEL_LITTLE_REMOTE, area_id = 32 },
+    { config_id = 15011, gadget_id = 70220103, pos = { x = -1703.982, y = 23.15, z = 5689.178 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 32, persistent = true, area_id = 32 },
+    { config_id = 15012, gadget_id = 70220103, pos = { x = -1710.88, y = 23.15, z = 5663.377 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 32, persistent = true, area_id = 32 },
 }
 
 -- 区域
@@ -64,7 +66,7 @@ suites = {
 		-- suite_id = 1,
 		-- description = ,
 		monsters = { },
-		gadgets = { 15001 },
+		gadgets = { 15001, 15011, 15012 },
 		regions = { },
 		triggers = { "QUEST_START_15003", "SELECT_OPTION_15004", "QUEST_START_15005", "SELECT_OPTION_15006" },
 		rand_weight = 100

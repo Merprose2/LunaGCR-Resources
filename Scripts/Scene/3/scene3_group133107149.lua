@@ -280,7 +280,7 @@ end
 
 -- 触发条件
 function condition_EVENT_GADGET_CREATE_149013(context, evt)
-	if 149001 ~= evt.param1 or GadgetState.Default ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 149001 ~= evt.param1 or GadgetState.Default ~= ScriptLib.GetGadgetStateByConfigId(context, defs.group_id, evt.param1) then
 		return false
 	end
 	

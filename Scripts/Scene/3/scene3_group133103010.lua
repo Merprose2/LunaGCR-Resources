@@ -1226,7 +1226,7 @@ function condition_EVENT_SELECT_OPTION_10049(context, evt)
 	end
 	
 	
-	if 121 ~= evt.param1 or GadgetState.Default ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 121 ~= evt.param1 or GadgetState.Default ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -1256,7 +1256,7 @@ function condition_EVENT_SELECT_OPTION_10050(context, evt)
 	end
 	
 	
-	if 121 ~= evt.param1 or GadgetState.GearStop ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 121 ~= evt.param1 or GadgetState.GearStop ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -1286,7 +1286,7 @@ function condition_EVENT_SELECT_OPTION_10051(context, evt)
 	end
 	
 	
-	if 121 ~= evt.param1 or GadgetState.GearAction1 ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 121 ~= evt.param1 or GadgetState.GearAction1 ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -1316,7 +1316,7 @@ function condition_EVENT_SELECT_OPTION_10055(context, evt)
 	end
 	
 	
-	if 121 ~= evt.param1 or GadgetState.GearAction2 ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 121 ~= evt.param1 or GadgetState.GearAction2 ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -1346,7 +1346,7 @@ function condition_EVENT_SELECT_OPTION_10056(context, evt)
 	end
 	
 	
-	if 122 ~= evt.param1 or GadgetState.Default ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 122 ~= evt.param1 or GadgetState.Default ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -1376,7 +1376,7 @@ function condition_EVENT_SELECT_OPTION_10057(context, evt)
 	end
 	
 	
-	if 122 ~= evt.param1 or GadgetState.GearStop ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 122 ~= evt.param1 or GadgetState.GearStop ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -1406,7 +1406,7 @@ function condition_EVENT_SELECT_OPTION_10058(context, evt)
 	end
 	
 	
-	if 122 ~= evt.param1 or GadgetState.GearAction1 ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 122 ~= evt.param1 or GadgetState.GearAction1 ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -1436,7 +1436,7 @@ function condition_EVENT_SELECT_OPTION_10059(context, evt)
 	end
 	
 	
-	if 122 ~= evt.param1 or GadgetState.GearAction2 ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 122 ~= evt.param1 or GadgetState.GearAction2 ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -1466,7 +1466,7 @@ function condition_EVENT_SELECT_OPTION_10060(context, evt)
 	end
 	
 	
-	if 124 ~= evt.param1 or GadgetState.Default ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 124 ~= evt.param1 or GadgetState.Default ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -1496,7 +1496,7 @@ function condition_EVENT_SELECT_OPTION_10061(context, evt)
 	end
 	
 	
-	if 124 ~= evt.param1 or GadgetState.GearStop ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 124 ~= evt.param1 or GadgetState.GearStop ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -1526,7 +1526,7 @@ function condition_EVENT_SELECT_OPTION_10062(context, evt)
 	end
 	
 	
-	if 124 ~= evt.param1 or GadgetState.GearAction1 ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 124 ~= evt.param1 or GadgetState.GearAction1 ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -1556,7 +1556,7 @@ function condition_EVENT_SELECT_OPTION_10063(context, evt)
 	end
 	
 	
-	if 124 ~= evt.param1 or GadgetState.GearAction2 ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 124 ~= evt.param1 or GadgetState.GearAction2 ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	

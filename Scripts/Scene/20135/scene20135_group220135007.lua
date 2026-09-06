@@ -300,7 +300,7 @@ end
 
 -- 触发操作
 function action_EVENT_GADGET_STATE_CHANGE_7024(context, evt)
-	if ScriptLib.GetGadgetStateByConfigId(context, 0, 7006) == 201 and ScriptLib.GetGadgetStateByConfigId(context, 0, 7007) == 201 then
+	if ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 7006) == 201 and ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 7007) == 201 then
 		if evt.param2 == 7006 or evt.param2 == 7007 then
 			ScriptLib.SetGroupVariableValue(context, "wind", 1)
 			

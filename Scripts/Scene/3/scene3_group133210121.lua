@@ -402,7 +402,7 @@ end
 
 -- 触发条件
 function condition_EVENT_GADGET_CREATE_121011(context, evt)
-	if 121003 ~= evt.param1 or GadgetState.GearStop ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 121003 ~= evt.param1 or GadgetState.GearStop ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -524,7 +524,7 @@ end
 
 -- 触发条件
 function condition_EVENT_GADGET_CREATE_121016(context, evt)
-	if 121003 ~= evt.param1 or GadgetState.GearStart ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 121003 ~= evt.param1 or GadgetState.GearStart ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -565,7 +565,7 @@ end
 
 -- 触发条件
 function condition_EVENT_GADGET_CREATE_121018(context, evt)
-	if 121001 ~= evt.param1 or GadgetState.GearStart ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 121001 ~= evt.param1 or GadgetState.GearStart ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -865,7 +865,7 @@ end
 
 -- 触发条件
 function condition_EVENT_GADGET_CREATE_121033(context, evt)
-	if 121004 ~= evt.param1 or GadgetState.GearStart ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 121004 ~= evt.param1 or GadgetState.GearStart ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	
@@ -1046,7 +1046,7 @@ end
 
 -- 触发条件
 function condition_EVENT_GADGET_CREATE_121040(context, evt)
-	if 121005 ~= evt.param1 or GadgetState.GearStart ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 121005 ~= evt.param1 or GadgetState.GearStart ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	

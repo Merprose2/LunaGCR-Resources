@@ -168,7 +168,7 @@ end
 
 -- 触发操作
 function action_EVENT_GADGET_STATE_CHANGE_53025(context, evt)
-	if ScriptLib.GetGadgetStateByConfigId(context, 0, 53002) == 201 then
+	if ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 53002) == 201 then
 		if ScriptLib.CheckIsInMpMode(context) then
 			ScriptLib.DelWorktopOptionByGroupId(context, 0, 53024, 68)
 		else

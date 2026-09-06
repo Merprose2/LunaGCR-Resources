@@ -546,7 +546,7 @@ end
 function action_EVENT_SELECT_OPTION_2019(context, evt)
 	if evt.param1 == 2001 then
 		if evt.param2 == 605 or evt.param2 == 606 or evt.param2 == 607 or evt.param2 == 615 or evt.param2 == 616 then
-			if ScriptLib.GetGadgetStateByConfigId(context, 0, 2001) == 0 then
+			if ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 2001) == 0 then
 				ScriptLib.SetGadgetStateByConfigId(context,2001, GadgetState.GearStart)
 			else
 				ScriptLib.SetGadgetStateByConfigId(context,2001, GadgetState.Default)

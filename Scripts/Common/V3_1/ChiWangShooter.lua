@@ -114,7 +114,7 @@ function RefreshAll(context)
 
 	--更新所有底座
 	for _,ShooterBaseID in pairs(defs.shooterBaseList)do
-		local baseState = ScriptLib.GetGadgetStateByConfigId(context, 0, ShooterBaseID)
+		local baseState = ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, ShooterBaseID)
 		if(baseState ~= 901)then
 			RefreshShooterBase(context, ShooterBaseID)
 		end
@@ -197,7 +197,7 @@ function TriggerMove(context)
 	if(pathLength~=0)then
 		local nextMovePoint = nextPath[pathLength]
 		local toMoveBaseID = GetShooterBaseIDByMoveIndex(nextMovePoint)
-		local toMoveBaseState = ScriptLib.GetGadgetStateByConfigId(context, 0, toMoveBaseID)
+		local toMoveBaseState = ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, toMoveBaseID)
 		if(toMoveBaseState==901)then
 			ScriptLib.PrintContextLog(context, "@@ ChiWangShooter : TriggerMove end next base is lock")
 			ScriptLib.ShowReminder(context, 400191)
@@ -301,7 +301,7 @@ function action_OnPlatformReach(context, evt)
 		local CanShoot = CheckShootPoint(context,pointID)
 		local ShooterBaseID = GetShooterBaseIDByMoveIndex(pointID)
 		local isShortStay = CheckIsShortStay(pointID)
-		local baseState = ScriptLib.GetGadgetStateByConfigId(context, 0, ShooterBaseID)
+		local baseState = ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, ShooterBaseID)
 
 		ScriptLib.PrintContextLog(context, "@@ ChiWangShooter : chiwang platform reach update"
 				.." ShooterBaseID "..tostring(ShooterBaseID)

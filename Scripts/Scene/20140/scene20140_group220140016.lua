@@ -167,7 +167,7 @@ end
 
 -- 触发操作
 function action_EVENT_GADGET_STATE_CHANGE_16013(context, evt)
-	if evt.param2 == 16012 and ScriptLib.GetGadgetStateByConfigId(context, 0, 16012) == 201 then
+	if evt.param2 == 16012 and ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 16012) == 201 then
 		ScriptLib.SetGroupVariableValueByGroup(context, "option1", 1, 220140003)
 		
 		ScriptLib.SetGroupVariableValueByGroup(context, "unlock", 1, 220140017)

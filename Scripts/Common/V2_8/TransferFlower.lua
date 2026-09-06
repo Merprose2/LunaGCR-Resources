@@ -113,7 +113,7 @@ end
 --根据配置的步长切state(SLC用)
 function LF_TurnByStepSLC(context, config_id, step_table)
 
-	local current_state = ScriptLib.GetGadgetStateByConfigId(context, 0, config_id)
+	local current_state = ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, config_id)
 	local current_index = LF_GetIndexInTable(context, current_state, step_table)
 
 	if 0 == current_index then
@@ -137,7 +137,7 @@ function LF_TurnByStep(context, config_id, step_table)
 	for k,v in pairs(step_table) do 
 
 		if k == config_id then
-			local current_state = ScriptLib.GetGadgetStateByConfigId(context, 0, config_id)
+			local current_state = ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, config_id)
 			local current_index = LF_GetIndexInTable(context, current_state, v)
 
 			if 0 == current_index then

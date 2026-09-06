@@ -118,7 +118,7 @@ suites = {
 
 -- 触发操作
 function action_EVENT_GADGET_STATE_CHANGE_52006(context, evt)
-	if ScriptLib.GetGadgetStateByConfigId(context, 0, 52010) == 201 then
+	if ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 52010) == 201 then
 		if ScriptLib.CheckIsInMpMode(context) then
 			ScriptLib.DelWorktopOptionByGroupId(context, 0, 52005, 68)
 		else

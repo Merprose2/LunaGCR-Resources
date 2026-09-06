@@ -106,7 +106,7 @@ end
 
 -- 触发条件
 function condition_EVENT_GADGET_CREATE_80003(context, evt)
-	if 80001 ~= evt.param1 or GadgetState.GearStart ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 80001 ~= evt.param1 or GadgetState.GearStart ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	

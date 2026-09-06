@@ -178,7 +178,7 @@ end
 
 -- 触发操作
 function action_EVENT_GADGET_STATE_CHANGE_12006(context, evt)
-	if ScriptLib.GetGadgetStateByConfigId(context, 0, 12002) == 201 and ScriptLib.GetGadgetStateByConfigId(context, 0, 12005) == 201 then
+	if ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 12002) == 201 and ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 12005) == 201 then
 		ScriptLib.AddQuestProgress(context, "4006512")
 		
 		ScriptLib.SetGadgetStateByConfigId(context,12001, GadgetState.GearStart)

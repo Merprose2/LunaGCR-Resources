@@ -19,8 +19,9 @@ npcs = {
 
 -- 装置
 gadgets = {
-	{ config_id = 1001, gadget_id = 70290832, pos = { x = -13.925, y = 0.516, z = -68.895 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 1 },
-	{ config_id = 1002, gadget_id = 70290832, pos = { x = 11.913, y = 0.516, z = -41.685 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 1 }
+	{ config_id = 1001, gadget_id = 70290832, pos = { x = -12.898, y = 0.416, z = -69.468 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 1 },
+	{ config_id = 1002, gadget_id = 70290832, pos = { x = 18.183, y = 0.416, z = -57.006 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 1 },
+	{ config_id = 1003, gadget_id = 70290832, pos = { x = 21.730, y = 0.416, z = -75.031 }, rot = { x = 0.000, y = 0.000, z = 0.000 }, level = 1 }
 }
 
 -- 区域
@@ -33,7 +34,9 @@ regions = {
 	-- 第一处树枝出现
 	{ config_id = 1011, shape = RegionShape.SPHERE, radius = 5, pos = { x = -6.837, y = 0.516, z = -78.254 } },
 	-- 第二处树枝出现
-	{ config_id = 1012, shape = RegionShape.SPHERE, radius = 5, pos = { x = 6.233, y = 0.516, z = -54.739 } }
+	{ config_id = 1012, shape = RegionShape.SPHERE, radius = 2, pos = { x = 27.260, y = 0.516, z = -44.175 } },
+	-- 第三处树枝出现
+	{ config_id = 1013, shape = RegionShape.SPHERE, radius = 1, pos = { x = 20.131, y = 0.516, z = -88.831 } }
 }
 
 -- 触发器
@@ -41,18 +44,22 @@ triggers = {
 	-- 第一处树枝消散
 	{ config_id = 1001003, name = "QUEST_FINISH_1003", event = EventType.EVENT_QUEST_FINISH, source = "302915", condition = "", action = "action_EVENT_QUEST_FINISH_1003" },
 	{ config_id = 1001004, name = "ENTER_REGION_1004", event = EventType.EVENT_ENTER_REGION, source = "", condition = "condition_EVENT_ENTER_REGION_1004", action = "action_EVENT_ENTER_REGION_1004" },
-	-- 完成第二段，进行一个注目
+	-- 完成第二段，进行一个注目，树枝消散
 	{ config_id = 1001005, name = "QUEST_FINISH_1005", event = EventType.EVENT_QUEST_FINISH, source = "302908", condition = "", action = "action_EVENT_QUEST_FINISH_1005" },
+	-- 完成第三段，进行一个注目，树枝消散
+	{ config_id = 1001007, name = "QUEST_FINISH_1007", event = EventType.EVENT_QUEST_FINISH, source = "302913", condition = "", action = "action_EVENT_QUEST_FINISH_1007" },
 	-- 第二段，向左注目
 	{ config_id = 1001008, name = "ENTER_REGION_1008", event = EventType.EVENT_ENTER_REGION, source = "", condition = "condition_EVENT_ENTER_REGION_1008", action = "action_EVENT_ENTER_REGION_1008" },
 	-- 第二段，向右注目
-	{ config_id = 1001009, name = "ENTER_REGION_1009", event = EventType.EVENT_ENTER_REGION, source = "", condition = "condition_EVENT_ENTER_REGION_1009", action = "action_EVENT_ENTER_REGION_1009" },
 	-- 传送至室内切环境
 	{ config_id = 1001010, name = "QUEST_FINISH_1010", event = EventType.EVENT_QUEST_FINISH, source = "", condition = "condition_EVENT_QUEST_FINISH_1010", action = "action_EVENT_QUEST_FINISH_1010" },
 	-- 第一处树枝出现
 	{ config_id = 1001011, name = "ENTER_REGION_1011", event = EventType.EVENT_ENTER_REGION, source = "", condition = "condition_EVENT_ENTER_REGION_1011", action = "action_EVENT_ENTER_REGION_1011" },
 	-- 第二处树枝出现
-	{ config_id = 1001012, name = "ENTER_REGION_1012", event = EventType.EVENT_ENTER_REGION, source = "", condition = "condition_EVENT_ENTER_REGION_1012", action = "action_EVENT_ENTER_REGION_1012" }
+	{ config_id = 1001012, name = "ENTER_REGION_1012", event = EventType.EVENT_ENTER_REGION, source = "", condition = "condition_EVENT_ENTER_REGION_1012", action = "action_EVENT_ENTER_REGION_1012" },
+	-- 第三处树枝出现
+	{ config_id = 1001013, name = "ENTER_REGION_1013", event = EventType.EVENT_ENTER_REGION, source = "", condition = "condition_EVENT_ENTER_REGION_1013", action = "action_EVENT_ENTER_REGION_1013" }
+	
 }
 
 -- 变量
@@ -83,9 +90,9 @@ suites = {
 		-- suite_id = 1,
 		-- description = ,
 		monsters = { },
-		gadgets = { 1001, 1002 },
-		regions = { 1004, 1011, 1012 },
-		triggers = { "QUEST_FINISH_1003", "ENTER_REGION_1004", "QUEST_FINISH_1005", "QUEST_FINISH_1010", "ENTER_REGION_1011", "ENTER_REGION_1012" },
+		gadgets = { 1001, 1002, 1003 },
+		regions = { 1004, 1008, 1009, 1011, 1012, 1013 },
+		triggers = { "QUEST_FINISH_1003", "ENTER_REGION_1004", "QUEST_FINISH_1005", "QUEST_FINISH_1007", "QUEST_FINISH_1010", "ENTER_REGION_1011", "ENTER_REGION_1012", "ENTER_REGION_1013"},
 		rand_weight = 100
 	}
 }
@@ -112,8 +119,13 @@ end
 
 -- 触发操作
 function action_EVENT_QUEST_FINISH_1003(context, evt)
-	TLA_active_cameralook_begin(context, evt, -12.89763, 1.5, -71.08803, false, 3, 0, false, 0, 0, 0, true, false, false, 0, 0)
-	
+	-- TLA_active_cameralook_begin(context, evt, -12.89763, 1.5, -71.08803, false, 3, 0, false, 0, 0, 0, true, false, false, 0, 0)
+	-- 视角会闪所以注释
+	-- 第一阶段触发树枝消散
+	if 0 ~= ScriptLib.SetGadgetStateByConfigId(context, 1001, GadgetState.GearStop) then
+	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : set_gadget_state_by_configId")
+			return -1
+		end 
 	ScriptLib.AddQuestProgress(context, "2016701")
 	
 	return 0
@@ -140,15 +152,25 @@ end
 
 -- 触发操作
 function action_EVENT_QUEST_FINISH_1005(context, evt)
-	-- 触发镜头注目，注目位置为坐标（-3.6，16，-14），持续时间为4秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-3.6, y=16, z=-14}
-	  local pos_follow = {x=0, y=0, z=0}
-	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = false, duration = 4, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
-	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
-	                                                      is_set_screen_XY = false, screen_x = 0, screen_y = 0 }) then
-					ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_cameraLook_Begin")
-	        return -1
-				end 
+     -- 第二阶段触发树枝消散
+	if 0 ~= ScriptLib.SetGadgetStateByConfigId(context, 1002, GadgetState.GearStop) then
+	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : set_gadget_state_by_configId")
+			return -1
+		end 
+	
+	return 0
+
+	
+end
+
+
+-- 触发操作
+function action_EVENT_QUEST_FINISH_1007(context, evt)
+	-- 第三阶段触发树枝消散
+	if 0 ~= ScriptLib.SetGadgetStateByConfigId(context, 1003, GadgetState.GearStop) then
+	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : set_gadget_state_by_configId")
+			return -1
+		end 
 	
 	return 0
 end
@@ -167,15 +189,7 @@ end
 
 -- 触发操作
 function action_EVENT_ENTER_REGION_1008(context, evt)
-	-- 触发镜头注目，注目位置为坐标{x=-15.79274, y=3.8, z=-46.44774}，持续时间为2秒，并且为强制注目形式，不广播其他玩家
-		local pos = {x=-15.79274, y=3.8, z=-46.44774}
-	  local pos_follow = {x=0, y=0, z=0}
-	    if 0 ~= ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, is_allow_input = true, duration = 2, is_force = true, is_broadcast = false, is_recover_keep_current = true, delay = 0,
-	                                                      is_set_follow_pos = false, follow_pos = pos_follow, is_force_walk = false, is_change_play_mode = false,
-	                                                      is_set_screen_XY = false, screen_x = 0, screen_y = 0 }) then
-					ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : active_cameraLook_Begin")
-	        return -1
-				end 
+		
 	
 	return 0
 end
@@ -251,7 +265,8 @@ function action_EVENT_ENTER_REGION_1011(context, evt)
 	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : set_gadget_state_by_configId")
 			return -1
 		end 
-	
+	-- 第一处生成树枝时触发
+	TLA_active_cameralook_begin(context, evt,-12.898,0.416,-69.468, true, 2, 0, false, 0, 0, 0, true, false, false, 0, 0)
 	return 0
 end
 
@@ -277,3 +292,30 @@ function action_EVENT_ENTER_REGION_1012(context, evt)
 	
 	return 0
 end
+
+-- 触发条件
+function condition_EVENT_ENTER_REGION_1013(context, evt)
+	if evt.param1 ~= 1013 then return false end
+	
+	-- 判断角色数量不少于1
+	if ScriptLib.GetRegionEntityCount(context, { region_eid = evt.source_eid, entity_type = EntityType.AVATAR }) < 1 then
+		return false
+	end
+	
+	return true
+end
+
+-- 触发操作
+function action_EVENT_ENTER_REGION_1013(context, evt)
+	-- 将configid为 1003 的物件更改为状态 GadgetState.GearStart
+	-- 第三处生成树枝时触发
+	TLA_active_cameralook_begin(context, evt, 21.730, 0.416, -75.031, true, 2, 0, false, 0, 0, 0, true, false, false, 0, 0)
+	if 0 ~= ScriptLib.SetGadgetStateByConfigId(context, 1003, GadgetState.GearStart) then
+	  ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : set_gadget_state_by_configId")
+			return -1
+		end 
+	
+	return 0
+end
+
+

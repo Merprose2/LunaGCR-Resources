@@ -497,7 +497,7 @@ end
 function SLC_Player_Enter_Door(context, evt)
 	ScriptLib.PrintContextLog(context, "## [DreamlandChallenge] SLC_Player_Enter_Door is called")
 
-	if ScriptLib.GetGadgetStateByConfigId(context, 0, defs.door) ~= 902 then
+	if ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, defs.door) ~= 902 then
 		-- 只有弹完琴了才能开挑战
 		ScriptLib.PrintContextLog(context, "## [DreamlandChallenge] challenge can't stop cuz door is not prepared")
 		return 0

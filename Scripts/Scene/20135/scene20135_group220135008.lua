@@ -316,7 +316,7 @@ end
 
 -- 触发操作
 function action_EVENT_GADGET_STATE_CHANGE_8025(context, evt)
-	if ScriptLib.GetGadgetStateByConfigId(context, 0, 8012) == 201 and ScriptLib.GetGadgetStateByConfigId(context, 0, 8011) == 201 and ScriptLib.GetGroupVariableValue(context, "room") == 0 then
+	if ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 8012) == 201 and ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 8011) == 201 and ScriptLib.GetGroupVariableValue(context, "room") == 0 then
 		ScriptLib.SetGroupVariableValue(context, "room", 1)
 		
 		ScriptLib.SetGadgetStateByConfigId(context,8026, GadgetState.Default)

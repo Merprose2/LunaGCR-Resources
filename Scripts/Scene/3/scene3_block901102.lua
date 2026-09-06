@@ -17,3 +17,4 @@ groups = {
     { id = 511020204, area = 5, pos = { x = 1356.014, y = 235.301, z = 3633.500 }, is_replaceable = { value = true, version = 0, new_bin_only = false } },
     { id = 511020264, area = 5, pos = { x = 1420.178, y = 345.521, z = 3635.513 }, is_replaceable = { value = true, version = 0, new_bin_only = false } },
     { id = 511020229, area = 5, pos = { x = 1489.355, y = 335.661, z = 3476.440 }, is_replaceable = { value = true, version = 0, new_bin_only = false } },
+}

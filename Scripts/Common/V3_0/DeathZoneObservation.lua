@@ -562,7 +562,7 @@ function SLC_Lens_Closed_Excited(context)
     -- 进这个slc说明本次打开界面的时候透镜一定在激化态，现在关上了，可能需要rmd
     -- 只有兰纳罗还没被发现+透镜已经不在激化态了，才出现这个reminder 33040007
     if ScriptLib.GetGroupVariableValue(context, "aranaraObservedNum") == 0 
-        and ScriptLib.GetGadgetStateByConfigId(context, 0, defs_miscs.lensConfigId) ~= 200 then
+        and ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, defs_miscs.lensConfigId) ~= 200 then
         ScriptLib.ShowReminder(context, lnlDisappearRmd)
     end
 

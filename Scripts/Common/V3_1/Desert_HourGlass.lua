@@ -47,7 +47,7 @@ function action_GroupLoad( context, evt )
 	else
 		--挑战未完成，将所有非特殊状态的沙漏复位
 		for i,v in ipairs(HourGlass_ConfigIDList) do
-			if ScriptLib.GetGadgetStateByConfigId(context, 0, v) ~= 204 and ScriptLib.GetGadgetStateByConfigId(context, 0, v) ~= 901 then
+			if ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, v) ~= 204 and ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, v) ~= 901 then
 
 				ScriptLib.PrintContextLog(context, "## Desert_HourGlass_LOG : 初始化 configID:"..v)
 				ScriptLib.SetGroupGadgetStateByConfigId(context, 0, v, 0)
@@ -142,7 +142,7 @@ function SLC_HourGlass_SetSGV( context, value )
 		--检查是否有建筑师版
 		for i,v in ipairs(HourGlass_ConfigIDList) do
 			local entityID = ScriptLib.GetEntityIdByConfigId(context, v)
-			if ScriptLib.GetGadgetIdByEntityId(context, entityID) == 70330310 and ScriptLib.GetGadgetStateByConfigId(context, 0, v) == 204 then
+			if ScriptLib.GetGadgetIdByEntityId(context, entityID) == 70330310 and ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, v) == 204 then
 				ScriptLib.ShowReminderByUid(context, {context.owner_uid}, 33010076)
 				return 0
 			end
@@ -170,7 +170,7 @@ function SLC_HourGlass_SetSGV( context, value )
 		--检查是否有建筑师版
 		for i,v in ipairs(HourGlass_ConfigIDList) do
 			local entityID = ScriptLib.GetEntityIdByConfigId(context, v)
-			if ScriptLib.GetGadgetIdByEntityId(context, entityID) == 70330310 and ScriptLib.GetGadgetStateByConfigId(context, 0, v) == 204 then
+			if ScriptLib.GetGadgetIdByEntityId(context, entityID) == 70330310 and ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, v) == 204 then
 				ScriptLib.PrintContextLog(context, "## Desert_HourGlass_LOG : configID "..v.." 失败")
 				ScriptLib.ShowReminderByUid(context, {context.owner_uid}, 33010076)
 				return 0

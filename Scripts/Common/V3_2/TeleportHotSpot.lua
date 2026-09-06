@@ -108,13 +108,13 @@ end
 function LF_CreateHotSpot(context, region_id)
 
 	--该region对应的hotSpot是否已经在场
-	if -1 ~= ScriptLib.GetGadgetStateByConfigId(context, 0, defs.hot_spots[region_id].hot_spot) then 
+	if -1 ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, defs.hot_spots[region_id].hot_spot) then 
 		return 0
 	end
 
 	--若有teleport_gadget配置，则检查其是否存在 --不检查了 LF_ClearAllHotSpot确保每次场上只有一个就行
 	--[[if nil ~= defs.hot_spots[region_id].teleport_gadget and 0 < defs.hot_spots[region_id].teleport_gadget then
-		if -1 == ScriptLib.GetGadgetStateByConfigId(context, 0, defs.hot_spots[region_id].teleport_gadget) then
+		if -1 == ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, defs.hot_spots[region_id].teleport_gadget) then
 			ScriptLib.PrintContextLog(context,"## [TeleportHotSpot] LF_CreateHotSpot. Denied. region@"..region_id.." teleport_gadget@"..defs.hot_spots[region_id].teleport_gadget.." is not placed.")
 			return 0
 		end

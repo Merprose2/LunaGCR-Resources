@@ -94,7 +94,7 @@ end
 
 -- 触发操作
 function action_EVENT_GADGET_STATE_CHANGE_6004(context, evt)
-	if ScriptLib.GetGadgetStateByConfigId(context, 0, 6001) == 201 and ScriptLib.GetGadgetStateByConfigId(context, 0, 6007) == 201 and ScriptLib.GetGadgetStateByConfigId(context, 0, 6005) == 201 then
+	if ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 6001) == 201 and ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 6007) == 201 and ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, 6005) == 201 then
 		ScriptLib.SetGroupVariableValueByGroup(context, "temp", 1, 199004050)
 		
 		ScriptLib.SetGroupVariableValue(context, "temp", 2)

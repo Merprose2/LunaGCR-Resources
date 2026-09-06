@@ -76,7 +76,7 @@ suites = {
 
 -- 触发条件
 function condition_EVENT_GADGET_CREATE_7002(context, evt)
-	if 7001 ~= evt.param1 or GadgetState.Default ~= ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1) then
+	if 7001 ~= evt.param1 or GadgetState.Default ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1) then
 		return false
 	end
 	

@@ -212,7 +212,7 @@ function LF_SetBubbleState(context, weatherState)
 
     for i = 1, #bubbles do
         -- 只设置非202状态的泡泡
-        if 202 ~= ScriptLib.GetGadgetStateByConfigId(context, 0, bubbles[i]) then
+        if 202 ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, bubbles[i]) then
             LF_SetGadgetState(context, bubbles[i], gadgetState)
         end
     end

@@ -73,7 +73,7 @@ end
 function action_CheckState(context,evt)
     -- 检查状态
     local finalWeatherState = ScriptLib.GetGroupVariableValueByGroup(context, "finalWeatherState", 133303126)
-    local state = ScriptLib.GetGadgetStateByConfigId(context, 0, optionPlay.gadgetCid)
+    local state = ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, optionPlay.gadgetCid)
     ScriptLib.PrintContextLog(context, "## [TD_VarunaWorkOption] action_CheckState || finalWeatherState = "..finalWeatherState..", ||state = "..state)
     if state > 0 and nil ~= weatherStateTable[finalWeatherState] then
         local targetState = weatherStateTable[finalWeatherState].state
@@ -95,7 +95,7 @@ function action_PressButton(context,evt)
     ScriptLib.PrintContextLog(context, "## [TD_VarunaWorkOption] action_PressButton || gearCid = "..gearid)
     if gearData ~= nil then
         local weatherState = gearData.weatherState
-        local oldState = ScriptLib.GetGadgetStateByConfigId(context, 0, optionPlay.gadgetCid)
+        local oldState = ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, optionPlay.gadgetCid)
         LF_ClearOptionByState(context,oldState)
         ScriptLib.SetGroupVariableValueByGroup(context, "finalWeatherState", weatherState, 133303126)
         ScriptLib.PrintContextLog(context, "## [TD_VarunaWorkOption] 修改finalWeatherState 为" .. weatherState)
@@ -161,7 +161,7 @@ end
 function LF_ChangeDeviceState(context, prev_context, finalWeatherState)
     ScriptLib.PrintContextLog(context, "## [TD_VarunaWorkOption] LF_ChangeDeviceState is called. finalWeatherState =" .. finalWeatherState)
 
-    local state = ScriptLib.GetGadgetStateByConfigId(context, 0, optionPlay.gadgetCid)
+    local state = ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, optionPlay.gadgetCid)
     if 0 == state then
         ScriptLib.PrintContextLog(context, "## [TD_VarunaWorkOption] 当前中枢未解锁")
         return 0

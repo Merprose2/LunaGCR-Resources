@@ -30,7 +30,7 @@ end
 
 
 function MovePlatform(context)
-	ScriptLib.PrintLog(context, "platform to move")
+	ScriptLib.PrintLog("platform to move")
 	if 0 ~= ScriptLib.SetGroupVariableValue(context, "isMoving", 1) then
 		ScriptLib.PrintContextLog(context, "@@ LUA_WARNING : set_groupVariable")
 		return -1
@@ -38,7 +38,7 @@ function MovePlatform(context)
 
 
 	ScriptLib.SetPlatformPointArray(context, defs.gadget_thunderThelfID, defs.pointarray_ID, GetNextPath(context), { route_type = 0 })
-	ScriptLib.PrintLog(context, "platform to move : start platform")
+	ScriptLib.PrintLog("platform to move : start platform")
 	return 0
 end
 

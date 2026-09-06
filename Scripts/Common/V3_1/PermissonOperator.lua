@@ -174,7 +174,7 @@ function LF_StOperatorState( context )
 			local _curlevel = ScriptLib.GetChainLevel(context, ScriptLib.GetSceneOwnerUid(context), _permissiontype)
 			ScriptLib.PrintContextLog(context, "## PermissionOperator_LOG : 自身等级：".._curlevel)
 
-			if ScriptLib.GetGadgetStateByConfigId(context, 0, v.config_id)==202 then
+			if ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, v.config_id)==202 then
 				ScriptLib.PrintContextLog(context, "## PermissionOperator_LOG : 状态202，空表现")
 				--设置锁定
 				ScriptLib.SetEntityServerGlobalValueByConfigId(context, v.config_id, "SGV_PERMISSION_GLOW", 0)

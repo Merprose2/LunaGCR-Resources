@@ -314,7 +314,7 @@ function LF_TurnByStep(context, config_id, step_table)
 	for k,v in pairs(step_table) do 
 
 		if k == config_id then
-			local current_state = ScriptLib.GetGadgetStateByConfigId(context, 0, config_id)
+			local current_state = ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, config_id)
 			local current_index = LF_GetIndexInTable(context, current_state, v)
 
 			if 0 == current_index then
@@ -349,7 +349,7 @@ function LF_SwitchColor(context, config_id)
 		local availible_list = color_define[color_define_index]
 
 		--取其当前state，再取得此state在它可用GadgetState列表中的index
-		local current_state = ScriptLib.GetGadgetStateByConfigId(context, 0, config_id)
+		local current_state = ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, config_id)
 		local state_index = LF_GetIndexInTable(context, current_state, availible_list)
 
 		--然后切到下一个State

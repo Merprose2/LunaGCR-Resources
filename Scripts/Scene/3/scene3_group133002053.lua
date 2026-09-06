@@ -148,7 +148,7 @@ function condition_EVENT_QUEST_START_53007(context, evt)
 		if 53004 ~= evt.param1 then
 			return false
 		end
-		local state =  ScriptLib.GetGadgetStateByConfigId(context, 0, evt.param1)
+		local state =  ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, evt.param1)
 		if state == 201 or state == 202 then
 			return true
 		end

@@ -166,7 +166,7 @@ function action_FirstCrop(context,evt)
     for i = 1,12 do
         if FarmDic[i] ~= nil then
             -- 不是已种植状态就重设为可种植状态
-            if FarmState.Seedling ~= ScriptLib.GetGadgetStateByConfigId(context,0,FarmDic[i].cid) then
+            if FarmState.Seedling ~= ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, FarmDic[i].cid) then
                 ScriptLib.SetGadgetStateByConfigId(context, FarmDic[i].cid, FarmState.Hole)
             end
         end
@@ -307,7 +307,7 @@ function LF_CheckSeedling(context)
         if 0 == v then
             local cid = FarmDic[farmIndex].cid
             local quest = FarmDic[farmIndex].quest
-            local state = ScriptLib.GetGadgetStateByConfigId(context, 0, cid)
+            local state = ScriptLib.GetGadgetStateByConfigId(context, base_info.group_id, cid)
             if 201 == state then
                 -- 所有201Gadget：对应任务若完成，切202。
                 local questState = ScriptLib.GetHostQuestState(context,quest*100+2)
